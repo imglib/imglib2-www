@@ -1,0 +1,38 @@
+---
+title: ""
+about: 
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: GitHub_ImgLib2
+      icon: github
+      href: https://github.com/ImgLib
+    - text: GitHub_BigDataViewer
+      icon: github
+      href: https://github.com/Bigdataviewer
+---
+
+
+![](imglib2.png){fig-align="left"}
+![](BDV_logo.png){fig-align="right" width=20% height=20%}
+
+  
+::: {.alignleft}   
+# ImgLib2  
+
+##### This is the joint landing page for ImgLib2 and BigDataViewer projects!
+##### ImgLib2 is a general-purpose, multidimensional image processing library.
+##### It provides an interface-driven design that supports numeric and non-numeric data types (8-bit unsigned integer, 32-bit floating point, etc.) in an extensible way. It implements several data sources and sample organizations, including one single primitive array, one array per plane, N-dimensional array “cells” cached to and from disk on demand, and planes read on demand from disk.
+
+
+
+# BigdataViewer  (logo just a temporary placeholder for now)
+##### The BigDataViewer is a re-slicing browser for terabyte-sized multi-view image sequences. 
+##### Conceptually, the visualized data comprises multiple data sources. Each source provides one 3D image (for each time-point in  the case of a time-lapse sequence or angle for a multi-angle SPIM dataset).
+
+##### BigDataViewer comes with a custom data format that is is optimized for fast random access to very large data sets. This permits browsing to any location within a multi-terabyte recording in a fraction of a second. The file format is based on XML and HDF5. Images are represented as tiled multi-resolution pyramids, and stored in HDF5 chunked multi-dimensional arrays with metadata contained in the XML file. BigDataViewer was developed with multi-view light-sheet microscopy data in mind and integrates well with Fiji’s SPIMage processing pipeline.
+
+
+:::

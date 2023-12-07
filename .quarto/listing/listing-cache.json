@@ -1,0 +1,22 @@
+{
+  "listingMap": {
+    "learning_resources/bigdataviewer_links.qmd": [
+      "BigDataViewer"
+    ],
+    "learning_resources/imglib2_links.qmd": [
+      "ImgLib2"
+    ],
+    "contributing_guidelines/guidelines_for_bigdataviewer.qmd": [
+      "BigDataViewer"
+    ],
+    "contributing_guidelines/guidelines_for_imglib2.qmd": [
+      "ImgLib2"
+    ],
+    "ecosystem.qmd": [
+      "ecosystem"
+    ],
+    "blog.qmd": [
+      "blog_posts"
+    ]
+  }
+}

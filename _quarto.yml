@@ -1,0 +1,37 @@
+project:
+  type: website
+  output-dir: WWW_CONTENT
+  
+website:
+  title: "ImgLib2 and BigDataviewer projects"
+  navbar:
+    right:
+      - text: Blog
+        href: blog.qmd
+      - text: Learning Resources
+        menu:
+             - text: "ImgLib2 links"
+               icon: "info-square"
+               href: "learning_resources/imglib2_links.qmd"
+             - text: "BigDataViewer links"
+               icon: "info-square"
+               href: "learning_resources/bigdataviewer_links.qmd"
+      - text: Ecosystem
+        href: ecosystem.qmd
+      - text: Contributing Guidelines
+        menu:
+             - text: "Guidelines for ImgLib2"
+               icon: "share"
+               href: "contributing_guidelines/guidelines_for_imglib2.qmd"
+             - text: "Guidelines for BigDataViewer"
+               icon: "share"
+               href: "contributing_guidelines/guidelines_for_bigdataviewer.qmd"
+             - text: "Our Code-of-conduct"
+               icon: "peace"
+               href: "contributing_guidelines/our_code_of_conduct.qmd"
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false
+

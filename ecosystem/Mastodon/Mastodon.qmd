@@ -1,0 +1,40 @@
+---
+title: "Mastodon"
+categories: [ Fiji/ImageJ , BigDataViewer, ImgLib2] 
+execute:
+  echo: false
+about: 
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: mailto:anemail@adress.com
+    - text: Source code
+      icon: github
+      href: https://github.com/mastodon-sc/
+    - text: Documentation
+      icon: github
+      href: https://mastodon.readthedocs.io/en/latest/
+    - text: Fiji-imageJ
+      icon: image
+      href: https://imagej.net/plugins/mastodon
+---
+
+::: {.alignleft}
+![](Mastodon-logo_jy-01.png){width=275}
+ 
+Mastodon is a large-scale tracking and track-editing framework for large, multi-view images.
+
+These are typically generated in the domain Development Biology or
+Stem-Cell Biology or Cell Biology.
+
+Main features:
+
+- Lazy-loading of TB sized image data
+- Automated cell or particle tracking
+- Manual curation and correction of tracking results
+- Manual and semi-automatic tracking
+:::

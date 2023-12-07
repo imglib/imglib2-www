@@ -1,0 +1,28 @@
+---
+title: "Ecosystem"
+listing:
+  contents: ecosystem               # all Quarto docs in the `posts` directory will be included on your listing page
+  sort: ""                          # can also sort on more than one field
+  type: default                     # or `default` or `table`; each type has its own set of yaml options to include
+  categories: true                  # allows you to sort posts by assigned categories
+  sort-ui: false
+  filter-ui: true
+page-layout: full
+title-block-banner: true
+about: 
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: to top
+      icon: arrow-up
+      href: ecosystem.qmd
+    
+---
+
+Below follows an non-exhaustive list of Fiji plugins and other software that uses either ImgLib2 or BigDataViewer: 
+ 
+
+
+

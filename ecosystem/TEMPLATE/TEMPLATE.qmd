@@ -1,0 +1,40 @@
+---
+title: "TEMPLATE software/plugin"
+categories: [ Fiji/ImageJ , BigDataViewer, imglib2] 
+execute:
+  echo: false
+about: 
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: mailto:anemail@adress.com
+    - text: Documentation
+      icon: github
+      href: https://github.com/.../README.md
+    - text: Publication
+      icon: book
+      href: https://doi.org/....
+    - text: Tutorial
+      icon: youtube
+      href: https://www.youtube.com/watch?t...
+    - text: Fiji-imageJ
+      icon: image
+      href: https://imagej.net/plugins/..
+---
+
+::: {.alignleft}
+![](Template.png){width=275}
+ 
+First sentence will appear also on the ecosystem page... 
+
+short description of your software 
+E.g. text plus Main features:
+
+- 1 
+- 2
+- 3
+:::
