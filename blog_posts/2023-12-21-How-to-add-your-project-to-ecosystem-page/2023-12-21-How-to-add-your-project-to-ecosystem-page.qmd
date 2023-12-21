@@ -8,7 +8,7 @@ execute:
 
 ---
 
-In this blogpost, you will learn how you can list your project that leverage BDV or ImgLib2 on the Community Ecosystem webpage. 
+In this blogpost you will learn how you can list your project that leverage BDV or ImgLib2 on the Community Ecosystem webpage. 
 First copy the template.qmd file found here [![](https://img.shields.io/badge/download%20-Template.qmd%20-blue)](https://github.com/imglib/imglib2-www/tree/main/ecosystem/TEMPLATE) and edit it to your liking. 
 
 The header reads: 
