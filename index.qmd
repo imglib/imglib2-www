@@ -15,8 +15,8 @@ about:
 ---
 
 
-![](imglib2.png){fig-align="left"}
-![](BDV_logo.png){fig-align="right" width=20% height=20%}
+![](imglib2-logo.svg){fig-align="left" width=20% height=20%}
+![](BDV_logo_cropped2.svg){fig-align="right" width=20% height=20%}
 
   
 ::: {.alignleft}   
