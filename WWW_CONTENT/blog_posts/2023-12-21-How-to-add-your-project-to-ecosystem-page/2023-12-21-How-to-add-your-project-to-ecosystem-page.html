@@ -182,47 +182,47 @@ ul.task-list li input[type="checkbox"] {
 
 <p>In this blogpost you will learn how you can list your project that leverage BDV or ImgLib2 on the Community Ecosystem webpage. First copy the template.qmd file found here <a href="https://github.com/imglib/imglib2-www/tree/main/ecosystem/TEMPLATE"><img src="https://img.shields.io/badge/download%20-Template.qmd%20-blue" class="img-fluid"></a> and edit it to your liking.</p>
 <p>The header reads:</p>
-<pre><code>---
-title : "TEMPLATE software/plugin"
-categories: [ Fiji/ImageJ , BigDataViewer, imglib2] 
-execute:
-  echo: false
-about: 
-  id: Aheading
-  template: jolla
-  image-shape: rounded
-  image-width: 15em
-  links:
-    - text: Contact
-      icon: envelope
-      href: mailto:anemail@adress.com
-    - text: Documentation
-      icon: github
-      href: https://github.com/.../README.md
-    - text: Publication
-      icon: book
-      href: https://doi.org/....
-    - text: Tutorial
-      icon: youtube
-      href: https://www.youtube.com/watch?t...
-    - text: Fiji-imageJ
-      icon: image
-      href: https://imagej.net/plugins/..
----</code></pre>
+<p><code>---</code><br>
+<code>title : "TEMPLATE software/plugin"</code><br>
+<code>categories: [ Fiji/ImageJ , BigDataViewer, imglib2]</code><br>
+<code>execute:</code><br>
+<code>echo: false</code><br>
+<code>about:</code><br>
+<code>id: Aheading</code><br>
+<code>template: jolla</code><br>
+<code>image-shape: rounded</code><br>
+<code>image-width: 15em</code><br>
+<code>links:</code><br>
+<code>- text: Contact</code><br>
+<code>icon: envelope</code><br>
+<code>href: mailto:anemail@adress.com</code><br>
+<code>- text: Documentation</code><br>
+<code>icon: github</code><br>
+<code>href: https://github.com/.../README.md</code><br>
+<code>- text: Publication</code><br>
+<code>icon: book</code><br>
+<code>href: https://doi.org/....</code><br>
+<code>- text: Tutorial</code><br>
+<code>icon: youtube</code><br>
+<code>href: https://www.youtube.com/watch?t...</code><br>
+<code>- text: Fiji-imageJ</code><br>
+<code>icon: image</code><br>
+<code>href: https://imagej.net/plugins/..</code><br>
+<code>---</code><br>
+</p>
 <p>First, these are the attributes you need to change</p>
-<p><strong>title</strong> : ” name_of_software/project/plugin”<br>
-<strong>categories</strong>: [ add keywords to make software/plugin searchable]<br>
-<strong>links</strong>:<br>
-- text: Contact<br>
-icon: envelope<br>
-href: mailto:anemail@adress.com<br>
+<p><code>title : "TEMPLATE software/plugin"</code><br>
+</p>
+<p><code>categories: [ Fiji/ImageJ , BigDataViewer, imglib2]</code><br>
+</p>
+<p><code>links:</code><br>
+<code>- text: Contact</code><br>
+<code>icon: envelope</code><br>
+<code>href: mailto:anemail@adress.com</code><br>
 …</p>
 <p>The links are shown on the bottom of the page to link to relevant project resources. If you would like to add change an icon e.g.&nbsp;<code>icon: envelope</code> you can find icons more here : <a href="https://icons.getbootstrap.com">https://icons.getbootstrap.com</a></p>
-<p>Furthermore<br>
-<!-- ``` ::: {.alignleft}
-![](Template.png){width=275} 
- ::: ```  --> To add a logo or suitable picture you need to add&nbsp;</p>
-<p><code>\!\[\]\(name_of_imagefile){ "here you set size limitations or alignment"}\</code></p>
+<p>Furthermore, to add a logo or suitable picture you need to add&nbsp;</p>
+<p><code>![](name_of_imagefile){ "here you set size limitations or alignment"}\</code></p>
 <p>for example <code>![](Template.png){fig-align="left" width=20% height=20%}\</code><br>
 or e.g.&nbsp;<code>![](Template.png){width=275}</code><br>
 This file needs to be in folder of the project (each project should get its own folder, ideally with same name as “title” ). You can find more info regarding adding figures in quarto here: <a href="https://quarto.org/docs/authoring/figures.html">https://quarto.org/docs/authoring/figures.html</a><br>
@@ -232,9 +232,9 @@ Then in the next section fill in relevant information about your project:</p>
 short description of your software 
 e.g. text plus main features:
 
-- 1 
-- 2
-- 3</code></pre>
+* 1 
+* 2
+* 3</code></pre>
 <p>Finally notice community manager OR make a pull request.<br>
 Done ! :)</p>
 

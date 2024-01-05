@@ -12,44 +12,45 @@ In this blogpost you will learn how you can list your project that leverage BDV 
 First copy the template.qmd file found here [![](https://img.shields.io/badge/download%20-Template.qmd%20-blue)](https://github.com/imglib/imglib2-www/tree/main/ecosystem/TEMPLATE) and edit it to your liking. 
 
 The header reads: 
-```
----
-title : "TEMPLATE software/plugin"
-categories: [ Fiji/ImageJ , BigDataViewer, imglib2] 
-execute:
-  echo: false
-about: 
-  id: Aheading
-  template: jolla
-  image-shape: rounded
-  image-width: 15em
-  links:
-    - text: Contact
-      icon: envelope
-      href: mailto:anemail@adress.com
-    - text: Documentation
-      icon: github
-      href: https://github.com/.../README.md
-    - text: Publication
-      icon: book
-      href: https://doi.org/....
-    - text: Tutorial
-      icon: youtube
-      href: https://www.youtube.com/watch?t...
-    - text: Fiji-imageJ
-      icon: image
-      href: https://imagej.net/plugins/..
----
-```
+
+``` --- ```\
+``` title : "TEMPLATE software/plugin" ```\
+```categories: [ Fiji/ImageJ , BigDataViewer, imglib2] ```\
+```execute:```\
+  ```echo: false```\
+```about: ```\
+  ```id: Aheading```\
+  ```template: jolla```\
+  ```image-shape: rounded```\
+  ```image-width: 15em```\
+  ```links:```\
+    ```- text: Contact```\
+      ```icon: envelope```\
+      ```href: mailto:anemail@adress.com```\
+    ```- text: Documentation```\
+      ```icon: github```\
+      ```href: https://github.com/.../README.md```\
+    ```- text: Publication```\
+      ```icon: book```\
+      ```href: https://doi.org/....```\
+    ```- text: Tutorial```\
+      ```icon: youtube```\
+      ```href: https://www.youtube.com/watch?t...```\
+    ```- text: Fiji-imageJ```\
+      ```icon: image```\
+      ```href: https://imagej.net/plugins/..```\
+```---```\
+ 
 First, these are the attributes you need to change 
 
+```title : "TEMPLATE software/plugin" ```\
 
-**title** : " name_of_software/project/plugin"\
-**categories**: [ add keywords to make software/plugin searchable] \
-**links**:\
-    - text: Contact\
-      icon: envelope\
-      href: mailto:anemail@adress.com\
+```categories: [ Fiji/ImageJ , BigDataViewer, imglib2] ```\
+
+  ```links:```\
+    ```- text: Contact```\
+      ```icon: envelope```\
+      ```href: mailto:anemail@adress.com```\
       ...
  
 
@@ -57,28 +58,25 @@ The links are shown on the bottom of the page to link to relevant project resour
 e.g. ```icon: envelope    ```
 you can find icons more here : [https://icons.getbootstrap.com](https://icons.getbootstrap.com)
 
-Furthermore  
-<!-- ``` ::: {.alignleft}
-![](Template.png){width=275} 
- ::: ```  -->
- To add a logo or suitable picture you need to add\ 
+Furthermore, to add a logo or suitable picture you need to add\ 
  
- ``` \!\[\]\(name_of_imagefile){ "here you set size limitations or alignment"}\  ```
+ ``` ![](name_of_imagefile){ "here you set size limitations or alignment"}\  ```
 
 for example ```![](Template.png){fig-align="left" width=20% height=20%}\```   
 or e.g.  ```![](Template.png){width=275} ```  \
 This file needs to be in folder of the project (each project should get its own folder, ideally with same name as "title" ).
 You can find more info regarding adding figures in quarto here: [https://quarto.org/docs/authoring/figures.html](https://quarto.org/docs/authoring/figures.html) \
 Then in the next section fill in relevant information about your project: 
-```
+
+``` 
 First sentence will appear also on the ecosystem page...  
 
 short description of your software 
 e.g. text plus main features:
 
-- 1 
-- 2
-- 3
+* 1 
+* 2
+* 3
 ```
 
 Finally notice community manager OR make a pull request.  
