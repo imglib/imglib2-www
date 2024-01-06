@@ -396,6 +396,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>That is, the performance difference between localizing and non-localizing Cursors is much more pronounced than the difference between Cursor loop and Stream. In fact, the Stream version is even faster than the localizingCursor version. On top of that, it is trivial to parallelize.</p>
 <p>Finally, we did not investigate polymorphism effects so far. It is very much possible that this affects performance and we may have to investigate employing <code>LoopBuilder</code>s class-copying mechanism to counter these effects.</p>
 <p>In summary, I think one should not hesitate to use Streams where it makes sense from a readability and ease-of-use perspective. If performance is a critical concern, it is best to benchmark various approaches, because the behaviour is not easy to predict.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/imglib/imglib2-www/tree/main/blog_posts/2022-10-30-Adding-Stream-support-to-ImgLib2"><img src="https://img.shields.io/badge/Download%20-Python%20Notebook%20On%20Github-blue.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 
 
 </section>

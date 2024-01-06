@@ -672,6 +672,11 @@ triggers: [not mapped]</code></pre>
 <p>So, <code>MyActions.install(...)</code> is called to install into a provided <code>Actions</code>. Usually every frame/panel in the application should have an <code>Actions</code> instance, which is linked to the <code>KeymapManager</code> so that keymap updates propagate correctly.</p>
 <p>And that’s it… This is currently the recommended way to structure and bundle action definitions. You can find the full <a href="https://github.com/tpietzsch/keymap-idiom/blob/main/src/main/java/tpietzsch/RecommendedPattern.java">example on github</a>.</p>
 <p>See BigDataViewer’s <a href="https://github.com/bigdataviewer/bigdataviewer-core/blob/6d3c9b1904ff9e6e1617c2810c595c15080764c5/src/main/java/bdv/viewer/NavigationActions.java">NavigationActions</a> as an example “in the wild”. For behaviours (mouse gestures, etc.) the structure is the same. See BigDataViewer’s <a href="https://github.com/bigdataviewer/bigdataviewer-core/blob/d65e530df8a27726509f477e92c888d280b98162/src/main/java/bdv/TransformEventHandler2D.java">TransformEventHandler2D</a> for example.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/imglib/imglib2-www/tree/main/blog_posts/2022-08-08-keymaps"><img src="https://img.shields.io/badge/Download%20-Python%20Notebook%20On%20Github-blue.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 
 
 </section>
