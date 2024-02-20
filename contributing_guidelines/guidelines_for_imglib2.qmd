@@ -14,7 +14,7 @@ title-block-banner: true
 
 # Contributing Guidelines
 
-Thank you for considering contributing to the BigDataViewer open source project! By contributing, you are helping to improve and grow the software for everyone in the community. We appreciate your time and effort.
+Thank you for considering contributing to the ImgLib2 open source project! By contributing, you are helping to improve and grow the software for everyone in the community. We appreciate your time and effort.
 
 ## Table of Contents
 
