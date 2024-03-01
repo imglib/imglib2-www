@@ -49,13 +49,6 @@ Before contributing, please review our [Code of Conduct](our_code_of_conduct.qmd
 
 ## Getting Started
 
-### Prerequisites and setting up the development environment
-
-List any software, tools, libraries, or dependencies contributors need to have installed before they can contribute. Provide clear instructions or links for installation.
-
-### Setting up the Development Environment
-
-Briefly describe the steps to set up the development environment. Include instructions for cloning the repository, installing dependencies, and any configuration that's needed.
 
 ## Making Contributions
 Please see the general guidlines on how to contribute to an existing plugin or library: [https://imagej.net/develop/improving-the-code](https://imagej.net/develop/improving-the-code)

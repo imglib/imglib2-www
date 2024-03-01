@@ -12,11 +12,13 @@ about:
     - text: GitHub_BigDataViewer
       icon: github
       href: https://github.com/Bigdataviewer
+    - text: Imglib2@mastodon
+      icon: mastodon
+      href: https://fosstodon.org/@imglib2
 ---
 
+![](both_Logos.png){fig-align="center" width=70% height=70%}
 
-![](imglib2-logo.svg){fig-align="left" width=20% height=20%}
-![](BDV_logo_cropped2.svg){fig-align="right" width=20% height=20%}
 
   
 ::: {.alignleft}   
@@ -28,7 +30,7 @@ about:
 
 
 
-# BigdataViewer  (logo just a temporary placeholder for now)
+# BigdataViewer  (preliminary logo)
 ##### The BigDataViewer is a re-slicing browser for terabyte-sized multi-view image sequences. 
 ##### Conceptually, the visualized data comprises multiple data sources. Each source provides one 3D image (for each time-point in  the case of a time-lapse sequence or angle for a multi-angle SPIM dataset).
 

@@ -49,14 +49,53 @@ Maintainer - Merges patch submissions. Cuts releases.
 Before contributing, please review our [Code of Conduct](our_code_of_conduct.qmd). We aim to foster an inclusive and respectful community where everyone feels safe to participate.
 
 ## Getting Started
+Need a quick start?  Install OpenJDK and maven:
+```
+sudo apt install openjdk-16-jdk maven
+```
 
-### Prerequisites and setting up the development environment
+Then check out [BigDataViewer vistools](https://github.com/bigdataviewer/bigdataviewer-vistools):
+```
+git clone https://github.com/bigdataviewer/bigdataviewer-vistools.git
+```
 
-List any software, tools, libraries, or dependencies contributors need to have installed before they can contribute. Provide clear instructions or links for installation.
+Then start JShell in the BigDataViewer vistools project directory:
+```
+cd bigdataviewer-vistools
+mvn compile com.github.johnpoth:jshell-maven-plugin:1.3:run
+```
 
-### Setting up the Development Environment
+Then try out this code snippet:
+```java
+import bdv.util.*;
+import net.imglib2.position.FunctionRealRandomAccessible;
+import net.imglib2.type.numeric.integer.IntType;
+import net.imglib2.util.Intervals;
 
-Briefly describe the steps to set up the development environment. Include instructions for cloning the repository, installing dependencies, and any configuration that's needed.
+BdvFunctions.show(
+  new FunctionRealRandomAccessible<IntType>(
+    2,
+    (x, y) -> {
+      int i = 0;
+      double v = 0,
+        c = x.getDoublePosition(0),
+        d = x.getDoublePosition(1);
+      for (; i < 64 && v < 4096; ++i) {
+        final double e = c * c - d * d;
+        d = 2 * c * d;
+        c = e + 0.2;
+        d += 0.6;
+        v = Math.sqrt(c * c + d * d);
+        ++i;
+      }
+      y.set(i);
+    },
+    IntType::new),
+  Intervals.createMinMax(-1, -1, 1, 1),
+  "",
+  BdvOptions.options().is2D()).setDisplayRange(0, 64);
+```
+
 
 ## Making Contributions
 Please see the general guidlines on how to contribute to an existing plugin or library: [https://imagej.net/develop/improving-the-code](https://imagej.net/develop/improving-the-code)

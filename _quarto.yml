@@ -6,9 +6,13 @@ website:
   title: "ImgLib2 and BigDataviewer projects"
   navbar:
     right:
+      - text: "ImgLib2"
+        href: "Imglib2.qmd"
+      - text: "BDV"
+        href: "https://github.com/bigdataviewer"
       - text: Blog
         href: blog.qmd
-      - text: Learning Resources
+      - text: Resources
         menu:
              - text: "ImgLib2 links"
                icon: "info-square"
@@ -16,6 +20,13 @@ website:
              - text: "BigDataViewer links"
                icon: "info-square"
                href: "learning_resources/bigdataviewer_links.qmd"
+             - text: "ImgLib2 github"
+               icon: "github"
+               href: "https://github.com/imglib"
+             - text: "BigDataViewer github"
+               icon: "github"
+               href: "https://github.com/bigdataviewer"
+
       - text: Ecosystem
         href: ecosystem.qmd
       - text: Contributing Guidelines
