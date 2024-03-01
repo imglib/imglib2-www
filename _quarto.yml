@@ -40,6 +40,9 @@ website:
              - text: "Our Code-of-conduct"
                icon: "peace"
                href: "contributing_guidelines/our_code_of_conduct.qmd"
+      - text: ""
+      - icon: mastodon
+        href: https://fosstodon.org/@imglib2
 format:
   html:
     theme: cosmo
