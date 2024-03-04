@@ -9,7 +9,7 @@ website:
       - text: "ImgLib2"
         href: "Imglib2.qmd"
       - text: "BDV"
-        href: "https://github.com/bigdataviewer"
+        href: "BDV.qmd"
       - text: Blog
         href: blog.qmd
       - text: Resources
@@ -43,9 +43,15 @@ website:
       - text: ""
       - icon: mastodon
         href: https://fosstodon.org/@imglib2
+  open-graph: true
+  repo-url: https://github.com/imglib/imglib2-www
+  site-url: https://imglib.github.io/imglib2-www
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: false
+    code-overflow: wrap
+    code-tools:
+      source: repo
 

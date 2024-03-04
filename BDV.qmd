@@ -1,0 +1,19 @@
+---
+title: "BigDataViewer"
+image: Logo_BDV.png
+about:
+  template: solana
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/bigdataviewer
+format:
+  html:
+    code-tools: false
+---
+
+ The BigDataViewer is a re-slicing browser for terabyte-sized multi-view image sequences. 
+ Conceptually, the visualized data comprises multiple data sources. Each source provides one 3D image (for each time-point in  the case of a time-lapse sequence or angle for a multi-angle SPIM dataset).
+
+ BigDataViewer comes with a custom data format that is is optimized for fast random access to very large data sets. This permits browsing to any location within a multi-terabyte recording in a fraction of a second. The file format is based on XML and HDF5. Images are represented as tiled multi-resolution pyramids, and stored in HDF5 chunked multi-dimensional arrays with metadata contained in the XML file. BigDataViewer was developed with multi-view light-sheet microscopy data in mind and integrates well with Fiji’s SPIMage processing pipeline.ImgLib2 is a general-purpose, multidimensional image and data processing library.
+ 

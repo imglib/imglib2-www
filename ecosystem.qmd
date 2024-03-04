@@ -18,7 +18,9 @@ about:
     - text: to top
       icon: arrow-up
       href: ecosystem.qmd
-    
+format:
+  html:
+    code-tools: false      
 ---
 
 Below follows an non-exhaustive list of Fiji plugins and other software that uses either ImgLib2 or BigDataViewer: 

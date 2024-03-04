@@ -27,7 +27,8 @@
     "2022-09-27-n5-imglib2.html": "302e932d"
   },
   "index.qmd": {
-    "index.html": "6e7315d9"
+    "index.html": "6e7315d9",
+    "index.tex": "259a534c"
   },
   "learning_resources/bigdataviewer_links.qmd": {
     "bigdataviewer_links.html": "f9cd8537"
@@ -55,5 +56,8 @@
   },
   "Imglib2.qmd": {
     "Imglib2.html": "d45a1b86"
+  },
+  "BDV.qmd": {
+    "BDV.html": "9b2bbde3"
   }
 }
