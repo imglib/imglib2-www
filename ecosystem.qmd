@@ -17,7 +17,7 @@ about:
   links:
     - text: to top
       icon: arrow-up
-      href: https://imglib.github.io/imglib2-www/ecosystem.html
+      href: "https://imglib.github.io/imglib2-www/ecosystem.html"
 format:
   html:
     code-tools: false      
