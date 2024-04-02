@@ -1,6 +1,6 @@
 ---
-title: "TEMPLATE software/plugin"
-categories: [ Fiji/ImageJ , BigDataViewer, imglib2] 
+title: "TEMPLATE software/plugin"  # "Your_Plugin/Software_project_name"  
+categories: [ Fiji/ImageJ , BigDataViewer, imglib2]   # Add categories for your project"  
 execute:
   echo: false
 about: 
@@ -8,7 +8,7 @@ about:
   template: jolla
   image-shape: rounded
   image-width: 15em
-  links:
+  links:                  # Add details and copy/remove whole block if you need to change number of links.
     - text: Contact
       icon: envelope
       href: mailto:anemail@adress.com
@@ -37,5 +37,7 @@ E.g. text plus Main features:
 - 1 
 - 2
 - 3
+
+
 
 :::
