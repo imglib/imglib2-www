@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://imglib.github.io/imglib2-www/blog.html</loc>
-    <lastmod>2024-04-02T18:09:37.994Z</lastmod>
+    <lastmod>2024-04-02T18:31:01.082Z</lastmod>
   </url>
   <url>
     <loc>https://imglib.github.io/imglib2-www/contributing_guidelines/guidelines_for_imglib2.html</loc>
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://imglib.github.io/imglib2-www/index.html</loc>
-    <lastmod>2024-04-02T18:00:35.220Z</lastmod>
+    <lastmod>2024-04-02T18:30:55.583Z</lastmod>
   </url>
   <url>
     <loc>https://imglib.github.io/imglib2-www/learning_resources/imglib2_links.html</loc>
@@ -79,5 +79,9 @@
   <url>
     <loc>https://imglib.github.io/imglib2-www/ecosystem.html</loc>
     <lastmod>2024-04-02T18:09:29.150Z</lastmod>
+  </url>
+  <url>
+    <loc>https://imglib.github.io/imglib2-www/blog_posts/2024-02-14-displacementFields/2024-02-14-displacementFields.html</loc>
+    <lastmod>2024-04-02T18:31:06.217Z</lastmod>
   </url>
 </urlset>
