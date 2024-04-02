@@ -27,7 +27,7 @@ about:
 ---
 
 ::: {.alignleft}
-![](Template.png){width=275}
+![](Template.png){width=275}            # If you have a figure/logo for project change name accordingly. 
  
 First sentence will appear also on the ecosystem page... 
 
