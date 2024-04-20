@@ -62,5 +62,11 @@
   },
   "blog_posts/2024-02-14-displacementFields/2024-02-14-displacementFields.ipynb": {
     "2024-02-14-displacementFields.html": "3c804480"
+  },
+  "ecosystem/Newplugin/test.qmd": {
+    "test.html": "154d9536"
+  },
+  "ecosystem/Labkit/Labkit.qmd": {
+    "Labkit.html": "8dac30d4"
   }
 }

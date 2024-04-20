@@ -13,7 +13,7 @@ about:
       icon: envelope
       href: mailto:anemail@adress.com
     - text: Documentation
-      icon: github
+      icon: archive
       href: https://github.com/.../README.md
     - text: Publication
       icon: book

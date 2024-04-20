@@ -32,7 +32,8 @@
     "items": [
       "/ecosystem/Mastodon/Mastodon.html",
       "/ecosystem/TEMPLATE/TEMPLATE.html",
-      "/ecosystem/BigDataProcessor2/BigDataProcessor2.html"
+      "/ecosystem/BigDataProcessor2/BigDataProcessor2.html",
+      "/ecosystem/Labkit/Labkit.html"
     ]
   }
 ]

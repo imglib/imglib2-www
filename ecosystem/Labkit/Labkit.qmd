@@ -1,0 +1,38 @@
+---
+title: "Labkit"
+categories: [ Fiji/ImageJ , BigDataViewer, imglib2, pixelclassification, segmentation]   # Add categories for your project"  
+execute:
+  echo: false
+about: 
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:                  # Add details and copy/remove whole block if you need to change number of links.
+    - text: Contact
+      icon: envelope
+      href: mailto:arzt@mpi-cbg.de
+    - text: Documentation
+      icon: archive
+      href: https://imagej.net/plugins/labkit/
+    - text: Publication
+      icon: book
+      href: https://doi.org/10.3389/fcomp.2022.777728
+    - text: Github
+      icon: github
+      href: https://github.com/juglab/labkit-ui
+    - text: Tutorial
+      icon: youtube
+      href: https://imagej.net/plugins/labkit/#tutorials
+
+---
+
+::: {.alignleft}
+![](Labkit_UserView.jpg){width=575}           
+ 
+Labkit is a user-friendly Fiji plugin for the segmentation of microscopy image data.
+
+It offers easy to use manual and automated image segmentation routines that can be rapidly applied to single- and multi-channel images as well as to timelapse movies in 2D or 3D. LABKIT is specifically designed to work efficiently on big image data and enables users of consumer laptops to conveniently work with multiple-terabyte images. This efficiency is achieved by using ImgLib2 and BigDataViewer as well as a memory efficient and fast implementation of the random forest based pixel classification algorithm as the foundation of our software. Optionally we harness the power of graphics processing units (GPU) to gain additional runtime performance. LABKIT is easy to install on virtually all laptops and workstations. Additionally, LABKIT is compatible with high performance computing (HPC) clusters for distributed processing of big image data. The ability to use pixel classifiers trained in LABKIT via the ImageJ macro language enables our users to integrate this functionality as a processing step in automated image processing workflows.
+
+
+:::
