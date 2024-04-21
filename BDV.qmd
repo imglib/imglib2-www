@@ -1,6 +1,6 @@
 ---
 title: "BigDataViewer"
-image: Logo_BDV.png
+image: logos/bdv.png
 about:
   template: solana
   links:

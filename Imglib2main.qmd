@@ -1,6 +1,6 @@
 ---
 title: "ImgLib2"
-image: imglib2-logo.png
+image: logos/imglib2.png
 sidebar: true  
 format:
    html:
