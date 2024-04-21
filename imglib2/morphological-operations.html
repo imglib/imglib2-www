@@ -400,16 +400,16 @@ Whatevs       Whatevs       Whatevs       Totes         Whovian       Whovian
 <ul>
 <li><p>You want to operate on an <a href="https://github.com/imglib/imglib2/blob/-/src/main/java/net/imglib2/img/Img.java">Img</a> and return a <strong>new Img</strong> with the results. Then you need to call for instance:</p>
 <pre><code>Img&lt; FloatType &gt; result = Dilation.dilate( img, strel, 1 );</code></pre>
-<p><img src="../media/imglib2/dilatedtonewimgexample.png" width="600"></p></li>
+<p><img src="dilatedtonewimgexample.png" width="600"></p></li>
 <li><p>You want to perform to <strong>full</strong> dilation or erosion on a source Img. Full version of these operations means the new image will have a size increased or shrunk as if the structuring element would actually dilate or erode the source border:</p>
 <pre><code>Img&lt; FloatType &gt; result = Dilation.dilateFull( img, strel, 1 );</code></pre>
-<p><img src="../media/imglib2/dilatedtonewfullimgexample.png" width="600"></p></li>
+<p><img src="dilatedtonewfullimgexample.png" width="600"></p></li>
 <li><p>You want to operate on a source <a href="https://github.com/imglib/imglib2/blob/-/src/main/java/net/imglib2/RandomAccessibleInterval.java">RandomAccessibleInterval</a>, in place (write the results in the source):</p>
 <pre><code>Dilation.dilateInPlace( rai, interval, strel, 1 );</code></pre>
-<p><img src="../media/imglib2/dilatedinplaceexample.png" width="600"></p></li>
+<p><img src="dilatedinplaceexample.png" width="600"></p></li>
 <li><p>You want to operate on a source <a href="https://github.com/imglib/imglib2/blob/-/src/main/java/net/imglib2/RandomAccessible.java">RandomAccessible</a>, and write the results in a provided <a href="https://github.com/imglib/imglib2/blob/-/src/main/java/net/imglib2/IterableInterval.java">IterableInterval</a>:</p>
 <pre><code>Dilation.dilate( source, target, strel, 1 )</code></pre>
-<p><img src="../media/imglib2/dilatedtotargetexample.png" width="600"></p></li>
+<p><img src="dilatedtotargetexample.png" width="600"></p></li>
 </ul>
 <p>Now, each of these category are declined in 4 specifics methods:</p>
 <ul>
