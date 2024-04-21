@@ -1,5 +1,5 @@
 .DS_Store
 /.quarto/
-/WWW_CONTENT/
-thumbs.db
+/_site/
 /site_libs/
+thumbs.db

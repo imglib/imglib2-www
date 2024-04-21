@@ -1,7 +1,6 @@
 project:
   type: website
-  output-dir: WWW_CONTENT
-  
+
 website:
   title: "ImgLib2 and BigDataviewer projects"
   navbar:
@@ -61,7 +60,7 @@ website:
       - icon: github
         href: https://github.com/imglib/imglib2
 sidebar: false
-      
+
 format:
   html:
     theme: cosmo
