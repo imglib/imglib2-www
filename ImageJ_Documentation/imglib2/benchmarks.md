@@ -1,6 +1,10 @@
 ---
 title: ImgLib2 Benchmarks
 sidebar: true
+include-in-header:
+  text: >-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dygraphs@2.1.0/dist/dygraph.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dygraphs@2.1.0/dist/dygraph.min.css" />
 
 ---
 
