@@ -6,13 +6,13 @@ about:
   image-shape: rounded
   image-width: 15em
   links:
-    - text: GitHub_ImgLib2
+    - text: ImgLib2 on GitHub
       icon: github
-      href: https://github.com/ImgLib
-    - text: GitHub_BigDataViewer
+      href: https://github.com/imglib
+    - text: BigDataViewer on GitHub
       icon: github
-      href: https://github.com/Bigdataviewer
-    - text: Imglib2@mastodon
+      href: https://github.com/bigdataviewer
+    - text: ImgLib2@mastodon
       icon: mastodon
       href: https://fosstodon.org/@imglib2
 format:
@@ -31,7 +31,7 @@ sidebar: false
 <!-- # ImgLib2  -->
 
 #### This is the joint landing page for ImgLib2 and BigDataViewer projects!
-<!-- #### Have a look here for [ImgLib2](Imglib2.qmd)
+<!-- #### Have a look here for [ImgLib2](ImgLib2.qmd)
 #### and here for [BigDataViewer](BDV.qmd) -->
 
 
