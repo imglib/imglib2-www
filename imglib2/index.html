@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,7 +67,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -71,10 +104,13 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="ImgLib2 and BigDataViewer projects - ImgLib2">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://imglib.github.io/imglib2-www/logos/imglib2.png">
 <meta property="og:site_name" content="ImgLib2 and BigDataViewer projects">
+<meta property="og:image:height" content="329">
+<meta property="og:image:width" content="230">
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -92,11 +128,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../imglib2.html"> 
+    <a class="nav-link" href="../imglib2"> 
 <span class="menu-text">ImgLib2</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../bdv.html"> 
+    <a class="nav-link" href="../bdv"> 
 <span class="menu-text">BDV</span></a>
   </li>  
   <li class="nav-item">
@@ -172,7 +208,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">ImgLib2</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../imglib2/index.html">ImgLib2</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -181,20 +217,123 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/imglib/imglib2" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-</div>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">ImgLib2</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">ImgLib 'Deprecated' </span></span>
-  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">ImgLib2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/accessibles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Accessibles</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/accessors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Accessors</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Algorithms</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/benchmarks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Benchmarks</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/changes-from-imglib1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changes from ImgLib1 to ImgLib2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/developing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Developing ImgLib2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Discussion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Documentation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Examples</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 FAQ</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/gauss-package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gauss package for ImgLib2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Getting Started</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/loopbuilder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LoopBuilder</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/matlab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating Imglib2 images in MATLAB</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/migrate-from-imglib1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How To Migrate Code From ImgLib To ImgLib2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/morphological-operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Morphological Operations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/workshop-advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Advanced Programming Workshop</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib2/workshop-introductory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Introductory Workshop</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -202,39 +341,68 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-about-solana column-body content">
+  <div class="about-entity">
+    <div class="entity-contents">
+      <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">ImgLib2</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/imglib2/index.md"><i class="bi"></i> Code</button></div></div>
+<h1 class="title">ImgLib2</h1>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
-    <div>
-    <div class="quarto-title-meta-heading">Doi</div>
-    <div class="quarto-title-meta-contents">
-      <p class="doi">
-        <a href="https://doi.org/10.1093/bioinformatics/bts543">10.1093/bioinformatics/bts543</a>
-      </p>
-    </div>
   </div>
-  </div>
-  
-
-
-</header>
-
-
-<p>ImgLib2 is a general-purpose, multidimensional image processing library.</p>
-<p>It provides an interface-driven design that supports numeric and non-numeric data types (8-bit unsigned integer, 32-bit floating point, etc.) in an extensible way. It implements several data sources and sample organizations, including one single primitive array, one array per plane, N-dimensional array “cells” cached to and from disk on demand, and planes read on demand from disk.</p>
+</header> <div class="about-links">
+  <a href="https://fosstodon.org/@imglib2" class="about-link" rel="" target="">
+    <i class="bi bi-mastodon"></i>
+     <span class="about-link-text">Mastodon</span>
+  </a>
+  <a href="https://github.com/imglib" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">Github</span>
+  </a>
+</div>
+      <div class="about-contents"><main class="content" id="quarto-document-content">
+<p>ImgLib2 is a general-purpose, multidimensional image and data processing library.</p>
+<p>It provides a unified API to work with discrete and continuous n-dimensional data. This API is interface driven and therefore extensible at will.</p>
+<p>ImgLib2 includes implementations of standard numeric and non-numeric data types (8-bit unsigned integer, 32-bit floating point, …) as well as a number of less typical data types (complex 64-bit floating point, 64-bit ARGB, base pairs, …). Data values can be accessed directly or through on-the-fly converters or multi-variate functions.</p>
+<p>For discrete data (images, n-dimensional arrays), ImgLib2 implements a variety of memory layouts, data generation, loading, and caching strategies, including data linearized into single primitive arrays, series of arrays, n-dimensional arrays of arrays (“cells”), stored in memory, generated or loaded from disk on demand, and cached in memory or on disk. Coordinates and values can be accessed directly or through on-the-fly views that invert or permute axes, generate hyperslices or stack slices top higher dimensional datasets, collapse dimensions into vectors</p>
+<p>For continuous data (functions, n-dimensional interpolants), ImgLib2 implements a variety of interpolators, geometric transformations, and generator functions. Coordinates and values can be accessed directly or transformed on-the-fly.</p>
+<p>Need a quick start? Install OpenJDK and maven:</p>
+<pre><code>sudo apt install openjdk-16-jdk maven</code></pre>
+<p>Then check out <a href="https://github.com/bigdataviewer/bigdataviewer-vistools">BigDataViewer vistools</a>:</p>
+<pre><code>git clone https://github.com/bigdataviewer/bigdataviewer-vistools.git</code></pre>
+<p>Then start JShell in the BigDataViewer vistools project directory:</p>
+<pre><code>cd bigdataviewer-vistools
+mvn compile com.github.johnpoth:jshell-maven-plugin:1.3:run</code></pre>
+<p>Then try out this code snippet:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">bdv</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">net</span><span class="op">.</span><span class="im">imglib2</span><span class="op">.</span><span class="im">position</span><span class="op">.</span><span class="im">FunctionRealRandomAccessible</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">net</span><span class="op">.</span><span class="im">imglib2</span><span class="op">.</span><span class="im">type</span><span class="op">.</span><span class="im">numeric</span><span class="op">.</span><span class="im">integer</span><span class="op">.</span><span class="im">IntType</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">net</span><span class="op">.</span><span class="im">imglib2</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Intervals</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>BdvFunctions<span class="op">.</span><span class="fu">show</span><span class="op">(</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">new</span> FunctionRealRandomAccessible<span class="op">&lt;</span>IntType<span class="op">&gt;(</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>x<span class="op">,</span> y<span class="op">)</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">double</span> v <span class="op">=</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> x<span class="op">.</span><span class="fu">getDoublePosition</span><span class="op">(</span><span class="dv">0</span><span class="op">),</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        d <span class="op">=</span> x<span class="op">.</span><span class="fu">getDoublePosition</span><span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> <span class="op">(;</span> i <span class="op">&lt;</span> <span class="dv">64</span> <span class="op">&amp;&amp;</span> v <span class="op">&lt;</span> <span class="dv">4096</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">final</span> <span class="dt">double</span> e <span class="op">=</span> c <span class="op">*</span> c <span class="op">-</span> d <span class="op">*</span> d<span class="op">;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        d <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> c <span class="op">*</span> d<span class="op">;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> e <span class="op">+</span> <span class="fl">0.2</span><span class="op">;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        d <span class="op">+=</span> <span class="fl">0.6</span><span class="op">;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        v <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span>c <span class="op">*</span> c <span class="op">+</span> d <span class="op">*</span> d<span class="op">);</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="op">++</span>i<span class="op">;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>      y<span class="op">.</span><span class="fu">set</span><span class="op">(</span>i<span class="op">);</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">},</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    IntType<span class="op">::</span><span class="kw">new</span><span class="op">),</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  Intervals<span class="op">.</span><span class="fu">createMinMax</span><span class="op">(-</span><span class="dv">1</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">),</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">""</span><span class="op">,</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  BdvOptions<span class="op">.</span><span class="fu">options</span><span class="op">().</span><span class="fu">is2D</span><span class="op">()).</span><span class="fu">setDisplayRange</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">64</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<h2 data-anchor-id="resources">Resources</h2>
 <ul>
 <li><a href="http://bioinformatics.oxfordjournals.org/content/28/22/3009.full">ImgLib2 paper</a></li>
 <li><a href="../libs/imglib2/documentation">ImgLib2 Documentation</a></li>
@@ -250,22 +418,22 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 <section id="source-code" class="level2">
-<h2 class="anchored" data-anchor-id="source-code">Source code</h2>
+<h2 data-anchor-id="source-code">Source code</h2>
 <p>You can find the source {% include github org=‘imglib’ repo=‘imglib2’ %}.</p>
 <p>There is also a <a href="../develop/ci">continuous integration</a> system that builds ImgLib2 <a href="https://github.com/imglib/imglib2/actions">every time the code changes</a>.</p>
 </section>
 <section id="imglib2-vs.-imglib1" class="level2">
-<h2 class="anchored" data-anchor-id="imglib2-vs.-imglib1">ImgLib2 vs.&nbsp;ImgLib1</h2>
+<h2 data-anchor-id="imglib2-vs.-imglib1">ImgLib2 vs.&nbsp;ImgLib1</h2>
 <p><a href="../libs/imglib1">ImgLib1</a> is the previous incarnation of the library. We encourage developers to use ImgLib2 instead, and <a href="../libs/imglib2/migrate-from-imglib1">migrate existing ImgLib1 programs to ImgLib2</a> whenever possible.</p>
 <p>For an explanation of how ImgLib2 has changed from ImgLib1, see the <a href="../libs/imglib2/changes-from-imglib1">Changes from ImgLib1 to ImgLib2</a> page.</p>
 <p>See the <a href="../libs/imglib2/migrate-from-imglib1">How To Migrate Code From ImgLib To ImgLib2</a> page for details on how to update your ImgLib1-based code to use ImgLib2.</p>
 </section>
 <section id="api-version-history" class="level2">
-<h2 class="anchored" data-anchor-id="api-version-history">API Version History</h2>
+<h2 data-anchor-id="api-version-history">API Version History</h2>
 <p>A history of API changes is available at: <a href="https://abi-laboratory.pro/java/tracker/timeline/imglib2/">https://abi-laboratory.pro/java/tracker/timeline/imglib2/</a></p>
 </section>
 <section id="other-links" class="level2">
-<h2 class="anchored" data-anchor-id="other-links">Other links</h2>
+<h2 data-anchor-id="other-links">Other links</h2>
 <ul>
 <li><a href="../libs/imglib2/discussion">ImgLib2 development discussion</a></li>
 <li><a href="../libs/imglib2/benchmarks">ImgLib2 performance benchmarks</a></li>
@@ -273,13 +441,18 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 <section id="publication" class="level2">
-<h2 class="anchored" data-anchor-id="publication">Publication</h2>
+<h2 data-anchor-id="publication">Publication</h2>
 <p>Pietzsch, T., Preibisch, S., Tomančák, P., &amp; Saalfeld, S. (2012). <a href="http://bioinformatics.oxfordjournals.org/content/28/22/3009.full">ImgLib2—generic image processing in Java</a>. Bioinformatics, 28(22), 3009-3011.</p>
 
 
 </section>
-
-</main> <!-- /main -->
+</main></div>
+    </div>
+    <img src="../logos/imglib2.png" class="about-image
+  rounded " style="width: 15em;">
+  </div>
+</div>
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -300,13 +473,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -359,57 +525,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/imglib\.github\.io\/imglib2-www");
