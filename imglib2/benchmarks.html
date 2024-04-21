@@ -328,7 +328,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>{% include notice icon=“info” content=‘This page was last updated 2016 May 3.’ %}</p>
-<p>This page compares the time performance of image processing operations using raw byte arrays, <a href="https://imagej.net/software/imagej/">ImageJ</a> and <a href="../libs/imglib2">ImgLib2</a>. The benchmark tests these various methods for a “cheap” per-pixel operation (inverting an 8-bit image) as well as an “expensive” operation (some calls to <code>java.util.Math</code>) at several image resolutions.</p>
+<p>This page compares the time performance of image processing operations using raw byte arrays, <a href="https://imagej.net/software/imagej/">ImageJ</a> and <a href="../imglib2">ImgLib2</a>. The benchmark tests these various methods for a “cheap” per-pixel operation (inverting an 8-bit image) as well as an “expensive” operation (some calls to <code>java.util.Math</code>) at several image resolutions.</p>
 <p>Some of the charts plot results at several iterations, meaning the test was performed repeatedly in a loop. This is important because the just-in-time compiler (JIT) is able to optimize performance increasingly well as the same code is executed more than once. Hence, we show results after both a single iteration, as well as ten iterations.</p>
 <section id="scenarios" class="level2">
 <h2 class="anchored" data-anchor-id="scenarios">Scenarios</h2>
@@ -347,7 +347,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="hardware-and-software-specifications" class="level2">
 <h2 class="anchored" data-anchor-id="hardware-and-software-specifications">Hardware and software specifications</h2>
 <ul>
-<li><a href="../libs/imglib2">ImgLib2</a> version 2.9.0</li>
+<li><a href="../imglib2">ImgLib2</a> version 2.9.0</li>
 <li><a href="../software/imagej">ImageJ</a> version 1.50i</li>
 <li>Mid 2015 MacBook Pro</li>
 <li>Mac OS X 10.11.4</li>

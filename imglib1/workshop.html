@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 <meta property="og:site_name" content="ImgLib2 and BigDataViewer projects">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -167,10 +167,48 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../imglib1/workshop.html">Into ImgLib - Generic Image Processing in Java</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+ <span class="menu-text">imglib1/index.qmd</span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib1/iterating-through-pixel-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib1: Iterating through pixel data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib1/using-in-a-plugin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using ImgLib1 in an ImageJ plugin</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib1/workshop.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Into ImgLib - Generic Image Processing in Java</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     
 <!-- main -->
@@ -195,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>{% include warning/deprecated old=“<a href="../libs/imglib1">ImgLib1</a>” new=“<a href="../libs/imglib2">ImgLib2</a>” %}</p>
+<p>{% include warning/deprecated old=“<a href="../imglib1">ImgLib1</a>” new=“<a href="../imglib2">ImgLib2</a>” %}</p>
 <p>The purpose of ImgLib, a Generic Java Image Processing Library, is to provide an abstract framework enabling Java developers to design and implement data processing algorithms without having to consider dimensionality, type of data (e.g.&nbsp;byte, float, complex float), or strategies for data access (e.g.&nbsp;linear arrays, cells, paged cells).</p>
 <p>This kind of programming has significant advantages over the classical way. An algorithm written once for a certain class of Type will potentially run on any compatible Type, even if it does not exist yet. Same applies for data access strategies and the number of dimensions.</p>
 <p>We achieve this abstraction by accessing data through Iterators and Type interfaces. Iterators guarantee efficient traversal through pixels depending on whether random coordinate access is required or just all pixels have to be visited once, whether real or integer coordinates are accessed, whether coordinates outside of image boundaries are accessed or not. Type interfaces define the supported operators on pixel values (like basic algebra) and hide the underlying basic type from the algorithmic implementation.</p>
@@ -216,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><a href="http://imagejconf.tudor.lu/program/doku.php?id=:program:workshops:preibisch:start">ImageJ Conference 2010</a> programme entry</li>
 <li><a href="mailto:fiji@fiji.sc">Fiji-devel mailing list</a> discusses imglib development and questions</li>
-<li><a href="../libs/imglib1">More about ImgLib on the Fiji wiki</a></li>
+<li><a href="../imglib1">More about ImgLib on the Fiji wiki</a></li>
 </ol>
 
 

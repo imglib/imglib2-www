@@ -371,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The accessors provided by ImgLib2 typically implement <code>Cursor</code> or <code>RandomAccess</code>. <code>Cursor</code> and <code>RandomAccess</code> are aggregations of interfaces covering the above three points. A simplified UML diagram for the interface hierarchy is shown below. (The simplification is with respect to real-coordinate interfaces for continuous images that are left out for now.)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="media/libs/imglib2/imglib2-accessors-simplified-integer.png" class="img-fluid figure-img"></p>
+<p><img src="media/imglib2/imglib2-accessors-simplified-integer.png" class="img-fluid figure-img"></p>
 <figcaption>“imglib2-accessors-simplified-integer”</figcaption>
 </figure>
 </div>
@@ -710,7 +710,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="notes-2" class="level3">
 <h3 class="anchored" data-anchor-id="notes-2">Notes</h3>
 <ul>
-<li>The iteration order is subject to implementation, specialized for each memory layout to minimize access time. For example, an <a href="http://javadoc.scijava.org/ImgLib2/net/imglib2/img/array/ArrayImg.html">ArrayImg</a> has a different iteration order from a <a href="http://javadoc.scijava.org/ImgLib2/net/imglib2/img/cell/CellImg.html">CellImg</a>. This is nicely illustrated in <a href="../libs/imglib2/examples#example-2b---duplicating-an-img-using-a-different-imgfactory">ImgLib2 Example 2b - Duplicating an Img using a different ImgFactory</a>.</li>
+<li>The iteration order is subject to implementation, specialized for each memory layout to minimize access time. For example, an <a href="http://javadoc.scijava.org/ImgLib2/net/imglib2/img/array/ArrayImg.html">ArrayImg</a> has a different iteration order from a <a href="http://javadoc.scijava.org/ImgLib2/net/imglib2/img/cell/CellImg.html">CellImg</a>. This is nicely illustrated in <a href="../imglib2/examples#example-2b---duplicating-an-img-using-a-different-imgfactory">ImgLib2 Example 2b - Duplicating an Img using a different ImgFactory</a>.</li>
 <li>Typically, there are two variants of Cursors available. One that calculates its location per each iteration and one that calculates it only per localization request. The former is more efficient when localization occurs frequently, the latter otherwise. In the <em>maximum-finding</em> example, we use the latter because localization is only required once after the maximum has been found. The former one could be obtained using <code>localizingCursor()</code> instead of <code>cursor()</code> (see <a href="http://javadoc.scijava.org/ImgLib2/net/imglib2/IterableInterval.html">IterableInterval</a> API doc.)</li>
 <li><code>copyCursor()</code> is a work-around to circumvent a <em>javac</em> bug with covariant return type overriding (see <a href="http://bugs.sun.com/view_bug.do?bug_id=6656332">bug report</a>). In the future (with JDK7) every <code>Sampler</code> can be copied using <code>copy()</code> instead of having specialised <code>copyCursor()</code>, <code>copyRandomAccess()</code>, … methods.</li>
 </ul>
@@ -727,7 +727,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The following image shows the UML diagram for the ImgLib2 accessor interface hierarchy. The real-coordinate counterparts that were missing in the simplified version <a href="../imglib2/accessors.html">above</a> are highlighted.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="media/libs/imglib2/imglib2-accessors-real.png" class="img-fluid figure-img"></p>
+<p><img src="media/imglib2/imglib2-accessors-real.png" class="img-fluid figure-img"></p>
 <figcaption>UML for ImgLib2 accessor interfaces</figcaption>
 </figure>
 </div>
@@ -850,11 +850,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Finally, we get a reference to the current pixel, and set it to the value computed by the <code>MandelbrotRealRandomAccess</code>.</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>cursor<span class="op">.</span><span class="fu">get</span><span class="op">().</span><span class="fu">set</span><span class="op">(</span> mb<span class="op">.</span><span class="fu">get</span><span class="op">()</span> <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>cursor.get()</code> gives the <code>UnsignedByteType</code> reference to the value under the cursor. <code>mb.get()</code> gives the <code>UnsignedByteType</code> reference to the value computed by the <code>MandelbrotRealRandomAccess</code>. Then we <code>set()</code> the value of the former to the value of the latter.</p>
-<p>When you run the code you will see this: <img src="media/libs/imglib2/mandelbrot-1.png" class="img-fluid" style="width: 300px" data-caption="Mandelbrot fractal" alt="mandelbrot-1"></p>
+<p>When you run the code you will see this: <img src="media/imglib2/mandelbrot-1.png" class="img-fluid" style="width: 300px" data-caption="Mandelbrot fractal" alt="mandelbrot-1"></p>
 <p>Because we have a <code>RealRandomAccess</code> you can zoom in indefinitely (until you hit the <code>double</code> precision limit). If you like, you can play around with the scale and offset values. Here is another example obtained with</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> <span class="dt">double</span> scale <span class="op">=</span> <span class="fl">0.000125</span><span class="op">;</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> <span class="dt">double</span><span class="op">[]</span> offset <span class="op">=</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">[]</span> <span class="op">{</span> <span class="op">-</span><span class="fl">1.3875</span><span class="op">,</span> <span class="fl">0.045</span> <span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="media/libs/imglib2/mandelbrot-2.png" class="img-fluid" style="width: 300px" data-caption="Mandelbrot fractal"></p>
+<p><img src="media/imglib2/mandelbrot-2.png" class="img-fluid" style="width: 300px" data-caption="Mandelbrot fractal"></p>
 </section>
 <section id="notes-3" class="level3">
 <h3 class="anchored" data-anchor-id="notes-3">Notes</h3>

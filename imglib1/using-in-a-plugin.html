@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta property="og:site_name" content="ImgLib2 and BigDataViewer projects">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -201,10 +201,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../imglib1/using-in-a-plugin.html">Using ImgLib1 in an ImageJ plugin</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+ <span class="menu-text">imglib1/index.qmd</span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib1/iterating-through-pixel-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib1: Iterating through pixel data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib1/using-in-a-plugin.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Using ImgLib1 in an ImageJ plugin</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../imglib1/workshop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Into ImgLib - Generic Image Processing in Java</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     
 <!-- main -->
@@ -229,8 +267,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>{% include warning/deprecated old=“<a href="../libs/imglib1">ImgLib1</a>” new=“<a href="../libs/imglib2">ImgLib2</a>” %}</p>
-<p>The <a href="../libs/imglib1">Imglib</a> library makes extensive use of {% include wikipedia title=‘Generics in Java’ text=‘Java generics’%}. Generics appeared in Java from version 1.5, and they introduce new semantic items that can be puzzling if you never used them before. The programming techniques associated are quite new to the ImageJ world, and using Imglib inside your plugins will change their typical layout.</p>
+<p>{% include warning/deprecated old=“<a href="../imglib1">ImgLib1</a>” new=“<a href="../imglib2">ImgLib2</a>” %}</p>
+<p>The <a href="../imglib1">Imglib</a> library makes extensive use of {% include wikipedia title=‘Generics in Java’ text=‘Java generics’%}. Generics appeared in Java from version 1.5, and they introduce new semantic items that can be puzzling if you never used them before. The programming techniques associated are quite new to the ImageJ world, and using Imglib inside your plugins will change their typical layout.</p>
 <p>This short page does not aim at being an introduction on generics, but rather is a quick and dirty introduction on how to tune your java files to use Imglib. The deep meaning of semantics is skipped, and we will try to provide a quick template to start with. However, we will attempt to be quite pedestrian when ImageJ itself is involved, and try to display the code and the commands needed to generate a plugin from scratch.</p>
 <section id="importing-imglib" class="level2">
 <h2 class="anchored" data-anchor-id="importing-imglib">Importing <code>imglib</code></h2>
@@ -306,7 +344,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="making-something-out-of-it" class="level2">
 <h2 class="anchored" data-anchor-id="making-something-out-of-it">Making something out of it</h2>
-<p>Now that we vanquished the semantics, we would like to wrap up this tutorial by doing something with the plugin. In Imglib, we iterate over the data within an image using <b>Cursors</b>. They are the subject of <a href="../libs/imglib1/iterating-through-pixel-data">another tutorial</a>, we will not present them thoroughly. But briefly:</p>
+<p>Now that we vanquished the semantics, we would like to wrap up this tutorial by doing something with the plugin. In Imglib, we iterate over the data within an image using <b>Cursors</b>. They are the subject of <a href="../imglib1/iterating-through-pixel-data">another tutorial</a>, we will not present them thoroughly. But briefly:</p>
 <ul>
 <li>A plain cursor can be generated by the <code>createCursor()</code> method of an <code>Image</code><t> instance. It will have the same type variable as that of the <code>Image</code> object it originates from.</t></li>
 </ul>
