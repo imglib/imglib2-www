@@ -4,7 +4,7 @@ artifact: sc.fiji:legacy-imglib1
 sidebar: true
 ---
 
-{% include warning/deprecated old="ImgLib1" new="[ImgLib2](/libs/imglib2)" %}
+{% include warning/deprecated old="ImgLib1" new="[ImgLib2](/imglib2)" %}
 
 # Citation
 

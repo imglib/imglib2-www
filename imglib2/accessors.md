@@ -13,7 +13,7 @@ In ImgLib2, images are manipulated using *Accessors*. For pixel images, you can 
 
 The accessors provided by ImgLib2 typically implement `Cursor` or `RandomAccess`. `Cursor` and `RandomAccess` are aggregations of interfaces covering the above three points. A simplified UML diagram for the interface hierarchy is shown below. (The simplification is with respect to real-coordinate interfaces for continuous images that are left out for now.)
 
-!["imglib2-accessors-simplified-integer"](media/libs/imglib2/imglib2-accessors-simplified-integer.png)
+!["imglib2-accessors-simplified-integer"](media/imglib2/imglib2-accessors-simplified-integer.png)
 
 ImgLib2 supports two basic access patterns:
 
@@ -456,7 +456,7 @@ Lines *028-031* show how to use `findmax` and get the maximum value and coordina
 
 ### Notes
 
--   The iteration order is subject to implementation, specialized for each memory layout to minimize access time. For example, an [ArrayImg](http://javadoc.scijava.org/ImgLib2/net/imglib2/img/array/ArrayImg.html) has a different iteration order from a [CellImg](http://javadoc.scijava.org/ImgLib2/net/imglib2/img/cell/CellImg.html). This is nicely illustrated in [ ImgLib2 Example 2b - Duplicating an Img using a different ImgFactory ](/libs/imglib2/examples#example-2b---duplicating-an-img-using-a-different-imgfactory).
+-   The iteration order is subject to implementation, specialized for each memory layout to minimize access time. For example, an [ArrayImg](http://javadoc.scijava.org/ImgLib2/net/imglib2/img/array/ArrayImg.html) has a different iteration order from a [CellImg](http://javadoc.scijava.org/ImgLib2/net/imglib2/img/cell/CellImg.html). This is nicely illustrated in [ ImgLib2 Example 2b - Duplicating an Img using a different ImgFactory ](/imglib2/examples#example-2b---duplicating-an-img-using-a-different-imgfactory).
 -   Typically, there are two variants of Cursors available. One that calculates its location per each iteration and one that calculates it only per localization request. The former is more efficient when localization occurs frequently, the latter otherwise. In the *maximum-finding* example, we use the latter because localization is only required once after the maximum has been found. The former one could be obtained using `localizingCursor()` instead of `cursor()` (see [IterableInterval](http://javadoc.scijava.org/ImgLib2/net/imglib2/IterableInterval.html) API doc.)
 -   `copyCursor()` is a work-around to circumvent a *javac* bug with covariant return type overriding (see [bug report](http://bugs.sun.com/view_bug.do?bug_id=6656332)). In the future (with JDK7) every `Sampler` can be copied using `copy()` instead of having specialised `copyCursor()`, `copyRandomAccess()`, ... methods.
 
@@ -470,7 +470,7 @@ ImgLib2 is not restricted to rasterized images and integer coordinates It also s
 
 The following image shows the UML diagram for the ImgLib2 accessor interface hierarchy. The real-coordinate counterparts that were missing in the simplified version [ above](accessors.md) are highlighted.
 
-![UML for ImgLib2 accessor interfaces](media/libs/imglib2/imglib2-accessors-real.png)
+![UML for ImgLib2 accessor interfaces](media/imglib2/imglib2-accessors-real.png)
 
 Real equivalents of the `Positionable` and `Localizable` interfaces have been added by which real-valued coordinates can be accessed.
 
@@ -625,7 +625,7 @@ cursor.get().set( mb.get() );
 `cursor.get()` gives the `UnsignedByteType` reference to the value under the cursor. `mb.get()` gives the `UnsignedByteType` reference to the value computed by the `MandelbrotRealRandomAccess`. Then we `set()` the value of the former to the value of the latter.
 
 When you run the code you will see this: 
-![mandelbrot-1](media/libs/imglib2/mandelbrot-1.png){style="width: 300px" caption="Mandelbrot fractal"} 
+![mandelbrot-1](media/imglib2/mandelbrot-1.png){style="width: 300px" caption="Mandelbrot fractal"} 
 
 Because we have a `RealRandomAccess` you can zoom in indefinitely (until you hit the `double` precision limit). If you like, you can play around with the scale and offset values. Here is another example obtained with
 
@@ -635,7 +635,7 @@ final double[] offset = new double[] { -1.3875, 0.045 };
 ```
 
 
-![](media/libs/imglib2/mandelbrot-2.png){style="width: 300px" caption="Mandelbrot fractal"}
+![](media/imglib2/mandelbrot-2.png){style="width: 300px" caption="Mandelbrot fractal"}
 
 ### Notes
 

@@ -15,7 +15,7 @@ title-block-banner: true
 
 - Blog: [https://imglib.github.io/imglib2-blog/](https://imglib.github.io/imglib2-blog/)
 - GitHub Repository: [https://github.com/imglib/imglib2](https://github.com/imglib/imglib2)
-- ImageJ Documentation: [https://imagej.net/libs/imglib2/](https://imagej.net/libs/imglib2/)
+- ImageJ Documentation: [https://imagej.net/imglib2/](https://imagej.net/imglib2/)
 
 ## Video Lectures
 
@@ -42,7 +42,7 @@ title-block-banner: true
 
 - [Learning ImgLib2 Development](https://forum.image.sc/t/learning-imglib2-development/24833)
 - [Other threads on Image.sc](https://forum.image.sc/search?expanded=true&q=imglib2)
-- [ImgLib2 Documentation](https://imagej.net/libs/imglib2/documentation) on [imagej.net wiki](https://imagej.net/libs/imglib2)
+- [ImgLib2 Documentation](https://imagej.net/imglib2/documentation) on [imagej.net wiki](https://imagej.net/imglib2)
 
 ## References 
 
