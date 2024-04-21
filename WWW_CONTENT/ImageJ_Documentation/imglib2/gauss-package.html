@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ImgLib2 and BigDataviewer projects - Gauss package for ImgLib2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="ImgLib2 and BigDataviewer projects - Gauss package for ImgLib2">
+<meta property="og:site-name" content="ImgLib2 and BigDataviewer projects">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ImgLib2 and BigDataviewer projects</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../Imglib2main.html" rel="" target="">
+ <span class="menu-text">ImgLib2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../BDV.html" rel="" target="">
+ <span class="menu-text">BDV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../learning_resources/imglib2_links.html" rel="" target=""><i class="bi bi-info-square" role="img">
+</i> 
+ <span class="dropdown-text">ImgLib2 links</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../learning_resources/bigdataviewer_links.html" rel="" target=""><i class="bi bi-info-square" role="img">
+</i> 
+ <span class="dropdown-text">BigDataViewer links</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/imglib" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">ImgLib2 github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/bigdataviewer" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">BigDataViewer github</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../ecosystem.html" rel="" target="">
+ <span class="menu-text">Ecosystem</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-contributing-guidelines" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Contributing Guidelines</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-contributing-guidelines">    
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/guidelines_for_imglib2.html" rel="" target=""><i class="bi bi-share" role="img">
+</i> 
+ <span class="dropdown-text">Guidelines for ImgLib2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/guidelines_for_bigdataviewer.html" rel="" target=""><i class="bi bi-share" role="img">
+</i> 
+ <span class="dropdown-text">Guidelines for BigDataViewer</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/our_code_of_conduct.html" rel="" target=""><i class="bi bi-peace" role="img">
+</i> 
+ <span class="dropdown-text">Our Code-of-conduct</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@imglib2" rel="" target=""><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../ImageJ_Documentation/imglib2/index.html">ImgLib2</a></li><li class="breadcrumb-item"><a href="../../ImageJ_Documentation/imglib2/gauss-package.html">Gauss package for ImgLib2</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/imglib/imglib2" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../ImageJ_Documentation/imglib2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/accessibles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Accessibles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/accessors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Accessors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/benchmarks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Benchmarks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/changes-from-imglib1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changes from ImgLib1 to ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/developing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Developing ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Discussion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Examples</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 FAQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/gauss-package.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Gauss package for ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Getting Started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/loopbuilder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LoopBuilder</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/matlab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating Imglib2 images in MATLAB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/migrate-from-imglib1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How To Migrate Code From ImgLib To ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/morphological-operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Morphological Operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/workshop-advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Advanced Programming Workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/workshop-introductory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Introductory Workshop</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../ImageJ_Documentation/imglib1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib 'Deprecated' </span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/iterating-through-pixel-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib1: Iterating through pixel data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/using-in-a-plugin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using ImgLib1 in an ImageJ plugin</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/workshop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Into ImgLib - Generic Image Processing in Java</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Gauss package for ImgLib2</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/ImageJ_Documentation/imglib2/gauss-package.md"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="gauss-package-for-imglib2" class="level1">
+<h1>Gauss Package for ImgLib2</h1>
+<section id="purpose" class="level2">
+<h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
+<p>The gauss package for ImgLib2 is an generic, optimized implementation of the traditional Gaussian convolution. It can perform anisotropic, n-dimensional convolution on any image or any interval on an image, if required even in-place.</p>
+<p>The computation is performed multi-threaded and accesses each pixel of the input and output containers only once to guarantee high performance, even on paged cell containers. The precision of the computation can be of any ImgLib2 NumericType, however, there are more efficient implementations for convolution with float and double precision. Any precision of gaussian convolution can be computed on any type of real valued input data, it will be internally wrapped to either float or double. For other conversions (e.g.&nbsp;perform a gaussian convolution on complex float data with complex double precision) respective converters need to be provided. However, any NumericType can always be convolved with its own precision. Warning: this might reduce the accuracy of the computation significantly if the Type itself is an integer type.</p>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>The Gauss package for ImgLib2 consists of several classes which abstract the convolution operations to n dimensions. <strong>The developer/user should use the static methods provided in the Gauss.java class.</strong> It will determine itself which class should be used with which parameters in order to provide the best performance possible.</p>
+<section id="computing-gaussian-convolutions-on-entire-images" class="level3">
+<h3 class="anchored" data-anchor-id="computing-gaussian-convolutions-on-entire-images">Computing gaussian convolutions on entire images</h3>
+<p>For computing a Gaussian convolution on an entire <strong>Img<t></t></strong>, simply call one the following lines of code:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">net</span><span class="op">.</span><span class="im">imglib2</span><span class="op">.</span><span class="im">algorithm</span><span class="op">.</span><span class="im">gauss</span><span class="op">.</span><span class="im">Gauss</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">// the source</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> Img<span class="op">&lt;</span> T <span class="op">&gt;</span> img <span class="op">=</span> <span class="kw">...</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">// define the sigma for each dimension</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> <span class="dt">double</span><span class="op">[]</span> sigma <span class="op">=</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">[</span> img<span class="op">.</span><span class="fu">numDimensions</span><span class="op">()</span> <span class="op">];</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span> <span class="dt">int</span> d <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> d <span class="op">&lt;</span> sigma<span class="op">.</span><span class="fu">length</span><span class="op">;</span> <span class="op">++</span>d <span class="op">)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    sigma<span class="op">[</span> d <span class="op">]</span> <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> d<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">// float-precision</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">// compute with float precision, but on T</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> Img<span class="op">&lt;</span> T <span class="op">&gt;</span> convolved <span class="op">=</span> Gauss<span class="op">.</span><span class="fu">inFloat</span><span class="op">(</span> sigma<span class="op">,</span> img <span class="op">);</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">// compute with float precision, and output a FloatType Img</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> Img<span class="op">&lt;</span> FloatType <span class="op">&gt;</span> convolved <span class="op">=</span> Gauss<span class="op">.</span><span class="fu">toFloat</span><span class="op">(</span> sigma<span class="op">,</span> img <span class="op">);</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">// compute with float precision in-place</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Gauss<span class="op">.</span><span class="fu">inFloatInPlace</span><span class="op">(</span> sigma<span class="op">,</span> img <span class="op">);</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">// double-precision</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">// compute with double precision, but on T</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> Img<span class="op">&lt;</span> T <span class="op">&gt;</span> convolved <span class="op">=</span> Gauss<span class="op">.</span><span class="fu">inDouble</span><span class="op">(</span> sigma<span class="op">,</span> img <span class="op">);</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">// compute with double precision, and output a FloatType Img</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> Img<span class="op">&lt;</span> DoubleType <span class="op">&gt;</span> convolved <span class="op">=</span> Gauss<span class="op">.</span><span class="fu">toDouble</span><span class="op">(</span> sigma<span class="op">,</span> img <span class="op">);</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">// compute with double precision in-place</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>Gauss<span class="op">.</span><span class="fu">inDoubleInPlace</span><span class="op">(</span> sigma<span class="op">,</span> img <span class="op">);</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co">// precision defined by the type T itself (this will produce garbage if T has insufficient range </span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co">// or accuracy like ByteType, IntType, etc, but will work nicely on for example ComplexFloatType)</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">// compute with precision of T</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> Img<span class="op">&lt;</span> T <span class="op">&gt;</span> convolved <span class="op">=</span> Gauss<span class="op">.</span><span class="fu">inNumericType</span><span class="op">(</span> sigma<span class="op">,</span> img <span class="op">);</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co">// compute with precision of T in-place</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>Gauss<span class="op">.</span><span class="fu">inNumericTypeInPlace</span><span class="op">(</span> sigma<span class="op">,</span> img <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>By default, the Gaussian convolution will use the OutOfBoundsMirrorFactory with single boundary. If another OutOfBoundsFactory is desired, it can be defined on any of those methods as follows:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// compute with float precision, but on T using an periodic (FFT-like) strategy where at the end of</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">// each dimension the image simply starts again</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> Img<span class="op">&lt;</span> T <span class="op">&gt;</span> convolved <span class="op">=</span> Gauss<span class="op">.</span><span class="fu">inFloat</span><span class="op">(</span> sigma<span class="op">,</span> img<span class="op">,</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">new</span> OutOfBoundsPeriodicFactory<span class="op">&lt;</span>FloatType<span class="op">,</span> RandomAccessibleInterval<span class="op">&lt;</span>FloatType<span class="op">&gt;&gt;()</span> <span class="op">)</span> )<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="computing-gaussian-convolutions-on-randomaccessibles-with-intervals" class="level3">
+<h3 class="anchored" data-anchor-id="computing-gaussian-convolutions-on-randomaccessibles-with-intervals">Computing gaussian convolutions on RandomAccessibles with Intervals</h3>
+<p>For more advanced use of the Gaussian convolution, it accepts RandomAccessibles as input and output, too. In this way the developer has complete freedom which area to convolve and where to write the result. The input and output can be any RandomAccessible, i.e.&nbsp;also any kind of transformed View or Type.</p>
+<p>To perform a Gaussian convolution on RandomAccessible you need to specify more input variables:</p>
+<ul>
+<li>the <strong>sigma</strong> in each dimension</li>
+<li>the <strong>input RandomAccessible</strong> (has to cover all the area required for the convolution, you might need to use Views.extend( … ) if it is too small</li>
+<li>the <strong>Interval</strong> in which the Randomaccessible should be convolved. Note that more pixels around this area are required to perform the convolution, see implementation</li>
+<li>the <strong>output RandomAccessible</strong> specifies the target, i.e.&nbsp;where the result will be written to (can be the same as the input)</li>
+<li>the <strong>Location in the output RandomAccessible</strong> defines where the content will be inserted</li>
+<li>an <strong>ImageFactory</strong> for creating the temporary images, it has to be of the type in which the computation is performed. If it is inFloat, it will require an ImgFactory<floattype>, inDouble will require ImgFactory<doubletype> and inNumericType needs an ImageFactory<t></t></doubletype></floattype></li>
+</ul>
+<p>An example on how to call the most generic version of the Gaussian convolution can be found below in the examples section.</p>
+</section>
+<section id="some-examples" class="level3">
+<h3 class="anchored" data-anchor-id="some-examples">Some examples</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// create a new, empty 2-d image</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> ArrayImgFactory<span class="op">&lt;</span>FloatType<span class="op">&gt;</span> factory <span class="op">=</span> <span class="kw">new</span> ArrayImgFactory<span class="op">&lt;</span>FloatType<span class="op">&gt;();</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> Img<span class="op">&lt;</span>FloatType<span class="op">&gt;</span> img <span class="op">=</span> factory<span class="op">.</span><span class="fu">create</span><span class="op">(</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[]{</span> <span class="dv">512</span><span class="op">,</span> <span class="dv">256</span> <span class="op">},</span> <span class="kw">new</span> <span class="fu">FloatType</span><span class="op">()</span> <span class="op">);</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">// fill it with some funny content          </span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span> <span class="dt">final</span> FloatType f <span class="op">:</span> img <span class="op">)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    f<span class="op">.</span><span class="fu">set</span><span class="op">(</span> i<span class="op">++</span> <span class="op">);</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span> <span class="dt">final</span> FloatType f <span class="op">:</span> img <span class="op">)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span> i<span class="op">++</span> <span class="op">%</span> <span class="dv">7</span> <span class="op">==</span> <span class="dv">0</span> <span class="op">||</span> i <span class="op">%</span> <span class="dv">8</span> <span class="op">==</span> <span class="dv">0</span> <span class="op">)</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        f<span class="op">.</span><span class="fu">set</span><span class="op">(</span> f<span class="op">.</span><span class="fu">get</span><span class="op">()</span> <span class="op">*</span> <span class="fl">1.5f</span> <span class="op">);</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">// show the input           </span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>ImageJFunctions<span class="op">.</span><span class="fu">show</span><span class="op">(</span> img <span class="op">);</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">// define the 2-d sigmas</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> <span class="dt">double</span><span class="op">[]</span> sigma <span class="op">=</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">[]</span> <span class="op">{</span> <span class="dv">2</span><span class="op">,</span> <span class="fl">0.75</span> <span class="op">};</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">// compute a gauss convolution with double precision</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>ImageJFunctions<span class="op">.</span><span class="fu">show</span><span class="op">(</span> Gauss<span class="op">.</span><span class="fu">inDouble</span><span class="op">(</span> sigma<span class="op">,</span> img <span class="op">)</span> <span class="op">);</span>   </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">// compute a Gaussian convolution in-place in a small Interval  </span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>Gauss<span class="op">.</span><span class="fu">inFloat</span><span class="op">(</span> sigma<span class="op">,</span> Views<span class="op">.</span><span class="fu">extendMirrorSingle</span><span class="op">(</span> img <span class="op">),</span> <span class="kw">new</span> <span class="fu">FinalInterval</span><span class="op">(</span> <span class="kw">new</span> <span class="dt">long</span><span class="op">[]{</span><span class="dv">300</span><span class="op">,</span><span class="dv">150</span><span class="op">},</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">new</span> <span class="dt">long</span><span class="op">[]{</span> <span class="dv">400</span><span class="op">,</span><span class="dv">200</span> <span class="op">}</span> <span class="op">),</span> img<span class="op">,</span> <span class="kw">new</span> <span class="bu">Location</span><span class="op">(</span> <span class="kw">new</span> <span class="dt">long</span><span class="op">[]</span> <span class="op">{</span><span class="dv">300</span><span class="op">,</span><span class="dv">150</span><span class="op">}</span> <span class="op">),</span> img<span class="op">.</span><span class="fu">factory</span><span class="op">()</span> <span class="op">);</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">// show the result</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>ImageJFunctions<span class="op">.</span><span class="fu">show</span><span class="op">(</span> img <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Another nice example of the generality of the gaussian convolution is the <strong>Game of Death 2</strong> which uses Gaussian convolution to simulate diffusion of different species of viruses. It redefines the add() operator of our new NumericType called <strong>LifeForm</strong> which can then be used to start the simulation. The <strong>Game of Death 2</strong> is included in the imglib repository.</p>
+</section>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>The first (obvious) core idea of the implementation is to break down the convolution into one-dimensional convolutions along each dimension. In order to properly convolve all input data, a continuously decreasing area has to be convolved when going along each dimension (see figure). This is necessary as the input for dimension d+1 has to be convolved in dimension d in order to produce the correct result.</p>
+<p>The second core idea is to not iterate over the output but over the input to save operations and access the input as little as possible as it might be an expensive operation (page cell container, renderer, …). Furthermore, the symmetry of the gauss kernel allows to skip almost half of all operations as each input pixel contributes left and right of itself with with the same weight. This, however, includes a more complicated logic, special cases at the beginning and end of each line, as well as different operations if the kernel is larger than the convolved image.</p>
+<p>For more details please refer to the source code for now, it is linked on top of this page.</p>
+<p>{% include img src=“gauss” width=“780” caption=“Visualizes the offsets and sizes required to perform an n-dimensional gaussian convolution” %}</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

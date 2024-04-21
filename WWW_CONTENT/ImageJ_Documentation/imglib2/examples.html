@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ImgLib2 and BigDataviewer projects - ImgLib2 Examples</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="ImgLib2 and BigDataviewer projects - ImgLib2 Examples">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://imglib.github.io/imglib2-www/media/libs/imglib2/imglib2example1d.jpg">
+<meta property="og:site-name" content="ImgLib2 and BigDataviewer projects">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ImgLib2 and BigDataviewer projects</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../Imglib2main.html" rel="" target="">
+ <span class="menu-text">ImgLib2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../BDV.html" rel="" target="">
+ <span class="menu-text">BDV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../learning_resources/imglib2_links.html" rel="" target=""><i class="bi bi-info-square" role="img">
+</i> 
+ <span class="dropdown-text">ImgLib2 links</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../learning_resources/bigdataviewer_links.html" rel="" target=""><i class="bi bi-info-square" role="img">
+</i> 
+ <span class="dropdown-text">BigDataViewer links</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/imglib" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">ImgLib2 github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/bigdataviewer" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">BigDataViewer github</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../ecosystem.html" rel="" target="">
+ <span class="menu-text">Ecosystem</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-contributing-guidelines" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Contributing Guidelines</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-contributing-guidelines">    
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/guidelines_for_imglib2.html" rel="" target=""><i class="bi bi-share" role="img">
+</i> 
+ <span class="dropdown-text">Guidelines for ImgLib2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/guidelines_for_bigdataviewer.html" rel="" target=""><i class="bi bi-share" role="img">
+</i> 
+ <span class="dropdown-text">Guidelines for BigDataViewer</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/our_code_of_conduct.html" rel="" target=""><i class="bi bi-peace" role="img">
+</i> 
+ <span class="dropdown-text">Our Code-of-conduct</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@imglib2" rel="" target=""><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../ImageJ_Documentation/imglib2/index.html">ImgLib2</a></li><li class="breadcrumb-item"><a href="../../ImageJ_Documentation/imglib2/examples.html">ImgLib2 Examples</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/imglib/imglib2" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../ImageJ_Documentation/imglib2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/accessibles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Accessibles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/accessors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Accessors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/benchmarks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Benchmarks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/changes-from-imglib1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changes from ImgLib1 to ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/developing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Developing ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Discussion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/examples.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">ImgLib2 Examples</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 FAQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/gauss-package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gauss package for ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Getting Started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/loopbuilder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LoopBuilder</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/matlab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating Imglib2 images in MATLAB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/migrate-from-imglib1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How To Migrate Code From ImgLib To ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/morphological-operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Morphological Operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/workshop-advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Advanced Programming Workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/workshop-introductory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Introductory Workshop</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../ImageJ_Documentation/imglib1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib 'Deprecated' </span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/iterating-through-pixel-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib1: Iterating through pixel data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/using-in-a-plugin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using ImgLib1 in an ImageJ plugin</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/workshop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Into ImgLib - Generic Image Processing in Java</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">ImgLib2 Examples</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/ImageJ_Documentation/imglib2/examples.md"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This page shows eight increasingly complex examples of how to program with ImgLib2. The intention of these examples are not to explain ImgLib2 concepts, but rather to give some practical hints how to work with the library and to grasp the principles in a learning-by-doing way.</p>
+<section id="jupyter-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-notebook">Jupyter notebook</h2>
+<p>This tutorial is also available in Jupyter notebook form <a href="https://nbviewer.jupyter.org/github/imagej/tutorials/blob/master/notebooks/3-Advanced-Topics/2-ImgLib2-in-Detail.ipynb">here</a></p>
+</section>
+<section id="introduction-required-files" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-required-files">Introduction &amp; required files</h2>
+<p>All examples presented on this page are always entire classes including a main method to run them. Simply copying them into your favorite editor (e.g.&nbsp;the <a href="../../scripting/script-editor">Script Editor</a>) and compile &amp; run them. The required Java libraries (jar files) are part of <a href="../../software/imagej2">ImageJ2</a> and can be found in <code>ImageJ2.app/jars/</code>:</p>
+<ul>
+<li>imglib2 (the core)</li>
+<li>imglib2-algorithm (algorithms implemented in ImgLib2)</li>
+<li>imglib2-algorithm-gpl (for example 6b and 6c: GPL-licensed algorithms implemented in ImgLib2—ships with <a href="../../software/fiji">Fiji</a> only, not plain <a href="../../software/imagej2">ImageJ2</a>, for <a href="../../licensing">licensing</a> reasons)</li>
+<li>imglib2-ij (the ImageJ interaction)</li>
+<li>imglib2-realtransform (for example 8)</li>
+<li>scifio (for reading and writing files)</li>
+<li>ij (ImageJ core, used for display)</li>
+</ul>
+<p>Alternately, you can access the examples from the {% include github org=‘imglib’ repo=‘imglib2-tutorials’ label=‘ImgLib-tutorials Git repository’ %}. After cloning the source code, open the project in your favorite IDE. See <a href="../../libs/imglib2/developing">Developing ImgLib2</a> for further details.</p>
+</section>
+<section id="example-1---opening-creating-and-displaying-images" class="level2">
+<h2 class="anchored" data-anchor-id="example-1---opening-creating-and-displaying-images">Example 1 - Opening, creating and displaying images</h2>
+<p>The first example illustrates the most basic operations of opening, creating, and displaying image content in ImgLib2. It will first focus on entires images (<code>Img&lt;T&gt;</code>), but also show how to display subsets only.</p>
+<section id="example-1a---wrapping-imagej-images" class="level3">
+<h3 class="anchored" data-anchor-id="example-1a---wrapping-imagej-images">Example 1a - Wrapping ImageJ images</h3>
+<p>If you are already an ImageJ programmer, you might find it the easiest way to simply wrap an ImageJ image into ImgLib2. Here, the data is not copied, so editing the image in ImgLib2 will also modify the ImageJ ImagePlus.</p>
+<p>Internally, we use a compatibility <code>Img</code> to represent the data which is as fast as ImageJ but in the case of higher dimensionality (&gt;2d) is slower than ImgLib2 can do with the <code>ArrayImg</code>. Furthermore you are limited in dimensionality (2d-5d), in the type of data (<code>UnsignedByteType</code>, <code>UnsignedShortType</code>, <code>FloatType</code> and <code>ARGBType</code>) and maximal size of each 2d-plane (max. 46000x46000).</p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example1a.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-1b---opening-an-imglib2-image" class="level3">
+<h3 class="anchored" data-anchor-id="example-1b---opening-an-imglib2-image">Example 1b - Opening an ImgLib2 image</h3>
+<p>The typical way to open an image in ImgLib2 is to make use of the <a href="https://scif.io/">SCIFIO</a> importer. Below you see two examples of how to open an image as <em>(a)</em> its own type (e.g.&nbsp;<code>UnsignedByteType</code>) and <em>(b)</em> as float (<code>FloatType</code>). For <em>(a)</em> we assume, however, that the file contains some real valued numbers as defined by the interface <code>RealType</code>. Color images are opened as well and color is represented as its own dimension (like in the ImageJ Hyperstacks).</p>
+<p>Note that for <em>(a)</em> we use an <code>ArrayImg</code> to hold the data. This means the data is held in one single java basic type array which results in optimal performance. The absolute size of image is, however, limited to 2^31-1 (~2 billion) pixels. The type of <code>Img</code> to use is set by passing an <code>ImgOptions</code> configuration when calling the <code>ImgOpener</code>.</p>
+<p>In <em>(b)</em> we use a <code>CellImg</code> instead. It partitions the image data into n-dimensional cells each holding only a part of the data. Further, SCIFIO takes care of caching cells in and out of memory as needed, greatly reducing the memory requirement to work with very large images.</p>
+<p>The SCIFIO importer also requires <code>Type</code>s that implement <code>NativeType</code>, which means it is able to map the data into a Java basic type array. All available <code>Type</code>s until now are implementing <code>NativeType</code>, if you want to work with some self-developed <code>Type</code> it would be easiest to copy the opened <code>Img</code> afterwards. Please also note that until now, the only <code>Img</code> that supports non-native types is the <code>ListImg</code> which stores every pixel as an individual object!</p>
+<p><strong>Important</strong>: it does not matter which type of <code>Img</code> you use to hold the data as we will use <code>Iterator</code>s and <code>RandomAccess</code>es to access the image content. It might be, however, important if you work on two <code>Img</code> at the same time using <code>Iterator</code>s, see Example2.</p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example1b.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-1c---creating-a-new-imglib2-image" class="level3">
+<h3 class="anchored" data-anchor-id="example-1c---creating-a-new-imglib2-image">Example 1c - Creating a new ImgLib2 image</h3>
+<p>Another important way to instantiate a new ImgLib2 <code>Img</code> is to create a new one from scratch. This requires you to define its <code>Type</code> as well as the <code>ImgFactory</code> to use. It does additionally need one instance of the <code>Type</code> that it is supposed to hold.</p>
+<p>Once you have one instance of an <code>Img</code>, it is very easy to create another one using the same <code>Type</code> and <code>ImgFactory</code>, even if it has a different size. Note that the call <code>img.firstElement()</code> returns the first pixel of any <code>Iterable</code>, e.g.&nbsp;an <code>Img</code>.</p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example1c.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-1d---displaying-images-partly-using-views" class="level3">
+<h3 class="anchored" data-anchor-id="example-1d---displaying-images-partly-using-views">Example 1d - Displaying images partly using Views</h3>
+<p>By using the concept of <code>Views</code> it is possible to display only parts of the image, display a rotated view, and many more cool things. Note that you can also concatenate them. <code>Views</code> are much more powerful than shown in this example, they will be increasingly used throughout the examples.</p>
+<p>A <code>View</code> almost behaves similar to an <code>Img</code>, and in fact they share important concepts. Both are <code>RandomAccessible</code>, and <code>Views</code> that are not infinite are also an <code>Interval</code> (i.e.&nbsp;those <code>Views</code> have a defined size) and can therefore be made <code>Iterable</code> (see example 2c). In ImgLib2, all algorithms are implemented for abstract concepts like <code>RandomAccessible</code>, <code>Iterable</code> or <code>Interval</code>. This enables us, as can be seen below, to display a <code>View</code> the exact same way we would also display an <code>Img</code>.</p>
+<p><img src="../../media/libs/imglib2/imglib2example1d.jpg" width="780"> <em>Shows the original image, the View of an interval, as well as the by 90 degree rotated version of the view. Note that only the original image in kept in memory, both Views are completely virtual.</em></p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example1d.java’ line-start=‘34’ %}</p>
+</section>
+</section>
+<section id="example-2---how-to-use-cursor-randomaccess-and-type" class="level2">
+<h2 class="anchored" data-anchor-id="example-2---how-to-use-cursor-randomaccess-and-type">Example 2 - How to use Cursor, RandomAccess and Type</h2>
+<p>The following examples illustrate how to access pixels using <code>Cursor</code> and <code>RandomAccess</code>, their basic properties, and how to modify pixel values using <code>Type</code>.</p>
+<p>Accessing pixels using a <code>Cursor</code> means to iterate all pixels in a way similar to iterating Java collections. However, a <code>Cursor</code> only ensures to visit each pixel exactly once, the order of iteration is not fixed in order to optimize the speed of iteration. This implies that that the order of iteration on two different <code>Img</code> is not necessarily the same, see <a href="#example-2b-duplicating-an-img-using-a-different-imgfactory">example 2b</a>! <code>Cursor</code>s can be created by any object that implements <code>IterableInterval</code>, such as an <code>Img</code>. <code>Views</code> that are not infinite can be made iterable (see example 2c). <em>Note that in general a <code>Cursor</code> has significantly higher performance than a <code>RandomAccess</code> and should therefore be given preference if possible</em>.</p>
+<p>In contrast to iterating image data, a <code>RandomAccess</code> can be placed at arbitrary locations. It is possible to set them to a specific n-dimensional coordinate or move them relative to their current position. Note that relative movements are usually more performant. A <code>RandomAccess</code> can be created by any object that implements <code>RandomAccessible</code>, like an <code>Img</code> or a <code>View</code>.</p>
+<p><code>Localizable</code> is implemented by <code>Cursor</code> as well as <code>RandomAccess</code>, which means they are able to report their current location. However, for <code>Cursor</code> we differentiate between a <code>LocalizingCursor</code> and a normal <code>Cursor</code>. A <code>LocalizingCursor</code> updates his position on every move, no matter if it is queried or not whereas a normal <code>Cursor</code> computes its location on demand. Using a <code>LocalizingCursor</code> is more efficient if the location is queried for every pixel, a <code>Cursor</code> will be faster when localizing only occasionally.</p>
+<p>The <code>Sampler</code> interface implemented by <code>Cursor</code> and <code>RandomAccess</code> provides access to the <code>Type</code> instance of the current pixel. Using the <code>Type</code> instance it is possible to read and write its current value. Depending on the capabilities of the <code>Type</code> more operations are available, e.g.&nbsp;+,-,*,/ if it is a <code>NumericType</code>.</p>
+<p>Note that <code>IterableInterval</code> implements the java.lang.Iterable interface, which means it is compatible to specialized Java language constructs:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// add 5 to every pixel</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span> UnsignedByteType type <span class="op">:</span> img <span class="op">)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    type<span class="op">.</span><span class="fu">add</span><span class="op">(</span> <span class="dv">5</span> <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="example-2a---duplicating-an-img-using-a-generic-method" class="level3">
+<h3 class="anchored" data-anchor-id="example-2a---duplicating-an-img-using-a-generic-method">Example 2a - Duplicating an Img using a generic method</h3>
+<p>The goal of this example is to make a copy of an existing <code>Img</code>. For this task it is sufficient to employ <code>Cursor</code>s. The order of iteration for both <code>Img</code>’s will be the same as they are instantiated using the same <code>ImgFactory</code>. It is possible to test if two <code>IterableInterval</code> have the same iteration order:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">boolean</span> sameIterationOrder <span class="op">=</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    interval1<span class="op">.</span><span class="fu">iterationOrder</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span> interval2<span class="op">.</span><span class="fu">iterationOrder</span><span class="op">()</span> <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The copy method itself is a generic method, it will work on any kind of <code>Type</code>. In this particular case it works on a <code>FloatType</code>, but would also work on anything else like for example a <code>ComplexDoubleType</code>. The declaration of the generic type is done in the method declaration:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="op">&lt;</span> T <span class="kw">extends</span> <span class="bu">Type</span><span class="op">&lt;</span> T <span class="op">&gt;</span> <span class="op">&gt;</span> Img<span class="op">&lt;</span> T <span class="op">&gt;</span> <span class="fu">copyImage</span><span class="op">(</span> <span class="kw">...</span> <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>&lt; T extends Type&lt; T &gt; &gt;</code> basically means that <code>T</code> can be anything that extends <code>Type</code>. These can be final implementations such as <code>FloatType</code> or also intermediate interfaces such as <code>RealType</code>. This, however, also means that in the method body only operations supported by <code>Type</code> will be available. Note that the method returns a <code>T</code>, which also means that in the constructor from which we call method it will also return an <code>Img&lt;FloatType&gt;</code> as we provide it with one.</p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example2a.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-2b---duplicating-an-img-using-a-different-imgfactory" class="level3">
+<h3 class="anchored" data-anchor-id="example-2b---duplicating-an-img-using-a-different-imgfactory">Example 2b - Duplicating an Img using a different ImgFactory</h3>
+<p><span style="color:#FF0000"><strong>WARNING:</strong> The <code>copyImageWrong</code> method in this example makes a mistake on purpose!</span> It intends to show that the iteration order of <code>Cursor</code>s is important to consider. The goal is to copy the content of an <code>ArrayImg</code> (i.e.&nbsp;an <code>Img</code> that was created using an <code>ArrayImgFactory</code>) into a <code>CellImg</code>. Using only <code>Cursor</code>s for both images will have a wrong result as an <code>ArrayImg</code> and a <code>CellImg</code> have different iteration orders. An <code>ArrayImg</code> is iterated linearly, while a <code>CellImg</code> is iterate cell-by-cell, but linearly within each cell.</p>
+<p><img src="../../media/libs/imglib2/imglib2example2b.png" width="780"> <em>Shows the result if two Cursors are used that have a different iteration order. Here we are wrongly copying an ArrayImg (left) into a CellImg (right).</em></p>
+<p><span style="color:#FF0000">The correct code for the copy-method (in <code>copyImageCorrect</code>) requires the use of a <code>RandomAccess</code>.</span> We use a <code>Cursor</code> to iterate over all pixels of the input and a <code>RandomAccess</code> which we set to the same location the output. Note that the <code>setPosition()</code> call of the <code>RandomAccess</code> directly takes the <code>Cursor</code> as input, which is possible because <code>Cursor</code> implements <code>Localizable</code>. Please also note that we use a <code>LocalizingCursor</code> instead of a normal <code>Cursor</code> because we need the location of the <code>Cursor</code> at every pixel.</p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example2b.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-2c---generic-copying-of-image-data" class="level3">
+<h3 class="anchored" data-anchor-id="example-2c---generic-copying-of-image-data">Example 2c - Generic copying of image data</h3>
+<p>In order to write a method that generically copies data requires an implementation for the underlying concepts of <code>RandomAccessible</code>, <code>Iterable</code> and <code>Interval</code>. In that way, it will run on <code>Img</code>, <code>View</code> and any other class implemented for these interfaces (even if they do not exist yet).</p>
+<p>Therefore we design the copy method in a way that the <em>target</em> is an <code>IterableInterval</code> and the <em>source</em> is <code>RandomAccessible</code>. In this way, we simply iterate over the <em>target</em> and copy the corresponding pixels from the <em>source</em>.</p>
+<p>As the <em>source</em> only needs to be <code>RandomAccessible</code>, it can be basically anything that can return a value at a certain location. This can be as simple as an <code>Img</code>, but also interpolated sparse data, a function, a ray-tracer, a <code>View</code>, ….</p>
+<p>As the <em>target</em> needs to be an <code>IterableInterval</code>, it is more confined. This, however does not necessarily mean that it can only be an <code>Img</code> or a <code>View</code> that is not infinite. It simply means it has to be something that is iterable and not infinite, which for example also applies to sparse data (e.g.&nbsp;a list of locations and their values).</p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example2c.java’ line-start=‘34’ %}</p>
+</section>
+</section>
+<section id="example-3---writing-generic-algorithms" class="level2">
+<h2 class="anchored" data-anchor-id="example-3---writing-generic-algorithms">Example 3 - Writing generic algorithms</h2>
+<p>Examples 1 and 2 tried to introduce important tools you need in order to implement algorithms with ImgLib2. This example will show three generic implementations of algorithms computing the <a href="#example-3a-min-max-search">min/max</a>, average as well as the center of mass.</p>
+<p>The core idea is to implement algorithms as generic as possible in order to maximize code-reusability. In general, a good way to start is to think: <em>What are the minimal requirements in order to implement algorithm X?</em> This applies to all of the following three concepts:</p>
+<ul>
+<li><strong>Type:</strong> You should always use the most abstract <code>Type</code> possible, i.e.&nbsp;the one that just offers enough operations to perform your goal. In this way, the algorithm will be able to run on <code>Type</code>s you might not even have thought about when implementing it. A good example is the min&amp;max search in example 3a. Instead of implementing it for <code>FloatType</code> or the more abstract <code>RealType</code>, we implement it for the even more abstract <code>Comparable &amp; Type</code>.</li>
+<li><strong>Image data:</strong> Every algorithm should only demand those interfaces that it requires, not specific implementations of it like <code>Img</code>. You might require <code>RandomAccessible</code> (infinite), <code>RandomAccessibleInterval</code> (finite), <code>Iterable</code> (values without location), <code>IterableInterval</code> (values and their location) or their corresponding interfaces for <em>real-valued locations</em> <code>RealRandomAccessible</code>, <code>RealRandomAccessibleRealInterval</code> and <code>IterableRealInterval</code>. Note that you can concatenate them if you need more than one property.</li>
+<li><strong>Dimensionality:</strong> Usually there is no reason to restrict an algorithm to a certain dimensionality (like only for two-dimensional images), at least we could not really come up with an convincing example<br>
+*If the application or plugin your are developing addresses a certain dimensionality (e.g.&nbsp;stitching of panorama photos) it is understandable that you do not want to implement everything n-dimensionally. But try to implement as many as possible of the smaller algorithm you are using as generic, n-dimensional methods. For example, everything that requires only to <strong>iterate</strong> the data is usually inherently n-dimensional.</li>
+</ul>
+<p>Following those ideas, your newly implemented algorithm will be applicable to any kind of data and dimensionality it is defined for, not only a very small domain you are currently working with. Also note that quite often this actually makes the implementation simpler.</p>
+<section id="example-3a---minmax-search" class="level3">
+<h3 class="anchored" data-anchor-id="example-3a---minmax-search">Example 3a - Min/Max search</h3>
+<p>Searching for the minimal and maximal value in a dataset is a very nice example to illustrate generic algorithms. In order to find min/max values, <code>Type</code>s only need to be able to compare themselves. Therefore we do not need any numeric values, we only require them to implement the (Java) interface <code>Comparable</code>. Additionally, no random access to the data is required, we simply need to iterate all pixels, also their location is irrelevant. The image data we need only needs to be <code>Iterable</code>.</p>
+<p>Below we show <strong>three</strong> small variations of the min/max search. <a href="#example-3a-variation-1">First</a> we show the implementation as described above. <a href="#example-3a-variation-2">Second</a> we illustrate that this also works on a standard Java <code>ArrayList</code>. <a href="#example-3a-variation-3">Third</a> we show how the implementation changes if we do not only want the min/max value, but also their location. This requires to use <code>IterableInterval</code> instead, as <code>Cursor</code> can return their location.</p>
+<section id="example-3a---variation-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-3a---variation-1">Example 3a - Variation 1</h4>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example3a1.java’ line-start=‘35’ %}</p>
+</section>
+<section id="example-3a---variation-2" class="level4">
+<h4 class="anchored" data-anchor-id="example-3a---variation-2">Example 3a - Variation 2</h4>
+<p>Note that this example works just the same way if the input is not an <code>Img</code>, but for example just a standard Java <code>ArrayList</code>.</p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example3a2.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-3a---variation-3" class="level4">
+<h4 class="anchored" data-anchor-id="example-3a---variation-3">Example 3a - Variation 3</h4>
+<p>If we want to compute the location of the minimal and maximal pixel value, an <code>Iterator</code> will not be sufficient as we need location information. Instead the location search will demand an <code>IterableInterval</code> as input data which can create <code>Cursor</code>s. Apart from that, the algorithm looks quite similar. Note that we do not use a <code>LocalizingCursor</code> but only a <code>Cursor</code> the location happens only when a new maximal or minimal value has been found while iterating the data.</p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example3a3.java’ line-start=‘34’ %}</p>
+</section>
+</section>
+<section id="example-3b---computing-average" class="level3">
+<h3 class="anchored" data-anchor-id="example-3b---computing-average">Example 3b - Computing average</h3>
+<p>In a very similar way one can compute the average intensity for image data. Note that we restrict the <code>Type</code> of data to <code>RealType</code>. In theory, we could use <code>NumericType</code> as it offers the possibility to <em>add</em> up values. However, we cannot ensure that <code>NumericType</code> provided is capable of adding up millions of pixels without overflow. And even if we would ask for a second <code>NumericType</code> that is capable of adding values up, it might still have numerical instabilities. <em>Note that actually every Java native type has those instabilities</em>. Therefore we use the <code>RealSum</code> class that offers correct addition of even very large amounts of pixels. As this implementation is only available for double values, we restrict the method here to <code>RealType</code>.</p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example3b.java’ line-start=‘34’ %}</p>
+</section>
+</section>
+<section id="example-4---specialized-iterables" class="level2">
+<h2 class="anchored" data-anchor-id="example-4---specialized-iterables">Example 4 - Specialized iterables</h2>
+<p>Example 4 will focus on how to work with specialized <strong>iterables</strong>. They are especially useful when performing operations in the local neighborhood of many pixels - like finding local minima/maxima, texture analysis, convolution with non-separable, non-linear filters and many more. One elegant solution is to write a specialized <code>Iterable</code> that will iterate all pixels in the local neighborhood. We implemented two examples:</p>
+<ul>
+<li>A <code>HyperSphere</code> that will iterate a n-dimensional sphere with a given radius at a defined location.</li>
+<li>A <code>LocalNeighborhood</code> that will iterate n-dimensionally all pixels adjacent to a certain location, but skip the central pixel (this corresponds to an both neighbors in 1d, an 8-neighborhood in 2d, a 26-neighborhood in 3d, and so on …)</li>
+</ul>
+<section id="example-4a---drawing-a-sphere-full-of-spheres" class="level3">
+<h3 class="anchored" data-anchor-id="example-4a---drawing-a-sphere-full-of-spheres">Example 4a - Drawing a sphere full of spheres</h3>
+<p>In the first sample we simply draw a sphere full of little spheres. We therefore create a large <code>HyperSphere</code> in the center of a <code>RandomAccessibleInterval</code>. Note that the <code>HyperSphere</code> only needs a <code>RandomAccessible</code>, we need the additional <code>Interval</code> simply to compute the center and the radius of the large sphere. When iterating over all pixels of this large sphere, we create small <code>HyperSphere</code>s at every n’th pixel and fill them with a random intensity.</p>
+<p>This example illustrates the use of specialized <code>Iterable</code>s, and emphasizes the fact that they can be stacked on the underlying <code>RandomAccessible</code> using the location of one as the center of a new one. Note that we always create new instances of <code>HyperSphere</code>. The code reads very nicely but might not offer the best performance. We therefore added <em>update</em> methods to the <code>HyperSphere</code> and its <code>Cursor</code> that could be used instead.</p>
+<p>Another interesting aspect of this example is the use of the <code>ImagePlusImgFactory</code>, which is the compatibility container for ImageJ. If the required dimensionality and <code>Type</code> is available in ImageJ, it will internally create an ImagePlus and work on it directly. In this case, one can request the ImagePlus and show it directly. It will, however, fail if <code>Type</code> and dimensionality is not supported by ImageJ and throw a <code>ImgLibException</code>.</p>
+<p><img src="../../media/libs/imglib2/manyspheres.jpg" width="780"> <em>Shows the result of example 4a for the (a) two-dimensional, (b) three-dimensional and (c) four-dimensional case. The image series in (c) represents a movie of a three-dimensional rendering. The images of (b) and (c) were rendered using the ImageJ 3d Viewer.</em></p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example4a.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-4b---finding-and-displaying-local-minima" class="level3">
+<h3 class="anchored" data-anchor-id="example-4b---finding-and-displaying-local-minima">Example 4b - Finding and displaying local minima</h3>
+<p>In this example we want to find all local minima in an image an display them as small spheres. To not capture too much of the noise in the image data, we first perform an in-place Gaussian smoothing with a sigma of 1, i.e.&nbsp;the data will be overwritten with the result. A complete documentation of the gauss package for ImgLib2 can be found <a href="Gauss_Package_ImgLib2">here</a>.</p>
+<p>We display the results using a binary image. <em>Note that the <code>BitType</code> only requires one bit per pixel and therefore is very memory efficient.</em></p>
+<p>The generic method for minima detection has some more interesting properties. The type of the source image data actually does not require to be of <code>Type</code>, it simply needs something that is comparable. The <code>LocalNeighborhood</code> will iterate n-dimensionally all pixels adjacent to a certain location, but skip the central pixel (this corresponds to an both neighbors in 1d, an 8-neighborhood in 2d, a 26-neighborhood in 3d, and so on …). This allows to efficiently detect if a pixel is a local minima or maxima. Note that the <code>Cursor</code> that performs the iteration can have special implementations for specific dimensionalities to speed up the iteration. See below the example for a specialized three-dimensional iteration:</p>
+<p>Access plan for a 3d neighborhood, starting at the center position marked by (x). The initial position is, in this example, NOT part of iteration, which means the center pixel is not iterated. Note that every step except for the last one can be done with a very simple move command.</p>
+<pre><code>upper z plane (z-1)    center z plane (z=0)    lower z plane(z+1)
+-------------          -------------           -------------
+| 2 | 1 | 8 |          | 11| 10| 9 |           | 20| 19| 18|
+|------------          -------------           -------------
+| 3 | 0 | 7 |          | 12| x | 16|           | 21| 25| 17|
+|------------          -------------           -------------
+| 4 | 5 | 6 |          | 13| 14| 15|           | 22| 23| 24|
+-------------          -------------           -------------</code></pre>
+<p>Please note as well that if one would increase the radius of the <code>RectangleShape</code> to more than 1 (without at the same time changing the <code>View</code> on source that creates an inset border of exactly this one pixel), this example would fail as we would try to write image data outside of the defined boundary. <code>OutOfBoundsStrategies</code> which define how to handle such cases is discussed in example 5.</p>
+<p><img src="../../media/libs/imglib2/allminima.jpg" width="780"> <em>Shows the result of the detection of local minima after the Gaussian blurring. (a) depicts the input image, (b) the blurred version (sigma=1) and (c) all local mimina drawn as circles with radius 1.</em></p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example4b.java’ line-start=‘34’ %}</p>
+</section>
+</section>
+<section id="example-5---out-of-bounds" class="level2">
+<h2 class="anchored" data-anchor-id="example-5---out-of-bounds">Example 5 - Out of bounds</h2>
+<p>Many algorithms like <em>convolutions</em> require to access pixels outside of an <code>Interval</code>, i.e.&nbsp;also pixels outside of an image. In ImgLib2 this is handled using <code>Views</code> which convert a <code>RandomAccessibleInterval</code> into an infinite <code>RandomAccessible</code> using an <code>OutOfBoundsStrategy</code>. Those infinite <code>RandomAccessible</code>s are able to return pixel values at any arbitrary location.</p>
+<p><em>Important: One should never access pixels outside of the defined <code>Interval</code> as it will in most cases result in unexpected behavior, depending on the kind of underlying <code>RandomAccessible</code>. If it is for example an <code>Img</code>, it will return wrong values or throw an exception.</em></p>
+<p>Which <code>OutOfBoundsStrategy</code> to use depends on task you want to perform. For convolutions we suggest the mirror strategy as it introduces the least artifacts. When working on Fourier images, the periodic strategy applies best as it correctly mimics its spatial properties. Random Value strategies might be useful to avoid accidental correlations and constant value strategies are the most performant and might work well for simple operations or to avoid exceptions when accidental writing or reading outside of the Interval occurs.</p>
+<p><img src="../../media/outofbounds.jpg" width="780"> <em>Illustrates the effect of various OutOfBoundsStrategies. (a) shows out of bounds with a constant value, (b) shows a mirroring strategy, (c) shows the periodic strategy, and (d) shows a strategy that uses random values.</em></p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example5.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-6---basic-built-in-algorithms" class="level2">
+<h2 class="anchored" data-anchor-id="example-6---basic-built-in-algorithms">Example 6 - Basic built-in algorithms</h2>
+<p>ImgLib2 contains a growing number of built-in standard algorithms. In this section, we will show some of those, illustrate how to use them and give some examples of what it might be used for.</p>
+<p>Typically algorithms provide static methods for simple calling, but they also have classes which you can instantiate yourself to have more options.</p>
+<p><em>Important: Algorithms do not allow to work on a different dimensionality than the input data. You can achieve that by selecting hyperslices using Views (see Example 6a - version 4). In this way you can for example apply two-dimensional gaussians to each frame of a movie independently.</em></p>
+<section id="example-6a---gaussian-convolution" class="level3">
+<h3 class="anchored" data-anchor-id="example-6a---gaussian-convolution">Example 6a - Gaussian convolution</h3>
+<p>The Gaussian convolution has its own <a href="Gauss_Package_ImgLib2">wiki page</a>. You can apply the Gaussian convolution with different sigmas in any dimension. It will work on any kind <code>RandomAccessibleInterval</code>. Below we show a examples of a simple gaussian convolution (variation 1), convolution using a different <code>OutOfBoundsStrategy</code> (variation 2), convolution of a part of an <code>Interval</code> (variation 3), and convolution of in a lower dimensionality than the image data (variation 4).</p>
+<p><img src="../../media/libs/imglib2/gaussexamples.jpg" width="780"> <em>Shows the result of the four examples for Gaussian convolution. (a) shows a simple Gaussian convolution with sigma=8. (b) shows the same Gaussian convolution but using an OutOfBoundsConstantValue instead. (c) shows the result when convolving part of the image in-place. (d) shows the result when individually convolving 1-dimensional parts on the image.</em></p>
+<section id="example-6a---gaussian-convolution-variation-1---simple" class="level4">
+<h4 class="anchored" data-anchor-id="example-6a---gaussian-convolution-variation-1---simple">Example 6a - Gaussian convolution (variation 1 - simple)</h4>
+<p>Here, we simply apply a Gaussian convolution with a sigma of 8. Note that it could be applied in-place as well when calling <em>Gauss.inFloatInPlace( … )</em>. The Gaussian convolution uses by default the <code>OutOfBoundsMirrorStrategy</code>.</p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example6a1.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-6a---gaussian-convolution-variation-2---different-outofboundsstrategy" class="level4">
+<h4 class="anchored" data-anchor-id="example-6a---gaussian-convolution-variation-2---different-outofboundsstrategy">Example 6a - Gaussian convolution (variation 2 - different OutOfBoundsStrategy)</h4>
+<p>Here we use an <code>OutOfBoundsStrategyConstantValue</code> instead. It results in continuously darker borders as the zero-values from outside of the image are used in the convolution. Note that the computation is done in-place here. However, we still need to provide an <code>ImgFactory</code> as the Gaussian convolution needs to create temporary image(s) - except for the one-dimensional case.</p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example6a2.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-6a---gaussian-convolution-variation-3---only-part-of-an-interval" class="level4">
+<h4 class="anchored" data-anchor-id="example-6a---gaussian-convolution-variation-3---only-part-of-an-interval">Example 6a - Gaussian convolution (variation 3 - only part of an Interval)</h4>
+<p>Here we only convolve part of an <code>Interval</code>, or in this case part of the <code>Img</code>. Note that for convolution he will actually use the real image values outside of the defined <code>Interval</code>. The <code>OutOfBoundsStrategy</code> is only necessary if the kernel is that large so that it will actually grep image values outside of the underlying <code>Img</code>.</p>
+<p>Note: if you wanted, you could force him to use an <code>OutOfBoundsStrategy</code> directly outside of the <code>Interval</code>. For that you would have to create an <code>RandomAccessibleInterval</code> on the <code>Img</code>, extend it by an <code>OutOfBoundsStrategy</code> and give this as input to the Gaussian convolution.</p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example6a3.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-6a---gaussian-convolution-variation-4---with-a-lower-dimensionality" class="level4">
+<h4 class="anchored" data-anchor-id="example-6a---gaussian-convolution-variation-4---with-a-lower-dimensionality">Example 6a - Gaussian convolution (variation 4 - with a lower dimensionality)</h4>
+<p>This example shows howto apply an algorithm to a lower dimensionality as the image data you are working on. Therefore we use <code>Views</code> to create HyperSlices which have <em>n-1</em> dimensions. We simply apply the algorithm in-place on those <code>Views</code> which will automatically update the image data in the higher-dimensional data.</p>
+<p>Specifically, we apply 1-dimensional Gaussian convolution in 30-pixel wide stripes using a sigma of 16. <em>Note that whenever you request an <code>HyperSlice</code> for a certain dimension, you will get back a <code>View</code> that contains all dimensions <span style="color:#FF0000">but</span> this one.</em></p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example6a4.java’ line-start=‘34’ %}</p>
+</section>
+</section>
+<section id="example-6b---convolution-in-fourier-space" class="level3">
+<h3 class="anchored" data-anchor-id="example-6b---convolution-in-fourier-space">Example 6b - Convolution in Fourier space</h3>
+<p>In image processing it is sometimes necessary to convolve images with non-separable kernels. This can be efficiently done in Fourier space exploiting the <em>convolution theorem</em>. It states that a convolution in real-space corresponds to a multiplication in Fourier-space, as vice versa. Note that the computation time for such a convolution is independent of the size and shape of the kernel.</p>
+<p><em>Note that it is useful to normalize the kernel prior to Fourier convolution so that the sum of all pixels is one. Otherwise, the resulting intensities will be increased.</em></p>
+<p><img src="../../media/libs/imglib2/fourierconvolution.jpg" width="780"> <em>Shows the effect of the Fourier convolution. The left image was convolved with the kernel depicted in the lower left corner, the right panel shows the convolved image. Note that the computation speed does not depend on the size or the shape of the kernel.</em></p>
+<p><span style="color:#FF0000"><em>Important: This source code is only GPLv2!</em></span></p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example6b.java’ line-start=‘54’ %}</p>
+</section>
+<section id="example-6c---complex-numbers-and-fourier-transforms" class="level3">
+<h3 class="anchored" data-anchor-id="example-6c---complex-numbers-and-fourier-transforms">Example 6c - Complex numbers and Fourier transforms</h3>
+<p>In this example we show how to work with complex numbers and Fourier transforms. We show how to determine the location of a template in an image exploiting the <em>Fourier Shift Theorem</em>. We therefore compute the Fast Fourier Transform of a template, invert it and convolve it in Fourier space with the original image.</p>
+<p>Computing an FFT is straight forward. It does not offer a static method because the instance of the FFT is required to perform an inverse FFT. This is necessary because the input image needs to be extended to a size supported by the 1-d FFT method (<code>edu_mines_jtk.jar</code>). In order to restore the complete input image remembering those parameters is essential.</p>
+<p>For the display of complex image data we provide <code>Converter</code>s to display the <a href="http://bioinformatics.oxfordjournals.org/content/19/8/966">gLog</a> of the power-spectrum (default), phase-spectrum, real values, and imaginary values. It is, however, straight forward to implement you own <code>Converter</code>s.</p>
+<p>Note that for inverting the kernel we use methods defined for <code>ComplexType</code>, also the basic math operations add, mul, sub and div are implemented in complex math. The inverse FFT finally takes the instance of the FFT as a parameter from which it takes all required parameters for a correct inversion.</p>
+<p>The final convolution of the inverse template with the image is performed using the FourierConvolution (see example 6b). Note that all possible locations of the template in the image have been tested. The peak in the result image clearly marks the location of the template, while the computation time for the whole operation takes less than a second.</p>
+<p><img src="../../media/fourier.jpg" width="780"> <em>Shows the result and intermediate steps of the template matching using the Fourier space. In the upper panel you see the input image as well as the template that we use from matching. Below we show four different views of the Fast Fourier Transform of the template: the power spectrum, the phase spectrum, the real values, and the imaginary values. In the lower panel you see the result of the convolution of the inverse template with the image. The position where the template was located in the image is significantly visible. In the bottom right corner you see the inverse FFT of the inverse kernel.</em></p>
+<p><span style="color:#FF0000"><em>Important: This source code is only GPLv2!</em></span></p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example6c.java’ line-start=‘54’ %}</p>
+</section>
+</section>
+<section id="example-7---interpolation" class="level2">
+<h2 class="anchored" data-anchor-id="example-7---interpolation">Example 7 - Interpolation</h2>
+<p>Interpolation is a basic operation required in many image processing tasks. In the terminology of ImgLib2 it means to convert a <code>RandomAccessible</code> into a <code>RealRandomAccessible</code> which is able to create a <code>RealRandomAccess</code>. It can be positioned at real coordinates instead of only integer coordinates and a return a value for each real location. Currently, three interpolation schemes are available for ImgLib2:</p>
+<ul>
+<li><strong>Nearest neighbor interpolation</strong> (also for available for any kind of data that can return a nearest neighbor like sparse datasets)</li>
+<li><strong>Linear interpolation</strong></li>
+<li><strong>Lanczos interpolation</strong></li>
+</ul>
+<p>In the example we magnify a given real interval in the <code>RealRandomAccessible</code> which is based on the interpolation on an <code>Img</code> and compare the results of all three interpolation methods.</p>
+<p><img src="../../media/interpolation.jpg" width="779"> <em>Shows the result for three different interpolators when magnifying a small part of the image by 10x. The nearest neighbor interpolation is computed fastest and is the most versatile as it requires no computation but just a lookout. The result is, however, very pixelated. The linear interpolation produces reasonable results and computes quite fast. The Lanczos interpolation shows visually most pleasing results but also introduces slight artifacts in the background.</em></p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example7.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-8---working-with-sparse-data" class="level2">
+<h2 class="anchored" data-anchor-id="example-8---working-with-sparse-data">Example 8 - Working with sparse data</h2>
+<p>ImgLib2 supports sparsely sampled data, i.e.&nbsp;collections of locations together with their value. Such datasets typically implement the <code>IterableRealInterval</code> interface, which means they can be iterated and have real-valued locations in n-dimensional space. Currently ImgLib2 supports to store such collections either as list (<code>RealPointSampleList</code>) or <code>KDTree</code>. The <code>RealPointSampleList</code> can be iterated, whereas the <code>KDTree</code> additionally supports three efficient ways of searching for nearest neighboring points in the n-dimensional space (<code>NearestNeighborSearch</code>, <code>KNearestNeighborSearch</code>, and <code>RadiusNeighborSearch</code>).</p>
+<p>In order to display sparse data ImgLib2 currently supports two interpolation schemes, the <code>NearestNeighborInterpolation</code> and the <code>InverseDistanceWeightingInterpolation</code>. They can compute a value for every location in space by returning either the value of the closest sample or an interpolated, distance-weighted value of the <em>k</em> nearest neighbors to the sampled location. The interpolation scheme therefore converts any <code>IterableRealInterval</code> into a <code>RealRandomAccessible</code> that can be displayed by wrapping it into a <code>RandomAccessible</code> and defining <code>Interval</code> using <code>Views</code>.</p>
+<p><em>This is, however, not only useful for display. Note that you execute on such data any algorithm or method that is implemented for <code>RealRandomAccessible</code> or <code>RandomAccessible</code>, like Gaussian convolution in the first example. <span style="color:#FF0000">Note that none of these ever exists in memory, it is done completely virtual on just the sparse samples.</span></em></p>
+<section id="example-8a---create-random-sparse-data-display-and-convolve-it" class="level3">
+<h3 class="anchored" data-anchor-id="example-8a---create-random-sparse-data-display-and-convolve-it">Example 8a - Create random sparse data, display and convolve it</h3>
+<p>In this example we create a certain number of random samples with random intensities inside a certain <code>Interval</code>. Using nearest neighbor interpolation we wrap it into a <code>RealRandomAccessible</code>, wrap it again into a <code>RandomAccessible</code>, define an <code>Interval</code> on it and display it. On the same <em>virtual</em> data we perform a Gaussian convolution and show it, too.</p>
+<p><img src="../../media/libs/imglib2/sparseimage1.jpg" width="777"> <em>On the left hand side it shows nearest-neighbor rendered random sparse data as created in example 8a. The right hand side shows the result of a Gaussian convolution, run directly on the virtual RandomAccessibleInterval.</em></p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example8a.java’ line-start=‘34’ %}</p>
+</section>
+<section id="example-8b---randomly-sample-an-existing-image-and-display-it" class="level3">
+<h3 class="anchored" data-anchor-id="example-8b---randomly-sample-an-existing-image-and-display-it">Example 8b - Randomly sample an existing image and display it</h3>
+<p>In this example we sample an existing image at random locations and render the result using a nearest neighbor interpolation as well as a distance-weighted average of the k nearest neighbors.</p>
+<p><img src="../../media/libs/imglib2/sparseimage2.jpg" width="638"><br>
+<em>Shows the result of sparse sampling of an existing image using a varying number of random samples. The upper panel shows the rendering using nearest neighbor interpolation, the lower panel uses an interpolated, distance-weighted value of the k nearest neighbors relative to each sampled location (i.e.&nbsp;each pixel).</em></p>
+<p>{% include code org=‘imglib’ repo=‘imglib2-tutorials’ branch=‘master’ path=‘src/main/java/Example8b.java’ line-start=‘34’ %}</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

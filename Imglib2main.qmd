@@ -1,6 +1,7 @@
 ---
 title: "ImgLib2"
 image: imglib2-logo.png
+
 about:
   template: solana
   links:
@@ -13,6 +14,9 @@ about:
 format:
   html:
     code-tools: false
+website: 
+   sidebar: true  
+
 ---
 
 ImgLib2 is a general-purpose, multidimensional image and data processing library.

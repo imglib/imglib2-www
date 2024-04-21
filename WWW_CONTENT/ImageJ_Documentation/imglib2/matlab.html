@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ImgLib2 and BigDataviewer projects - Creating Imglib2 images in MATLAB</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="ImgLib2 and BigDataviewer projects - Creating Imglib2 images in MATLAB">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://imglib.github.io/imglib2-www/media/libs/imglib2/matlabtoimglib2-clown.png">
+<meta property="og:site-name" content="ImgLib2 and BigDataviewer projects">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ImgLib2 and BigDataviewer projects</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../Imglib2main.html" rel="" target="">
+ <span class="menu-text">ImgLib2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../BDV.html" rel="" target="">
+ <span class="menu-text">BDV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../learning_resources/imglib2_links.html" rel="" target=""><i class="bi bi-info-square" role="img">
+</i> 
+ <span class="dropdown-text">ImgLib2 links</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../learning_resources/bigdataviewer_links.html" rel="" target=""><i class="bi bi-info-square" role="img">
+</i> 
+ <span class="dropdown-text">BigDataViewer links</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/imglib" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">ImgLib2 github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/bigdataviewer" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">BigDataViewer github</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../ecosystem.html" rel="" target="">
+ <span class="menu-text">Ecosystem</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-contributing-guidelines" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Contributing Guidelines</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-contributing-guidelines">    
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/guidelines_for_imglib2.html" rel="" target=""><i class="bi bi-share" role="img">
+</i> 
+ <span class="dropdown-text">Guidelines for ImgLib2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/guidelines_for_bigdataviewer.html" rel="" target=""><i class="bi bi-share" role="img">
+</i> 
+ <span class="dropdown-text">Guidelines for BigDataViewer</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/our_code_of_conduct.html" rel="" target=""><i class="bi bi-peace" role="img">
+</i> 
+ <span class="dropdown-text">Our Code-of-conduct</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@imglib2" rel="" target=""><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../ImageJ_Documentation/imglib2/index.html">ImgLib2</a></li><li class="breadcrumb-item"><a href="../../ImageJ_Documentation/imglib2/matlab.html">Creating Imglib2 images in MATLAB</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/imglib/imglib2" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../ImageJ_Documentation/imglib2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/accessibles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Accessibles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/accessors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Accessors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/benchmarks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Benchmarks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/changes-from-imglib1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changes from ImgLib1 to ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/developing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Developing ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Discussion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Examples</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 FAQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/gauss-package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gauss package for ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Getting Started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/loopbuilder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LoopBuilder</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/matlab.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Creating Imglib2 images in MATLAB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/migrate-from-imglib1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How To Migrate Code From ImgLib To ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/morphological-operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Morphological Operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/workshop-advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Advanced Programming Workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/workshop-introductory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Introductory Workshop</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../ImageJ_Documentation/imglib1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib 'Deprecated' </span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/iterating-through-pixel-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib1: Iterating through pixel data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/using-in-a-plugin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using ImgLib1 in an ImageJ plugin</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/workshop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Into ImgLib - Generic Image Processing in Java</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Creating Imglib2 images in MATLAB</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/ImageJ_Documentation/imglib2/matlab.md"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This page recenses experiments with creating ImgLib2 images from <a href="https://imagej.net/scripting/matlab">MATLAB</a>, and then calling ImgLib2 algorithm from <a href="https://imagej.net/scripting/matlab">MATLAB</a>. We aim first at showing how to build ImgLib2 types from <a href="https://imagej.net/scripting/matlab">MATLAB</a> types, then to do that efficiently. By this we mean having to <b>share</b> a single, massive low level data piece between ImgLib2 and <a href="https://imagej.net/scripting/matlab">MATLAB</a>, which is not doable simply due to <a href="https://imagej.net/scripting/matlab">MATLAB</a> memory model.</p>
+<p>All snippets listed here are to be run from <a href="https://imagej.net/scripting/matlab">MATLAB</a>. We rely on <a href="https://imagej.net/plugins/miji">Miji</a> to set up class path, so you have to start every <a href="https://imagej.net/scripting/matlab">MATLAB</a> session with the command</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">Miji</span>(<span class="va">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="creating-a-new-imglib2-image-in-matlab" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-new-imglib2-image-in-matlab">Creating a new ImgLib2 image in MATLAB</h2>
+<p>In <a href="https://imagej.net/scripting/matlab">MATLAB</a>, we are limited to native type images (float, uint8, uint16, …) represented as native arrays. The matching ImgLib2 container for this is the {% include github repo=‘imglib’ branch=‘master’ path=‘core/src/main/java/net/imglib2/img/array/ArrayImg.java’ label=‘ArrayImg’ %}.</p>
+<p>Because ImgLib2 authors wrote nice static utilities, our work is relatively easy. The class <code>ArrayImgs</code> has all the methods you need, one per native type.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">load</span> <span class="va">clown</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">img</span> <span class="op">=</span> <span class="va">net</span>.<span class="va">imglib2</span>.<span class="va">img</span>.<span class="va">array</span>.<span class="va">ArrayImgs</span>.<span class="va">doubles</span>(<span class="va">X</span>(<span class="op">:</span>)<span class="op">,</span> <span class="va">size</span>(<span class="va">X</span>))<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">net</span>.<span class="va">imglib2</span>.<span class="va">img</span>.<span class="va">display</span>.<span class="va">imagej</span>.<span class="va">ImageJFunctions</span>.<span class="va">show</span>(<span class="va">img</span>)<span class="op">;</span> <span class="co">% ImageJ display</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">imshow</span>(<span class="va">X</span><span class="op">,</span>[]) <span class="co">% [[MATLAB]] display</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="../../media/libs/imglib2/matlabtoimglib2-clown.png" class="img-fluid"></p>
+<p>We note that the ImageJ display is rotated and flipped regarding the <a href="https://imagej.net/scripting/matlab">MATLAB</a> image. This is because <a href="https://imagej.net/scripting/matlab">MATLAB</a> arrays are expected to be arranged along columns, whereas Java arrays are arranged along lines. We would need to permute dimension 0 and dimension 1 to display the data in ImageJ as expected in <a href="https://imagej.net/scripting/matlab">MATLAB</a>.</p>
+<p>Note also that the raw data was cast from 64-bit double data to 32-bit float for display. But the source <code>img</code> has the expected type.</p>
+</section>
+<section id="matlab-to-imglib2-bridge-functions" class="level2">
+<h2 class="anchored" data-anchor-id="matlab-to-imglib2-bridge-functions">MATLAB to ImgLib2 bridge functions</h2>
+<p>The exacts method in <code>ArrayImgs</code> depend on the native type you want to use, so you would have to deal with all possible cases. But there is already some <a href="https://imagej.net/scripting/matlab">MATLAB</a> functions in Fiji that does that in the <code>scripts</code> folder of your Fiji installation: {% include github repo=‘fiji’ branch=‘master’ path=‘scripts/copytoImg.m’ label=‘copytoImg’ %} and {% include github repo=‘fiji’ branch=‘master’ path=‘scripts/copytoImgPlus.m’ label=‘copytoImgPlus’ %}. You need therefore to add <code>scripts</code> to your <a href="https://imagej.net/scripting/matlab">MATLAB</a> path, but this is most likely already done since it also contains <code>Miji</code> which you need to call already.</p>
+<p>The first function generates a plain <code>Img</code>. The second one generates and <code>ImgPlus</code> which allows you specifying the spatial calibration, image name and axis types. Check the help of these functions for details.</p>
+</section>
+<section id="example-usage" class="level2">
+<h2 class="anchored" data-anchor-id="example-usage">Example usage</h2>
+<p>Let’s put ImgLib2 to work to filter a source image using anisotropic diffusion:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">load</span> <span class="va">clown</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">Miji</span>(<span class="va">false</span>)<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="va">img</span> <span class="op">=</span> <span class="va">copytoImg</span>(<span class="va">X</span>)<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">i</span> <span class="op">=</span> <span class="fl">1</span> <span class="op">:</span> <span class="fl">10</span> <span class="co">% do it 10 times, in place</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">net</span>.<span class="va">imglib2</span>.<span class="va">algorithm</span>.<span class="va">pde</span>.<span class="va">PeronaMalikAnisotropicDiffusion</span>.<span class="va">inFloatInPlace</span>(<span class="va">img</span><span class="op">,</span> <span class="fl">0.15</span><span class="op">,</span> <span class="fl">10</span>)<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="va">net</span>.<span class="va">imglib2</span>.<span class="va">img</span>.<span class="va">display</span>.<span class="va">imagej</span>.<span class="va">ImageJFunctions</span>.<span class="va">show</span>(<span class="va">img</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="retrieving-the-content-of-an-imglib2-image-in-matlab" class="level2">
+<h2 class="anchored" data-anchor-id="retrieving-the-content-of-an-imglib2-image-in-matlab">Retrieving the content of an ImgLib2 image in MATLAB</h2>
+<p>Now we want to get the result back in <a href="https://imagej.net/scripting/matlab">MATLAB</a>. Since we are using <code>ArrayImg</code>, we can always access the underlying java primitive array that the <code>Img</code> wraps, but we still have to keep in mind the X and Y dimension permutation. Also: the wrapped array is a 1D, very long array, that can be looked upon as the row-by-row concatenation of the image content. We have to reshape it in <a href="https://imagej.net/scripting/matlab">MATLAB</a> to give the image back its aspect:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">% Retrieve a copy (see below) of the java primitive array</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">I</span> <span class="op">=</span> <span class="va">img</span>.<span class="va">update</span>([]).<span class="va">getCurrentStorageArray</span><span class="op">;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">% Reshape it to match the initial aspect. Careful, we need to remember we permuted X &amp; Y.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">J</span> <span class="op">=</span> <span class="va">reshape</span>(<span class="va">I</span><span class="op">,</span> <span class="va">size</span>(<span class="va">X</span><span class="op">'</span>))<span class="op">;</span>  <span class="co">% X' not X</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">% Display it with X &amp; Y permuted</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">imshow</span>(<span class="va">J</span><span class="op">',</span> [])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is all and nice and worked as expected. But it worked because we were using <code>double</code>s for this image. Let’s try with a more memory-saving type. First, let’s create a <code>uint8</code> image from a <a href="https://imagej.net/scripting/matlab">MATLAB</a> array of this type:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">clear</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">load</span> <span class="va">clown</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">Y</span> <span class="op">=</span> <span class="va">ind2gray</span>(<span class="va">X</span><span class="op">,</span> <span class="va">map</span>)<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">Z</span> <span class="op">=</span> <span class="va">uint8</span>(<span class="fl">255</span><span class="op">*</span><span class="va">Y</span>)<span class="op">;</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">imshow</span>(<span class="va">Z</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">img</span> <span class="op">=</span> <span class="va">copytoImg</span>(<span class="va">Z</span>)<span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">net</span>.<span class="va">imglib2</span>.<span class="va">img</span>.<span class="va">display</span>.<span class="va">imagej</span>.<span class="va">ImageJFunctions</span>.<span class="va">show</span>(<span class="va">img</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This just builds an acceptable <a href="https://imagej.net/scripting/matlab">MATLAB</a> uint8 image and a UnsignedByteType ImgLib2 image. Let’s suppose we modified this image, keeping its type, and want to retrieve the content in <a href="https://imagej.net/scripting/matlab">MATLAB</a>. We do just like before:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">I</span> <span class="op">=</span> <span class="va">img</span>.<span class="va">update</span>([]).<span class="va">getCurrentStorageArray</span><span class="op">;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">J</span> <span class="op">=</span> <span class="va">reshape</span>(<span class="va">I</span><span class="op">,</span> <span class="va">size</span>(<span class="va">X</span><span class="op">'</span>))<span class="op">;</span>  <span class="co">% X' not X</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">imshow</span>(<span class="va">J</span><span class="op">',</span> [])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="../../media/libs/imglib2/matlabtoimglib2-int8.png" class="img-fluid"></p>
+<p>What happened here? The gray levels are all messed up. Checking the class of the returned array gives a clue:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">class</span>(<span class="va">J</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">ans</span> <span class="op">=</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="va">int8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Aha! So we gave to ImgLib2 an uint8 array, but it gives us back an int8 array, with all values wrapped. This is actually something that should have been expected: There is no unsigned byte type in Java, only signed byte type. This is a language design choice we could discuss for hours, but in Java there just isn’t uint8 or uint16[^1].</p>
+<p>ImgLib2 developers managed to deal with it elegantly. Since the library can abstract about everything, having an image type which is not directly backed up by an existing primitive type is not a problem. The uint8 is represented internally by something Java can handle, and ImgLib2 makes sure the unsigned byte type arithmetics are respected whenever the image content is retrieved or display.</p>
+<p>But when we call the <code>getCurrentStorageArray</code> method, we retrieve this internal representation, and it just happens that it is of type <code>int8</code>, that is signed byte. The values are a bit mixed, since <code>int8</code> ranges from -128 to 127, while <code>uint8</code> range from 0 to 255. <a href="https://imagej.net/scripting/matlab">MATLAB</a> has a built-in function to put it back right:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">I</span> <span class="op">=</span> <span class="va">img</span>.<span class="va">update</span>([]).<span class="va">getCurrentStorageArray</span><span class="op">;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">J</span> <span class="op">=</span> <span class="va">typecast</span>(<span class="va">I</span><span class="op">,</span> <span class="ss">'uint8'</span>)<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">K</span> <span class="op">=</span> <span class="va">reshape</span>(<span class="va">J</span><span class="op">,</span> <span class="va">size</span>(<span class="va">X</span><span class="op">'</span>))<span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">imshow</span>(<span class="va">K</span><span class="op">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>But of course, there is a <a href="https://imagej.net/scripting/matlab">MATLAB</a> function that does all of this for you, and that you can also find in the scripts folder of your Fiji installation: {% include github repo=‘fiji’ branch=‘master’ path=‘scripts/copytoMatlab.m’ label=‘copytoMatlab’ %}.</p>
+</section>
+<section id="matlab-arrays-are-not-shared" class="level2">
+<h2 class="anchored" data-anchor-id="matlab-arrays-are-not-shared">MATLAB arrays are not shared</h2>
+<p>We expect the underlying raw data - an array of doubles - to be shared between <a href="https://imagej.net/scripting/matlab">MATLAB</a> and ImgLib2. Unfortunately, it isn’t so. Let’s try to turn the first column entirely white</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">close</span> <span class="va">all</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">X</span>(<span class="op">:,</span><span class="fl">1</span>) <span class="op">=</span> <span class="fl">255</span><span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">imshow</span>(<span class="va">X</span><span class="op">,</span>[])</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">net</span>.<span class="va">imglib2</span>.<span class="va">img</span>.<span class="va">display</span>.<span class="va">imagej</span>.<span class="va">ImageJFunctions</span>.<span class="va">show</span>(<span class="va">img</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It did not work: the ImgLib2 image did not see the change. This means that it does not wrap <b>the</b> <a href="https://imagej.net/scripting/matlab">MATLAB</a> array, but a copy of it. This is a shame and this is of crucial importance. Not only we might have some very large data to process we wish not to duplicate in memory, but we might want to take advantage of some ImgLib2 algorithms that run <em>in place</em> and modify the source image.</p>
+<p>This is by construction, and there is no workaround, at least for Java<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. <a href="https://imagej.net/scripting/matlab">MATLAB</a> passes all the data <em>per-value</em>, not <em>per-reference</em> and this is what happened here.</p>
+</section>
+<section id="using-java-arrays-in-matlab" class="level2">
+<h2 class="anchored" data-anchor-id="using-java-arrays-in-matlab">Using Java arrays in MATLAB</h2>
+<p>A first attempt to solve this would be to try and use Java arrays in <a href="https://imagej.net/scripting/matlab">MATLAB</a>, which is made possible by the function <code>javaArray</code>. As explained in the [<a href="http://www.mathworks.fr/fr/help/matlab/matlab_external/working-with-java-arrays.html">MATLAB docs</a>, you can use this function to instantiate proper Java arrays, which we could then use to create an ImgLib2 image, and play with the same data both on the <a href="https://imagej.net/scripting/matlab">MATLAB</a> side and on the ImgLib2 side.</p>
+<p>But this would unsatisfactory as well. The <code>javaArray</code> function allows the creation of Java <em>objects</em>, but not of <em>primitive types</em>. As suggested on the <a href="https://imagej.net/scripting/matlab">MATLAB</a> docs, and noted <a href="http://stackoverflow.com/questions/5554518/can-matlab-not-read-back-a-double-array-from-java">here</a>:</p>
+<p><a href="https://imagej.net/scripting/matlab">MATLAB</a> can pass Java objects when calling a Java function, and modifications to these objects are afterwards available in <a href="https://imagej.net/scripting/matlab">MATLAB</a> - <u>except when the Java object is an array of a primitive data type<code>&lt;/u&gt;</code>. In this case automatic conversion between <code>[</code>MATLAB<code>](https://imagej.net/scripting/matlab)</code> and Java kicks in, making a Java array-of-primitive-double correspond directly to a double matrix in <code>[</code>MATLAB<code>](https://imagej.net/scripting/matlab)</code> - which is by <code>[</code>MATLAB<code>](https://imagej.net/scripting/matlab)</code> conventions a thing “passed as value” so no return values are possible.</u></p><u>
+<p>So this means that we could create an array of <code>java.lang.Double[]</code> and use its reference, but we cannot have and manipulate a plain native <code>double[]</code> array without <a href="https://imagej.net/scripting/matlab">MATLAB</a> shadowing any change because it operates on a copy.</p>
+<p>An array of <code>java.lang.Double[]</code> is not acceptable for most of our use cases. We expect to deal sometimes with very large images - the main reason for trying to escape duplicating data in memory - and a <code>Double</code> object adds some overhead on the primitive it wraps we would like to avoid.</p>
+<p>As of now (<a href="https://imagej.net/scripting/matlab">MATLAB</a> 2013a), this answer seems to be definitive: There is no workaround if we are to stay with a native array in <a href="https://imagej.net/scripting/matlab">MATLAB</a>.</p>
+</u></section><u>
+<section id="using-imglib2-types-as-primary-data-holder" class="level2">
+<h2 class="anchored" data-anchor-id="using-imglib2-types-as-primary-data-holder">Using ImgLib2 types as primary data holder</h2>
+<p>Therefore, a solution implies a change of approach. We will not use <a href="https://imagej.net/scripting/matlab">MATLAB</a> matrices as data holder, but use ImgLib2 structures. We can access the raw data through ImgLib2 facilities (cursor, randomAcess, …). The changes made are then done <em>in place</em>, and will be visible from both ImgLib2 and <a href="https://imagej.net/scripting/matlab">MATLAB</a>, provided the data is accessed from the ImgLib2 container. We also already saw that <code>ArrayImg</code>s wrap a native array, that we can copy to <a href="https://imagej.net/scripting/matlab">MATLAB</a> shall we need to quickly get the whole dataset.</p>
+<p>With this strategy, <a href="https://imagej.net/scripting/matlab">MATLAB</a> steps aside a bit, since we use ImgLib2 for basically all data manipulation. It takes the role of a scripting language like <a href="../../scripting/jython">Jython</a>, from which you make plain call to Java classes. Duplicating the native array wrapped in an <code>ArrayImg</code> allows you still make the best our of <a href="https://imagej.net/scripting/matlab">MATLAB</a> easily, but you must design a good tactic in your script to avoid these local copies to exist for too long.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>[^1] :Check <a href="http://darksleep.com/player/JavaAndUnsignedTypes.html">here</a> for the details of unsigned types story.</p>
+
+
+</section>
+
+
+</u><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>For C++, you can write a Mex wrapper that will force <a href="https://imagej.net/scripting/matlab">MATLAB</a> to operate on the reference of an array.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main><u> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</u></div><u> <!-- /content -->
+
+
+
+</u></body></html>

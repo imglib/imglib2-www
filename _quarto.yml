@@ -7,7 +7,7 @@ website:
   navbar:
     right:
       - text: "ImgLib2"
-        href: "Imglib2.qmd"
+        href: "Imglib2main.qmd"
       - text: "BDV"
         href: "BDV.qmd"
       - text: Blog
@@ -46,6 +46,21 @@ website:
   open-graph: true
   repo-url: https://github.com/imglib/imglib2-www
   site-url: https://imglib.github.io/imglib2-www
+  sidebar:
+    collapse-level: 2
+    style: "floating"
+    search: false
+    contents: 
+      - section: "ImgLib2"
+        contents: ImageJ_Documentation/imglib2/*
+        pinned: true
+      - section: "ImgLib 'Deprecated' "
+        contents: ImageJ_Documentation/imglib1/*
+        pinned: true
+    tools:
+      - icon: github
+        href: https://github.com/imglib/imglib2
+      
 format:
   html:
     theme: cosmo
@@ -54,4 +69,4 @@ format:
     code-overflow: wrap
     code-tools:
       source: repo
-
+sidebar: false

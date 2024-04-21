@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Morphological operations in ImgLib2.">
+
+<title>ImgLib2 and BigDataviewer projects - ImgLib2 Morphological Operations</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="ImgLib2 and BigDataviewer projects - ImgLib2 Morphological Operations">
+<meta property="og:description" content="Morphological operations in ImgLib2.">
+<meta property="og:image" content="https://imglib.github.io/imglib2-www/media/libs/imglib2/dilatedtonewimgexample.png">
+<meta property="og:site-name" content="ImgLib2 and BigDataviewer projects">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ImgLib2 and BigDataviewer projects</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../Imglib2main.html" rel="" target="">
+ <span class="menu-text">ImgLib2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../BDV.html" rel="" target="">
+ <span class="menu-text">BDV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../learning_resources/imglib2_links.html" rel="" target=""><i class="bi bi-info-square" role="img">
+</i> 
+ <span class="dropdown-text">ImgLib2 links</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../learning_resources/bigdataviewer_links.html" rel="" target=""><i class="bi bi-info-square" role="img">
+</i> 
+ <span class="dropdown-text">BigDataViewer links</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/imglib" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">ImgLib2 github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/bigdataviewer" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">BigDataViewer github</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../ecosystem.html" rel="" target="">
+ <span class="menu-text">Ecosystem</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-contributing-guidelines" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Contributing Guidelines</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-contributing-guidelines">    
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/guidelines_for_imglib2.html" rel="" target=""><i class="bi bi-share" role="img">
+</i> 
+ <span class="dropdown-text">Guidelines for ImgLib2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/guidelines_for_bigdataviewer.html" rel="" target=""><i class="bi bi-share" role="img">
+</i> 
+ <span class="dropdown-text">Guidelines for BigDataViewer</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/our_code_of_conduct.html" rel="" target=""><i class="bi bi-peace" role="img">
+</i> 
+ <span class="dropdown-text">Our Code-of-conduct</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@imglib2" rel="" target=""><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../ImageJ_Documentation/imglib2/index.html">ImgLib2</a></li><li class="breadcrumb-item"><a href="../../ImageJ_Documentation/imglib2/morphological-operations.html">ImgLib2 Morphological Operations</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/imglib/imglib2" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../ImageJ_Documentation/imglib2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/accessibles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Accessibles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/accessors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Accessors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/benchmarks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Benchmarks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/changes-from-imglib1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changes from ImgLib1 to ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/developing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Developing ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Discussion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Examples</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 FAQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/gauss-package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gauss package for ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Getting Started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/loopbuilder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LoopBuilder</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/matlab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating Imglib2 images in MATLAB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/migrate-from-imglib1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How To Migrate Code From ImgLib To ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/morphological-operations.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">ImgLib2 Morphological Operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/workshop-advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Advanced Programming Workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/workshop-introductory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Introductory Workshop</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../ImageJ_Documentation/imglib1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib 'Deprecated' </span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/iterating-through-pixel-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib1: Iterating through pixel data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/using-in-a-plugin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using ImgLib1 in an ImageJ plugin</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/workshop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Into ImgLib - Generic Image Processing in Java</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">ImgLib2 Morphological Operations</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/ImageJ_Documentation/imglib2/morphological-operations.md"><i class="bi"></i> Code</button></div></div>
+</div>
+
+<div>
+  <div class="description">
+    Morphological operations in ImgLib2.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This page describes the {% include wikipedia title=‘Mathematical morphology’ text=‘mathematical morphology’ %} operations available as part of the <a href="../../libs/imglib2">ImgLib2</a> library.</p>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<section id="package-content-and-location" class="level3">
+<h3 class="anchored" data-anchor-id="package-content-and-location">Package content and location</h3>
+<p>This ImgLib2 package ships only (yet) the basic morphological operations:</p>
+<ul>
+<li>erosion</li>
+<li>dilation</li>
+<li>opening</li>
+<li>closing</li>
+</ul>
+<p>These 4 operations are implemented for arbitrary dimensionalities (2D, 3D, 4D, etc…). The package reuses standard ImgLib2 interfaces and classes. It also conforms to the public static methods accessors for low level algorithms, as the <a href="https://github.com/imglib/imglib2-algorithm/tree/-/src/main/java/net/imglib2/algorithm/gauss3">gauss3</a> package does. Apart from this, it is strongly inspired by the morphological operation methods in the Image Processing Toolbox of the <a href="https://www.mathworks.com/help/images/morphological-filtering.html">MATLAB</a> software.</p>
+<p>It also ships facilities to generate structuring elements, and allows the use of decomposed structuring elements for performance optimization. This part is documented below.</p>
+<p>Classes can be found in the <a href="https://github.com/imglib/imglib2-algorithm/tree/-/src/main/java/net/imglib2/algorithm/morphology"><code>net.imglib2.algorithm.morphology</code></a> package of the <a href="https://github.com/imglib/imglib2-algorithm">imglib2-algorithm library</a>.</p>
+<p>Examples can be found in the <a href="https://github.com/imglib/imglib2-tests/tree/-/src/test/java/net/imglib2/algorithm/morphology"><code>net.imglib2.algorithm.morphology</code></a> package of the <a href="https://github.com/imglib/imglib2-tests">imglib2-tests library</a>.</p>
+</section>
+<section id="gray-morphology-and-flat-structuring-elements" class="level3">
+<h3 class="anchored" data-anchor-id="gray-morphology-and-flat-structuring-elements">Gray morphology and flat structuring elements</h3>
+<p>This set of methods does <em>gray morphology</em>. It applies to source images that can be of any scalar numerical type (8-bit, 12-bit, 16-bit, booleans, floats, signed or unsigned, …), not only black and white images.</p>
+<p>It actually applies to more than this: The type of the source image only needs to extend <code>Type</code> (the ImgLib2 mother interface for values) and <code>Comparable</code> (the java interface for objects than can be compared to others). This is detailed later.</p>
+<p>However, we use the ImgLib2 <a href="https://github.com/imglib/imglib2-algorithm/blob/-/src/main/java/net/imglib2/algorithm/region/localneighborhood/Shape.java">Shape interface</a> for structuring elements. This restricts structuring elements to <em>flat</em> structuring elements, which do not have a weight, or value, associated to each location. This prevents us from developing a <em>stricto sensu</em> rolling-ball background subtraction algorithm based on this package (but a rolling-disk version is possible).</p>
+</section>
+<section id="morphological-operations-on-comparable-type" class="level3">
+<h3 class="anchored" data-anchor-id="morphological-operations-on-comparable-type">Morphological operations on <code>Comparable</code> type</h3>
+<p>Morphological operations are defined on types that have very little requirement. The data does not have to be made of numerical pixels at all. Mathematically, they are defined on partially ordered sets (complete lattices, see for instance {% include wikipedia title=‘Dilation (morphology)#Dilation_on_complete_lattices’ text=‘“Dilation on complete lattices”’%}).</p>
+<p>In ImgLib2, we require a little bit more than that. The data type you can use with morphological operations needs to be comparable. In practice, it must extends <code>Type</code> and <code>Comparable</code>: <code>T extends Type&lt; T &gt; &amp; Comparable&lt; T &gt;</code>. With this, it is perfectly possible to dilate an image of strings by a 3x3 square strel:</p>
+<p>Before:</p>
+<pre><code>Upcycle       Sexting       Unfriend      Droolworthy   Noob          Muggle        
+Woot          Po-po         Purple State  Guyliner      Screenager    Crunk         
+Obvs          Mankini       Locavore      Bling         Textspeak     Muffin Top    
+Infomania     Grrrl         Truthiness    Bromance      D'oh          Twitterati    
+La-la Land    Whatevs       Illiterati    OMG           Hater         Jeggings      
+Jean-Yves     Mini-Me       Chillax       Frankenfood   Totes         Whovian       
+</code></pre>
+<p>After full dilation:</p>
+<pre><code>Upcycle       Upcycle       Upcycle       Unfriend      Unfriend      Noob          Noob          Muggle        
+Woot          Woot          Woot          Unfriend      Unfriend      Screenager    Screenager    Muggle        
+Woot          Woot          Woot          Unfriend      Unfriend      Textspeak     Textspeak     Muggle        
+Woot          Woot          Woot          Truthiness    Truthiness    Twitterati    Twitterati    Twitterati    
+Obvs          Whatevs       Whatevs       Whatevs       Truthiness    Twitterati    Twitterati    Twitterati    
+La-la Land    Whatevs       Whatevs       Whatevs       Truthiness    Whovian       Whovian       Whovian       
+La-la Land    Whatevs       Whatevs       Whatevs       Totes         Whovian       Whovian       Whovian       
+Jean-Yves     Mini-Me       Mini-Me       Mini-Me       Totes         Whovian       Whovian       Whovian       
+</code></pre>
+<p>After standard dilation:<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<pre><code>Woot          Woot          Unfriend      Unfriend      Screenager    Screenager    
+Woot          Woot          Unfriend      Unfriend      Textspeak     Textspeak     
+Woot          Woot          Truthiness    Truthiness    Twitterati    Twitterati    
+Whatevs       Whatevs       Whatevs       Truthiness    Twitterati    Twitterati    
+Whatevs       Whatevs       Whatevs       Truthiness    Whovian       Whovian       
+Whatevs       Whatevs       Whatevs       Totes         Whovian       Whovian       
+</code></pre>
+</section>
+</section>
+<section id="usage" class="level2">
+<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<p>The 4 basic operations are accessed through 4 classes:</p>
+<ul>
+<li><a href="https://github.com/imglib/imglib2-algorithm/blob/-/src/main/java/net/imglib2/algorithm/morphology/Dilation.java">net.imglib2.algorithm.morphology.Dilation</a></li>
+<li><a href="https://github.com/imglib/imglib2-algorithm/blob/-/src/main/java/net/imglib2/algorithm/morphology/Erosion.java">net.imglib2.algorithm.morphology.Erosion</a></li>
+<li><a href="https://github.com/imglib/imglib2-algorithm/blob/-/src/main/java/net/imglib2/algorithm/morphology/Opening.java">net.imglib2.algorithm.morphology.Opening</a></li>
+<li><a href="https://github.com/imglib/imglib2-algorithm/blob/-/src/main/java/net/imglib2/algorithm/morphology/Closing.java">net.imglib2.algorithm.morphology.Closing</a></li>
+</ul>
+<p>Each of these classes contains only static methods that performs the desired operation. There can be up to 16 flavors of the same operation. They exist to cover all cases, which fall in 4 categories:</p>
+<ul>
+<li><p>You want to operate on an <a href="https://github.com/imglib/imglib2/blob/-/src/main/java/net/imglib2/img/Img.java">Img</a> and return a <strong>new Img</strong> with the results. Then you need to call for instance:</p>
+<pre><code>Img&lt; FloatType &gt; result = Dilation.dilate( img, strel, 1 );</code></pre>
+<p><img src="../../media/libs/imglib2/dilatedtonewimgexample.png" width="600"></p></li>
+<li><p>You want to perform to <strong>full</strong> dilation or erosion on a source Img. Full version of these operations means the new image will have a size increased or shrunk as if the structuring element would actually dilate or erode the source border:</p>
+<pre><code>Img&lt; FloatType &gt; result = Dilation.dilateFull( img, strel, 1 );</code></pre>
+<p><img src="../../media/libs/imglib2/dilatedtonewfullimgexample.png" width="600"></p></li>
+<li><p>You want to operate on a source <a href="https://github.com/imglib/imglib2/blob/-/src/main/java/net/imglib2/RandomAccessibleInterval.java">RandomAccessibleInterval</a>, in place (write the results in the source):</p>
+<pre><code>Dilation.dilateInPlace( rai, interval, strel, 1 );</code></pre>
+<p><img src="../../media/libs/imglib2/dilatedinplaceexample.png" width="600"></p></li>
+<li><p>You want to operate on a source <a href="https://github.com/imglib/imglib2/blob/-/src/main/java/net/imglib2/RandomAccessible.java">RandomAccessible</a>, and write the results in a provided <a href="https://github.com/imglib/imglib2/blob/-/src/main/java/net/imglib2/IterableInterval.java">IterableInterval</a>:</p>
+<pre><code>Dilation.dilate( source, target, strel, 1 )</code></pre>
+<p><img src="../../media/libs/imglib2/dilatedtotargetexample.png" width="600"></p></li>
+</ul>
+<p>Now, each of these category are declined in 4 specifics methods:</p>
+<ul>
+<li><p>Depending on the source type:</p>
+<ul>
+<li>If the source type inherits from <a href="https://github.com/imglib/imglib2/blob/-/src/main/java/net/imglib2/type/numeric/RealType.java">RealType</a> - which is the case for most numeric types and all the native types - then you can use directly the above methods without any extras.</li>
+<li>But you may have a source which might be <code>T extends Comparable &amp; Type</code>. Then you have to provided the maximal value or the minimal value or both for this type. Then you have to call the methods whose signature are like: <code>public static &lt; T extends Type&lt; T &gt; &amp; Comparable&lt; T &gt; &gt; Img&lt; T &gt; dilate( final Img&lt; T &gt; source, final Shape strel, final T minVal, final int numThreads )</code></li>
+</ul></li>
+<li><p>Depending on whether you have the structuring element as a single Shape or decomposed in a list of Shape, there is a version of all those methods for this case or the other.</p>
+<pre><code>    public static &lt; T extends RealType&lt; T &gt; &gt; Img&lt; T &gt; dilate( final Img&lt; T &gt; source, final Shape strel, final int numThreads )
+    ```
+and</code></pre>
+<pre><code>public static &lt; T extends RealType&lt; T &gt; &gt; Img&lt; T &gt; dilate( final Img&lt; T &gt; source, final List&lt; Shape &gt; strels, final int numThreads )
+```</code></pre></li>
+</ul>
+</section>
+<section id="structuring-elements-and-their-decomposition" class="level2">
+<h2 class="anchored" data-anchor-id="structuring-elements-and-their-decomposition">Structuring elements and their decomposition</h2>
+<p>Morphological operations are basically neighborhood operations: you iterate in a neighborhood around each location of the source, and the target value at this location depends on the maximal or minimal value you meet then. So typically, the complexity of the algorithm can be written as <code>N × n</code> where <code>N</code> is the number of pixels in the source and <code>n</code> is the number of pixels in the neighborhood. For instance, for a square neighborhood of side <code>l</code> it will be <code>N × l²</code>.</p>
+<p>It turns out some structuring elements can be decomposed to achieve greater performance. For instance, looking for the maximum in a square of side <code>l</code> can be achieved by first looking for the maximum in an horizontal line of length <code>l</code>, writing the results somewhere, then looking for the maximum of the intermediate image in a vertical line of length <code>l</code>. The square structuring element can be decomposed in two orthogonal lines. The benefits in complexity are immediate; with the decomposition, it is now of <code>N × 2 × l</code>. Benefits are greater as the size of the neighborhood increases.</p>
+<p>Several structuring elements can be decomposed, sometimes depending on the dimensionality of the problem.</p>
+<p>In the ImgLib2 morphology package, these decompositions are achieved through the <a href="https://github.com/imglib/imglib2-algorithm/blob/-/src/main/java/net/imglib2/algorithm/morphology/StructuringElements.java">StructuringElements</a> class. For instance:</p>
+<pre><code>public static final List&lt; Shape &gt; diamond( final int radius, final int dimensionality, final boolean decompose )</code></pre>
+<p>This method returns a structuring element as a list of shapes, and a boolean flag determines if the returned list correspond to an optimization or not. As seen above, all operations are built to support a list of shapes as structuring element.</p>
+<p>The following paragraphs document what decompositions are currently implemented for common structuring elements.</p>
+<section id="rectangular-structuring-element" class="level3">
+<h3 class="anchored" data-anchor-id="rectangular-structuring-element">Rectangular structuring element</h3>
+<section id="decomposition" class="level4">
+<h4 class="anchored" data-anchor-id="decomposition">Decomposition</h4>
+<p>A rectangle can be decomposed in a series of orthogonal lines, in any dimensions, considerably diminishing the number of pixels to iterate.</p>
+<section id="d-case" class="level5">
+<h5 class="anchored" data-anchor-id="d-case">2D case</h5>
+<p>If the image has <code>M</code> pixels, and that the rectangle is a square of side <code>R</code>, then the non-optimized case should have a processing time proportional to <code>M × R²</code>. The optimized case replace iterating over the square by iterating twice over a line of length <code>R</code>. Therefore its processing time should be proportional to <code>2 × M × R</code>.</p>
+<p>The performance improvement should therefore be equal to <code>R / 2</code>. A linear fit of the actual curve rather shows that the law is <code>0.73 × R + 0.37</code>. This extra benefit - I don’t why it’s there.</p>
+<p>{% include img src=‘rectanglestrel2dperformance’ caption=‘Processing time for the dilation of a 100x100 image.’ width=370 %} {% include img src=‘rectanglestrel2dperformancecomparison’ caption=‘Processing time ratio.’ width=362 %}</p>
+</section>
+<section id="d-case-1" class="level5">
+<h5 class="anchored" data-anchor-id="d-case-1">3D case</h5>
+<p>Here the standard case takes a time proportional to <code>M × R³</code>, and the optimized case a time proportional to <code>3 × M × R</code>. Therefore the performance ratio should be <code>R² / 3</code>. A fit shows that this ratio follows <code>0.63 × R² + 0.57 × R + 0.48</code>.</p>
+<p>{% include img src=‘rectanglestrel3dperformance’ caption=‘Processing time for the dilation of a 40x40x40 image.’ width=362 %} {% include img src=‘rectanglestrel3dperformancecomparison’ caption=‘Processing time ratio.’ width=366 %}</p>
+</section>
+</section>
+</section>
+<section id="square-structuring-element" class="level3">
+<h3 class="anchored" data-anchor-id="square-structuring-element">Square structuring element</h3>
+<section id="decomposition-1" class="level4">
+<h4 class="anchored" data-anchor-id="decomposition-1">Decomposition</h4>
+<p>The square is just a special case of the rectangle, implemented for convenience. It has the same decomposition principle. And similar conclusions can be reached:</p>
+<section id="d-case-2" class="level5">
+<h5 class="anchored" data-anchor-id="d-case-2">2D case</h5>
+<p>{% include img src=‘squarestrel2dperformance’ caption=‘Processing time for the dilation of a 100x100 image.’ width=370 %} {% include img src=‘squarestrel2dperformancecomparison’ caption=‘Performance time ratio.’ width=366 %} {% include img src=‘squarestrel2dperformancewmatlab’ caption=‘First image zoomed to highlight <a href="../../scripting/matlab">MATLAB</a> performance.’ width=366 %}</p>
+</section>
+<section id="d-case-3" class="level5">
+<h5 class="anchored" data-anchor-id="d-case-3">3D case</h5>
+<p>{% include img src=‘squarestrel3dperformance’ caption=‘Processing time for the dilation of a 49x49x49 image.’ width=362 %} {% include img src=‘squarestrel3dperformancecomparison’ caption=‘Processing time ratio.’ width=367 %} {% include img src=‘squarestrel3dperformancewmatlab’ caption=‘First image zoomed to highlight <a href="../../scripting/matlab">MATLAB</a> performance.’ width=364 %}</p>
+</section>
+</section>
+</section>
+<section id="diamond-structuring-element" class="level3">
+<h3 class="anchored" data-anchor-id="diamond-structuring-element">Diamond structuring element</h3>
+<section id="shape" class="level4">
+<h4 class="anchored" data-anchor-id="shape">Shape</h4>
+<p>A diamond strel has the following shape in 2D, for instance with a radius of 3 (It extends over 7 pixels wide):</p>
+<pre><code>┌───────┐
+│   █   │
+│  ███  │
+│ █████ │
+│███████│
+│ █████ │
+│  ███  │
+│   █   │
+└───────┘</code></pre>
+<p>And in 3D:</p>
+<pre><code>Z = 0:    Z = 1:    Z = 2:    Z = 3:    Z = 4:    Z = 5:    Z = 6:    
+┌───────┐ ┌───────┐ ┌───────┐ ┌───────┐ ┌───────┐ ┌───────┐ ┌───────┐ 
+│       │ │       │ │       │ │   █   │ │       │ │       │ │       │ 
+│       │ │       │ │   █   │ │  ███  │ │   █   │ │       │ │       │ 
+│       │ │   █   │ │  ███  │ │ █████ │ │  ███  │ │   █   │ │       │ 
+│   █   │ │  ███  │ │ █████ │ │███████│ │ █████ │ │  ███  │ │   █   │ 
+│       │ │   █   │ │  ███  │ │ █████ │ │  ███  │ │   █   │ │       │ 
+│       │ │       │ │   █   │ │  ███  │ │   █   │ │       │ │       │ 
+│       │ │       │ │       │ │   █   │ │       │ │       │ │       │ 
+└───────┘ └───────┘ └───────┘ └───────┘ └───────┘ └───────┘ └───────┘ </code></pre>
+<p>It is the crudest approximation of a sphere.</p>
+</section>
+<section id="decomposition-2" class="level4">
+<h4 class="anchored" data-anchor-id="decomposition-2">Decomposition</h4>
+<p>The diamond strel can be effectively decomposed in 2D (and 1D) using the logarithmic decomposition in extreme sets, as explained in [^2]. The shape is then decomposed in a minimal series of smaller diamond and diamond tips. The decomposition is exact, giving the same result that of the non-decomposed version.</p>
+<p>In 3D and higher dimensionalities, the logarithmic decomposition cannot be done, and we rely on a more classical linear decomposition (also well explained in [^2]). Here is a comparison on how the decomposed version performs versus the non-decomposed one.</p>
+<section id="d-performance" class="level5">
+<h5 class="anchored" data-anchor-id="d-performance">2D performance</h5>
+<p>{% include img src=‘diamondstrel2dperformance’ caption=‘Processing time for the dilation of a 100x100 image.’ width=366 %} {% include img src=‘diamondstrel2dperformancecomparison’ caption=‘Processing time ratio.’ width=362 %}</p>
+<p>It is worth using a decomposition above a radius of 4.</p>
+</section>
+<section id="d-performance-1" class="level5">
+<h5 class="anchored" data-anchor-id="d-performance-1">3D performance</h5>
+<p>{% include img src=‘diamondstrel3dperformance’ caption=‘Processing time for the dilation of a 40x40x40 image.’ width=364 %} {% include img src=‘diamondstrel3dperformancecomparison’ caption=‘Processing time ratio.’ width=364 %}</p>
+<p>It is worth using a decomposition in almost any cases.</p>
+</section>
+<section id="comparison-with-matlab" class="level5">
+<h5 class="anchored" data-anchor-id="comparison-with-matlab">Comparison with MATLAB</h5>
+<p>MATLAB comes with a very nice morphology package. I actually took inspiration from to it to write the ImgLib2 code. It is tempting to compare the performance of <a href="../../scripting/matlab">MATLAB</a> vs ImgLib2, even if this kind of comparison is always tricky and clumsy. Anyway, here it is. I just timed the duration required to perform the dilation of a provided source image, including the time required to generate the structuring element. ImgLib2 tests above time the same process. But of course, the time required to generate the source image and to start <a href="../../scripting/matlab">MATLAB</a> or to launch the Java tests are not included. I took care to include a ‘warm-up’ run to allow the JIT compiler to kick-in in all cases.</p>
+<p>{% include img src=‘diamondstrel2dperformancewmatlab’ caption=‘Processing time for the dilation of a 100x100 image.’ width=366 %} {% include img src=‘diamondstrel3dperformancewmatlab’ caption=‘Processing time for the dilation of a 40x40x40 image.’ width=364 %}</p>
+<p>For the 2D case (only), <a href="../../scripting/matlab">MATLAB</a> offers to generate optimized structuring elements, like for this ImgLib2 code. This is why there is two <a href="../../scripting/matlab">MATLAB</a> curves on the 2D graph. We can see that in all cases, the <a href="../../scripting/matlab">MATLAB</a> code is faster than the ImgLib2 code (respective to optimized vs optimized and the converse). This may be explained by the fact that <a href="../../scripting/matlab">MATLAB</a> benefits on my computer (a 2012 MacPro) from the Intel Integrated Performance Primitives (<a href="https://software.intel.com/en-us/intel-ipp">IPP</a>), that strongly improves block processing algorithms. Fortunately, the difference is not too taxing in the optimized case.</p>
+<p>In 3D, <a href="../../scripting/matlab">MATLAB</a> does not offer a structuring element decomposition (yet). So the performance curve as the expected cubic shape, though it outperforms ImgLib2 in the non-optimized case. For large radius, the ImgLib2 optimization manages to beat it.</p>
+</section>
+</section>
+</section>
+<section id="disk-structuring-element" class="level3">
+<h3 class="anchored" data-anchor-id="disk-structuring-element">Disk structuring element</h3>
+<section id="d-decomposition-in-periodic-lines" class="level4">
+<h4 class="anchored" data-anchor-id="d-decomposition-in-periodic-lines">2D Decomposition in periodic lines</h4>
+<p>In the 2D case, a disk structuring element can be decomposed in a succession of 4, 6 or 8 periodic lines[^3]. Doing so, the shape of the disk is only an approximate one. The first plot below indicates the percentage of pixels that are a mismatch compared to the “true” disk (by “true” I mean as best as digitizing a disk on a square matrix can be). In practice, this plot is rather uninformative. The second plot gives the effective aspect of the decomposed disks:</p>
+<p>{% include img src=‘diskdecomperror’ caption=‘Error percentage when approximating a disk STREL with a PL decomposition.’ width=355 %} {% include img src=‘diskdecomperrorlook’ caption=‘Aspect of the disk STREL decomposition in periodic lines, with varying radius.’ width=360 %}</p>
+<p>As for performance, you can see below that it is always best to use any decomposition as soon as the radius is larger than 3. This is a lucky limit, because the periodic line decomposition gives very approximated shapes for small radii.</p>
+<p>{% include img src=‘diskdecompperformance’ caption=‘Processing time for the dilation of a 100x100 image.’ width=369 %} {% include img src=‘diskdecompperformancecomparison’ caption=‘Processing time ratio.’ width=371 %}</p>
+</section>
+<section id="decomposition-for-other-dimensionalities" class="level4">
+<h4 class="anchored" data-anchor-id="decomposition-for-other-dimensionalities">Decomposition for other dimensionalities</h4>
+<p>I am unable to derive an efficient decomposition of the disk STREL for the 3D case. Also, I was unable so far to find an implementation example or clear literature about such a decomposition. The closest I reach was <a href="https://scholar.google.com/scholar?cluster=13269164704477322735">this publication</a> that describes a possible method (proposed in <a href="https://dsp.stackexchange.com/q/12675">this DSP thread</a>) but it missed the implementation details that could make it practical.</p>
+</section>
+</section>
+</section>
+<section id="references-and-links" class="level2">
+<h2 class="anchored" data-anchor-id="references-and-links">References and links</h2>
+<p>{% include citation fn=2 doi=“10.1016/1049-9652(92)90055-3” %}</p>
+<p>{% include citation fn=3 doi=“10.1006/cgip.1993.1024” %}</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>These are the 35 words added by the Oxford Online Dictionary during summer 2012. And another one.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

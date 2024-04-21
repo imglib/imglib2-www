@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ImgLib2 and BigDataviewer projects - LoopBuilder</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="ImgLib2 and BigDataviewer projects - LoopBuilder">
+<meta property="og:description" content="">
+<meta property="og:site-name" content="ImgLib2 and BigDataviewer projects">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ImgLib2 and BigDataviewer projects</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../Imglib2main.html" rel="" target="">
+ <span class="menu-text">ImgLib2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../BDV.html" rel="" target="">
+ <span class="menu-text">BDV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../learning_resources/imglib2_links.html" rel="" target=""><i class="bi bi-info-square" role="img">
+</i> 
+ <span class="dropdown-text">ImgLib2 links</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../learning_resources/bigdataviewer_links.html" rel="" target=""><i class="bi bi-info-square" role="img">
+</i> 
+ <span class="dropdown-text">BigDataViewer links</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/imglib" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">ImgLib2 github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/bigdataviewer" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">BigDataViewer github</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../ecosystem.html" rel="" target="">
+ <span class="menu-text">Ecosystem</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-contributing-guidelines" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Contributing Guidelines</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-contributing-guidelines">    
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/guidelines_for_imglib2.html" rel="" target=""><i class="bi bi-share" role="img">
+</i> 
+ <span class="dropdown-text">Guidelines for ImgLib2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/guidelines_for_bigdataviewer.html" rel="" target=""><i class="bi bi-share" role="img">
+</i> 
+ <span class="dropdown-text">Guidelines for BigDataViewer</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contributing_guidelines/our_code_of_conduct.html" rel="" target=""><i class="bi bi-peace" role="img">
+</i> 
+ <span class="dropdown-text">Our Code-of-conduct</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@imglib2" rel="" target=""><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../ImageJ_Documentation/imglib2/index.html">ImgLib2</a></li><li class="breadcrumb-item"><a href="../../ImageJ_Documentation/imglib2/loopbuilder.html">LoopBuilder</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/imglib/imglib2" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../ImageJ_Documentation/imglib2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/accessibles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Accessibles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/accessors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Accessors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/benchmarks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Benchmarks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/changes-from-imglib1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changes from ImgLib1 to ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/developing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Developing ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Discussion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Examples</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 FAQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/gauss-package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gauss package for ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Getting Started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/loopbuilder.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">LoopBuilder</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/matlab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating Imglib2 images in MATLAB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/migrate-from-imglib1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How To Migrate Code From ImgLib To ImgLib2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/morphological-operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 Morphological Operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/workshop-advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Advanced Programming Workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib2/workshop-introductory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib2 - Introductory Workshop</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../ImageJ_Documentation/imglib1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib 'Deprecated' </span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/iterating-through-pixel-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ImgLib1: Iterating through pixel data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/using-in-a-plugin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using ImgLib1 in an ImageJ plugin</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ImageJ_Documentation/imglib1/workshop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Into ImgLib - Generic Image Processing in Java</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">LoopBuilder</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/ImageJ_Documentation/imglib2/loopbuilder.md"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>LoopBuilder is part of ImgLib2. It provides a very simple way to implement a pixel wise operation. LoopBuilder can operate on one, two, three, … up to six images. Simplest case is an operation on one image. LoopBuilder will perform the given operation for every pixel of the image.</p>
+<p>Example: Multiply every pixel by a factor of two 2.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// "image" should be a RandomAccessibleInterval&lt;FloatType&gt;. (IntType, UnsignedByteType, etc. would work as well.)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>LoopBuilder<span class="op">.</span><span class="fu">setImages</span><span class="op">(</span>image<span class="op">).</span><span class="fu">forEachPixel</span><span class="op">(</span>pixel <span class="op">-&gt;</span> pixel<span class="op">.</span><span class="fu">mul</span><span class="op">(</span><span class="dv">2</span><span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Slightly more complex is the case with two images. LoopBuilder will iterate simultaneously over both given images. The given operation is executed for each pair of corresponding pixels. “Corresponding” means that the pixels are at the same location in both images. Lets use this to copy the content of image. The value of the source pixel must be copied to the corresponding target pixel:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// "sourceImage" and "targetImage" should be RandomAccessibleIntervals with the same pixel type.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>LoopBuilder<span class="op">.</span><span class="fu">setImages</span><span class="op">(</span>sourceImage<span class="op">,</span> targetImage<span class="op">).</span><span class="fu">forEachPixel</span><span class="op">((</span>s<span class="op">,</span> t<span class="op">)</span> <span class="op">-&gt;</span> t<span class="op">.</span><span class="fu">set</span><span class="op">(</span>s<span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It’s the same story for three images. LoopBuilder iterates simultaneously over the three images. The operation is executed each triplet of corresponding pixel. This can be used, for example, to add two images.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// "imageA", "imageB", "imageSum" should be RandomAccessibleInterval&lt;FloatType&gt;. (Any other RealType would work as well.)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>LoopBuilder<span class="op">.</span><span class="fu">setImages</span><span class="op">(</span>imageA<span class="op">,</span> imageB<span class="op">,</span> imageSum<span class="op">).</span><span class="fu">forEachPixel</span><span class="op">(</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>a<span class="op">,</span> b<span class="op">,</span> s<span class="op">)</span> <span class="op">-&gt;</span> s<span class="op">.</span><span class="fu">setReal</span><span class="op">(</span>a<span class="op">.</span><span class="fu">getRealFloat</span><span class="op">()</span> <span class="op">+</span> b<span class="op">.</span><span class="fu">getRealFloat</span><span class="op">()</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or for a pixel wise comparison of two images:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// "imageA", "imageB", "imageSum" should be RandomAccessibleInterval&lt;FloatType&gt;. (Any other RealType would work as well.)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>LoopBuilder<span class="op">.</span><span class="fu">setImages</span><span class="op">(</span>imageA<span class="op">,</span> imageB<span class="op">,</span> resultImage<span class="op">).</span><span class="fu">forEachPixel</span><span class="op">(</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>a<span class="op">,</span> b<span class="op">,</span> r<span class="op">)</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span><span class="op">(</span>a<span class="op">.</span><span class="fu">getRealFloat</span><span class="op">()</span> <span class="op">&gt;</span> b<span class="op">.</span><span class="fu">getRealFloat</span><span class="op">())</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            r<span class="op">.</span><span class="fu">set</span><span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            r<span class="op">.</span><span class="fu">set</span><span class="op">(</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For LoopBuilder images must be <code>RandomAccessibleIntervals</code>. All images must have the same size / dimensions.</p>
+<p>LoopBuilder works for for 1D, 2D, 3D, 4D and any other number of dimensions. There is no restriction on pixel types, any pixel typs are supported.</p>
+<p>(<code>Img</code>, <code>ArrayImg</code>, <code>PlanarImg</code>, etc. work as well because the implement the <code>RandomAccessibleInterval</code> interface.)</p>
+<section id="tips" class="level2">
+<h2 class="anchored" data-anchor-id="tips">Tips</h2>
+<section id="coordinates" class="level3">
+<h3 class="anchored" data-anchor-id="coordinates">Coordinates</h3>
+<p>LoopBuilder, does not provide a direct way to access the position or coordinates of a pixel in an image. What you can do instead is use <code>Intervals.positions(...)</code>. This will return an image where the pixel values are the positions of the pixel itself. Here is an example:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>LoopBuilder<span class="op">.</span><span class="fu">setImages</span><span class="op">(</span>Intervals<span class="op">.</span><span class="fu">positions</span><span class="op">(</span>image<span class="op">),</span> image<span class="op">).</span><span class="fu">forEachPixel</span><span class="op">(</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>position<span class="op">,</span> pixel<span class="op">)</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">long</span> x <span class="op">=</span> position<span class="op">.</span><span class="fu">getLongPosition</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">long</span> y <span class="op">=</span> position<span class="op">.</span><span class="fu">getLongPosition</span><span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        pixel<span class="op">.</span><span class="fu">setRealDoubel</span><span class="op">(</span><span class="dv">2</span> <span class="op">*</span> x <span class="op">*</span> x <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> y <span class="op">*</span> y<span class="op">);</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="flat-iteration-order" class="level3">
+<h3 class="anchored" data-anchor-id="flat-iteration-order">Flat Iteration Order</h3>
+<p>In most cases, LoopBuilder will use flat iteration order. Hence the image is processed line by line, slice by slice, frame by frame… . But that’s not guarantied. For example, if all images are <code>CellImg</code> with matching cell sizes, than LoopBuilder will use better suited iteration order. So if your code depends on the flat iteration order, specify <code>.flatIterationOrder()</code> like in the following example. Don’t use multi-threading, as for multi threading iteration order is unspecified.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span><span class="op">[]</span> counter <span class="op">=</span> <span class="op">{</span> <span class="dv">0</span> <span class="op">};</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>LoopBuilder<span class="op">.</span><span class="fu">setImages</span><span class="op">(</span>image<span class="op">).</span><span class="fu">flatIterationOrder</span><span class="op">().</span><span class="fu">forEachPixel</span><span class="op">(</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    pixel <span class="op">-&gt;</span>  pixel<span class="op">.</span><span class="fu">setInteger</span><span class="op">(</span>counter<span class="op">[</span><span class="dv">0</span><span class="op">]++)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="more-than-6-images" class="level3">
+<h3 class="anchored" data-anchor-id="more-than-6-images">More Than 6 Images</h3>
+<p>LoopBuilder only works with up to six images. This is not because any technical reason, but because the code would become rather clunky. When you have many images, changes are high, that some of the images are similar. These images have the same pixel type, and somehow belong together.</p>
+<p>Lets look at an example again. Let’s calculate the maximum over 8 images. That are to many images for LoopBuilder. But we can combine the 8 images, using <code>Views.collapse(Views.stack(...))</code>. This will fuse the images into one image, where each pixel is a vector of size 8. The vector contains all the pixel values of the 8 corresponding pixels.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// ... Initialize all images ...</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Combine image1, ..., image8 into a combined image, where each pixel is a vector.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>RandomAccessibleInterval<span class="op">&lt;</span> <span class="op">?</span> <span class="kw">extends</span> GenericComposite<span class="op">&lt;</span> FloatType <span class="op">&gt;</span> <span class="op">&gt;</span> combined <span class="op">=</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    Views<span class="op">.</span><span class="fu">collapse</span><span class="op">(</span> Views<span class="op">.</span><span class="fu">stack</span><span class="op">(</span> image1<span class="op">,</span> image2<span class="op">,</span> image3<span class="op">,</span> image4<span class="op">,</span> image5<span class="op">,</span> image6<span class="op">,</span> image7<span class="op">,</span> image8 <span class="op">)</span> <span class="op">);</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>LoopBuilder<span class="op">.</span><span class="fu">setImages</span><span class="op">(</span> combined<span class="op">,</span> resultImage <span class="op">).</span><span class="fu">forEachPixel</span><span class="op">(</span> <span class="op">(</span>vector<span class="op">,</span> r<span class="op">)</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> max <span class="op">=</span> <span class="bu">Float</span><span class="op">.</span><span class="fu">NEGATIVE_INFINITY</span><span class="op">;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span> <span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">8</span><span class="op">;</span> i<span class="op">++</span> <span class="op">)</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        max <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span><span class="op">(</span> max<span class="op">,</span> vector<span class="op">.</span><span class="fu">get</span><span class="op">(</span>i<span class="op">).</span><span class="fu">getRealFloat</span><span class="op">()</span> <span class="op">);</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    r<span class="op">.</span><span class="fu">setReal</span><span class="op">(</span> max <span class="op">);</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
+<p>LoopBuilder provides nothing, that is otherwise impossible to achieve. It is just a nice way, to write otherwise complex loops. But you could achieve the same results with ImgLib2 <code>Cursor</code> or <code>RandomAccess</code>. Lets add two images using <code>Cursor</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Cursor</span><span class="op">&lt;</span>FloatType<span class="op">&gt;</span> cursorA <span class="op">=</span> Views<span class="op">.</span><span class="fu">flatIterable</span><span class="op">(</span>imageA<span class="op">).</span><span class="fu">cursor</span><span class="op">();</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Cursor</span><span class="op">&lt;</span>FloatType<span class="op">&gt;</span> cursorB <span class="op">=</span> Views<span class="op">.</span><span class="fu">flatIterable</span><span class="op">(</span>imageB<span class="op">).</span><span class="fu">cursor</span><span class="op">();</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Cursor</span><span class="op">&lt;</span>FloatType<span class="op">&gt;</span> cursorSum <span class="op">=</span> Views<span class="op">.</span><span class="fu">flatIterable</span><span class="op">(</span>imageSum<span class="op">).</span><span class="fu">cursor</span><span class="op">();</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span><span class="op">(</span>sourceCursor<span class="op">.</span><span class="fu">hasNext</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    FloatType a <span class="op">=</span> cursorA<span class="op">.</span><span class="fu">next</span><span class="op">();</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    FloatType b <span class="op">=</span> cursorB<span class="op">.</span><span class="fu">next</span><span class="op">();</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    FloatType s <span class="op">=</span> cursorS<span class="op">.</span><span class="fu">next</span><span class="op">();</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    s<span class="op">.</span><span class="fu">setReal</span><span class="op">(</span>a<span class="op">.</span><span class="fu">getRealFloat</span><span class="op">()</span> <span class="op">+</span> b<span class="op">.</span><span class="fu">getRealFloat</span><span class="op">());</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The example above is actually still quite simple. And a <code>Cursor</code> is fast for basic image containers like <code>ArrayImg</code>, <code>PlanarImg</code> and sometimes <code>CellImg</code>. But it’s faster to use <code>RandomAccess</code> when you use views like <code>View.extendBorder(...)</code>, <code>Views.interval(...)</code>, <code>Views.rotate(...)</code> etc. Writing a loop that uses no Cursors at all is much harder. Here is an example that sets all pixels of an image to 1.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">RandomAccess</span><span class="op">&lt;</span> IntType <span class="op">&gt;</span> ra <span class="op">=</span> image<span class="op">.</span><span class="fu">randomAccess</span><span class="op">();</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ra<span class="op">.</span><span class="fu">setPosition</span><span class="op">(</span> image<span class="op">.</span><span class="fu">min</span><span class="op">(</span> <span class="dv">2</span> <span class="op">),</span> <span class="dv">2</span> <span class="op">);</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span> <span class="dt">long</span> z <span class="op">=</span> image<span class="op">.</span><span class="fu">min</span><span class="op">(</span> <span class="dv">2</span> <span class="op">);</span> z <span class="op">&lt;=</span> image<span class="op">.</span><span class="fu">max</span><span class="op">(</span> <span class="dv">2</span> <span class="op">);</span> z<span class="op">++</span> <span class="op">)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    ra<span class="op">.</span><span class="fu">setPosition</span><span class="op">(</span> image<span class="op">.</span><span class="fu">min</span><span class="op">(</span> <span class="dv">1</span> <span class="op">),</span> <span class="dv">1</span> <span class="op">);</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span> <span class="dt">long</span> y <span class="op">=</span> image<span class="op">.</span><span class="fu">min</span><span class="op">(</span> <span class="dv">1</span> <span class="op">);</span> y <span class="op">&lt;=</span> image<span class="op">.</span><span class="fu">max</span><span class="op">(</span> <span class="dv">1</span> <span class="op">);</span> y<span class="op">++</span> <span class="op">)</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        ra<span class="op">.</span><span class="fu">setPosition</span><span class="op">(</span> image<span class="op">.</span><span class="fu">min</span><span class="op">(</span> <span class="dv">0</span> <span class="op">),</span> <span class="dv">0</span> <span class="op">);</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span> <span class="dt">long</span> x <span class="op">=</span> image<span class="op">.</span><span class="fu">min</span><span class="op">(</span> <span class="dv">0</span> <span class="op">);</span> x <span class="op">&lt;=</span> image<span class="op">.</span><span class="fu">max</span><span class="op">(</span> <span class="dv">0</span> <span class="op">);</span> x<span class="op">++</span> <span class="op">)</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>            IntType pixel <span class="op">=</span> ra<span class="op">.</span><span class="fu">get</span><span class="op">();</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>            pixel<span class="op">.</span><span class="fu">setInteger</span><span class="op">(</span> <span class="dv">1</span> <span class="op">);</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>            ra<span class="op">.</span><span class="fu">fwd</span><span class="op">(</span> <span class="dv">0</span> <span class="op">);</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        ra<span class="op">.</span><span class="fu">fwd</span><span class="op">(</span> <span class="dv">1</span> <span class="op">);</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    ra<span class="op">.</span><span class="fu">fwd</span><span class="op">(</span> <span class="dv">2</span> <span class="op">);</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="multi-threading" class="level2">
+<h2 class="anchored" data-anchor-id="multi-threading">Multi Threading</h2>
+<p>If your images are big, than multithreading might speed up the operation. And it’s super easy if you use LoopBuilder. Let’s calculate the sum using multiple threads. The only thing you need to do is write <code>.multiThreaded()</code> before the call to <code>forEachPixel(...)</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">// calculate sum, using multiple threads:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>LoopBuilder<span class="op">.</span><span class="fu">setImages</span><span class="op">(</span>imageA<span class="op">,</span> imageB<span class="op">,</span> imageS<span class="op">).</span><span class="fu">multiThreaded</span><span class="op">().</span><span class="fu">forEachPixel</span><span class="op">(</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                                              <span class="co">///////////////</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>pixelA<span class="op">,</span> pixelB<span class="op">,</span> pixelS<span class="op">)</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        pixelS<span class="op">.</span><span class="fu">set</span><span class="op">(</span>pixelA<span class="op">.</span><span class="fu">getRealFloat</span><span class="op">()</span> <span class="op">+</span> pixelB<span class="op">.</span><span class="fu">getRealFloat</span><span class="op">());</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This should run about four times faster, on a CPU with four CPU cores. (Your image needs two be big enough.) What LoopBuilder internally does, is the following: It splits the images into chunks, and the chunks are than distributed to a pool of threads.</p>
+<p>But be careful, multi-threading works well as long as your operation is thread-safe. This is the case for simple operations like “pixelS = pixelA + pixelB”. An per pixel operation is NOT thread-safe if it changes a object, field or variable outside the of operation. Let’s take a look at the following example: It calculates the sum over the squared pixel values:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>FloatType squareSum <span class="op">=</span> <span class="kw">new</span> <span class="fu">FloatType</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>LoopBuilder<span class="op">.</span><span class="fu">setImages</span><span class="op">(</span>image<span class="op">).</span><span class="fu">forEachPixel</span><span class="op">(</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>   pixel <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>      squaredSum<span class="op">.</span><span class="fu">setReal</span><span class="op">(</span>squaredSum<span class="op">.</span><span class="fu">getRealFloat</span><span class="op">()</span> <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span><span class="op">(</span>pixel<span class="op">.</span><span class="fu">getRealFloat</span><span class="op">,</span> <span class="dv">2</span><span class="op">));</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here the per pixel operation (line 3-5) changes the <code>squaredSum</code>, which is defined in line 1, outside of the per pixel operation. Only adding <code>.multiThreaded()</code> will cause wrong results. This is because the operation is simultaniously executed by mutliple threads. All the threads simultaniously changing the <code>squaredSum</code> causes chaos. The wrong result is the consequence.</p>
+<p>Luckily LoopBuilder provides a solution to this problem. LoopBuilder devides the image into chunks, and destributes the chunks to a pool of threads. A chunk is always only processed by one thread. That’s why there are no multi-threading problems as long as we have one <code>squaredSum</code> variable per chunk. This can be done using LoopBuilders <code>.forEachChunk(...)</code> method:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">// For each chunk calculate an individual squared sum.</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">List</span><span class="op">&lt;</span>FloatType<span class="op">&gt;</span> listOfSquaredSums <span class="op">=</span> LoopBuilder<span class="op">.</span><span class="fu">setImages</span><span class="op">(</span>image<span class="op">).</span><span class="fu">multithreaded</span><span class="op">().</span><span class="fu">forEachChunk</span><span class="op">(</span> chunk <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>   FloatType squaredSum <span class="op">=</span> <span class="kw">new</span> <span class="fu">FloatType</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>   chunk<span class="op">.</span><span class="fu">forEachPixel</span><span class="op">(</span> pixel <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      squaredSum<span class="op">.</span><span class="fu">setReal</span><span class="op">(</span>squaredSum<span class="op">.</span><span class="fu">getRealFloat</span><span class="op">()</span> <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span><span class="op">(</span>pixel<span class="op">.</span><span class="fu">getRealFloat</span><span class="op">,</span> <span class="dv">2</span><span class="op">));</span>    </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span> <span class="op">);</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> squaredSum<span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="op">})</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">// Calculate the sum about all the individual squared sums.</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>FloatType totalSquaredSum <span class="op">=</span> <span class="kw">new</span> <span class="fu">FloatType</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span><span class="op">(</span>FloatType squareSum <span class="op">:</span> listOfSquaredSums<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>   totalSquaredSum<span class="op">.</span><span class="fu">add</span><span class="op">(</span>squaredSum<span class="op">);</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the example above the per pixel operation (in line 5) can access variables and objects that belong to the chunk (in line 3 - 7) without causing any thread safety issues.</p>
+<p>Another use case for the <code>forEachChunk</code> mappens, happens if your per pixel operation needs some resources. The following examples swaps the content of two images A and B. The temporary variable <code>tmp</code> is used to swap the pixel value. But creating a <code>new FloatType()</code> for each pixel would be very slow, but creating one temporary variable per chunk, is fine:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>LoopBuilder<span class="op">.</span><span class="fu">setImages</span><span class="op">(</span>imageA<span class="op">,</span> imageB<span class="op">).</span><span class="fu">multiThreaded</span><span class="op">().</span><span class="fu">forEachChunk</span><span class="op">(</span> chunk <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    FloatType tmp <span class="op">=</span> <span class="kw">new</span> <span class="fu">FloatType</span><span class="op">();</span> <span class="co">// create require resource</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    chunk<span class="op">.</span><span class="fu">forEach</span><span class="op">((</span>a<span class="op">,</span> b<span class="op">)</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        tmp<span class="op">.</span><span class="fu">set</span><span class="op">(</span>a<span class="op">);</span>   <span class="co">// operation using the resource</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        a<span class="op">.</span><span class="fu">set</span><span class="op">(</span>b<span class="op">);</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        b<span class="op">.</span><span class="fu">set</span><span class="op">(</span>tmp<span class="op">);</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">});</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Optional: free your resource if needed.</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span> <span class="co">// Optional: return some results.</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="op">})</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Disclaimer: Please always measure the execution time if you use multi-threading. Sometimes the simgle threaded code is better optimized by the compiler and runs even faster than the multi-threaded code. Also check that you don’t have thread-safety issues, make sure your results are correct. Thread-safety problem are hard to debug!</p>
+</section>
+<section id="performance" class="level2">
+<h2 class="anchored" data-anchor-id="performance">Performance</h2>
+<p>Disclaimer: LoopBuilder achieves good perfomance in Java, but it is slow when used in scripting languages like Groovy or Jython. (This is because LoopBuilder relies on Lambda expression, and using them in scripting languages is rather complicated and slow.)</p>
+<p>LoopBuilder has been heavily benchmarked and designed to give good perfance. This performance advantage compared to for example <code>Cursor</code> loops is most noticible for methods that are used with different image types (For example <code>ArrayImg</code>, <code>PlanarImg</code>, <code>Views.interval(...)</code>, etc. ). Because LoopBuilder will execute the loop in a way, that promises good performance for the particular image type. The strategies that are used to provide the best performance are discribed below.</p>
+<p>Still, if you write a piece of very specialized code that always runs on only one image type (maybe <code>ArrayImg</code><booltype>). Then writing your own loop using <code>Cursor</code> or <code>RandomAccess</code> might give better performance. But always carefully measure the execution time.</booltype></p>
+<p><a href="https://gist.github.com/maarzt/19167a5019c1d685c483441b7322b986">Benchmark comparing LoopBuilder and Cursor</a></p>
+<section id="cursor-vs.-randomaccess" class="level3">
+<h3 class="anchored" data-anchor-id="cursor-vs.-randomaccess">Cursor vs.&nbsp;RandomAccess</h3>
+<p>LoopBuilder either uses a loop that uses <code>Cursor</code>s. That’s the case if all the images have fast <code>Cursor</code>s like <code>ArrayImg</code>, <code>PlanarImg</code>, <code>CellImg</code> and for slices of <code>ArrayImg</code>. But in all other cases <code>RandomAccess</code>es are used. The <code>RandomAccess</code> are moved simultaneously along the image. The methods <code>RandomAccess.fwd(int d)</code> and <code>RandomAccess.move(long offset, int d)</code> are used, which happens to be faster than <code>setPosition(long[] pos)</code>.</p>
+</section>
+<section id="iteration-order" class="level3">
+<h3 class="anchored" data-anchor-id="iteration-order">Iteration Order</h3>
+<p>Usually flat iteration order is used. Currently the only exception happens, when all images are ‘CellImg’ of matching cell size. Than the <code>CellImg</code> specific iteration order will be used.</p>
+</section>
+<section id="byte-code-copying-for-jit-optimization" class="level3">
+<h3 class="anchored" data-anchor-id="byte-code-copying-for-jit-optimization">Byte Code Copying for JIT-Optimization</h3>
+<p>The loops that are used for image processing are usually very tight. (A few number of operations per cycle) The performance of these tight loops heavily depends on the byte-code optimizations done by Java’s just-in-time-compiler. Sadly the JIT-compiler de-optimizes byte-code that is used with different implementations of the same interface.</p>
+<p>Hence writing a loop that performs a simple image processing step, like adding two images, will runs very fast only if used with <code>ArrayImg</code>. But using it with <code>ArrayImg</code>, <code>CellImg</code> and <code>IntervalView</code> will cause the byte-code to be de-optimized and to dramatically reduce performance.</p>
+<p>LoopBuilder circumvents this problem, by loading a new copy of the class running the loop, for every new combination of images (<code>ArrayImg</code>s, <code>CellImg</code>s, etc.) Each copy of the class, has a it’s own copy of the byte-code. And these individual copies of the byte-code are individually optimized byte the JIT-compiler to the particular image classes used. Hence avoiding the de-optimization.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
