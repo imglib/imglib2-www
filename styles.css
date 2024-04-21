@@ -1,0 +1,38 @@
+/* css styles */
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.navbar-title {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.menu-text {
+/*  font-size: 24px; */
+}
+
+.alignleft {
+  text-align: left
+}
+
+/* Adjust font size for medium-sized screens */
+@media screen and (max-width: 768px) {
+  .navbar-title {
+    font-size: 20px;
+  }
+}
+
+/* Adjust font size for smaller screens */
+@media screen and (max-width: 480px) {
+  .navbar-title {
+    display: block;
+    font-size: 18px;
+    word-wrap: break-word;
+    
+  }
+}
