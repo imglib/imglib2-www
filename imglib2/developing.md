@@ -1,12 +1,7 @@
 ---
-mediawiki: Developing_ImgLib2
 title: Developing ImgLib2
 sidebar: true
-
 ---
-
-
-
 
 ## Introduction
 

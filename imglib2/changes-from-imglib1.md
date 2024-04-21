@@ -1,8 +1,6 @@
 ---
-mediawiki: Changes_from_ImgLib1_to_ImgLib2
 title: Changes from ImgLib1 to ImgLib2
 sidebar: true
-
 ---
 
 :::{.callout-note}

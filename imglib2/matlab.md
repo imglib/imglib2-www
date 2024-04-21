@@ -1,8 +1,6 @@
 ---
-mediawiki: Creating_Imglib2_images_in_MATLAB
 title: Creating Imglib2 images in MATLAB
 sidebar: true
-
 ---
 
 This page recenses experiments with creating ImgLib2 images from [MATLAB](https://imagej.net/scripting/matlab), and then calling ImgLib2 algorithm from [MATLAB](https://imagej.net/scripting/matlab). We aim first at showing how to build ImgLib2 types from [MATLAB](https://imagej.net/scripting/matlab) types, then to do that efficiently. By this we mean having to <b>share</b> a single, massive low level data piece between ImgLib2 and [MATLAB](https://imagej.net/scripting/matlab), which is not doable simply due to [MATLAB](https://imagej.net/scripting/matlab) memory model.

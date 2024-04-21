@@ -1,8 +1,5 @@
 ---
-mediawiki: ImgLib1:_iterating_through_pixel_data
 title: "ImgLib1: Iterating through pixel data"
-nav-links: true
-nav-title: Iterating Pixels
 sidebar: true
 ---
 

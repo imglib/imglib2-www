@@ -1,8 +1,6 @@
 ---
-mediawiki: ImgLib2_Algorithms
 title: ImgLib2 Algorithms
 sidebar: true
-
 ---
 
 ## Conventions for algorithm development in ImgLib2

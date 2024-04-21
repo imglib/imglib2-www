@@ -1,8 +1,5 @@
 ---
-mediawiki: Gauss_Package_ImgLib2
 title: Gauss package for ImgLib2
-nav-links: true
-nav-title: Gauss
 sidebar: true
 
 ---

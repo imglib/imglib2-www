@@ -1,8 +1,5 @@
 ---
-mediawiki: Using_ImgLib1_in_a_plugin
 title: Using ImgLib1 in an ImageJ plugin
-nav-links: true
-nav-title: ImageJ Plugins
 sidebar: true
 ---
 

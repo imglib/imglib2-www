@@ -1,8 +1,6 @@
 ---
-mediawiki: ImgLib2_FAQ
 title: ImgLib2 FAQ
 sidebar: true
-
 ---
 
 ## What *is* ImgLib2 anyway?

@@ -1,8 +1,6 @@
 ---
-mediawiki: ImgLib2_-_Accessibles
 title: ImgLib2 - Accessibles
 sidebar: true
-
 ---
 
 

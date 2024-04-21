@@ -1,8 +1,5 @@
 ---
-mediawiki: Into_ImgLib_-_Generic_Image_Processing_in_Java
 title: Into ImgLib - Generic Image Processing in Java
-nav-links: true
-nav-title: Workshop
 sidebar: true
 ---
 

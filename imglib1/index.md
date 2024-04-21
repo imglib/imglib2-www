@@ -1,8 +1,6 @@
 ---
 title: ImgLib1 (obsolete!)
 artifact: sc.fiji:legacy-imglib1
-nav-links: true
-nav-title: Introduction
 sidebar: true
 ---
 

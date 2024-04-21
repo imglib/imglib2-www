@@ -1,8 +1,6 @@
 ---
-mediawiki: ImgLib2_Documentation
 title: ImgLib2 Documentation
 sidebar: true
-
 ---
 
 1.  [ Getting Started](/libs/imglib2/getting-started)

@@ -1,11 +1,7 @@
 ---
-mediawiki: ImgLib2_-_Advanced_Programming_Workshop
 title: ImgLib2 - Advanced Programming Workshop
 sidebar: true
-
 ---
-
-
 
 {% capture  content %}
 The workshop materials linked below are outdated. Please get the most recent version from {% include github org='imglib' repo='imglib2-advanced-workshop' label='github.com/imglib/imglib2-advanced-workshop' %}.
