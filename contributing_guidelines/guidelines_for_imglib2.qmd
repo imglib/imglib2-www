@@ -2,7 +2,7 @@
 ---
 title: "Contributing Guidelines ImgLib2" 
 listing:
-  contents:    ImgLib2            # all Quarto docs in the `posts` directory will be included on your listing page
+  #contents:    ImgLib2            # all Quarto docs in the `posts` directory will be included on your listing page
   sort: ""                          # can also sort on more than one field
   type: default                     # or `default` or `table`; each type has its own set of yaml options to include
   categories: true                  # allows you to sort posts by assigned categories
