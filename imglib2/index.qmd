@@ -13,7 +13,7 @@ about:
       text: Mastodon
       href: https://fosstodon.org/@imglib2
     - icon: github
-      text: Github
+      text: GitHub
       href: https://github.com/imglib
 ---
 

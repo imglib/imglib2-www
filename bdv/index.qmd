@@ -5,7 +5,7 @@ about:
   template: solana
   links:
     - icon: github
-      text: Github
+      text: GitHub
       href: https://github.com/bigdataviewer
 format:
   html:
