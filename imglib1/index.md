@@ -1,6 +1,5 @@
 ---
-mediawiki: ImgLib1_(deprecated)
-title: ImgLib1
+title: ImgLib1 (obsolete!)
 artifact: sc.fiji:legacy-imglib1
 nav-links: true
 nav-title: Introduction

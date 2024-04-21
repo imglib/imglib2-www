@@ -65,6 +65,13 @@ website:
       contents:
         - imglib2/index.qmd
         - auto: "imglib2/*"
+    - title: "ImgLib1 (obsolete!)"
+      style: "docked"
+      background: light
+      collapse-level: 2
+      contents:
+        - imglib1/index.qmd
+        - auto: "imglib1/*"
 sidebar: false
 
 format:
