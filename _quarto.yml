@@ -7,7 +7,7 @@ website:
   navbar:
     right:
       - text: "ImgLib2"
-        href: "Imglib2main.qmd"
+        href: "imglib2.qmd"
       - text: "BDV"
         href: "BDV.qmd"
       - text: Blog
@@ -16,10 +16,10 @@ website:
         menu:
              - text: "ImgLib2 links"
                icon: "info-square"
-               href: "learning_resources/imglib2_links.qmd"
+               href: "resources/imglib2_links.qmd"
              - text: "BigDataViewer links"
                icon: "info-square"
-               href: "learning_resources/bigdataviewer_links.qmd"
+               href: "resources/bigdataviewer_links.qmd"
              - text: "ImgLib2 github"
                icon: "github"
                href: "https://github.com/imglib"
