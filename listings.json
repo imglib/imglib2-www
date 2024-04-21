@@ -1,17 +1,24 @@
 [
   {
-    "listing": "/ecosystem.html",
+    "listing": "/resources/imglib2_links.html",
     "items": [
-      "/ecosystem/Mastodon/Mastodon.html",
-      "/ecosystem/Labkit/Labkit.html",
-      "/ecosystem/TEMPLATE/TEMPLATE.html",
-      "/ecosystem/BigDataProcessor2/BigDataProcessor2.html"
+      "/resources/bigdataviewer_links.html"
     ]
   },
   {
-    "listing": "/resources/bigdataviewer_links.html",
+    "listing": "/contribute/guidelines_for_imglib2.html",
     "items": [
-      "/resources/imglib2_links.html"
+      "/contribute/guidelines_for_bigdataviewer.html",
+      "/contribute/our_code_of_conduct.html"
+    ]
+  },
+  {
+    "listing": "/ecosystem.html",
+    "items": [
+      "/ecosystem/Mastodon/Mastodon.html",
+      "/ecosystem/BigDataProcessor2/BigDataProcessor2.html",
+      "/ecosystem/Labkit/Labkit.html",
+      "/ecosystem/TEMPLATE/TEMPLATE.html"
     ]
   },
   {
@@ -29,23 +36,16 @@
     ]
   },
   {
-    "listing": "/contributing_guidelines/guidelines_for_bigdataviewer.html",
+    "listing": "/contribute/guidelines_for_bigdataviewer.html",
     "items": [
-      "/contributing_guidelines/guidelines_for_imglib2.html",
-      "/contributing_guidelines/our_code_of_conduct.html"
+      "/contribute/guidelines_for_imglib2.html",
+      "/contribute/our_code_of_conduct.html"
     ]
   },
   {
-    "listing": "/contributing_guidelines/guidelines_for_imglib2.html",
+    "listing": "/resources/bigdataviewer_links.html",
     "items": [
-      "/contributing_guidelines/our_code_of_conduct.html",
-      "/contributing_guidelines/guidelines_for_bigdataviewer.html"
-    ]
-  },
-  {
-    "listing": "/resources/imglib2_links.html",
-    "items": [
-      "/resources/bigdataviewer_links.html"
+      "/resources/imglib2_links.html"
     ]
   }
 ]

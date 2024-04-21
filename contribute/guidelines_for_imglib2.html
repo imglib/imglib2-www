@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ImgLib2 and BigDataviewer projects - ImgLib2 - Introductory Workshop</title>
+<title>ImgLib2 and BigDataviewer projects - Contributing Guidelines ImgLib2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,6 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -66,18 +102,76 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="ImgLib2 and BigDataviewer projects - ImgLib2 - Introductory Workshop">
+<meta property="og:title" content="ImgLib2 and BigDataviewer projects - Contributing Guidelines ImgLib2">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="ImgLib2 and BigDataviewer projects">
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -167,78 +261,221 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">ImgLib2 - Introductory Workshop</li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/imglib/imglib2" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-</div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">ImgLib2</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">ImgLib 'Deprecated' </span></span>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">ImgLib2 - Introductory Workshop</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/imglib2/workshop-introductory.md"><i class="bi"></i> Code</button></div></div>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <div class="quarto-title-block"><div><h1 class="title">Contributing Guidelines ImgLib2</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/contribute/guidelines_for_imglib2.qmd"><i class="bi"></i> Code</button></div></div>
+                      </div>
   </div>
+    
   
+  <div class="quarto-title-meta column-page-left">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div></div></div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
-</header>
 
 
-<p>Please download the following archive and the presentation to follow the workshop presentation:</p>
+
+<section id="contributing-guidelines" class="level1">
+<h1>Contributing Guidelines</h1>
+<p>Thank you for considering contributing to the ImgLib2 open source project! By contributing, you are helping to improve and grow the software for everyone in the community. We appreciate your time and effort.</p>
+<section id="table-of-contents" class="level2">
+<h2 class="anchored" data-anchor-id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="../media/imglib2-presentation.pdf">The presentation as PDF</a></li>
-</ul>
-<!-- -->
+<li><a href="#Governance">Governance</a></li>
+<li><ul>
+<li><a href="#code-of-conduct">Code of Conduct</a></li>
+</ul></li>
+<li><a href="#getting-started">Getting Started</a>
 <ul>
-<li><a href="../media/imglib2-introduction-src.zip">The sources for this workshop and completed examples</a></li>
-</ul>
-<!-- -->
+<li><a href="#prerequisites-and-setting-up-the-development-environment">Prerequisites &amp; Setting up the Development Environment</a></li>
+</ul></li>
+<li><a href="#making-contributions">Making Contributions</a>
 <ul>
-<li><a href="../media/imglib2-introduction.zip">the sources for this workshop, completed examples and pictures</a></li>
+<li><a href="#creating-issues">Creating Issues</a></li>
+<li><a href="#working-on-issues">Working on Issues</a></li>
+<li><a href="#submitting-pull-requests">Submitting Pull Requests</a></li>
+</ul></li>
+<li><a href="#code-guidelines">Code Guidelines</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#community">Community</a></li>
+<li><a href="#license">License</a></li>
 </ul>
+</section>
+<section id="governance" class="level2">
+<h2 class="anchored" data-anchor-id="governance">Governance</h2>
+<p>Founders: Stephan Saalfeld, Stephan Preibisch Leads: Tobias Pietzsch, Stephan Preibisch, Stephan Saalfeld – Pietzsch leads on day to day issues. Pietzsch, Preibisch and Saalfeld vote on primary decisions, with Pietzsch’s vote breaking ties. Maintainers: Tobias Pietzsch, Curtis Rueden, Stephan Preibisch, Stephan Saalfeld</p>
+<p>And the team role definitions: Founder - Created the project. Does not imply any current participation or responsibility. Lead - Has decision-making authority: timing of releases, inclusion of features, etc. Maintainer - Merges patch submissions. Cuts releases.</p>
+</section>
+<section id="code-of-conduct" class="level2">
+<h2 class="anchored" data-anchor-id="code-of-conduct">Code of Conduct</h2>
+<p>Before contributing, please review our <a href="../contribute/our_code_of_conduct.html">Code of Conduct</a>. We aim to foster an inclusive and respectful community where everyone feels safe to participate.</p>
+</section>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<p>Need a quick start? Install OpenJDK and maven:</p>
+<pre><code>sudo apt install openjdk-16-jdk maven</code></pre>
+<p>Then check out <a href="https://github.com/bigdataviewer/bigdataviewer-vistools">BigDataViewer vistools</a>:</p>
+<pre><code>git clone https://github.com/bigdataviewer/bigdataviewer-vistools.git</code></pre>
+<p>Then start JShell in the BigDataViewer vistools project directory:</p>
+<pre><code>cd bigdataviewer-vistools
+mvn compile com.github.johnpoth:jshell-maven-plugin:1.3:run</code></pre>
+<p>Then try out this code snippet:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">bdv</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">net</span><span class="op">.</span><span class="im">imglib2</span><span class="op">.</span><span class="im">position</span><span class="op">.</span><span class="im">FunctionRealRandomAccessible</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">net</span><span class="op">.</span><span class="im">imglib2</span><span class="op">.</span><span class="im">type</span><span class="op">.</span><span class="im">numeric</span><span class="op">.</span><span class="im">integer</span><span class="op">.</span><span class="im">IntType</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">net</span><span class="op">.</span><span class="im">imglib2</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Intervals</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>BdvFunctions<span class="op">.</span><span class="fu">show</span><span class="op">(</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">new</span> FunctionRealRandomAccessible<span class="op">&lt;</span>IntType<span class="op">&gt;(</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>x<span class="op">,</span> y<span class="op">)</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">double</span> v <span class="op">=</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> x<span class="op">.</span><span class="fu">getDoublePosition</span><span class="op">(</span><span class="dv">0</span><span class="op">),</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        d <span class="op">=</span> x<span class="op">.</span><span class="fu">getDoublePosition</span><span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> <span class="op">(;</span> i <span class="op">&lt;</span> <span class="dv">64</span> <span class="op">&amp;&amp;</span> v <span class="op">&lt;</span> <span class="dv">4096</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">final</span> <span class="dt">double</span> e <span class="op">=</span> c <span class="op">*</span> c <span class="op">-</span> d <span class="op">*</span> d<span class="op">;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        d <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> c <span class="op">*</span> d<span class="op">;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> e <span class="op">+</span> <span class="fl">0.2</span><span class="op">;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        d <span class="op">+=</span> <span class="fl">0.6</span><span class="op">;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        v <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span>c <span class="op">*</span> c <span class="op">+</span> d <span class="op">*</span> d<span class="op">);</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="op">++</span>i<span class="op">;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>      y<span class="op">.</span><span class="fu">set</span><span class="op">(</span>i<span class="op">);</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">},</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    IntType<span class="op">::</span><span class="kw">new</span><span class="op">),</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  Intervals<span class="op">.</span><span class="fu">createMinMax</span><span class="op">(-</span><span class="dv">1</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">),</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">""</span><span class="op">,</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  BdvOptions<span class="op">.</span><span class="fu">options</span><span class="op">().</span><span class="fu">is2D</span><span class="op">()).</span><span class="fu">setDisplayRange</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">64</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="making-contributions" class="level2">
+<h2 class="anchored" data-anchor-id="making-contributions">Making Contributions</h2>
+<p>Please see the general guidlines on how to contribute to an existing plugin or library: <a href="https://imagej.net/develop/improving-the-code">https://imagej.net/develop/improving-the-code</a></p>
+<section id="creating-issues" class="level3">
+<h3 class="anchored" data-anchor-id="creating-issues">Creating Issues</h3>
+<p>If you find a bug, have a feature request, or encounter any issues, please search our <a href="https://github.com/imglib/imglib2/issues">ImgLib2 issue tracker</a> and to see if it has already been reported. If not, feel free to create a new issue and provide as much detail as possible.</p>
+</section>
+<section id="working-on-issues" class="level3">
+<h3 class="anchored" data-anchor-id="working-on-issues">Working on Issues</h3>
+<p>If you want to work on an existing issue, please follow these steps:</p>
+<ol type="1">
+<li>Comment on the issue to express your interest in working on it.</li>
+<li>Fork the repository and create a new branch for your work.</li>
+<li>Make your changes and commit them with clear commit messages.</li>
+<li>Ensure your code follows our Code Guidelines.</li>
+<li>Update the documentation if necessary.</li>
+<li>Run tests to ensure your changes don’t break existing functionality.</li>
+</ol>
+</section>
+<section id="submitting-pull-requests" class="level3">
+<h3 class="anchored" data-anchor-id="submitting-pull-requests">Submitting Pull Requests</h3>
+<ol type="1">
+<li>Push your changes to your forked repository.</li>
+<li>Create a pull request (PR) from your branch to our main repository’s appropriate branch.</li>
+<li>Provide a detailed description of your changes in the PR.</li>
+<li>Reference any related issues using keywords (e.g., “Closes #123”).</li>
+<li>Be ready to address feedback and make necessary changes.</li>
+</ol>
+</section>
+</section>
+<section id="code-guidelines" class="level2">
+<h2 class="anchored" data-anchor-id="code-guidelines">Code Guidelines</h2>
+<ul>
+<li>Use consistent code formatting and style throughout the project.</li>
+<li>Follow naming conventions for variables, functions, and classes.</li>
+<li>Ensure your code is well-documented.</li>
+<li>Write meaningful commit messages.</li>
+</ul>
+</section>
+<section id="testing" class="level2">
+<h2 class="anchored" data-anchor-id="testing">Testing</h2>
+<p>Explain how to run tests and provide information about the testing framework used.</p>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>If your changes introduce new features or modify existing ones, please update the documentation accordingly. This includes code comments, README files, and any additional documentation files.</p>
+</section>
+<section id="community" class="level2">
+<h2 class="anchored" data-anchor-id="community">Community</h2>
+<p>Join in our community discussions on <a href="https://imagesc.zulipchat.com/">imagesc.zulipchat.com</a> for discussions. For more general questions of broad interest and announcements the <a href="https://forum.image.sc/">image.sc forum</a> can be used advantageously. We welcome your feedback and ideas.</p>
+</section>
+<section id="license" class="level2">
+<h2 class="anchored" data-anchor-id="license">License</h2>
+<p>By contributing to this project, you agree that your contributions will be licensed under the project’s license <a href="https://github.com/imglib/imglib2/blob/master/LICENSE.txt">ImgLib2 license</a> a BSD 2-Clause “Simplified” License. If you’re not comfortable with this, please consider refrain from contributing.</p>
 
 
 
-</main> <!-- /main -->
+</section>
+</section>
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1713719455433" data-listing-reading-time-sort="3" data-listing-word-count-sort="461">
+<div class="thumbnail">
+<p><a href="../contribute/guidelines_for_bigdataviewer.html" class="no-external"></a></p><a href="../contribute/guidelines_for_bigdataviewer.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="../contribute/guidelines_for_bigdataviewer.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../contribute/guidelines_for_bigdataviewer.html" class="no-external">Contributing Guidelines BigDataViewer</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../contribute/guidelines_for_bigdataviewer.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="../contribute/guidelines_for_bigdataviewer.html" class="no-external">Thank you for considering contributing to the BigDataViewer open source project! By contributing, you are helping to improve and grow the software for everyone in the…</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="../contribute/guidelines_for_bigdataviewer.html" class="no-external"></a></p><a href="../contribute/guidelines_for_bigdataviewer.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1713719455433" data-listing-reading-time-sort="4" data-listing-word-count-sort="636">
+<div class="thumbnail">
+<p><a href="../contribute/our_code_of_conduct.html" class="no-external"></a></p><a href="../contribute/our_code_of_conduct.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="../contribute/our_code_of_conduct.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../contribute/our_code_of_conduct.html" class="no-external">Contributor Covenant Code of Conduct</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../contribute/our_code_of_conduct.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="../contribute/our_code_of_conduct.html" class="no-external">We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or…</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="../contribute/our_code_of_conduct.html" class="no-external"></a></p><a href="../contribute/our_code_of_conduct.html" class="no-external">
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
