@@ -6,9 +6,9 @@ website:
   navbar:
     right:
       - text: "ImgLib2"
-        href: "imglib2.qmd"
+        href: "imglib2"
       - text: "BDV"
-        href: "bdv.qmd"
+        href: "bdv"
       - text: Blog
         href: blog.qmd
       - text: Resources
@@ -45,20 +45,26 @@ website:
   open-graph: true
   repo-url: https://github.com/imglib/imglib2-www
   site-url: https://imglib.github.io/imglib2-www
-  sidebar: 
-    collapse-level: 2
-    style: "floating"
-    search: false
-    contents: 
-      - section: "ImgLib2"
-        contents: ImageJ_Documentation/imglib2/*
-        pinned: false
-      - section: "ImgLib 'Deprecated' "
-        contents: ImageJ_Documentation/imglib1/*
-        pinned: false
-    tools:
-      - icon: github
-        href: https://github.com/imglib/imglib2
+  # Sidebar configuration using Hybrid Navigation, as described at:
+  # https://quarto.org/docs/websites/website-navigation.html#hybrid-navigation
+  # The intent is for the ImgLib2 section of the site to show all ImgLib2
+  # articles in a dedicated sidebar, and similarly, for the BigDataViewer
+  # section of the site to show all BigDataViewer articles in its sidebar.
+  sidebar:
+    - title: "BigDataViewer"
+      style: "docked"
+      background: light
+      collapse-level: 2
+      contents:
+        - bdv/index.qmd
+        - auto: "bdv/*"
+    - title: "ImgLib2"
+      style: "docked"
+      background: light
+      collapse-level: 2
+      contents:
+        - imglib2/index.qmd
+        - auto: "imglib2/*"
 sidebar: false
 
 format:

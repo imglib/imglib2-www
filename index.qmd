@@ -21,8 +21,8 @@ format:
 sidebar: false
 ---
 
-[![](logos/imglib2.png)](imglib2.qmd){fig-align="left" width=40% height=40%}
-[![](logos/bdv.png)](bdv.qmd){fig-align="right" width=40% height=40%}
+[![](logos/imglib2.png)](imglib2){fig-align="left" width=40% height=40%}
+[![](logos/bdv.png)](bdv){fig-align="right" width=40% height=40%}
 
 
 

@@ -1,6 +1,6 @@
 ---
 title: "BigDataViewer"
-image: logos/bdv.png
+image: ../logos/bdv.png
 about:
   template: solana
   links:
@@ -10,6 +10,7 @@ about:
 format:
   html:
     code-tools: false
+sidebar: true
 ---
 
  The BigDataViewer is a re-slicing browser for terabyte-sized multi-view image sequences. 
