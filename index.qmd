@@ -22,7 +22,7 @@ sidebar: false
 ---
 
 [![](logos/imglib2.png)](imglib2.qmd){fig-align="left" width=40% height=40%}
-[![](logos/bdv.png)](BDV.qmd){fig-align="right" width=40% height=40%}
+[![](logos/bdv.png)](bdv.qmd){fig-align="right" width=40% height=40%}
 
 
 
@@ -32,7 +32,7 @@ sidebar: false
 
 #### This is the joint landing page for ImgLib2 and BigDataViewer projects!
 <!-- #### Have a look here for [ImgLib2](ImgLib2.qmd)
-#### and here for [BigDataViewer](BDV.qmd) -->
+#### and here for [BigDataViewer](bdv.qmd) -->
 
 
  
