@@ -46,20 +46,21 @@ website:
   open-graph: true
   repo-url: https://github.com/imglib/imglib2-www
   site-url: https://imglib.github.io/imglib2-www
-  sidebar:
+  sidebar: 
     collapse-level: 2
     style: "floating"
     search: false
     contents: 
       - section: "ImgLib2"
         contents: ImageJ_Documentation/imglib2/*
-        pinned: true
+        pinned: false
       - section: "ImgLib 'Deprecated' "
         contents: ImageJ_Documentation/imglib1/*
-        pinned: true
+        pinned: false
     tools:
       - icon: github
         href: https://github.com/imglib/imglib2
+sidebar: false
       
 format:
   html:
@@ -69,4 +70,4 @@ format:
     code-overflow: wrap
     code-tools:
       source: repo
-sidebar: false
+

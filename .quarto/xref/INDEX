@@ -212,5 +212,14 @@
   },
   "ImageJ_Documentation/imglib2/loopbuilder.md": {
     "loopbuilder.html": "43536d9e"
+  },
+  "blog_posts/2024-04-02-n5-attribute-paths (1).ipynb": {
+    "2024-04-02-n5-attribute-paths.html": "66e3645f"
+  },
+  "blog_posts/2024-04-02-n5-attribute-paths.ipynb": {
+    "2024-04-02-n5-attribute-paths.html": "c625c0df"
+  },
+  "blog_posts/2024-04-02-n5-attribute-paths/2024-04-02-n5-attribute-paths.ipynb": {
+    "2024-04-02-n5-attribute-paths.html": "e6c38a6b"
   }
 }

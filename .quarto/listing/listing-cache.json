@@ -1,7 +1,8 @@
 {
   "listingMap": {
     "learning_resources/bigdataviewer_links.qmd": [
-      "BigDataViewer"
+      "BigDataViewer",
+      "B3049D40"
     ],
     "learning_resources/imglib2_links.qmd": [
       "ImgLib2"
