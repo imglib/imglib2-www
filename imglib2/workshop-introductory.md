@@ -7,13 +7,13 @@ sidebar: true
 
  Please download the following archive and the presentation to follow the workshop presentation:
 
--   [The presentation as PDF](/media/imglib2-presentation.pdf)
+-   [The presentation as PDF](presentation.pdf)
 
 <!-- -->
 
--   [The sources for this workshop and completed examples](/media/imglib2-introduction-src.zip)
+-   [The sources for this workshop and completed examples](imglib2-introduction-src.zip)
 
 <!-- -->
 
--   [the sources for this workshop, completed examples and pictures](/media/imglib2-introduction.zip)
+-   [the sources for this workshop, completed examples and pictures](imglib2-introduction.zip)
 

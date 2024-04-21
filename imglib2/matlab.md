@@ -24,7 +24,7 @@ Because ImgLib2 authors wrote nice static utilities, our work is relatively easy
 >> imshow(X,[]) % [[MATLAB]] display
 ```
 
-![](/media/imglib2/matlabtoimglib2-clown.png)
+![](matlabtoimglib2-clown.png)
 
 We note that the ImageJ display is rotated and flipped regarding the [MATLAB](https://imagej.net/scripting/matlab) image. This is because [MATLAB](https://imagej.net/scripting/matlab) arrays are expected to be arranged along columns, whereas Java arrays are arranged along lines. We would need to permute dimension 0 and dimension 1 to display the data in ImageJ as expected in [MATLAB](https://imagej.net/scripting/matlab).
 
@@ -83,7 +83,7 @@ This just builds an acceptable [MATLAB](https://imagej.net/scripting/matlab) uin
 >> imshow(J', [])
 ```
 
-![](/media/imglib2/matlabtoimglib2-int8.png)
+![](matlabtoimglib2-int8.png)
 
 What happened here? The gray levels are all messed up. Checking the class of the returned array gives a clue:
 
@@ -146,7 +146,7 @@ As of now ([MATLAB](https://imagej.net/scripting/matlab) 2013a), this answer see
 
 Therefore, a solution implies a change of approach. We will not use [MATLAB](https://imagej.net/scripting/matlab) matrices as data holder, but use ImgLib2 structures. We can access the raw data through ImgLib2 facilities (cursor, randomAcess, ...). The changes made are then done *in place*, and will be visible from both ImgLib2 and [MATLAB](https://imagej.net/scripting/matlab), provided the data is accessed from the ImgLib2 container. We also already saw that `ArrayImg`s wrap a native array, that we can copy to [MATLAB](https://imagej.net/scripting/matlab) shall we need to quickly get the whole dataset.
 
-With this strategy, [MATLAB](https://imagej.net/scripting/matlab) steps aside a bit, since we use ImgLib2 for basically all data manipulation. It takes the role of a scripting language like [Jython](/scripting/jython), from which you make plain call to Java classes. Duplicating the native array wrapped in an `ArrayImg` allows you still make the best our of [MATLAB](https://imagej.net/scripting/matlab) easily, but you must design a good tactic in your script to avoid these local copies to exist for too long.
+With this strategy, [MATLAB](https://imagej.net/scripting/matlab) steps aside a bit, since we use ImgLib2 for basically all data manipulation. It takes the role of a scripting language like [Jython](https://imagej.net/scripting/jython), from which you make plain call to Java classes. Duplicating the native array wrapped in an `ArrayImg` allows you still make the best our of [MATLAB](https://imagej.net/scripting/matlab) easily, but you must design a good tactic in your script to avoid these local copies to exist for too long.
 
 ## References
 

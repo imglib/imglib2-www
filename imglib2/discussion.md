@@ -156,23 +156,23 @@ RandomAccessibleIntervalView< FloatType > view4 = Views.superIntervalView( view3
 ```
 The original `img` looks like this:
 
-![](/media/imglib2/imglib2views-img.png)
+![](imglib2views-img.png)
 
 This is extended to infinity (using mirroring strategy) resulting in the unbounded `RandomAccessible view1`. A crop of `view1` looks like this:
 
-![](/media/imglib2/imglib2views-ext1.png)
+![](imglib2views-ext1.png)
 
 Then we take a subview `view2` (which is again a bounded interval)
 
-![](/media/imglib2/imglib2views-extsub1.png)
+![](imglib2views-extsub1.png)
 
 We extend that to get `view3` and take a subview `view4` which looks like this:
 
-![](/media/imglib2/imglib2views-extsub1extsub2.png)
+![](imglib2views-extsub1extsub2.png)
 
 Now assume that we want `RandomAccess` into `view4`. If we know in advance interval in which we will use the access, `view4` can possibly provide more efficient access. Consider this:
 
-![](/media/imglib2/imglib2views-extsub1extsub2regions.png)
+![](imglib2views-extsub1extsub2regions.png)
 
 If we want to access only the green region, the `RandomAccess` can fall through all the way to the original `img` without needing out-of-bounds values. We simply wrap a `RandomAccess` on `img` with a coordinate translation to the top-left corner of `view4`
 
@@ -186,7 +186,7 @@ A view hierarchy may consist of an arbitrary sequence of views that do coordinat
 
 ### Transformation Hierarchies
 
-{% include thumbnail src='/media/imglib2/imglib2-transform.png' title='Simplified visualization of the hierarchy of ImgLib2 transforms that can be reduced by concatenation. Note that the interfaces responsible for concatenation are not implemented by the transform hierarchy. Necessary access to trivial parameters in specialized transforms is implemented just once in abstract classes.'%} We thought that it might at some point be useful to have a generic way of contracting chains of transforms. The idea is to have a hierarchy of transformations, i.e., a Translation is a Rigid transform is an Affine transform, etc. The hierarchy determines which transformations can be concatenated. It would be hard to concatenate transformations from different branches in the tree. For example, it is possible to concatenate a Translation and a Rotation to a Rigid transform. However, it is not clear whether we always want to do that. So we decided that transforms should be concatenable with their descendants in the hierarchy but not the other way around. That is, a Rigid can be concatenated with a Translation (resulting in another Rigid). But a Translation can not be concatenated with a Rigid (because this would not always result in another Translation).
+{% include thumbnail src='imglib2-transform.png' title='Simplified visualization of the hierarchy of ImgLib2 transforms that can be reduced by concatenation. Note that the interfaces responsible for concatenation are not implemented by the transform hierarchy. Necessary access to trivial parameters in specialized transforms is implemented just once in abstract classes.'%} We thought that it might at some point be useful to have a generic way of contracting chains of transforms. The idea is to have a hierarchy of transformations, i.e., a Translation is a Rigid transform is an Affine transform, etc. The hierarchy determines which transformations can be concatenated. It would be hard to concatenate transformations from different branches in the tree. For example, it is possible to concatenate a Translation and a Rotation to a Rigid transform. However, it is not clear whether we always want to do that. So we decided that transforms should be concatenable with their descendants in the hierarchy but not the other way around. That is, a Rigid can be concatenated with a Translation (resulting in another Rigid). But a Translation can not be concatenated with a Rigid (because this would not always result in another Translation).
 
 Having a generic way of concatenating Rigid with all of its children means that all children must also be a Rigid. That is, we must be able to ask a Translation for its rotation matrix and so on. I was afraid, that this adds too much (implementation) overhead, but Stephan convinced me that this is the best way to go. Actually, it should be possible to make this relatively painless by having an hierarchy of abstract transform classes.
 
@@ -284,7 +284,7 @@ Tobias and Preibisch discussed today that the name `ExtendedRandomAccessibleInte
 
 It is irritating as it is actually NOT an Interval. Instead one could name it for example `OutOfBoundsView`, which is also much shorter. It is only used for this purpose and the name is self-explanatory.
 
-We also added some convenience methods in the Views class to construct them very easily, see here: [ How does ImgLib2 handle OutOfBounds?](/imglib2/changes-from-imglib1#how-does-imglib2-handle-outofbounds)
+We also added some convenience methods in the Views class to construct them very easily, see here: [ How does ImgLib2 handle OutOfBounds?](changes-from-imglib1#how-does-imglib2-handle-outofbounds)
 
 ### Should Iterator (and so Cursor) have a bck() call?
 

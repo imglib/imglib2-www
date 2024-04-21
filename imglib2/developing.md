@@ -5,7 +5,7 @@ sidebar: true
 
 ## Introduction
 
-The [ImgLib2](/imglib2) library uses [Maven](/develop/maven) to manage project dependencies. One advantage of this approach is nice integration with various development environments ([IDEs](/develop/ides)).
+The [ImgLib2](/imglib2) library uses [Maven](https://imagej.net/develop/maven) to manage project dependencies. One advantage of this approach is nice integration with various development environments ([IDEs](https://imagej.net/develop/ides)).
 
 Because people tend to have differing IDE configurations, we do not put project metadata files (e.g., `.classpath`, `.project` and `.settings` for Eclipse) into the git repository. Instead, the IDE can use Maven's `pom.xml` file directly to manage your dependencies in a better way.
 
@@ -17,7 +17,7 @@ You can clone the ImgLib2 code using Git with the URL: **<git://github.com/imgli
 
 To develop ImgLib2 in Eclipse, follow these steps:
 
-1.  [Install the Maven plugin](/develop/maven-and-eclipse)
+1.  [Install the Maven plugin](https://imagej.net/develop/maven-and-eclipse)
 2.  Choose {% include bc path='File | Import'%} from the Eclipse menu
 3.  Select "Existing Maven Projects" and click Next
 4.  For the Root Directory, specify the path where you cloned ImgLib2
