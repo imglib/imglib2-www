@@ -1,0 +1,32 @@
+---
+title: "Fiji"
+categories: [ Fiji/ImageJ, BigDataViewer, ImgLib2 ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://forum.image.sc/tag/fiji
+    - text: Source code
+      icon: github
+      href: https://github.com/fiji/
+    - text: Documentation
+      icon: book
+      href: https://imagej.net/software/fiji
+    - text: Website
+      icon: globe
+      href: https://fiji.sc/
+---
+
+::: {.alignleft}
+![](/logos/fiji.svg){width=275}
+
+[Fiji](https://fiji.sc/) is an image processing package—a "batteries-included" distribution of [ImageJ](https://imagej.net/software/imagej) and [ImageJ2](https://imagej.net/software/imagej2), bundling a lot of plugins which facilitate scientific image analysis.
+
+The ImageJ2 data model underlying Fiji is built on [ImgLib2](/imglib2), and Fiji includes the [BigDataViewer](/bdv) in its distribution, along with many plugins making use of these two technologies.
+:::
