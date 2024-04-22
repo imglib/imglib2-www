@@ -799,25 +799,200 @@
     "text": "By contributing to this project, you agree that your contributions will be licensed under the project’s license ImgLib2 license a BSD 2-Clause “Simplified” License. If you’re not comfortable with this, please consider refrain from contributing."
   },
   {
-    "objectID": "ecosystem/Fiji/Fiji.html",
-    "href": "ecosystem/Fiji/Fiji.html",
+    "objectID": "ecosystem/fiji_MaMuT/index.html",
+    "href": "ecosystem/fiji_MaMuT/index.html",
+    "title": "MaMuT",
+    "section": "",
+    "text": "Fiji plugin for the annotation of massive, multi-view data."
+  },
+  {
+    "objectID": "ecosystem/Fiji/index.html",
+    "href": "ecosystem/Fiji/index.html",
     "title": "Fiji",
     "section": "",
     "text": "Fiji is an image processing package—a “batteries-included” distribution of ImageJ and ImageJ2, bundling a lot of plugins which facilitate scientific image analysis.\nThe ImageJ2 data model underlying Fiji is built on ImgLib2, and Fiji includes the BigDataViewer in its distribution, along with many plugins making use of these two technologies."
   },
   {
-    "objectID": "ecosystem/TEMPLATE/TEMPLATE.html",
-    "href": "ecosystem/TEMPLATE/TEMPLATE.html",
-    "title": "TEMPLATE software/plugin",
+    "objectID": "ecosystem/duderstadt-lab_mars-core/index.html",
+    "href": "ecosystem/duderstadt-lab_mars-core/index.html",
+    "title": "mars-core",
     "section": "",
-    "text": "# If you have a figure/logo for project change name accordingly.\nFirst sentence will appear also on the ecosystem page…\nshort description of your software E.g. text plus Main features:\n\n1\n2\n3"
+    "text": "Molecule Archive Suite (Mars) - core data storage and processing algorithms."
   },
   {
-    "objectID": "ecosystem/Mastodon/Mastodon.html",
-    "href": "ecosystem/Mastodon/Mastodon.html",
+    "objectID": "ecosystem/kephale_point-manager/index.html",
+    "href": "ecosystem/kephale_point-manager/index.html",
+    "title": "Point manager for imglib2 and imagej projects",
+    "section": "",
+    "text": "A tool for managing imglib2 RealPoints."
+  },
+  {
+    "objectID": "ecosystem/BIOP_ijp-kheops/index.html",
+    "href": "ecosystem/BIOP_ijp-kheops/index.html",
+    "title": "BIOP Kheops Command",
+    "section": "",
+    "text": "IJ2 commands that use bio-formats to create pyramidal ome.tiff"
+  },
+  {
+    "objectID": "ecosystem/index.html",
+    "href": "ecosystem/index.html",
+    "title": "Ecosystem",
+    "section": "",
+    "text": "Below follows an non-exhaustive list of Fiji plugins and other software that uses either ImgLib2 or BigDataViewer:\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nJanelia Render Tools And Services\n\n\n\n\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhase Contrast Segmentation Toolbox (PHANTAST)\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBigDataViewer Bioformats Bridge\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRadial Symmetry\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBig Stitcher\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBigWarp plugin for Fiji\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlugin To Register Images to Atlases\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFiji plugin for context aware trainable segmentation\n\n\n\n\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelector For BigDataViewer\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPaintera\n\n\n\n\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBigDataViewer Playground Display\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmars-fx\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImagejfx\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmars-swing\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBiop Bigdataviewer Tools and Plugins\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeform\n\n\n\n\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBVV-playground\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFMI TrackMate Add-ons\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMoBIE IO\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMoBIE Fiji Viewer\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nColocalization_by_Cross_Correlation\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInteractiveWatershed\n\n\n\n\n\n\nImageJ\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKeller Lab Block file type (.klb) - BigDataViewer backend\n\n\n\n\n\n\nFiji\n\n\nBigDataViewer\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFiji Plugin PlateViewer\n\n\n\n\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBIGCAT\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nilastik imageJ modules\n\n\n\n\n\n\nImageJ\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFiji Plugin PlateViewer\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSamJ\n\n\n\n\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMultiview Simulation\n\n\n\n\n\n\nFiji\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMoBIE Fiji Viewer\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplugins/CircleSkinner_.jar\n\n\n\n\n\n\nImageJ\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPerkinElmer Operetta Importer\n\n\n\n\n\n\nImageJ\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHot-knife\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nScanCo100_BoneJ_Calibration\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nindago\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmetaseg\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMultiview Reconstruction\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nlimeseg\n\n\n\n\n\n\nImageJ\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImgLib2 Icy\n\n\n\n\n\n\nImgLib2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMTrack\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMastodon\n\n\n\n\n\n\nFiji\n\n\nImageJ\n\n\nBigDataViewer\n\n\nImgLib2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLabkit\n\n\n\n\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nPixel Classification\n\n\nSegmentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSNT\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMastodon\n\n\n\n\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPredictorOp\n\n\n\n\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpimdata Extra Settings\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBIOP Kheops Command\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLabel Editor\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPoint manager for imglib2 and imagej projects\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimglib2access\n\n\n\n\n\n\nImgLib2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmars-core\n\n\n\n\n\n\nImageJ\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSAM network inside Fiji\n\n\n\n\n\n\nImageJ\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFiji\n\n\n\n\n\n\nFiji\n\n\nImageJ\n\n\nBigDataViewer\n\n\nImgLib2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCosem-segmentation-analysis\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMaMuT\n\n\n\n\n\n\nImageJ\n\n\nFiji\n\n\nBigDataViewer\n\n\nImgLib2\n\n\nSciJava\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBigDataProcessor2\n\n\n\n\n\n\nFiji\n\n\nImageJ\n\n\nBigDataViewer\n\n\nHDF5\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "ecosystem/mastodon-sc_mastodon/index.html",
+    "href": "ecosystem/mastodon-sc_mastodon/index.html",
     "title": "Mastodon",
     "section": "",
-    "text": "Mastodon is a large-scale tracking and track-editing framework for large, multi-view images.\nThese are typically generated in the domain Development Biology or Stem-Cell Biology or Cell Biology.\nMain features:\n\nLazy-loading of TB sized image data\nAutomated cell or particle tracking\nManual curation and correction of tracking results\nManual and semi-automatic tracking"
+    "text": "Mastodon – a large-scale tracking and track-editing framework for large, multi-view images."
+  },
+  {
+    "objectID": "ecosystem/Labkit/index.html",
+    "href": "ecosystem/Labkit/index.html",
+    "title": "Labkit",
+    "section": "",
+    "text": "Labkit is a user-friendly Fiji plugin for the segmentation of microscopy image data.\nIt offers easy to use manual and automated image segmentation routines that can be rapidly applied to single- and multi-channel images as well as to timelapse movies in 2D or 3D. LABKIT is specifically designed to work efficiently on big image data and enables users of consumer laptops to conveniently work with multiple-terabyte images. This efficiency is achieved by using ImgLib2 and BigDataViewer as well as a memory efficient and fast implementation of the random forest based pixel classification algorithm as the foundation of our software. Optionally we harness the power of graphics processing units (GPU) to gain additional runtime performance. LABKIT is easy to install on virtually all laptops and workstations. Additionally, LABKIT is compatible with high performance computing (HPC) clusters for distributed processing of big image data. The ability to use pixel classifiers trained in LABKIT via the ImageJ macro language enables our users to integrate this functionality as a processing step in automated image processing workflows."
+  },
+  {
+    "objectID": "ecosystem/Kapoorlabs-paris_MTrack/index.html",
+    "href": "ecosystem/Kapoorlabs-paris_MTrack/index.html",
+    "title": "MTrack",
+    "section": "",
+    "text": "MTrack"
+  },
+  {
+    "objectID": "ecosystem/NicoKiaru_LimeSeg/index.html",
+    "href": "ecosystem/NicoKiaru_LimeSeg/index.html",
+    "title": "limeseg",
+    "section": "",
+    "text": "Lipid Membrane Segmentation method for FIJI/ImageJ. https://doi.org/10.1186/s12859-018-2471-0"
+  },
+  {
+    "objectID": "ecosystem/juglab_metaseg/index.html",
+    "href": "ecosystem/juglab_metaseg/index.html",
+    "title": "metaseg",
+    "section": "",
+    "text": "Meta-segmentation tool for joining many segmentation hypotheses created by various methods."
+  },
+  {
+    "objectID": "ecosystem/andmccall_ScanCo100BoneJcalibration/index.html",
+    "href": "ecosystem/andmccall_ScanCo100BoneJcalibration/index.html",
+    "title": "ScanCo100_BoneJ_Calibration",
+    "section": "",
+    "text": "Plugin to import ScanCo100 bone density calibration from DICOM metadata"
+  },
+  {
+    "objectID": "ecosystem/BIOP_ijp-operetta-importer/index.html",
+    "href": "ecosystem/BIOP_ijp-operetta-importer/index.html",
+    "title": "PerkinElmer Operetta Importer",
+    "section": "",
+    "text": "Hold your horses"
+  },
+  {
+    "objectID": "ecosystem/mobie_mobie-viewer-fiji/index.html",
+    "href": "ecosystem/mobie_mobie-viewer-fiji/index.html",
+    "title": "MoBIE Fiji Viewer",
+    "section": "",
+    "text": "Fiji viewer for MoBIE projects"
+  },
+  {
+    "objectID": "ecosystem/segment-anything-models-java_SAMJ/index.html",
+    "href": "ecosystem/segment-anything-models-java_SAMJ/index.html",
+    "title": "SamJ",
+    "section": "",
+    "text": "Segment Anything Model (SAM), and similar models, wrapper for Java based software."
+  },
+  {
+    "objectID": "ecosystem/ilastik_ilastik4ij/index.html",
+    "href": "ecosystem/ilastik_ilastik4ij/index.html",
+    "title": "ilastik imageJ modules",
+    "section": "",
+    "text": "These ImageJ plugins wrap ilastik workflows"
+  },
+  {
+    "objectID": "ecosystem/embl-cba_plateviewer/index.html",
+    "href": "ecosystem/embl-cba_plateviewer/index.html",
+    "title": "Fiji Plugin PlateViewer",
+    "section": "",
+    "text": "Fiji plugin for inspection of high-throughput microscopy multi-well image data"
+  },
+  {
+    "objectID": "ecosystem/mpicbg-scicomp_Interactive-H-Watershed/index.html",
+    "href": "ecosystem/mpicbg-scicomp_Interactive-H-Watershed/index.html",
+    "title": "InteractiveWatershed",
+    "section": "",
+    "text": "InteractiveWatershed"
+  },
+  {
+    "objectID": "ecosystem/mobie_mobie/index.html",
+    "href": "ecosystem/mobie_mobie/index.html",
+    "title": "MoBIE Fiji Viewer",
+    "section": "",
+    "text": "Fiji viewer for MoBIE projects"
+  },
+  {
+    "objectID": "ecosystem/fmi-faim_fmi-trackmate-addons/index.html",
+    "href": "ecosystem/fmi-faim_fmi-trackmate-addons/index.html",
+    "title": "FMI TrackMate Add-ons",
+    "section": "",
+    "text": "FMI Add-ons for TrackMate in Fiji"
+  },
+  {
+    "objectID": "ecosystem/srinituraga_cremi-deform/index.html",
+    "href": "ecosystem/srinituraga_cremi-deform/index.html",
+    "title": "Deform",
+    "section": "",
+    "text": "Deform HDF5 sources"
+  },
+  {
+    "objectID": "ecosystem/duderstadt-lab_mars-swing/index.html",
+    "href": "ecosystem/duderstadt-lab_mars-swing/index.html",
+    "title": "mars-swing",
+    "section": "",
+    "text": "Swing GUI for analysis of single-molecule TIRF and FMT data in the Structure and Dynamics of Molecular Machines research group"
+  },
+  {
+    "objectID": "ecosystem/duderstadt-lab_mars-fx/index.html",
+    "href": "ecosystem/duderstadt-lab_mars-fx/index.html",
+    "title": "mars-fx",
+    "section": "",
+    "text": "JavaFX GUI for processing single-molecule TIRF and FMT data in the Structure and Dynamics of Molecular Machines research group."
+  },
+  {
+    "objectID": "ecosystem/saalfeldlab_paintera/index.html",
+    "href": "ecosystem/saalfeldlab_paintera/index.html",
+    "title": "Paintera",
+    "section": "",
+    "text": "New Era Painting and annotation tool"
+  },
+  {
+    "objectID": "ecosystem/embl-cba_cats/index.html",
+    "href": "ecosystem/embl-cba_cats/index.html",
+    "title": "Fiji plugin for context aware trainable segmentation",
+    "section": "",
+    "text": "A plugin for context aware trainable segmentation of big image data."
+  },
+  {
+    "objectID": "ecosystem/saalfeldlab_bigwarp/index.html",
+    "href": "ecosystem/saalfeldlab_bigwarp/index.html",
+    "title": "BigWarp plugin for Fiji",
+    "section": "",
+    "text": "A tool for manual pointwise deformable registration using bigdataviewer."
+  },
+  {
+    "objectID": "ecosystem/PreibischLab_RS-FISH/index.html",
+    "href": "ecosystem/PreibischLab_RS-FISH/index.html",
+    "title": "Radial Symmetry",
+    "section": "",
+    "text": "A plugin for radial symmetry localization on smFISH (and other) images."
+  },
+  {
+    "objectID": "ecosystem/nicjac_PHANTAST-FIJI/index.html",
+    "href": "ecosystem/nicjac_PHANTAST-FIJI/index.html",
+    "title": "Phase Contrast Segmentation Toolbox (PHANTAST)",
+    "section": "",
+    "text": "The phae contrast segmentation toolbox (PHANTAST) enables high performance segmentation of phase contrast microscopy images"
   },
   {
     "objectID": "bdv/index.html",
@@ -830,22 +1005,183 @@
     ]
   },
   {
-    "objectID": "ecosystem/Labkit/Labkit.html",
-    "href": "ecosystem/Labkit/Labkit.html",
-    "title": "Labkit",
+    "objectID": "ecosystem/saalfeldlab_render/index.html",
+    "href": "ecosystem/saalfeldlab_render/index.html",
+    "title": "Janelia Render Tools And Services",
     "section": "",
-    "text": "Labkit is a user-friendly Fiji plugin for the segmentation of microscopy image data.\nIt offers easy to use manual and automated image segmentation routines that can be rapidly applied to single- and multi-channel images as well as to timelapse movies in 2D or 3D. LABKIT is specifically designed to work efficiently on big image data and enables users of consumer laptops to conveniently work with multiple-terabyte images. This efficiency is achieved by using ImgLib2 and BigDataViewer as well as a memory efficient and fast implementation of the random forest based pixel classification algorithm as the foundation of our software. Optionally we harness the power of graphics processing units (GPU) to gain additional runtime performance. LABKIT is easy to install on virtually all laptops and workstations. Additionally, LABKIT is compatible with high performance computing (HPC) clusters for distributed processing of big image data. The ability to use pixel classifiers trained in LABKIT via the ImageJ macro language enables our users to integrate this functionality as a processing step in automated image processing workflows."
+    "text": "A collection of tools and HTTP services (APIs) for rendering transformed image tiles."
   },
   {
-    "objectID": "ecosystem/index.html",
-    "href": "ecosystem/index.html",
-    "title": "Ecosystem",
+    "objectID": "ecosystem/BIOP_bigdataviewer-bioformats/index.html",
+    "href": "ecosystem/BIOP_bigdataviewer-bioformats/index.html",
+    "title": "BigDataViewer Bioformats Bridge",
     "section": "",
-    "text": "Below follows an non-exhaustive list of Fiji plugins and other software that uses either ImgLib2 or BigDataViewer:\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMastodon\n\n\n\n\n\n\nFiji/ImageJ\n\n\nBigDataViewer\n\n\nImgLib2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLabkit\n\n\n\n\n\n\nFiji/ImageJ\n\n\nBigDataViewer\n\n\nimglib2\n\n\npixelclassification\n\n\nsegmentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTEMPLATE software/plugin\n\n\n\n\n\n\nFiji/ImageJ\n\n\nBigDataViewer\n\n\nimglib2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFiji\n\n\n\n\n\n\nFiji/ImageJ\n\n\nBigDataViewer\n\n\nImgLib2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBigDataProcessor2\n\n\n\n\n\n\nFiji/ImageJ\n\n\nBigDataViewer\n\n\nhdf5\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Commands and function for opening, conversion and easy use of bioformats format into BigDataViewer"
   },
   {
-    "objectID": "ecosystem/BigDataProcessor2/BigDataProcessor2.html",
-    "href": "ecosystem/BigDataProcessor2/BigDataProcessor2.html",
+    "objectID": "ecosystem/PreibischLab_BigStitcher/index.html",
+    "href": "ecosystem/PreibischLab_BigStitcher/index.html",
+    "title": "Big Stitcher",
+    "section": "",
+    "text": "Multiview stitching of large datasets."
+  },
+  {
+    "objectID": "ecosystem/BIOP_ijp-imagetoatlas/index.html",
+    "href": "ecosystem/BIOP_ijp-imagetoatlas/index.html",
+    "title": "Plugin To Register Images to Atlases",
+    "section": "",
+    "text": "Collection of tools to register images to atlases in Fiji."
+  },
+  {
+    "objectID": "ecosystem/BIOP_bigdataviewer-selector/index.html",
+    "href": "ecosystem/BIOP_bigdataviewer-selector/index.html",
+    "title": "Selector For BigDataViewer",
+    "section": "",
+    "text": "Selector Behaviours for BigDataViewer"
+  },
+  {
+    "objectID": "ecosystem/BIOP_bigdataviewer-playground-display/index.html",
+    "href": "ecosystem/BIOP_bigdataviewer-playground-display/index.html",
+    "title": "BigDataViewer Playground Display",
+    "section": "",
+    "text": "Display (metadata and projectors) for BigDataViewer Playground."
+  },
+  {
+    "objectID": "ecosystem/BIOP_bigdataviewer-biop-tools/index.html",
+    "href": "ecosystem/BIOP_bigdataviewer-biop-tools/index.html",
+    "title": "Biop Bigdataviewer Tools and Plugins",
+    "section": "",
+    "text": "Big data viewer tools BIOP - EPFL"
+  },
+  {
+    "objectID": "ecosystem/UU-cellbiology_bvv-playground/index.html",
+    "href": "ecosystem/UU-cellbiology_bvv-playground/index.html",
+    "title": "BVV-playground",
+    "section": "",
+    "text": "Volume rendering of bdv datasets with gamma and transparency option"
+  },
+  {
+    "objectID": "ecosystem/mobie_mobie-io/index.html",
+    "href": "ecosystem/mobie_mobie-io/index.html",
+    "title": "MoBIE IO",
+    "section": "",
+    "text": "Readers and writers for image data in MoBIE projects"
+  },
+  {
+    "objectID": "ecosystem/andmccall_Colocalization_by_Cross_Correlation/index.html",
+    "href": "ecosystem/andmccall_Colocalization_by_Cross_Correlation/index.html",
+    "title": "Colocalization_by_Cross_Correlation",
+    "section": "",
+    "text": "ImageJ plugin for colocalization"
+  },
+  {
+    "objectID": "ecosystem/bhoeckendorf_klb-bdv/index.html",
+    "href": "ecosystem/bhoeckendorf_klb-bdv/index.html",
+    "title": "Keller Lab Block file type (.klb) - BigDataViewer backend",
+    "section": "",
+    "text": "The KLB is a file format developed at the Keller Lab at Janelia Research Campus to efficiently store and retrieve large 5D images (&gt;4GB) using lossless compression. The format tries to combine the JPEG2000 lossless compression levels with the block flexibility offered by HDF5 to access arbitrary regions of interest. Inspired by Parallel BZIP2, a common Linux command, we partition images into blocks and each block is compressed in parallel using the Bzip2. Both reading and writing are parallelized and scale linearly with the number of cores making it much faster than JPEG2000 and HDF5 in common multi-core machines."
+  },
+  {
+    "objectID": "ecosystem/saalfeldlab_bigcat/index.html",
+    "href": "ecosystem/saalfeldlab_bigcat/index.html",
+    "title": "BIGCAT",
+    "section": "",
+    "text": "Collaborative volume annotation and segmentation with BigDataViewer"
+  },
+  {
+    "objectID": "ecosystem/sbesson_fiji-plugin-plateViewer/index.html",
+    "href": "ecosystem/sbesson_fiji-plugin-plateViewer/index.html",
+    "title": "Fiji Plugin PlateViewer",
+    "section": "",
+    "text": "TODO"
+  },
+  {
+    "objectID": "ecosystem/PreibischLab_multiview-simulation/index.html",
+    "href": "ecosystem/PreibischLab_multiview-simulation/index.html",
+    "title": "Multiview Simulation",
+    "section": "",
+    "text": "Library for simulating a multi-view acquisition including attenuation, convolution, reduced sampling and poission noise."
+  },
+  {
+    "objectID": "ecosystem/tinevez_CircleSkinner/index.html",
+    "href": "ecosystem/tinevez_CircleSkinner/index.html",
+    "title": "plugins/CircleSkinner_.jar",
+    "section": "",
+    "text": "A Fiji plugin for the automated detection and quantification of circular structure in images."
+  },
+  {
+    "objectID": "ecosystem/TrNdy_indago/index.html",
+    "href": "ecosystem/TrNdy_indago/index.html",
+    "title": "indago",
+    "section": "",
+    "text": "indigare (ital.) - investigate."
+  },
+  {
+    "objectID": "ecosystem/PreibischLab_multiview-reconstruction/index.html",
+    "href": "ecosystem/PreibischLab_multiview-reconstruction/index.html",
+    "title": "Multiview Reconstruction",
+    "section": "",
+    "text": "Software for the reconstruction of multi-view microscopic acquisitions like Selective Plane Illumination Microscopy (SPIM) Data."
+  },
+  {
+    "objectID": "ecosystem/tinevez_imglib2-icy/index.html",
+    "href": "ecosystem/tinevez_imglib2-icy/index.html",
+    "title": "ImgLib2 Icy",
+    "section": "",
+    "text": "ImgLib2 wrappers for Icy sequences."
+  },
+  {
+    "objectID": "ecosystem/Mastodon/index.html",
+    "href": "ecosystem/Mastodon/index.html",
+    "title": "Mastodon",
+    "section": "",
+    "text": "Mastodon is a large-scale tracking and track-editing framework for large, multi-view images.\nThese are typically generated in the domain Development Biology or Stem-Cell Biology or Cell Biology.\nMain features:\n\nLazy-loading of TB sized image data\nAutomated cell or particle tracking\nManual curation and correction of tracking results\nManual and semi-automatic tracking"
+  },
+  {
+    "objectID": "ecosystem/morphonets_SNT/index.html",
+    "href": "ecosystem/morphonets_SNT/index.html",
+    "title": "SNT",
+    "section": "",
+    "text": "The ImageJ framework for quantitative neuroanatomy"
+  },
+  {
+    "objectID": "ecosystem/bioimage-io_PredictorOp/index.html",
+    "href": "ecosystem/bioimage-io_PredictorOp/index.html",
+    "title": "PredictorOp",
+    "section": "",
+    "text": "Model runner demo for ImgLib2 consumers."
+  },
+  {
+    "objectID": "ecosystem/BIOP_bigdataviewer-spimdata-extras/index.html",
+    "href": "ecosystem/BIOP_bigdataviewer-spimdata-extras/index.html",
+    "title": "Spimdata Extra Settings",
+    "section": "",
+    "text": "Repo containing extra settings that can be stored in spimdata file format"
+  },
+  {
+    "objectID": "ecosystem/juglab_LabelEditor/index.html",
+    "href": "ecosystem/juglab_LabelEditor/index.html",
+    "title": "Label Editor",
+    "section": "",
+    "text": "UI component for image segmentation label comparison and selection"
+  },
+  {
+    "objectID": "ecosystem/axtimwalde_ImgLib2Access/index.html",
+    "href": "ecosystem/axtimwalde_ImgLib2Access/index.html",
+    "title": "imglib2access",
+    "section": "",
+    "text": "Simplified access to ImgLib2 pixel data for teaching purposes"
+  },
+  {
+    "objectID": "ecosystem/segment-anything-models-java_SAMJ-IJ/index.html",
+    "href": "ecosystem/segment-anything-models-java_SAMJ-IJ/index.html",
+    "title": "SAM network inside Fiji",
+    "section": "",
+    "text": "A Fiji plugin for interactive segmentation using the SAM network"
+  },
+  {
+    "objectID": "ecosystem/BigDataProcessor2/index.html",
+    "href": "ecosystem/BigDataProcessor2/index.html",
     "title": "BigDataProcessor2",
     "section": "",
     "text": "BigDataProcessor2 (BDP2) is a Fiji plugin for interactive processing of TB-sized image data.\nBDP2 uses BigDataViewer for rendering and the ImgLib2 library for image processing. The BDP2 is the new version of BigDataProcessor1.\nMain features:\n\nlazy-loading of TB sized image data\nlazy-processing of TB sized image data\nImageJ macro scripting support"

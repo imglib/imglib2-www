@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ImgLib2 and BigDataViewer projects - Labkit</title>
+<title>ImgLib2 and BigDataViewer projects - Keller Lab Block file type (.klb) - BigDataViewer backend</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="ImgLib2 and BigDataViewer projects - Labkit">
+<meta property="og:title" content="ImgLib2 and BigDataViewer projects - Keller Lab Block file type (.klb) - BigDataViewer backend">
 <meta property="og:site_name" content="ImgLib2 and BigDataViewer projects">
 </head>
 
@@ -170,13 +170,11 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Labkit</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/ecosystem/Labkit/Labkit.qmd"><i class="bi"></i> Code</button></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">Keller Lab Block file type (.klb) - BigDataViewer backend</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/ecosystem/bhoeckendorf_klb-bdv/index.qmd"><i class="bi"></i> Code</button></div></div>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Fiji/ImageJ</div>
+                <div class="quarto-category">Fiji</div>
                 <div class="quarto-category">BigDataViewer</div>
-                <div class="quarto-category">imglib2</div>
-                <div class="quarto-category">pixelclassification</div>
-                <div class="quarto-category">segmentation</div>
+                <div class="quarto-category">SciJava</div>
               </div>
                   </div>
   </div>
@@ -190,34 +188,24 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-about-jolla content">
  <main class="content quarto-banner-title-block" id="quarto-document-content">
 <div class="alignleft">
-<p><img src="Labkit_UserView.jpg" class="img-fluid" width="575"></p>
-<p>Labkit is a user-friendly Fiji plugin for the segmentation of microscopy image data.</p>
-<p>It offers easy to use manual and automated image segmentation routines that can be rapidly applied to single- and multi-channel images as well as to timelapse movies in 2D or 3D. LABKIT is specifically designed to work efficiently on big image data and enables users of consumer laptops to conveniently work with multiple-terabyte images. This efficiency is achieved by using ImgLib2 and BigDataViewer as well as a memory efficient and fast implementation of the random forest based pixel classification algorithm as the foundation of our software. Optionally we harness the power of graphics processing units (GPU) to gain additional runtime performance. LABKIT is easy to install on virtually all laptops and workstations. Additionally, LABKIT is compatible with high performance computing (HPC) clusters for distributed processing of big image data. The ability to use pixel classifiers trained in LABKIT via the ImageJ macro language enables our users to integrate this functionality as a processing step in automated image processing workflows.</p>
+<p>The KLB is a file format developed at the Keller Lab at Janelia Research Campus to efficiently store and retrieve large 5D images (&gt;4GB) using lossless compression. The format tries to combine the JPEG2000 lossless compression levels with the block flexibility offered by HDF5 to access arbitrary regions of interest. Inspired by Parallel BZIP2, a common Linux command, we partition images into blocks and each block is compressed in parallel using the Bzip2. Both reading and writing are parallelized and scale linearly with the number of cores making it much faster than JPEG2000 and HDF5 in common multi-core machines.</p>
 </div>
 
 
 </main> 
   <hr class="about-sep">
    <div class="about-links">
-  <a href="mailto:arzt@mpi-cbg.de" class="about-link" rel="" target="">
+  <a href="https://forum.image.sc/" class="about-link" rel="" target="">
     <i class="bi bi-envelope"></i>
      <span class="about-link-text">Contact</span>
   </a>
-  <a href="https://imagej.net/plugins/labkit/" class="about-link" rel="" target="">
+  <a href="https://github.com/bhoeckendorf/klb-bdv" class="about-link" rel="" target="">
     <i class="bi bi-archive"></i>
      <span class="about-link-text">Documentation</span>
   </a>
-  <a href="https://doi.org/10.3389/fcomp.2022.777728" class="about-link" rel="" target="">
-    <i class="bi bi-book"></i>
-     <span class="about-link-text">Publication</span>
-  </a>
-  <a href="https://github.com/juglab/labkit-ui" class="about-link" rel="" target="">
+  <a href="https://github.com/bhoeckendorf/klb-bdv" class="about-link" rel="" target="">
     <i class="bi bi-github"></i>
      <span class="about-link-text">GitHub</span>
-  </a>
-  <a href="https://imagej.net/plugins/labkit/#tutorials" class="about-link" rel="" target="">
-    <i class="bi bi-youtube"></i>
-     <span class="about-link-text">Tutorial</span>
   </a>
 </div>
 </div>
