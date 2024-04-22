@@ -1,6 +1,6 @@
 ---
 title: "Labkit"
-categories: [ Fiji/ImageJ , BigDataViewer, imglib2, pixelclassification, segmentation]   # Add categories for your project"  
+categories: [ Fiji, BigDataViewer, ImgLib2, Pixel Classification, Segmentation ]
 execute:
   echo: false
 about: 

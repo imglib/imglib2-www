@@ -1,6 +1,6 @@
 ---
 title: "Fiji"
-categories: [ Fiji/ImageJ, BigDataViewer, ImgLib2 ]
+categories: [ Fiji, ImageJ, BigDataViewer, ImgLib2 ]
 execute:
   echo: false
 about:

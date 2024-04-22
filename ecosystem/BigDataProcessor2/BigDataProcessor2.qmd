@@ -1,6 +1,6 @@
 ---
 title: "BigDataProcessor2"
-categories: [ Fiji/ImageJ , BigDataViewer, hdf5] 
+categories: [ Fiji, ImageJ, BigDataViewer, HDF5]
 execute:
   echo: false
 about: 
