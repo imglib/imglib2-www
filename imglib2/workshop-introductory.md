@@ -7,7 +7,7 @@ sidebar: true
 
  Please download the following archive and the presentation to follow the workshop presentation:
 
--   [The presentation as PDF](presentation.pdf)
+-   [The presentation as PDF](imglib2-presentation.pdf)
 
 <!-- -->
 

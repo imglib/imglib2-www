@@ -25,11 +25,11 @@ sidebar: true
 <!-- -->
 
 -   Algorithms will be split into Maven subpackages where each subpackage can manage its own dependencies and licenses
-    -   [ Gauss](/Gauss_Package_ImgLib2)
-    -   [ FFT](FFT_ImgLib2)
-    -   [ FourierConvolution](FourierConvolution_ImgLib2)
-    -   [ IntegralImg](IntegralImg_ImgLib2)
-    -   [ ScaleSpace](ScaleSpace_ImgLib2)
+    -   [ Gauss](https://imagej.net/libs/imglib2/gauss-package)
+    -   [ FFT](https://imagej.net/libs/imglib2/FFT_ImgLib2)
+    -   [ FourierConvolution](https://imagej.net/libs/imglib2/FourierConvolution_ImgLib2)
+    -   [ IntegralImg](https://imagej.net/libs/imglib2/IntegralImg_ImgLib2)
+    -   [ ScaleSpace](https://imagej.net/libs/imglib2/ScaleSpace_ImgLib2)
     -   ...
 
 <!-- -->

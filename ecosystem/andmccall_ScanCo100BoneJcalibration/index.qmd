@@ -1,0 +1,28 @@
+---
+title: "ScanCo100_BoneJ_Calibration"
+categories: [ ImageJ, Fiji, ImgLib2, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://forum.image.sc/tags/imagej
+    - text: Documentation
+      icon: archive
+      href: https://github.com/andmccall/ScanCo100BoneJcalibration
+    - text: GitHub
+      icon: github
+      href: https://github.com/andmccall/ScanCo100BoneJcalibration
+
+---
+
+::: {.alignleft}
+
+Plugin to import ScanCo100 bone density calibration from DICOM metadata
+
+:::

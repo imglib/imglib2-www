@@ -1,5 +1,5 @@
 ---
-title: "[UNKNOWN]"
+title: "Hot-knife"
 categories: [ ImageJ, Fiji, BigDataViewer, ImgLib2, SciJava ]
 execute:
   echo: false
@@ -14,10 +14,10 @@ about:
       href: https://github.com/
     - text: Documentation
       icon: archive
-      href: https://github.com/
+      href: https://github.com/saalfeldlab/hot-knife
     - text: GitHub
       icon: github
-      href: https://github.com/
+      href: https://github.com/saalfeldlab/hot-knife
 
 ---
 

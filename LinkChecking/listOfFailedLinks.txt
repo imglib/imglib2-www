@@ -1,0 +1,82 @@
+LinkChecker 10.4.0
+Copyright (C) 2000-2016 Bastian Kleineidam, 2010-2023 LinkChecker Authors
+LinkChecker comes with ABSOLUTELY NO WARRANTY!
+This is free software, and you are welcome to redistribute it under
+certain conditions. Look at the file `COPYING' within this distribution.
+Read the documentation at https://linkchecker.github.io/linkchecker/
+Write comments and bugs to https://github.com/linkchecker/linkchecker/issues
+
+Start checking at 2024-04-22 11:05:05+002
+
+URL        `FFT_ImgLib2'
+Name       `FFT'
+Parent URL https://imglib.github.io/imglib2-www/imglib2/algorithms.html, line 355, col 5
+Real URL   https://imglib.github.io/imglib2-www/imglib2/FFT_ImgLib2
+Check time 3.195 seconds
+Size       5KB
+Result     Error: 404 Not Found
+
+URL        `FourierConvolution_ImgLib2'
+Name       `FourierConvolution'
+Parent URL https://imglib.github.io/imglib2-www/imglib2/algorithms.html, line 356, col 5
+Real URL   https://imglib.github.io/imglib2-www/imglib2/FourierConvolution_ImgLib2
+Check time 3.270 seconds
+Size       5KB
+Result     Error: 404 Not Found
+
+URL        `IntegralImg_ImgLib2'
+Name       `IntegralImg'
+Parent URL https://imglib.github.io/imglib2-www/imglib2/algorithms.html, line 357, col 5
+Real URL   https://imglib.github.io/imglib2-www/imglib2/IntegralImg_ImgLib2
+Check time 3.404 seconds
+Size       5KB
+Result     Error: 404 Not Found
+
+URL        `ScaleSpace_ImgLib2'
+Name       `ScaleSpace'
+Parent URL https://imglib.github.io/imglib2-www/imglib2/algorithms.html, line 358, col 5
+Real URL   https://imglib.github.io/imglib2-www/imglib2/ScaleSpace_ImgLib2
+Check time 3.353 seconds
+Size       5KB
+Result     Error: 404 Not Found
+
+URL        `Gauss_Package_ImgLib2'
+Name       `here'
+Parent URL https://imglib.github.io/imglib2-www/imglib2/examples.html, line 504, col 349
+Real URL   https://imglib.github.io/imglib2-www/imglib2/Gauss_Package_ImgLib2
+Check time 3.728 seconds
+Size       5KB
+Result     Error: 404 Not Found
+
+URL        `nds.jpg'
+Parent URL https://imglib.github.io/imglib2-www/imglib2/examples.html, line 526, col 4
+Real URL   https://imglib.github.io/imglib2-www/imglib2/nds.jpg
+Check time 3.480 seconds
+Size       5KB
+Result     Error: 404 Not Found
+
+URL        `fourier.jpg'
+Parent URL https://imglib.github.io/imglib2-www/imglib2/examples.html, line 576, col 4
+Real URL   https://imglib.github.io/imglib2-www/imglib2/fourier.jpg
+Check time 3.385 seconds
+Size       5KB
+Result     Error: 404 Not Found
+
+URL        `interpolation.jpg'
+Parent URL https://imglib.github.io/imglib2-www/imglib2/examples.html, line 590, col 4
+Real URL   https://imglib.github.io/imglib2-www/imglib2/interpolation.jpg
+Check time 3.280 seconds
+Size       5KB
+Result     Error: 404 Not Found
+ 
+ 
+Size       5KB
+Result     Error: 404 Not Found
+
+Statistics:
+Downloaded: 1.64MB.
+Content types: 27 image, 43 text, 0 video, 0 audio, 0 application, 0 mail and 128 other.
+URL lengths: min=16, max=200, avg=63.
+
+That's it. 198 links in 198 URLs checked. 0 warnings found. 11 errors found.
+Stopped checking at 2024-04-22 11:05:29+002 (24 seconds)

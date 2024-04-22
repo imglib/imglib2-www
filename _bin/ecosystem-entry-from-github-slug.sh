@@ -1,7 +1,7 @@
 #!/bin/sh
 
-set -e
-
+#set -e
+#set -x 
 dir=$(cd "$(dirname "$0")" && pwd)
 cd "$dir/.."
 

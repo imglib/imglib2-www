@@ -1,5 +1,5 @@
 ---
-title: "[UNKNOWN]"
+title: "Imagejfx"
 categories: [ ImageJ, Fiji, ImgLib2, SciJava ]
 execute:
   echo: false
