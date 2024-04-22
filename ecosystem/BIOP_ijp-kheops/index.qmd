@@ -1,0 +1,28 @@
+---
+title: "BIOP Kheops Command"
+categories: [ ImageJ, Fiji, BigDataViewer, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://forum.image.sc/
+    - text: Documentation
+      icon: archive
+      href: http://biop.epfl.ch
+    - text: GitHub
+      icon: github
+      href: https://github.com/BIOP/ijp-kheops
+
+---
+
+::: {.alignleft}
+
+IJ2 commands that use bio-formats to create pyramidal ome.tiff
+
+:::

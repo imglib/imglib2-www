@@ -1,0 +1,28 @@
+---
+title: "mars-core"
+categories: [ ImageJ, ImgLib2, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://wiki-laue.biochem.mpg.de
+    - text: Documentation
+      icon: archive
+      href: http://biochem.mpg.de/duderstadt/
+    - text: GitHub
+      icon: github
+      href: https://github.com/duderstadt-lab/mars-core
+
+---
+
+::: {.alignleft}
+
+Molecule Archive Suite (Mars) - core data storage and processing algorithms.
+
+:::

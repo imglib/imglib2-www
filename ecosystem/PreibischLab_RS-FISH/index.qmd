@@ -1,0 +1,28 @@
+---
+title: "Radial Symmetry"
+categories: [ ImageJ, Fiji, BigDataViewer, ImgLib2, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://forum.image.sc/
+    - text: Documentation
+      icon: archive
+      href: https://imagej.net/plugins/radial-symmetry
+    - text: GitHub
+      icon: github
+      href: https://github.com/PreibischLab/RS-FISH
+
+---
+
+::: {.alignleft}
+
+A plugin for radial symmetry localization on smFISH (and other) images.
+
+:::

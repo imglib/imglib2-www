@@ -1,0 +1,28 @@
+---
+title: "Label Editor"
+categories: [ ImageJ, Fiji, BigDataViewer, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://github.com/
+    - text: Documentation
+      icon: archive
+      href: https:github.com/juglab/LabelEditor
+    - text: GitHub
+      icon: github
+      href: https://github.com/juglab/LabelEditor
+
+---
+
+::: {.alignleft}
+
+UI component for image segmentation label comparison and selection
+
+:::

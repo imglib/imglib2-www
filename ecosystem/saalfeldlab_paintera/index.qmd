@@ -1,0 +1,28 @@
+---
+title: "Paintera"
+categories: [ Fiji, BigDataViewer, ImgLib2, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: http://forum.imagej.net/
+    - text: Documentation
+      icon: archive
+      href: https://github.com/saalfeldlab/paintera
+    - text: GitHub
+      icon: github
+      href: https://github.com/saalfeldlab/paintera
+
+---
+
+::: {.alignleft}
+
+New Era Painting and annotation tool
+
+:::

@@ -1,0 +1,28 @@
+---
+title: "MoBIE IO"
+categories: [ ImageJ, Fiji, BigDataViewer, ImgLib2, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://forum.image.sc/
+    - text: Documentation
+      icon: archive
+      href: https://github.com/mobie/mobie-io
+    - text: GitHub
+      icon: github
+      href: https://github.com/mobie/mobie-io
+
+---
+
+::: {.alignleft}
+
+Readers and writers for image data in MoBIE projects
+
+:::

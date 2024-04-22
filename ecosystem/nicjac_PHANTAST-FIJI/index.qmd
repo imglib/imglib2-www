@@ -1,0 +1,28 @@
+---
+title: "Phase Contrast Segmentation Toolbox (PHANTAST)"
+categories: [ ImageJ, Fiji, ImgLib2, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://github.com/
+    - text: Documentation
+      icon: archive
+      href: http://phantast.googlecode.com
+    - text: GitHub
+      icon: github
+      href: https://github.com/nicjac/PHANTAST-FIJI
+
+---
+
+::: {.alignleft}
+
+The phae contrast segmentation toolbox (PHANTAST) enables high performance segmentation of phase contrast microscopy images
+
+:::

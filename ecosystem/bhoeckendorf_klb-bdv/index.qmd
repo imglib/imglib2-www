@@ -1,0 +1,34 @@
+---
+title: "Keller Lab Block file type (.klb) - BigDataViewer backend"
+categories: [ Fiji, BigDataViewer, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://forum.image.sc/
+    - text: Documentation
+      icon: archive
+      href: https://github.com/bhoeckendorf/klb-bdv
+    - text: GitHub
+      icon: github
+      href: https://github.com/bhoeckendorf/klb-bdv
+
+---
+
+::: {.alignleft}
+
+The KLB is a file format developed at the Keller Lab at Janelia Research Campus to efficiently store
+		and retrieve large 5D images (&gt;4GB) using lossless compression. The format tries to combine the JPEG2000
+		lossless compression levels with the block flexibility offered by HDF5 to access arbitrary regions of interest.
+		Inspired by Parallel BZIP2, a common Linux command, we partition images into blocks and each block is compressed
+		in parallel using the Bzip2. Both reading and writing are parallelized and scale linearly with the number of
+		cores making it much faster than JPEG2000 and HDF5 in common multi-core machines.
+	
+
+:::

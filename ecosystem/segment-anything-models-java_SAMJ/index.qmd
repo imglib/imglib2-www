@@ -1,0 +1,28 @@
+---
+title: "SamJ"
+categories: [ ImgLib2, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://forum.image.sc/tag/samj
+    - text: Documentation
+      icon: archive
+      href: https://github.com/segment-anything-models-java/SAMJ
+    - text: GitHub
+      icon: github
+      href: https://github.com/segment-anything-models-java/SAMJ
+
+---
+
+::: {.alignleft}
+
+Segment Anything Model (SAM), and similar models, wrapper for Java based software.
+
+:::

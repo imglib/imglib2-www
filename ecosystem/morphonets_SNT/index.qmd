@@ -1,0 +1,28 @@
+---
+title: "SNT"
+categories: [ ImageJ, Fiji, ImgLib2, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://forum.image.sc/tag/snt
+    - text: Documentation
+      icon: archive
+      href: https://imagej.net/plugins/snt
+    - text: GitHub
+      icon: github
+      href: https://github.com/morphonets/SNT
+
+---
+
+::: {.alignleft}
+
+The ImageJ framework for quantitative neuroanatomy
+
+:::

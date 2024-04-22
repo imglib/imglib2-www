@@ -1,0 +1,28 @@
+---
+title: "limeseg"
+categories: [ ImageJ, ImgLib2, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://forum.image.sc/tags/LimeSeg
+    - text: Documentation
+      icon: archive
+      href: https://imagej.github.io/LimeSeg
+    - text: GitHub
+      icon: github
+      href: https://github.com/NicoKiaru/LimeSeg
+
+---
+
+::: {.alignleft}
+
+Lipid Membrane Segmentation method for FIJI/ImageJ. https://doi.org/10.1186/s12859-018-2471-0 
+
+:::

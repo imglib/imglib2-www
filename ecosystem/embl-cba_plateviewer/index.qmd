@@ -1,0 +1,28 @@
+---
+title: "Fiji Plugin PlateViewer"
+categories: [ Fiji, BigDataViewer, ImgLib2, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: http://forum.imagej.net/
+    - text: Documentation
+      icon: archive
+      href: https://github.com/embl-cba/plateviewer
+    - text: GitHub
+      icon: github
+      href: https://github.com/embl-cba/plateviewer
+
+---
+
+::: {.alignleft}
+
+Fiji plugin for inspection of high-throughput microscopy multi-well image data
+
+:::

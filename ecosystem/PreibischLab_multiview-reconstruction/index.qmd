@@ -1,0 +1,29 @@
+---
+title: "Multiview Reconstruction"
+categories: [ ImageJ, Fiji, BigDataViewer, ImgLib2, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://forum.image.sc/tag/multiview-reconstruction
+    - text: Documentation
+      icon: archive
+      href: https://github.com/PreibischLab/multiview-reconstruction
+    - text: GitHub
+      icon: github
+      href: https://github.com/PreibischLab/multiview-reconstruction
+
+---
+
+::: {.alignleft}
+
+Software for the reconstruction of multi-view microscopic acquisitions
+like Selective Plane Illumination Microscopy (SPIM) Data.
+
+:::

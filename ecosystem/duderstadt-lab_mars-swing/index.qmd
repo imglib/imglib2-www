@@ -1,0 +1,28 @@
+---
+title: "mars-swing"
+categories: [ ImageJ, Fiji, BigDataViewer, ImgLib2, SciJava ]
+execute:
+  echo: false
+about:
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - text: Contact
+      icon: envelope
+      href: https://wiki-laue.biochem.mpg.de
+    - text: Documentation
+      icon: archive
+      href: http://biochem.mpg.de/duderstadt/
+    - text: GitHub
+      icon: github
+      href: https://github.com/duderstadt-lab/mars-swing
+
+---
+
+::: {.alignleft}
+
+Swing GUI for analysis of single-molecule TIRF and FMT data in the Structure and Dynamics of Molecular Machines research group
+
+:::
