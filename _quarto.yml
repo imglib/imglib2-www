@@ -27,7 +27,7 @@ website:
                href: "https://github.com/bigdataviewer"
 
       - text: Ecosystem
-        href: ecosystem.qmd
+        href: ecosystem/index.qmd
       - text: Contributing Guidelines
         menu:
              - text: "Guidelines for ImgLib2"
