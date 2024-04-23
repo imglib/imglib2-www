@@ -880,7 +880,7 @@
     "href": "ecosystem/andmccall_ScanCo100BoneJcalibration/index.html",
     "title": "ScanCo100_BoneJ_Calibration",
     "section": "",
-    "text": "Plugin to import ScanCo100 bone density calibration from DICOM metadata"
+    "text": "Plugin to import ScanCo100 bone density calibration from DICOM metadata. May work with similar metadata from other scanners, but this is untested. Available at ImageJ update site: https://sites.imagej.net/UBoiaf-microct/"
   },
   {
     "objectID": "ecosystem/BIOP_ijp-operetta-importer/index.html",
@@ -1072,7 +1072,7 @@
     "href": "ecosystem/andmccall_Colocalization_by_Cross_Correlation/index.html",
     "title": "Colocalization_by_Cross_Correlation",
     "section": "",
-    "text": "ImageJ plugin for colocalization"
+    "text": "An ImageJ plugin for spatial correlation/colocalization analysis that is more compatible with super-resolution images than traditional pixel-wise colocalization algorithms. Has several benefits over pixel-wise algorithms:\n\nRemoves the requirement for overlap of the signals, instead allowing for spatial correlation to be measured across a distance.\nResults directly improve with improved image quality and resolution. In contrast, pixel-wise methods must be correctly interpreted using the image resolution for context, a challenging prospect for general users.\nDesigned to be simple to execute, taking only two single-channel images, a mask of the region to be analyzed, and a few utility options as input."
   },
   {
     "objectID": "ecosystem/bhoeckendorf_klb-bdv/index.html",

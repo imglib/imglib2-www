@@ -189,14 +189,19 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-about-jolla content">
  <main class="content quarto-banner-title-block" id="quarto-document-content">
 <div class="alignleft">
-<p>ImageJ plugin for colocalization</p>
+<p>An ImageJ plugin for spatial correlation/colocalization analysis that is more compatible with super-resolution images than traditional pixel-wise colocalization algorithms. Has several benefits over pixel-wise algorithms:</p>
+<ul>
+<li>Removes the requirement for overlap of the signals, instead allowing for spatial correlation to be measured across a distance.</li>
+<li>Results directly improve with improved image quality and resolution. In contrast, pixel-wise methods must be correctly interpreted using the image resolution for context, a challenging prospect for general users.</li>
+<li>Designed to be simple to execute, taking only two single-channel images, a mask of the region to be analyzed, and a few utility options as input.</li>
+</ul>
 </div>
 
 
 </main> 
   <hr class="about-sep">
    <div class="about-links">
-  <a href="https://forum.image.sc/tags/imagej" class="about-link" rel="" target="">
+  <a href="https://forum.image.sc/tags/colocalization" class="about-link" rel="" target="">
     <i class="bi bi-envelope"></i>
      <span class="about-link-text">Contact</span>
   </a>
@@ -204,9 +209,17 @@ ul.task-list li input[type="checkbox"] {
     <i class="bi bi-archive"></i>
      <span class="about-link-text">Documentation</span>
   </a>
+  <a href="https://doi.org/10.1186/s12859-024-05675-z" class="about-link" rel="" target="">
+    <i class="bi bi-book"></i>
+     <span class="about-link-text">Publication</span>
+  </a>
   <a href="https://github.com/andmccall/Colocalization_by_Cross_Correlation" class="about-link" rel="" target="">
     <i class="bi bi-github"></i>
      <span class="about-link-text">GitHub</span>
+  </a>
+  <a href="https://imagej.net/plugins/colocalization-by-cross-correlation" class="about-link" rel="" target="">
+    <i class="bi bi-image"></i>
+     <span class="about-link-text">Fiji-imageJ</span>
   </a>
 </div>
 </div>
