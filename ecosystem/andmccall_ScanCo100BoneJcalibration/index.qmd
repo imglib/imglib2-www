@@ -11,7 +11,7 @@ about:
   links:
     - text: Contact
       icon: envelope
-      href: https://forum.image.sc/tags/imagej
+      href: https://forum.image.sc/u/amccall/summary
     - text: Documentation
       icon: archive
       href: https://github.com/andmccall/ScanCo100BoneJcalibration
@@ -23,6 +23,6 @@ about:
 
 ::: {.alignleft}
 
-Plugin to import ScanCo100 bone density calibration from DICOM metadata
+Plugin to import ScanCo100 bone density calibration from DICOM metadata. May work with similar metadata from other scanners, but this is untested. Available at ImageJ update site: https://sites.imagej.net/UBoiaf-microct/
 
 :::
