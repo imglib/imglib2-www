@@ -11,18 +11,27 @@ about:
   links:
     - text: Contact
       icon: envelope
-      href: https://forum.image.sc/tags/imagej
+      href: https://forum.image.sc/tags/colocalization
     - text: Documentation
       icon: archive
       href: https://github.com/andmccall/Colocalization_by_Cross_Correlation
+    - text: Publication
+      icon: book
+      href: https://doi.org/10.1186/s12859-024-05675-z
     - text: GitHub
       icon: github
       href: https://github.com/andmccall/Colocalization_by_Cross_Correlation
-
+    - text: Fiji-imageJ
+      icon: image
+      href: https://imagej.net/plugins/colocalization-by-cross-correlation
 ---
 
 ::: {.alignleft}
 
-ImageJ plugin for colocalization
+An ImageJ plugin for spatial correlation/colocalization analysis that is more compatible with super-resolution images than traditional pixel-wise colocalization algorithms. Has several benefits over pixel-wise algorithms:
+
+ - Removes the requirement for overlap of the signals, instead allowing for spatial correlation to be measured across a distance.
+ - Results directly improve with improved image quality and resolution. In contrast, pixel-wise methods must be correctly interpreted using the image resolution for context, a challenging prospect for general users. 
+ - Designed to be simple to execute, taking only two single-channel images, a mask of the region to be analyzed, and a few utility options as input. 
 
 :::
