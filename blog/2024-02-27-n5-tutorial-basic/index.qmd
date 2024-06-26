@@ -37,13 +37,13 @@ We will learn about:
 the basis of the N5 API and allow you to read and write data, respectively. We generally recommend using an
 [`N5Factory`](https://github.com/saalfeldlab/n5-universe/blob/n5-universe-1.4.2/src/main/java/org/janelia/saalfeldlab/n5/universe/N5Factory.java) to create readers and writers:
 
-{{< embed ../../_notebooks/N5-Basics-Tutorial.ipynb#make-reader-writer echo=true >}}
+{{< embed N5-Basics-Tutorial.ipynb#make-reader-writer echo=true >}}
 
 The N5 API gives you access to a number of different storage formats: HDF5, Zarr, and N5's own
 format. `N5Factory`'s convenience methods try to infer the storage format from the extension
 of the path you provide:
 
-{{< embed ../../_notebooks/N5-Basics-Tutorial.ipynb#factory-types echo=true >}}
+{{< embed N5-Basics-Tutorial.ipynb#factory-types echo=true >}}
 
 In fact, it is possible to read with `N5Writer`s since every `N5Writer`
 is also an `N5Reader`, so from now on we'll just be using the
