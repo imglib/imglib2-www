@@ -27,7 +27,7 @@ about:
 ---
 
 ::: {.alignleft}
-![](mobie_logo.jpg){width=275}            # If you have a figure/logo for project change name accordingly. 
+![](mobie_logo.jpg){width=275}            
  
 MoBIE is a Fiji plugin for exploring large multi-modal image data sets.
 
