@@ -1083,7 +1083,7 @@
     "href": "ecosystem/BigTrace/BigTrace.html",
     "title": "BigTrace plugin",
     "section": "",
-    "text": "# If you have a figure/logo for project change name accordingly.\nFIJI plugin for tracing and analysis of curvilinear structures (filaments, vessels, neurites) in volumetric microscopy datasets.\nThe plugin implements 3D ROIs (points, straight/curved lines, planes) for manual/semi-automatic segmentation of lines, curves, and spotty objects. It allows volumetric measurements of intensity and geometrical features. The plugin is scriptable using ImageJ macros."
+    "text": "FIJI plugin for tracing and analysis of curvilinear structures (filaments, vessels, neurites) in volumetric microscopy datasets.\nThe plugin implements 3D ROIs (points, straight/curved lines, planes) for manual/semi-automatic segmentation of lines, curves, and spotty objects. It allows volumetric measurements of intensity and geometrical features. The plugin is scriptable using ImageJ macros."
   },
   {
     "objectID": "ecosystem/morphonets_SNT/index.html",
