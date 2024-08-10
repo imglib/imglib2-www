@@ -1,0 +1,36 @@
+---
+title: "BigTrace plugin"  # "Your_Plugin/Software_project_name"  
+categories: [ Fiji/ImageJ , BigDataViewer, imglib2, BigVolumeViewer]   # Add categories for your project"  
+execute:
+  echo: false
+about: 
+  id: Aheading
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+  links:                  # Add details and copy/remove whole block if you need to change number of links.
+    - text: Contact
+      icon: envelope
+      href: mailto:katpyxa@gmail.com
+    - text: Documentation
+      icon: archive
+      href: https://github.com/ekatrukha/BigTrace/wiki
+    - text: Tutorial
+      icon: youtube
+      href: https://www.youtube.com/watch?v=Viqf4txCCJ0
+    - text: Fiji-imageJ
+      icon: image
+      href: https://imagej.net/plugins/bigtrace
+---
+
+::: {.alignleft}
+![](BigTrace_logo.png){width=356}            # If you have a figure/logo for project change name accordingly. 
+ 
+FIJI plugin for tracing and analysis of curvilinear structures (filaments, vessels, neurites) in volumetric microscopy datasets.
+
+The plugin implements 3D ROIs (points, straight/curved lines, planes)
+for manual/semi-automatic segmentation of lines, curves, and spotty objects.
+It allows volumetric measurements of intensity and geometrical features.
+The plugin is scriptable using ImageJ macros.
+
+:::
