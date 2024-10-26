@@ -1,0 +1,44 @@
+---
+title: "Lazy parallel processing and visualization of large data workshop at I2K 2024"
+description: "Workshop on developing lazy n-dimensional image processing workflows using ImgLib2, N5 for image I/O, BigDataViewer for image visualization, and Spark to parallelize it all on compute clusters."
+author: 
+    - name: Stephan Saalfeld
+    - name: Tobias Pietzsch
+date: "10/25/2024"
+date-modified: "10/25/2024"
+notebook-links: global
+image: i2k2024.jpg
+categories:
+  - tutorial
+  - workshop
+  - bdv
+  - imglib2
+  - fiji
+  - visualization
+  - hdf5
+  - n5
+  - zarr
+  - bdv
+  - spark
+format:
+  html:
+    toc: true
+---
+
+At the [From Images to Knowledge (I2K) 2024 conference](https://imagej.net/events/i2k-2024), Stephan Saalfeld and Tobias Pietzsch ran a workshop [Lazy parallel processing and visualization of large data with ImgLib2, BigDataViewer, the N5-API, and Spark](https://events.humantechnopole.it/event/1/contributions/43/):
+
+> Modern microscopy and other scientific data acquisition methods generate large high-dimensional datasets exceeding the size of computer main memory and often local storage space. In this workshop, you will learn to create lazy processing workflows with ImgLib2, using the N5 API for storing and loading large n-dimensional datasets, and how to use Spark to parallelize such workflows on compute clusters. You will use BigDataViewer to visualize and test processing results. Participants will perform practical exercises, and learn skills applicable to a high performance / cluster computing.
+
+All exercises from the workshop can be found in the [i2k2024-lazy-workshop repository](https://github.com/saalfeldlab/i2k2024-lazy-workshop) on GitHub in the form of notebooks, including:
+
+1. [Environment setup](https://github.com/saalfeldlab/i2k2024-lazy-workshop/blob/main/posts/01-setup.qmd) - Creating an environment to run the Jupyter notebook server, a fast [Java kernel](https://github.com/saalfeldlab/IJava), and a few other dependencies.
+
+2. [Lazy ImgLib2 basics](https://github.com/saalfeldlab/i2k2024-lazy-workshop/blob/main/posts/02-lazy-imglib2/02-lazy-imglib2.ipynb) - An introduction to the various ways in which ImgLib2 is lazy.
+
+3. [Image I/O with N5](https://github.com/saalfeldlab/i2k2024-lazy-workshop/blob/main/posts/03-n5/03-n5.ipynb) - How to work with the N5 API and ImgLib2.
+
+4. [Lazy image processing with cell images](https://github.com/saalfeldlab/i2k2024-lazy-workshop/blob/main/posts/04-cache/04-cache.ipynb) - How to use the ImgLib2 cache library to implement lazy processing workflows at the level of cells (blocks, chunks, boxes, hyperrectangles, Intervals).
+
+5. [ImgLib2 blocks to optimize performance](https://github.com/saalfeldlab/i2k2024-lazy-workshop/blob/main/posts/05-blocks/05-blocks.ipynb) - Using the ImgLib2 "blocks" API to perform computations on blocks of (image) data more efficiently than going pixel-by-pixel using `RandomAccess`, `Type`, etc.
+
+6. [Distributed computation using Spark](https://github.com/saalfeldlab/i2k2024-lazy-workshop/blob/main/posts/06-spark/06-spark.qmd) - How to use what we learned about lazy evaluation with ImgLib2 on a Spark cluster.
