@@ -7,7 +7,7 @@ author:
 date: "10/25/2024"
 date-modified: "10/25/2024"
 notebook-links: global
-image: lazy-computation-workshop-thumbnail.jpg
+image: i2k2024.jpg
 categories:
   - tutorial
   - workshop
