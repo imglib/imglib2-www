@@ -18,7 +18,7 @@ You can clone the ImgLib2 code using Git with the URL: **<git://github.com/imgli
 To develop ImgLib2 in Eclipse, follow these steps:
 
 1.  [Install the Maven plugin](https://imagej.net/develop/maven-and-eclipse)
-2.  Choose {% include bc path='File | Import'%} from the Eclipse menu
+2.  Choose <span class="bc"><span>File</span> › <span>Import</span></span> from the Eclipse menu
 3.  Select "Existing Maven Projects" and click Next
 4.  For the Root Directory, specify the path where you cloned ImgLib2
 5.  From the projects list, leave all items checked

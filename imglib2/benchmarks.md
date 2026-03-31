@@ -8,7 +8,9 @@ include-in-header:
 
 ---
 
-{% include notice icon="info" content='This page was last updated 2016 May 3.' %}
+::: {.callout-note}
+This page was last updated 2016 May 3.
+:::
 
 This page compares the time performance of image processing operations using raw byte arrays, [ImageJ](https://imagej.net/software/imagej/) and [ImgLib2](/imglib2). The benchmark tests these various methods for a "cheap" per-pixel operation (inverting an 8-bit image) as well as an "expensive" operation (some calls to `java.util.Math`) at several image resolutions.
 
@@ -49,15 +51,15 @@ In conclusion, we believe there is little reason for concern regarding time perf
 
 The main benchmark code can be found at:
 
--   {% include github org='imglib' repo='imglib2-tests' branch='master' path='src/test/java/tests/PerformanceBenchmark.java' label='PerformanceBenchmark.java' %}
+-   [PerformanceBenchmark.java](https://github.com/imglib/imglib2-tests/blob/master/src/test/java/tests/PerformanceBenchmark.java)
 
 The script that runs the benchmark at various image resolutions is:
 
--   {% include github org='imglib' repo='imglib2-tests' branch='master' path='src/test/scripts/benchmark.sh' label='benchmark.sh' %}
+-   [benchmark.sh](https://github.com/imglib/imglib2-tests/blob/master/src/test/scripts/benchmark.sh)
 
 The shell script also uses a Python script to transform the CSV output into the pChart data on this page:
 
--   {% include github org='imglib' repo='imglib2-tests' branch='master' path='src/test/scripts/chart-gen.py' label='chart-gen.py' %}
+-   [chart-gen.py](https://github.com/imglib/imglib2-tests/blob/master/src/test/scripts/chart-gen.py)
 
 ## Cheap operation results
 

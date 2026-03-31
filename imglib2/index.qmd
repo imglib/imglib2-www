@@ -81,7 +81,7 @@ BdvFunctions.show(
 -   [ImgLib2 Examples](examples)
 -   [ImgLib2 Blog](https://imglib.github.io/imglib2-blog/)
 -   [Image.sc forum](https://forum.image.sc/tag/imglib2)
--   {% include javadoc project='ImgLib2' %} javadoc
+-   [ImgLib2](https://javadoc.scijava.org/ImgLib2/) javadoc
 -   [How To Migrate Code From ImgLib To ImgLib2](migrate-from-imglib1)
 -   ["Introduction to ImgLib2"](workshop-introductory) workshop
 -   ["Advanced Programming with ImgLib2"](workshop-advanced) workshop
@@ -90,7 +90,7 @@ BdvFunctions.show(
 
 ## Source code
 
-You can find the source {% include github org='imglib' repo='imglib2' %}.
+You can find the source [on GitHub](https://github.com/imglib/imglib2).
 
 There is also a [continuous integration](https://imagej.net/develop/ci) system that builds ImgLib2 [every time the code changes](https://github.com/imglib/imglib2/actions).
 

@@ -37,9 +37,11 @@ Opposed to the intuitive shortcut that you would just replace *Image* by *Img* t
 
 ## Where is the LocalizableCursor?
 
-{% include thumbnail src='imglib2-access.png' title='**Fig. 2** ImgLib2 interfaces for access to sample data and to real and integer coordinates in *n*-dimensional Euclidean space.'%} Iteration in ImgLib2 (as in ImgLib) implies constant and thus repeatable order. Therefore a *Cursor* can always localize itself, either by going the hard way and reasoning the position from it's iteration index or by tracking the position per move. There is no extra interface required to distinguish this behavior but you can choose which *Cursor* to acquire by *Iterable(Real)Interval.cursor()* and *Iterable(Real)Interval.localizingCursor()*. Fig. 2 shows a UML-diagram visualizing the interface inheritance graph.
+![**Fig. 2** ImgLib2 interfaces for access to sample data and to real and integer coordinates in *n*-dimensional Euclidean space.](imglib2-access.png){.lightbox width=380}
 
-{% include clear%}
+ Iteration in ImgLib2 (as in ImgLib) implies constant and thus repeatable order. Therefore a *Cursor* can always localize itself, either by going the hard way and reasoning the position from it's iteration index or by tracking the position per move. There is no extra interface required to distinguish this behavior but you can choose which *Cursor* to acquire by *Iterable(Real)Interval.cursor()* and *Iterable(Real)Interval.localizingCursor()*. Fig. 2 shows a UML-diagram visualizing the interface inheritance graph.
+
+<div style="clear: both;"></div>
 
 
 ## Where is the LocalizableByDimCursor?

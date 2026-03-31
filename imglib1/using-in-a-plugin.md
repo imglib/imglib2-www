@@ -3,9 +3,11 @@ title: Using ImgLib1 in an ImageJ plugin
 sidebar: true
 ---
 
-{% include warning/deprecated old="[ImgLib1](/imglib1)" new="[ImgLib2](/imglib2)" %}
+::: {.callout-warning}
+**DEPRECATION NOTICE:** This page describes [ImgLib1](/imglib1), which is no longer supported or maintained. Please use [ImgLib2](/imglib2) instead.
+:::
 
-The [Imglib](/imglib1) library makes extensive use of {% include wikipedia title='Generics in Java' text='Java generics'%}. Generics appeared in Java from version 1.5, and they introduce new semantic items that can be puzzling if you never used them before. The programming techniques associated are quite new to the ImageJ world, and using Imglib inside your plugins will change their typical layout.
+The [Imglib](/imglib1) library makes extensive use of [Java generics](https://en.wikipedia.org/wiki/Generics_in_Java). Generics appeared in Java from version 1.5, and they introduce new semantic items that can be puzzling if you never used them before. The programming techniques associated are quite new to the ImageJ world, and using Imglib inside your plugins will change their typical layout.
 
 This short page does not aim at being an introduction on generics, but rather is a quick and dirty introduction on how to tune your java files to use Imglib. The deep meaning of semantics is skipped, and we will try to provide a quick template to start with. However, we will attempt to be quite pedestrian when ImageJ itself is involved, and try to display the code and the commands needed to generate a plugin from scratch.
 
@@ -30,7 +32,7 @@ public class Pixel_Summation implements PlugIn {
 
 If you work from within the [Script Editor](/scripting/script-editor), you can save it anywhere and Compile & Run it with *Run&gt;Compile & Run*.
 
-Otherwise you have to save this in a file named `Pixel_Summation.java` in the Fiji plugins folder. You can either {% include bc path='Help | Update Menus'%} and find the new plugin in the *Plugins* menu, or compile it from the command line with:
+Otherwise you have to save this in a file named `Pixel_Summation.java` in the Fiji plugins folder. You can either <span class="bc"><span>Help</span> › <span>Update Menus</span></span> and find the new plugin in the *Plugins* menu, or compile it from the command line with:
 
 ```java
 ./fiji --javac plugins/Pixel_Summation.java

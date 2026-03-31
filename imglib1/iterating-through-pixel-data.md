@@ -3,7 +3,9 @@ title: "ImgLib1: Iterating through pixel data"
 sidebar: true
 ---
 
-{% include warning/deprecated old="[ImgLib1](/imglib1)" new="[ImgLib2](/imglib2)" %}
+::: {.callout-warning}
+**DEPRECATION NOTICE:** This page describes [ImgLib1](/imglib1), which is no longer supported or maintained. Please use [ImgLib2](/imglib2) instead.
+:::
 
 The architecture of [Imglib](/imglib1) aims at completely separating the image - which can be seen as a data container - from the concrete basic data type it encapsulates. In practice, this means that you can write "blind" algorithms, which can safely ignore whether they operate on a `uint8` image, a RGB image or a `uint16` stack of 15 slices.
 
