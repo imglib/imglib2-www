@@ -74,7 +74,7 @@ website:
         - auto: "imglib1/*"
 sidebar: false
 
-filters:
+shortcodes:
   - shortcodes.lua
 
 format:
