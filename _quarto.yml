@@ -74,9 +74,6 @@ website:
         - auto: "imglib1/*"
 sidebar: false
 
-shortcodes:
-  - shortcodes.lua
-
 format:
   html:
     theme: cosmo
