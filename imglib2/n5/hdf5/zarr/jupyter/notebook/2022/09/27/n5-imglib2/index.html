@@ -2,10 +2,14 @@
 <head>
   <title>Redirect</title>
   <script type="text/javascript">
-    var redirects = {"":"../../../../../../../../../../blog/2024-04-02-n5-attribute-paths/2024-04-02-n5-attribute-paths.html"};
+    var redirects = {"":"../../../../../../../../../../blog/2022-09-27-n5-imglib2/2022-09-27-n5-imglib2.html"};
     var hash = window.location.hash.startsWith('#') ? window.location.hash.slice(1) : window.location.hash;
     var redirect = redirects[hash] || redirects[""] || "/";
     window.document.title = 'Redirect to  ' +  redirect;
+    if (!redirects[hash]) {
+      redirect = redirect + window.location.hash;
+    }
+    redirect = redirect + window.location.search;
     window.location.replace(redirect);
   </script>
 </head>

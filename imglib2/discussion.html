@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>ImgLib2 Discussion – ImgLib2 and BigDataViewer projects</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -21,8 +24,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +37,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,15 +68,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f12f7bb3d6d88b4a4e13ada2c0a1866b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,10 +113,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="ImgLib2 Discussion – ImgLib2 and BigDataViewer projects">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://imglib.github.io/imglib2-www/imglib2/imglib2views-img.png">
 <meta property="og:site_name" content="ImgLib2 and BigDataViewer projects">
+<meta property="og:image:height" content="117">
+<meta property="og:image:width" content="117">
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -366,9 +377,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="we-discussed-the-view-concept" class="level3">
 <h3 class="anchored" data-anchor-id="we-discussed-the-view-concept">We discussed the View concept:</h3>
 <p>Summary is that <code>View\&lt;T\&gt;</code> would be an interface that can return its target <code>T</code>, the data it is generated from:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> <span class="bu">View</span><span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> <span class="bu">View</span><span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">{</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> T <span class="fu">getTarget</span><span class="op">();</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A <code>View</code> is an <code>[...]Accessible</code> that provides possibly transformed access to a subset of this target data.</p>
 <p>Since we could not see any reasonable application for the bare <em>View</em> interface, we will not implement it but use it in informal speech about virtualized access. We will also use <em>Target</em> to refer to the underlying data.</p>
 <p>Examples are <code>IterableIntervalSubset</code>, arbitrary Neighborhoods, <code>RandomAccessibleView</code> (formerly called View), <code>RealRandomAccessibleView</code>, <code>TransformedRandomAccessibleView</code>, <code>StructuredElement</code>, <code>HyperShpere</code>, <code>SuperInterval</code>…</p>
@@ -379,11 +390,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In matrix notation, a transform would look like <strong>y = Tx</strong>. Here, it is natural to refer to <strong>x</strong> as the <em>source</em> vector and to <strong>y</strong> as the <em>target</em> vector.</p>
 <p>Applied to Views, we will therefore completely reverse our previous opinion and refer to the underlying data as the <em>Source</em>.</p>
 <p>The <code>View\&lt;T\&gt;</code> interface would look like</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> <span class="bu">View</span><span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> <span class="bu">View</span><span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">{</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> T <span class="fu">getSource</span><span class="op">();</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For Transforms, we will adapt and simplify the <code>CoordinateTransform</code> and related interfaces from Fiji’s mpicbg submodule. There will be an integer and a real version as for <code>Positionable</code> and <code>Localizable</code>. <code>Transform</code> and <code>RealTransform</code> can specify the number of dimensions of its source and target domain. They look like</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> <span class="bu">Transform</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> <span class="bu">Transform</span> <span class="op">{</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">numSourceDimensions</span><span class="op">();</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">numTargetDimensions</span><span class="op">();</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">apply</span><span class="op">(</span><span class="dt">long</span><span class="op">[]</span> source<span class="op">,</span> <span class="dt">long</span><span class="op">[]</span> target<span class="op">);</span></span>
@@ -395,10 +406,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">numTargetDimensions</span><span class="op">();</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">apply</span><span class="op">(</span><span class="dt">double</span><span class="op">[]</span> source<span class="op">,</span> <span class="dt">double</span><span class="op">[]</span> target<span class="op">);</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">apply</span><span class="op">(</span>RealLocalizable source<span class="op">,</span> RealPositionable target<span class="op">);</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The apply methods transfer source coordinates into target coordinates.</p>
 <p>There will be an invertible version for each of these interfaces</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> IvertibleTransform <span class="kw">extends</span> <span class="bu">Transform</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> IvertibleTransform <span class="kw">extends</span> <span class="bu">Transform</span> <span class="op">{</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">applyInverse</span><span class="op">(</span><span class="dt">long</span><span class="op">[]</span> source<span class="op">,</span> <span class="dt">long</span><span class="op">[]</span> target<span class="op">);</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">applyInverse</span><span class="op">(</span>Positionable source<span class="op">,</span> Localizable target<span class="op">);</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    InvertibleTransform <span class="fu">inverse</span><span class="op">();</span></span>
@@ -408,7 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">applyInverse</span><span class="op">(</span><span class="dt">double</span><span class="op">[]</span> source<span class="op">,</span> source<span class="op">[]</span> target<span class="op">);</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">applyInverse</span><span class="op">(</span>RealPositionable source<span class="op">,</span> RealLocalizable target<span class="op">);</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    InvertibleRealTransform <span class="fu">inverse</span><span class="op">();</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Note that <code>target</code> is transferred into <code>source</code> in that case.</p>
 <p>We have extensively discussed the fact that for rendering a mapped image, an inverse transformation is required whereas one prefers to define transformations in the forward manner. Nevertheless, a view (renderer) should use the forward defined instance of a <code>Transform</code> to create its result with changes applied to that transform having a direct effect on the result (no creation of a fresh `inverse’). Other than in mpicbg, we will achieve this by implementing Renderers for forward transformations (those transformations that can be specified in one direction only will be defined as forward transformations). For invertible transformations, the Renderer will use a final <code>Inverter</code> that is a forward transformations that uses the inverse apply methods of an invertible transformation for its apply method.</p>
 </section>
@@ -416,7 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="how-to-proceed-with-the-imglib2-namespace">How to proceed with the imglib2 namespace?</h3>
 <p>We think that it would be a great idea to be able to run both imglib and imglib2 together. This would relieve us from the need to port all the legacy imglib code into imglib2. Also, a shorter package hierarchy would be nice. With <code>org.imglib2</code>, we would match the Maven convention and the URL is still not registered…</p>
 <p>Why not just call it <code>org.imglib</code> then? Wouldn’t clash with <code>mpicbg.imglib</code> of imglib1.</p>
-<p>Because imglib.org is registered by somebody else already. {% include person id=‘axtimwalde’ %} 14:38, 24 March 2011 (CET)</p>
+<p>Because imglib.org is registered by somebody else already. <a href="https://imagej.net/people/axtimwalde">axtimwalde</a> 14:38, 24 March 2011 (CET)</p>
 </section>
 </section>
 <section id="section-1" class="level2">
@@ -433,7 +444,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h5 class="anchored" data-anchor-id="transformable-leek">Transformable (leek)</h5>
 <p>Coincidentally, I was playing around with an idea for ROIs that might be applicable here. You’d like to be able to take a ROI in one space, apply a transform and get a ROI in the transformed space by transforming key internal coordinates. So that lead me to think of making ROIs implement “Transformable” if they wanted to. The some transformation could be applied to a transform itself - have a transform implement transformable so that its internal matrix could get re-jiggered to operate in the new space.</p>
 <p>Here’s the interface that I was planning on implementing:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> mpicbg</span><span class="op">.</span><span class="im">imglib</span><span class="op">.</span><span class="im">transform</span><span class="op">;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> mpicbg</span><span class="op">.</span><span class="im">imglib</span><span class="op">.</span><span class="im">transform</span><span class="op">;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@author</span> leek</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span></span>
@@ -455,7 +466,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">*</span> <span class="an">@return</span> a copy built to operate similarly in the transformed space<span class="co">.</span></span>
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">*/</span></span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>   <span class="kw">public</span> O <span class="fu">transform</span><span class="op">(</span><span class="dt">final</span> T t<span class="op">);</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You’d only want to implement Transformable in cases where the object has internal state which allows the transformed object to operate more efficiently than transformation of the object’s inputs, followed by application of the object’s function. For ROIs, the savings are clear - cost to transform a handful of vertices in a polygon versus cost of back-transforming millions of coordinates into the original space.</p>
 <p>Now it obviously can be made to work for ROIs and it can be made to work to combine two linear transformations (dot product of matrices, right?). But other things are more complex and require more thought. At the end of it, each output is a function of the inputs and the trick is to composite a function that performs the operation. For a transform T1 to be transformable by transform T2, it seems that you need to combine and reduce an equation on the inputs of T1 for each of the outputs of T2. It’s a difficult enough problem that you might not want to make a transform generally transformable - you might want to have compositors with special knowledge regarding which classes can be combined to yield a new one and how it’s done.</p>
 </section>
@@ -463,15 +474,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="out-of-bounds-handling" class="level4">
 <h4 class="anchored" data-anchor-id="out-of-bounds-handling">Out-Of-Bounds Handling</h4>
 <p>In imglib2, out-of-bounds access is handled by <a href="https://fiji.sc/cgi-bin/gitweb.cgi?p=imglib.git;a=blob;f=imglib/src/main/java/mpicbg/imglib/ExtendedRandomAccessibleInterval.java;h=31dacac73d7c4377d2e2335681b3417e2c8665f4;hb=refs/heads/imglib2-dirty"><code>ExtendedRandomAccessibleInterval</code></a> If you have a <code>RandomAccessibleInterval</code> you can wrap it into an <code>ExtendedRandomAccessibleInterval</code> which extends to infinity. Like so:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>F interval<span class="op">;</span> <span class="co">// where F extends RandomAccessibleInterval&lt; T &gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>F interval<span class="op">;</span> <span class="co">// where F extends RandomAccessibleInterval&lt; T &gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>OutOfBoundsFactory<span class="op">&lt;</span> T<span class="op">,</span> F <span class="op">&gt;</span> factory <span class="op">=</span> <span class="kw">new</span> OutOfBoundsMirrorFactory<span class="op">&lt;</span> T<span class="op">,</span> F <span class="op">&gt;(</span> OutOfBoundsMirrorFactory<span class="op">.</span><span class="fu">Boundary</span><span class="op">.</span><span class="fu">SINGLE</span> <span class="op">);</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>RandomAccessible<span class="op">&lt;</span> T <span class="op">&gt;</span> extended <span class="op">=</span> <span class="kw">new</span> ExtendedRandomAccessibleInterval<span class="op">&lt;</span> T <span class="op">&gt;(</span> randomAccessible<span class="op">,</span> factory <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>RandomAccessible<span class="op">&lt;</span> T <span class="op">&gt;</span> extended <span class="op">=</span> <span class="kw">new</span> ExtendedRandomAccessibleInterval<span class="op">&lt;</span> T <span class="op">&gt;(</span> randomAccessible<span class="op">,</span> factory <span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>ExtendedRandomAccessibleInterval</code> is also a <code>RandomAccessibleView</code>. It might be inserted at any point in a view hierarchy. Here is an example:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Img<span class="op">&lt;</span> FloatType <span class="op">&gt;</span> img <span class="op">=</span> LOCI<span class="op">.</span><span class="fu">openLOCIFloatType</span><span class="op">(</span><span class="kw">...</span><span class="op">);</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Img<span class="op">&lt;</span> FloatType <span class="op">&gt;</span> img <span class="op">=</span> LOCI<span class="op">.</span><span class="fu">openLOCIFloatType</span><span class="op">(</span><span class="kw">...</span><span class="op">);</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>RandomAccessibleView<span class="op">&lt;</span> FloatType <span class="op">&gt;</span> view1 <span class="op">=</span> Views<span class="op">.</span><span class="fu">extend</span><span class="op">(</span> img <span class="op">);</span>  </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>RandomAccessibleIntervalView<span class="op">&lt;</span> FloatType <span class="op">&gt;</span> view2 <span class="op">=</span> Views<span class="op">.</span><span class="fu">superIntervalView</span><span class="op">(</span> view1<span class="op">,</span> <span class="kw">new</span> <span class="dt">long</span><span class="op">[]</span> <span class="op">{-</span><span class="dv">20</span><span class="op">,</span> <span class="op">-</span><span class="dv">20</span><span class="op">},</span> <span class="kw">new</span> <span class="dt">long</span><span class="op">[]</span> <span class="op">{</span><span class="dv">157</span><span class="op">,</span> <span class="dv">157</span><span class="op">}</span> <span class="op">);</span>       </span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>RandomAccessibleView<span class="op">&lt;</span> FloatType <span class="op">&gt;</span>         view3 <span class="op">=</span> Views<span class="op">.</span><span class="fu">extend</span><span class="op">(</span> view2 <span class="op">);</span>    </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>RandomAccessibleIntervalView<span class="op">&lt;</span> FloatType <span class="op">&gt;</span> view4 <span class="op">=</span> Views<span class="op">.</span><span class="fu">superIntervalView</span><span class="op">(</span> view3<span class="op">,</span> <span class="kw">new</span> <span class="dt">long</span><span class="op">[]</span> <span class="op">{-</span><span class="dv">100</span><span class="op">,</span> <span class="op">-</span><span class="dv">100</span><span class="op">},</span> <span class="kw">new</span> <span class="dt">long</span><span class="op">[]</span> <span class="op">{</span><span class="dv">357</span><span class="op">,</span> <span class="dv">357</span><span class="op">}</span> <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>RandomAccessibleIntervalView<span class="op">&lt;</span> FloatType <span class="op">&gt;</span> view4 <span class="op">=</span> Views<span class="op">.</span><span class="fu">superIntervalView</span><span class="op">(</span> view3<span class="op">,</span> <span class="kw">new</span> <span class="dt">long</span><span class="op">[]</span> <span class="op">{-</span><span class="dv">100</span><span class="op">,</span> <span class="op">-</span><span class="dv">100</span><span class="op">},</span> <span class="kw">new</span> <span class="dt">long</span><span class="op">[]</span> <span class="op">{</span><span class="dv">357</span><span class="op">,</span> <span class="dv">357</span><span class="op">}</span> <span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The original <code>img</code> looks like this:</p>
 <p><img src="imglib2views-img.png" class="img-fluid"></p>
 <p>This is extended to infinity (using mirroring strategy) resulting in the unbounded <code>RandomAccessible view1</code>. A crop of <code>view1</code> looks like this:</p>
@@ -493,20 +504,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="section-2">2011-03-24</h2>
 <section id="transformation-hierarchies" class="level3">
 <h3 class="anchored" data-anchor-id="transformation-hierarchies">Transformation Hierarchies</h3>
-<p>{% include thumbnail src=‘imglib2-transform.png’ title=‘Simplified visualization of the hierarchy of ImgLib2 transforms that can be reduced by concatenation. Note that the interfaces responsible for concatenation are not implemented by the transform hierarchy. Necessary access to trivial parameters in specialized transforms is implemented just once in abstract classes.’%} We thought that it might at some point be useful to have a generic way of contracting chains of transforms. The idea is to have a hierarchy of transformations, i.e., a Translation is a Rigid transform is an Affine transform, etc. The hierarchy determines which transformations can be concatenated. It would be hard to concatenate transformations from different branches in the tree. For example, it is possible to concatenate a Translation and a Rotation to a Rigid transform. However, it is not clear whether we always want to do that. So we decided that transforms should be concatenable with their descendants in the hierarchy but not the other way around. That is, a Rigid can be concatenated with a Translation (resulting in another Rigid). But a Translation can not be concatenated with a Rigid (because this would not always result in another Translation).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="imglib2-transform.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Simplified visualization of the hierarchy of ImgLib2 transforms that can be reduced by concatenation. Note that the interfaces responsible for concatenation are not implemented by the transform hierarchy. Necessary access to trivial parameters in specialized transforms is implemented just once in abstract classes."><img src="imglib2-transform.png" class="img-fluid figure-img" width="380" alt="Simplified visualization of the hierarchy of ImgLib2 transforms that can be reduced by concatenation. Note that the interfaces responsible for concatenation are not implemented by the transform hierarchy. Necessary access to trivial parameters in specialized transforms is implemented just once in abstract classes."></a></p>
+<figcaption>Simplified visualization of the hierarchy of ImgLib2 transforms that can be reduced by concatenation. Note that the interfaces responsible for concatenation are not implemented by the transform hierarchy. Necessary access to trivial parameters in specialized transforms is implemented just once in abstract classes.</figcaption>
+</figure>
+</div>
+<p>We thought that it might at some point be useful to have a generic way of contracting chains of transforms. The idea is to have a hierarchy of transformations, i.e., a Translation is a Rigid transform is an Affine transform, etc. The hierarchy determines which transformations can be concatenated. It would be hard to concatenate transformations from different branches in the tree. For example, it is possible to concatenate a Translation and a Rotation to a Rigid transform. However, it is not clear whether we always want to do that. So we decided that transforms should be concatenable with their descendants in the hierarchy but not the other way around. That is, a Rigid can be concatenated with a Translation (resulting in another Rigid). But a Translation can not be concatenated with a Rigid (because this would not always result in another Translation).</p>
 <p>Having a generic way of concatenating Rigid with all of its children means that all children must also be a Rigid. That is, we must be able to ask a Translation for its rotation matrix and so on. I was afraid, that this adds too much (implementation) overhead, but Stephan convinced me that this is the best way to go. Actually, it should be possible to make this relatively painless by having an hierarchy of abstract transform classes.</p>
 <p>We settled on the following scheme for implementing the transformation hierarchy:</p>
 <p>There are interfaces <code>Concatenable</code> and <code>PreConcatenable</code></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> Concatenable<span class="op">&lt;</span> A <span class="op">&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> Concatenable<span class="op">&lt;</span> A <span class="op">&gt;</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> Concatenable<span class="op">&lt;</span> A <span class="op">&gt;</span> <span class="fu">concatenate</span><span class="op">(</span> A a <span class="op">);</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">Class</span><span class="op">&lt;</span> A <span class="op">&gt;</span> <span class="fu">getConcatenableClass</span><span class="op">();</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>if <code>T</code> implements <code>Concatenable&lt; A &gt;</code> that means I can concatenate it with an <code>A</code>, usually resulting in another <code>T</code>.</p>
 <p>The hierarchy of transforms is implemented by a hierarchy of interfaces. However these interfaces do <em>not</em> implement <code>Concatenable</code>. <code>Rigid</code> cannot be <code>Concatenable&lt; Rigid &gt;</code> because this would mean that <code>Translation</code> (which extends <code>Rigid</code>) must be concatenable with <code>Rigid</code> (resulting in another <code>Translation</code>).</p>
 <p>Instead, both the <code>Rigid</code> and <code>Concatenable&lt; Rigid &gt;</code> interfaces are implemented by the <code>RigidTransform</code> class</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> RigidTransform <span class="kw">implements</span> Rigid<span class="op">,</span> Concatenable<span class="op">&lt;</span> Rigid <span class="op">&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> RigidTransform <span class="kw">implements</span> Rigid<span class="op">,</span> Concatenable<span class="op">&lt;</span> Rigid <span class="op">&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> RigidTransform <span class="fu">concatenate</span><span class="op">(</span> Rigid a <span class="op">)</span> <span class="op">{</span><span class="kw">...</span><span class="op">}</span></span>
@@ -516,9 +533,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> Rigid<span class="op">.</span><span class="fu">class</span><span class="op">;</span></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Similarly we have</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> TranslationTransform <span class="kw">implements</span> Translation<span class="op">,</span> Concatenable<span class="op">&lt;</span> Translation <span class="op">&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> TranslationTransform <span class="kw">implements</span> Translation<span class="op">,</span> Concatenable<span class="op">&lt;</span> Translation <span class="op">&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> TranslationTransform <span class="fu">concatenate</span><span class="op">(</span> Translation a <span class="op">)</span> <span class="op">{</span><span class="kw">...</span><span class="op">}</span></span>
@@ -528,7 +545,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> Translation<span class="op">.</span><span class="fu">class</span><span class="op">;</span></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Note, that <code>TranslationTransform</code> cannot extend <code>RigidTransform</code> (because otherwise it would inherit <code>Concatenable&lt; Rigid &gt;</code>.)</p>
 <p>We add an abstract class hierarchy between the interfaces and the transform classes. The abstract classes do not implement <code>Concatenable</code>, so at this level extension is still possible.</p>
 </section>
@@ -572,11 +589,11 @@ Positionable3d.setPostion( Localizable2d ) - NOT OK</code></pre>
 <li>Yes, because iteration order for ImgLib2 Iterators is claimed to be constant. Given that, accessing the previous element (<code>bck()</code>) call is always defined.</li>
 <li>No, because it would require a substantial extension of the existing interfaces and classes. ImgLib2 Iterator could then implement ListIterator which is a lot of effort to implement.</li>
 </ol>
-<p>In principal, I strongly support introducing it. It makes total sense but it is a change in the core. {% include person id=‘axtimwalde’ %} 17:03, 3 May 2011 (CEST)</p>
+<p>In principal, I strongly support introducing it. It makes total sense but it is a change in the core. <a href="https://imagej.net/people/axtimwalde">axtimwalde</a> 17:03, 3 May 2011 (CEST)</p>
 <p>I discussed it again with Tobias yesterday in detail and we came to the conclusion that it does not make too much sense. First of all, any Sampler can be copied at a certain location now, i.e.&nbsp;wait there. And it is also important to consider that going back would have a different logic than going forward as Cursors might crash when moved out. This means one would not be able to access +1, but one has to start at the last pixel of the e.g.&nbsp;<code>Img&lt;T&gt;</code>. That means when iterating back, the test has to be different: First get value, then move.</p>
 <p>So maybe we just skip it? However, we could have an Interface that provides this functionality:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bck</span><span class="op">();</span> <span class="fu">hasPrevious</span><span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>just for the case that somebody wants to implement it for some reason and does not has to do its own interface which would be incompatible with other people who would want to it. Could be named ReverseCursor or so… {% include person id=‘StephanPreibisch’ %} 12:24, 4 May 2011 (CEST)</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bck</span><span class="op">();</span> <span class="fu">hasPrevious</span><span class="op">();</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>just for the case that somebody wants to implement it for some reason and does not has to do its own interface which would be incompatible with other people who would want to it. Could be named ReverseCursor or so… <a href="https://imagej.net/people/StephanPreibisch">StephanPreibisch</a> 12:24, 4 May 2011 (CEST)</p>
 </section>
 </section>
 <section id="section-5" class="level2">
@@ -589,7 +606,7 @@ Positionable3d.setPostion( Localizable2d ) - NOT OK</code></pre>
 - localize instead of `getLocation()`</code></pre>
 <p>etc…</p>
 <p>should we maybe change it as well to <code>intPosition()</code>, <code>longPosition</code>, etc?</p>
-<p>{% include person id=‘StephanPreibisch’ %} 12:24, 4 May 2011 (CEST)</p>
+<p><a href="https://imagej.net/people/StephanPreibisch">StephanPreibisch</a> 12:24, 4 May 2011 (CEST)</p>
 <p>Tobias pointed out that we should not as it is not clear if it is a getter or setter when passing an array.</p>
 </section>
 </section>
@@ -599,22 +616,22 @@ Positionable3d.setPostion( Localizable2d ) - NOT OK</code></pre>
 <h3 class="anchored" data-anchor-id="positionables">Positionables</h3>
 <p>Should we maybe have fast setPosition-calls for dimension 0?</p>
 <p>In many algorithms we will need 1-dimensional <code>Img&lt;T&gt;</code>, like Histograms, Gauss and many more. A fast <code>setPositionDim0(position)</code> could be quite some speedup for arrays as</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">setPosition</span><span class="op">(</span> <span class="dt">final</span> <span class="dt">int</span> pos<span class="op">,</span> <span class="dt">final</span> <span class="dt">int</span> dim <span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">setPosition</span><span class="op">(</span> <span class="dt">final</span> <span class="dt">int</span> pos<span class="op">,</span> <span class="dt">final</span> <span class="dt">int</span> dim <span class="op">)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    type<span class="op">.</span><span class="fu">incIndex</span><span class="op">(</span> <span class="op">(</span> pos <span class="op">-</span> position<span class="op">[</span> dim <span class="op">]</span> <span class="op">)</span> <span class="op">*</span> container<span class="op">.</span><span class="fu">steps</span><span class="op">[</span> dim <span class="op">]</span> <span class="op">);</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    position<span class="op">[</span> dim <span class="op">]</span> <span class="op">=</span> pos<span class="op">;</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>could simply become</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">setPositionDim0</span><span class="op">(</span> <span class="dt">final</span> <span class="dt">int</span> pos <span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">setPositionDim0</span><span class="op">(</span> <span class="dt">final</span> <span class="dt">int</span> pos <span class="op">)</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    type<span class="op">.</span><span class="fu">incIndex</span><span class="op">(</span> pos <span class="op">-</span> position<span class="op">[</span> <span class="dv">0</span> <span class="op">]</span> <span class="op">);</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    position<span class="op">[</span> <span class="dv">0</span> <span class="op">]</span> <span class="op">=</span> pos<span class="op">;</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>which saves a multiplication for many operations. It can also not be inlined by the JIT compiler as <code>container.steps[ 0 ]</code> cannot be made final, it could potentially always be changed…</p>
 <p>The same applies for <code>fwd(dim)</code>, <code>bck(dim)</code>, <code>move(dim)</code>, there a <code>--</code> <code>++</code> and <code>+=</code> can replace a array lookup…</p>
-<p>{% include person id=‘StephanPreibisch’ %} 12:27, 12 May 2011 (CEST)</p>
-<p>What about having a 1D <code>RandomAccess</code> instead as we have done in <code>PlanarImg</code> for <code>Cursor</code>. That could implement the <code>setPosition(long p, int d)</code> method ignoring <code>d</code>. A 1D <code>RandomAccess</code> could, in addition, have the proposed method such that in situations where you know what you’re doing (read: where you can cast), you have a shorter call available. That approach would also relieve us from the need to implement that method in situations where it does not make sense at all, e.g.&nbsp;<code>ShapeImg</code>, that has no 1D. {% include person id=‘axtimwalde’ %} 15:27, 12 May 2011 (CEST)</p>
-<p>I like this way of realizing it, maybe we could also implement it on ImgFactory level. If a Img implements RandomAccessible1D, the factory could also have a special create( long size ) method (in e.g.&nbsp;RandomAccessible1DFactory) which returns for example &lt;I extends ArrayImg&lt;T,?&gt; &amp; RandomAccessible1D&gt;, so no unchecked casts are necessary. {% include person id=‘StephanPreibisch’ %} 16:15, 12 May 2011 (CEST)</p>
+<p><a href="https://imagej.net/people/StephanPreibisch">StephanPreibisch</a> 12:27, 12 May 2011 (CEST)</p>
+<p>What about having a 1D <code>RandomAccess</code> instead as we have done in <code>PlanarImg</code> for <code>Cursor</code>. That could implement the <code>setPosition(long p, int d)</code> method ignoring <code>d</code>. A 1D <code>RandomAccess</code> could, in addition, have the proposed method such that in situations where you know what you’re doing (read: where you can cast), you have a shorter call available. That approach would also relieve us from the need to implement that method in situations where it does not make sense at all, e.g.&nbsp;<code>ShapeImg</code>, that has no 1D. <a href="https://imagej.net/people/axtimwalde">axtimwalde</a> 15:27, 12 May 2011 (CEST)</p>
+<p>I like this way of realizing it, maybe we could also implement it on ImgFactory level. If a Img implements RandomAccessible1D, the factory could also have a special create( long size ) method (in e.g.&nbsp;RandomAccessible1DFactory) which returns for example &lt;I extends ArrayImg&lt;T,?&gt; &amp; RandomAccessible1D&gt;, so no unchecked casts are necessary. <a href="https://imagej.net/people/StephanPreibisch">StephanPreibisch</a> 16:15, 12 May 2011 (CEST)</p>
 </section>
 </section>
 <section id="section-7" class="level2">
@@ -624,7 +641,7 @@ Positionable3d.setPostion( Localizable2d ) - NOT OK</code></pre>
 <p>Johannes pointed out that we will need to be able to handle images of different calibrations, e.g., compute the sum of two images with different pixel sizes.</p>
 <p>I think, what we need to achieve this is something similar to what we have with the (integer) Views now. I will call them “RealViews” for now, and hope that someone comes up with a better name…</p>
 <p>A RealView would implement (in analogy to the integer views)</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> RealTransformedRealRandomAccessible<span class="op">&lt;</span> T <span class="op">&gt;</span> <span class="kw">extends</span> RealRandomAccessible<span class="op">&lt;</span> T <span class="op">&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> RealTransformedRealRandomAccessible<span class="op">&lt;</span> T <span class="op">&gt;</span> <span class="kw">extends</span> RealRandomAccessible<span class="op">&lt;</span> T <span class="op">&gt;</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">     * </span><span class="an">@return</span> the source <span class="an">{@link</span> RealRandomAccessible<span class="an">}</span><span class="co">.</span></span>
@@ -636,7 +653,7 @@ Positionable3d.setPostion( Localizable2d ) - NOT OK</code></pre>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>     <span class="an">*</span>         source<span class="an">}</span> coordinates<span class="co">.</span></span>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> RealTransform <span class="fu">getTransformToSource</span><span class="op">();</span>    </span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Note, that <code>RealTransform</code> implementations do not yet exist. However the ideas are in place, see <a href="https://fiji.sc/wiki/index.php/ImgLib2_Discussion#transformation-hierarchies">Transformation Hierarchies</a> above. The interfaces to be implemented can be found in packages <code>net.imglib2.concatenate</code> and <code>net.imglib2.transform</code>.</p>
 <p>Examples of implementation of the integer version of these interfaces can be found in <code>net.imglib2.transform.integer</code> (These are the ones I did for views).</p>
 <section id="interpolated-realrandomaccessible" class="level4">
@@ -682,7 +699,7 @@ Positionable3d.setPostion( Localizable2d ) - NOT OK</code></pre>
 <li>Joining multiple images of the same size and dimensions into one or more dimensions of a single image (composition as opposed to decomposition which is implemented by hyperslice views).</li>
 <li>Adding a new dimension considering an existing dimension as interleaved data.</li>
 </ol>
-<p>When done properly this has the potential to replace or at least simplify PlanarImg like containers since they could be expressed as a composition of multiple ArrayImg-s. {% include person id=‘axtimwalde’ %} 16:11, 18 January 2012 (CET)</p>
+<p>When done properly this has the potential to replace or at least simplify PlanarImg like containers since they could be expressed as a composition of multiple ArrayImg-s. <a href="https://imagej.net/people/axtimwalde">axtimwalde</a> 16:11, 18 January 2012 (CET)</p>
 </section>
 <section id="section-9" class="level2">
 <h2 class="anchored" data-anchor-id="section-9">2012-11-21</h2>
@@ -705,290 +722,294 @@ Positionable3d.setPostion( Localizable2d ) - NOT OK</code></pre>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/imglib\.github\.io\/imglib2-www");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
           } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
         }
-        return container.innerHTML
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/imglib\.github\.io\/imglib2-www");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -996,186 +1017,194 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
