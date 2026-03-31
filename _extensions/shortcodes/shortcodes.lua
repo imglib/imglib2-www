@@ -5,7 +5,10 @@ return {
   ['code'] = function(args, kwargs)
     local function str(key, default)
       local val = kwargs[key]
-      if val then return pandoc.utils.stringify(val) end
+      if val then
+        local s = pandoc.utils.stringify(val)
+        if s ~= "" then return s end
+      end
       return default or ""
     end
 
