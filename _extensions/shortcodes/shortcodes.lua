@@ -30,14 +30,16 @@ return {
       :gsub("/", "%%2F")
       :gsub("#", "%%23")
 
-    local embed_url = "https://emgithub.com/embed-v2.js?target=" .. encoded
+    -- The style parameter is intentionally omitted here; code.js appends
+    -- &style= at runtime so it can match the active light/dark theme.
+    local embed_base = "https://emgithub.com/embed-v2.js?target=" .. encoded
       .. "&showBorder=on&showLineNumbers=on&showFileMeta=on&showCopy=on"
 
     local html = ""
     if label then
       html = '<b><a href="' .. file_url .. '">' .. label .. '</a></b><br>\n'
     end
-    html = html .. '<script src="' .. embed_url .. '"></script>'
+    html = html .. '<div class="emgithub-embed" data-src-base="' .. embed_base .. '"></div>'
 
     return pandoc.RawBlock("html", html)
   end
