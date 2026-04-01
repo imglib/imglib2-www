@@ -1173,6 +1173,39 @@ Positionable3d.setPostion( Localizable2d ) - NOT OK</code></pre>
   });
   </script>
 </div> <!-- /content -->
+<script>
+// Load emgithub embeds, matching the active light/dark theme.
+// The {{< imglib2/code >}} shortcode emits a <div class="emgithub-embed"
+// data-src-base="URL"> placeholder (URL without &style=). We inject the
+// <script> tag at runtime so the style matches the active theme, and
+// re-inject when the user toggles the theme.
+(function () {
+  function emgithubStyle() {
+    return document.documentElement.getAttribute('data-bs-theme') === 'dark'
+      ? 'github-dark' : 'github';
+  }
+  function loadEmbed(div) {
+    div.innerHTML = '';
+    var script = document.createElement('script');
+    script.src = div.dataset.srcBase + '&style=' + emgithubStyle();
+    div.appendChild(script);
+  }
+  function loadAllEmbeds() {
+    document.querySelectorAll('.emgithub-embed').forEach(loadEmbed);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadAllEmbeds);
+  } else {
+    loadAllEmbeds();
+  }
+  // Re-render when Quarto toggles light/dark (Bootstrap sets data-bs-theme on <html>).
+  new MutationObserver(function (mutations) {
+    for (var i = 0; i < mutations.length; i++) {
+      if (mutations[i].attributeName === 'data-bs-theme') { loadAllEmbeds(); return; }
+    }
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] });
+})();
+</script>
 <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;

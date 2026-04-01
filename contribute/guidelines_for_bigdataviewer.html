@@ -362,7 +362,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1774997334738" data-listing-reading-time-sort="4" data-listing-word-count-sort="636">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1775008151979" data-listing-reading-time-sort="4" data-listing-word-count-sort="636">
 <div class="thumbnail"><a href="../contribute/our_code_of_conduct.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -381,7 +381,7 @@ We as members, contributors, and leaders pledge to make participation in our com
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1774997334738" data-listing-reading-time-sort="4" data-listing-word-count-sort="707">
+<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1775008151979" data-listing-reading-time-sort="4" data-listing-word-count-sort="707">
 <div class="thumbnail"><a href="../contribute/guidelines_for_imglib2.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -855,6 +855,39 @@ Thank you for considering contributing to the ImgLib2 open source project! By co
   });
   </script>
 </div> <!-- /content -->
+<script>
+// Load emgithub embeds, matching the active light/dark theme.
+// The {{< imglib2/code >}} shortcode emits a <div class="emgithub-embed"
+// data-src-base="URL"> placeholder (URL without &style=). We inject the
+// <script> tag at runtime so the style matches the active theme, and
+// re-inject when the user toggles the theme.
+(function () {
+  function emgithubStyle() {
+    return document.documentElement.getAttribute('data-bs-theme') === 'dark'
+      ? 'github-dark' : 'github';
+  }
+  function loadEmbed(div) {
+    div.innerHTML = '';
+    var script = document.createElement('script');
+    script.src = div.dataset.srcBase + '&style=' + emgithubStyle();
+    div.appendChild(script);
+  }
+  function loadAllEmbeds() {
+    document.querySelectorAll('.emgithub-embed').forEach(loadEmbed);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadAllEmbeds);
+  } else {
+    loadAllEmbeds();
+  }
+  // Re-render when Quarto toggles light/dark (Bootstrap sets data-bs-theme on <html>).
+  new MutationObserver(function (mutations) {
+    for (var i = 0; i < mutations.length; i++) {
+      if (mutations[i].attributeName === 'data-bs-theme') { loadAllEmbeds(); return; }
+    }
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] });
+})();
+</script>
 
 
 

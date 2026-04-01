@@ -392,8 +392,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="example-1a---wrapping-imagej-images">Example 1a - Wrapping ImageJ images</h3>
 <p>If you are already an ImageJ programmer, you might find it the easiest way to simply wrap an ImageJ image into ImgLib2. Here, the data is not copied, so editing the image in ImgLib2 will also modify the ImageJ ImagePlus.</p>
 <p>Internally, we use a compatibility <code>Img</code> to represent the data which is as fast as ImageJ but in the case of higher dimensionality (&gt;2d) is slower than ImgLib2 can do with the <code>ArrayImg</code>. Furthermore you are limited in dimensionality (2d-5d), in the type of data (<code>UnsignedByteType</code>, <code>UnsignedShortType</code>, <code>FloatType</code> and <code>ARGBType</code>) and maximal size of each 2d-plane (max. 46000x46000).</p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example1a.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample1a.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example1a.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample1a.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-1b---opening-an-imglib2-image" class="level3">
 <h3 class="anchored" data-anchor-id="example-1b---opening-an-imglib2-image">Example 1b - Opening an ImgLib2 image</h3>
@@ -402,23 +402,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In <em>(b)</em> we use a <code>CellImg</code> instead. It partitions the image data into n-dimensional cells each holding only a part of the data. Further, SCIFIO takes care of caching cells in and out of memory as needed, greatly reducing the memory requirement to work with very large images.</p>
 <p>The SCIFIO importer also requires <code>Type</code>s that implement <code>NativeType</code>, which means it is able to map the data into a Java basic type array. All available <code>Type</code>s until now are implementing <code>NativeType</code>, if you want to work with some self-developed <code>Type</code> it would be easiest to copy the opened <code>Img</code> afterwards. Please also note that until now, the only <code>Img</code> that supports non-native types is the <code>ListImg</code> which stores every pixel as an individual object!</p>
 <p><strong>Important</strong>: it does not matter which type of <code>Img</code> you use to hold the data as we will use <code>Iterator</code>s and <code>RandomAccess</code>es to access the image content. It might be, however, important if you work on two <code>Img</code> at the same time using <code>Iterator</code>s, see Example2.</p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example1b.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample1b.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example1b.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample1b.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-1c---creating-a-new-imglib2-image" class="level3">
 <h3 class="anchored" data-anchor-id="example-1c---creating-a-new-imglib2-image">Example 1c - Creating a new ImgLib2 image</h3>
 <p>Another important way to instantiate a new ImgLib2 <code>Img</code> is to create a new one from scratch. This requires you to define its <code>Type</code> as well as the <code>ImgFactory</code> to use. It does additionally need one instance of the <code>Type</code> that it is supposed to hold.</p>
 <p>Once you have one instance of an <code>Img</code>, it is very easy to create another one using the same <code>Type</code> and <code>ImgFactory</code>, even if it has a different size. Note that the call <code>img.firstElement()</code> returns the first pixel of any <code>Iterable</code>, e.g.&nbsp;an <code>Img</code>.</p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example1c.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample1c.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example1c.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample1c.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-1d---displaying-images-partly-using-views" class="level3">
 <h3 class="anchored" data-anchor-id="example-1d---displaying-images-partly-using-views">Example 1d - Displaying images partly using Views</h3>
 <p>By using the concept of <code>Views</code> it is possible to display only parts of the image, display a rotated view, and many more cool things. Note that you can also concatenate them. <code>Views</code> are much more powerful than shown in this example, they will be increasingly used throughout the examples.</p>
 <p>A <code>View</code> almost behaves similar to an <code>Img</code>, and in fact they share important concepts. Both are <code>RandomAccessible</code>, and <code>Views</code> that are not infinite are also an <code>Interval</code> (i.e.&nbsp;those <code>Views</code> have a defined size) and can therefore be made <code>Iterable</code> (see example 2c). In ImgLib2, all algorithms are implemented for abstract concepts like <code>RandomAccessible</code>, <code>Iterable</code> or <code>Interval</code>. This enables us, as can be seen below, to display a <code>View</code> the exact same way we would also display an <code>Img</code>.</p>
 <p><img src="imglib2example1d.jpg" width="780"> <em>Shows the original image, the View of an interval, as well as the by 90 degree rotated version of the view. Note that only the original image in kept in memory, both Views are completely virtual.</em></p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example1d.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample1d.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example1d.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample1d.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 </section>
 <section id="example-2---how-to-use-cursor-randomaccess-and-type" class="level2">
@@ -440,16 +440,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The copy method itself is a generic method, it will work on any kind of <code>Type</code>. In this particular case it works on a <code>FloatType</code>, but would also work on anything else like for example a <code>ComplexDoubleType</code>. The declaration of the generic type is done in the method declaration:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="op">&lt;</span> T <span class="kw">extends</span> <span class="bu">Type</span><span class="op">&lt;</span> T <span class="op">&gt;</span> <span class="op">&gt;</span> Img<span class="op">&lt;</span> T <span class="op">&gt;</span> <span class="fu">copyImage</span><span class="op">(</span> <span class="kw">...</span> <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>&lt; T extends Type&lt; T &gt; &gt;</code> basically means that <code>T</code> can be anything that extends <code>Type</code>. These can be final implementations such as <code>FloatType</code> or also intermediate interfaces such as <code>RealType</code>. This, however, also means that in the method body only operations supported by <code>Type</code> will be available. Note that the method returns a <code>T</code>, which also means that in the constructor from which we call method it will also return an <code>Img&lt;FloatType&gt;</code> as we provide it with one.</p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example2a.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample2a.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example2a.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample2a.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-2b---duplicating-an-img-using-a-different-imgfactory" class="level3">
 <h3 class="anchored" data-anchor-id="example-2b---duplicating-an-img-using-a-different-imgfactory">Example 2b - Duplicating an Img using a different ImgFactory</h3>
 <p><span style="color:#FF0000"><strong>WARNING:</strong> The <code>copyImageWrong</code> method in this example makes a mistake on purpose!</span> It intends to show that the iteration order of <code>Cursor</code>s is important to consider. The goal is to copy the content of an <code>ArrayImg</code> (i.e.&nbsp;an <code>Img</code> that was created using an <code>ArrayImgFactory</code>) into a <code>CellImg</code>. Using only <code>Cursor</code>s for both images will have a wrong result as an <code>ArrayImg</code> and a <code>CellImg</code> have different iteration orders. An <code>ArrayImg</code> is iterated linearly, while a <code>CellImg</code> is iterate cell-by-cell, but linearly within each cell.</p>
 <p><img src="imglib2example2b.png" width="780"> <em>Shows the result if two Cursors are used that have a different iteration order. Here we are wrongly copying an ArrayImg (left) into a CellImg (right).</em></p>
 <p><span style="color:#FF0000">The correct code for the copy-method (in <code>copyImageCorrect</code>) requires the use of a <code>RandomAccess</code>.</span> We use a <code>Cursor</code> to iterate over all pixels of the input and a <code>RandomAccess</code> which we set to the same location the output. Note that the <code>setPosition()</code> call of the <code>RandomAccess</code> directly takes the <code>Cursor</code> as input, which is possible because <code>Cursor</code> implements <code>Localizable</code>. Please also note that we use a <code>LocalizingCursor</code> instead of a normal <code>Cursor</code> because we need the location of the <code>Cursor</code> at every pixel.</p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example2b.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample2b.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example2b.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample2b.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-2c---generic-copying-of-image-data" class="level3">
 <h3 class="anchored" data-anchor-id="example-2c---generic-copying-of-image-data">Example 2c - Generic copying of image data</h3>
@@ -457,8 +457,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Therefore we design the copy method in a way that the <em>target</em> is an <code>IterableInterval</code> and the <em>source</em> is <code>RandomAccessible</code>. In this way, we simply iterate over the <em>target</em> and copy the corresponding pixels from the <em>source</em>.</p>
 <p>As the <em>source</em> only needs to be <code>RandomAccessible</code>, it can be basically anything that can return a value at a certain location. This can be as simple as an <code>Img</code>, but also interpolated sparse data, a function, a ray-tracer, a <code>View</code>, ….</p>
 <p>As the <em>target</em> needs to be an <code>IterableInterval</code>, it is more confined. This, however does not necessarily mean that it can only be an <code>Img</code> or a <code>View</code> that is not infinite. It simply means it has to be something that is iterable and not infinite, which for example also applies to sparse data (e.g.&nbsp;a list of locations and their values).</p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example2c.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample2c.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example2c.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample2c.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 </section>
 <section id="example-3---writing-generic-algorithms" class="level2">
@@ -478,27 +478,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Below we show <strong>three</strong> small variations of the min/max search. <a href="#example-3a-variation-1">First</a> we show the implementation as described above. <a href="#example-3a-variation-2">Second</a> we illustrate that this also works on a standard Java <code>ArrayList</code>. <a href="#example-3a-variation-3">Third</a> we show how the implementation changes if we do not only want the min/max value, but also their location. This requires to use <code>IterableInterval</code> instead, as <code>Cursor</code> can return their location.</p>
 <section id="example-3a---variation-1" class="level4">
 <h4 class="anchored" data-anchor-id="example-3a---variation-1">Example 3a - Variation 1</h4>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example3a1.java#L35-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample3a1.java%23L35-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example3a1.java#L35-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample3a1.java%23L35-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-3a---variation-2" class="level4">
 <h4 class="anchored" data-anchor-id="example-3a---variation-2">Example 3a - Variation 2</h4>
 <p>Note that this example works just the same way if the input is not an <code>Img</code>, but for example just a standard Java <code>ArrayList</code>.</p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example3a2.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample3a2.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example3a2.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample3a2.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-3a---variation-3" class="level4">
 <h4 class="anchored" data-anchor-id="example-3a---variation-3">Example 3a - Variation 3</h4>
 <p>If we want to compute the location of the minimal and maximal pixel value, an <code>Iterator</code> will not be sufficient as we need location information. Instead the location search will demand an <code>IterableInterval</code> as input data which can create <code>Cursor</code>s. Apart from that, the algorithm looks quite similar. Note that we do not use a <code>LocalizingCursor</code> but only a <code>Cursor</code> the location happens only when a new maximal or minimal value has been found while iterating the data.</p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example3a3.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample3a3.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example3a3.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample3a3.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 </section>
 <section id="example-3b---computing-average" class="level3">
 <h3 class="anchored" data-anchor-id="example-3b---computing-average">Example 3b - Computing average</h3>
 <p>In a very similar way one can compute the average intensity for image data. Note that we restrict the <code>Type</code> of data to <code>RealType</code>. In theory, we could use <code>NumericType</code> as it offers the possibility to <em>add</em> up values. However, we cannot ensure that <code>NumericType</code> provided is capable of adding up millions of pixels without overflow. And even if we would ask for a second <code>NumericType</code> that is capable of adding values up, it might still have numerical instabilities. <em>Note that actually every Java native type has those instabilities</em>. Therefore we use the <code>RealSum</code> class that offers correct addition of even very large amounts of pixels. As this implementation is only available for double values, we restrict the method here to <code>RealType</code>.</p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example3b.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample3b.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example3b.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample3b.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 </section>
 <section id="example-4---specialized-iterables" class="level2">
@@ -514,8 +514,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This example illustrates the use of specialized <code>Iterable</code>s, and emphasizes the fact that they can be stacked on the underlying <code>RandomAccessible</code> using the location of one as the center of a new one. Note that we always create new instances of <code>HyperSphere</code>. The code reads very nicely but might not offer the best performance. We therefore added <em>update</em> methods to the <code>HyperSphere</code> and its <code>Cursor</code> that could be used instead.</p>
 <p>Another interesting aspect of this example is the use of the <code>ImagePlusImgFactory</code>, which is the compatibility container for ImageJ. If the required dimensionality and <code>Type</code> is available in ImageJ, it will internally create an ImagePlus and work on it directly. In this case, one can request the ImagePlus and show it directly. It will, however, fail if <code>Type</code> and dimensionality is not supported by ImageJ and throw a <code>ImgLibException</code>.</p>
 <p><img src="manyspheres.jpg" width="780"> <em>Shows the result of example 4a for the (a) two-dimensional, (b) three-dimensional and (c) four-dimensional case. The image series in (c) represents a movie of a three-dimensional rendering. The images of (b) and (c) were rendered using the ImageJ 3d Viewer.</em></p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example4a.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample4a.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example4a.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample4a.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-4b---finding-and-displaying-local-minima" class="level3">
 <h3 class="anchored" data-anchor-id="example-4b---finding-and-displaying-local-minima">Example 4b - Finding and displaying local minima</h3>
@@ -533,8 +533,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 -------------          -------------           -------------</code></pre>
 <p>Please note as well that if one would increase the radius of the <code>RectangleShape</code> to more than 1 (without at the same time changing the <code>View</code> on source that creates an inset border of exactly this one pixel), this example would fail as we would try to write image data outside of the defined boundary. <code>OutOfBoundsStrategies</code> which define how to handle such cases is discussed in example 5.</p>
 <p><img src="allminima.jpg" width="780"> <em>Shows the result of the detection of local minima after the Gaussian blurring. (a) depicts the input image, (b) the blurred version (sigma=1) and (c) all local mimina drawn as circles with radius 1.</em></p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example4b.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample4b.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example4b.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample4b.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 </section>
 <section id="example-5---out-of-bounds" class="level2">
@@ -543,8 +543,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Important: One should never access pixels outside of the defined <code>Interval</code> as it will in most cases result in unexpected behavior, depending on the kind of underlying <code>RandomAccessible</code>. If it is for example an <code>Img</code>, it will return wrong values or throw an exception.</em></p>
 <p>Which <code>OutOfBoundsStrategy</code> to use depends on task you want to perform. For convolutions we suggest the mirror strategy as it introduces the least artifacts. When working on Fourier images, the periodic strategy applies best as it correctly mimics its spatial properties. Random Value strategies might be useful to avoid accidental correlations and constant value strategies are the most performant and might work well for simple operations or to avoid exceptions when accidental writing or reading outside of the Interval occurs.</p>
 <p><img src="nds.jpg" width="780"> <em>Illustrates the effect of various OutOfBoundsStrategies. (a) shows out of bounds with a constant value, (b) shows a mirroring strategy, (c) shows the periodic strategy, and (d) shows a strategy that uses random values.</em></p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example5.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample5.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example5.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample5.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-6---basic-built-in-algorithms" class="level2">
 <h2 class="anchored" data-anchor-id="example-6---basic-built-in-algorithms">Example 6 - Basic built-in algorithms</h2>
@@ -558,28 +558,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="example-6a---gaussian-convolution-variation-1---simple" class="level4">
 <h4 class="anchored" data-anchor-id="example-6a---gaussian-convolution-variation-1---simple">Example 6a - Gaussian convolution (variation 1 - simple)</h4>
 <p>Here, we simply apply a Gaussian convolution with a sigma of 8. Note that it could be applied in-place as well when calling <em>Gauss.inFloatInPlace( … )</em>. The Gaussian convolution uses by default the <code>OutOfBoundsMirrorStrategy</code>.</p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example6a1.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample6a1.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example6a1.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample6a1.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-6a---gaussian-convolution-variation-2---different-outofboundsstrategy" class="level4">
 <h4 class="anchored" data-anchor-id="example-6a---gaussian-convolution-variation-2---different-outofboundsstrategy">Example 6a - Gaussian convolution (variation 2 - different OutOfBoundsStrategy)</h4>
 <p>Here we use an <code>OutOfBoundsStrategyConstantValue</code> instead. It results in continuously darker borders as the zero-values from outside of the image are used in the convolution. Note that the computation is done in-place here. However, we still need to provide an <code>ImgFactory</code> as the Gaussian convolution needs to create temporary image(s) - except for the one-dimensional case.</p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example6a2.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample6a2.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example6a2.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample6a2.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-6a---gaussian-convolution-variation-3---only-part-of-an-interval" class="level4">
 <h4 class="anchored" data-anchor-id="example-6a---gaussian-convolution-variation-3---only-part-of-an-interval">Example 6a - Gaussian convolution (variation 3 - only part of an Interval)</h4>
 <p>Here we only convolve part of an <code>Interval</code>, or in this case part of the <code>Img</code>. Note that for convolution he will actually use the real image values outside of the defined <code>Interval</code>. The <code>OutOfBoundsStrategy</code> is only necessary if the kernel is that large so that it will actually grep image values outside of the underlying <code>Img</code>.</p>
 <p>Note: if you wanted, you could force him to use an <code>OutOfBoundsStrategy</code> directly outside of the <code>Interval</code>. For that you would have to create an <code>RandomAccessibleInterval</code> on the <code>Img</code>, extend it by an <code>OutOfBoundsStrategy</code> and give this as input to the Gaussian convolution.</p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example6a3.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample6a3.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example6a3.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample6a3.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-6a---gaussian-convolution-variation-4---with-a-lower-dimensionality" class="level4">
 <h4 class="anchored" data-anchor-id="example-6a---gaussian-convolution-variation-4---with-a-lower-dimensionality">Example 6a - Gaussian convolution (variation 4 - with a lower dimensionality)</h4>
 <p>This example shows howto apply an algorithm to a lower dimensionality as the image data you are working on. Therefore we use <code>Views</code> to create HyperSlices which have <em>n-1</em> dimensions. We simply apply the algorithm in-place on those <code>Views</code> which will automatically update the image data in the higher-dimensional data.</p>
 <p>Specifically, we apply 1-dimensional Gaussian convolution in 30-pixel wide stripes using a sigma of 16. <em>Note that whenever you request an <code>HyperSlice</code> for a certain dimension, you will get back a <code>View</code> that contains all dimensions <span style="color:#FF0000">but</span> this one.</em></p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example6a4.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample6a4.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example6a4.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample6a4.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 </section>
 <section id="example-6b---convolution-in-fourier-space" class="level3">
@@ -588,8 +588,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Note that it is useful to normalize the kernel prior to Fourier convolution so that the sum of all pixels is one. Otherwise, the resulting intensities will be increased.</em></p>
 <p><img src="fourierconvolution.jpg" width="780"> <em>Shows the effect of the Fourier convolution. The left image was convolved with the kernel depicted in the lower left corner, the right panel shows the convolved image. Note that the computation speed does not depend on the size or the shape of the kernel.</em></p>
 <p><span style="color:#FF0000"><em>Important: This source code is only GPLv2!</em></span></p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example6b.java#L54-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample6b.java%23L54-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example6b.java#L54-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample6b.java%23L54-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-6c---complex-numbers-and-fourier-transforms" class="level3">
 <h3 class="anchored" data-anchor-id="example-6c---complex-numbers-and-fourier-transforms">Example 6c - Complex numbers and Fourier transforms</h3>
@@ -600,8 +600,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The final convolution of the inverse template with the image is performed using the FourierConvolution (see example 6b). Note that all possible locations of the template in the image have been tested. The peak in the result image clearly marks the location of the template, while the computation time for the whole operation takes less than a second.</p>
 <p><img src="fourier.jpg" width="780"> <em>Shows the result and intermediate steps of the template matching using the Fourier space. In the upper panel you see the input image as well as the template that we use from matching. Below we show four different views of the Fast Fourier Transform of the template: the power spectrum, the phase spectrum, the real values, and the imaginary values. In the lower panel you see the result of the convolution of the inverse template with the image. The position where the template was located in the image is significantly visible. In the bottom right corner you see the inverse FFT of the inverse kernel.</em></p>
 <p><span style="color:#FF0000"><em>Important: This source code is only GPLv2!</em></span></p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example6c.java#L54-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample6c.java%23L54-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example6c.java#L54-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample6c.java%23L54-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 </section>
 <section id="example-7---interpolation" class="level2">
@@ -614,8 +614,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>In the example we magnify a given real interval in the <code>RealRandomAccessible</code> which is based on the interpolation on an <code>Img</code> and compare the results of all three interpolation methods.</p>
 <p><img src="interpolation.jpg" width="779"> <em>Shows the result for three different interpolators when magnifying a small part of the image by 10x. The nearest neighbor interpolation is computed fastest and is the most versatile as it requires no computation but just a lookout. The result is, however, very pixelated. The linear interpolation produces reasonable results and computes quite fast. The Lanczos interpolation shows visually most pleasing results but also introduces slight artifacts in the background.</em></p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example7.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample7.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example7.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample7.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-8---working-with-sparse-data" class="level2">
 <h2 class="anchored" data-anchor-id="example-8---working-with-sparse-data">Example 8 - Working with sparse data</h2>
@@ -626,16 +626,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="example-8a---create-random-sparse-data-display-and-convolve-it">Example 8a - Create random sparse data, display and convolve it</h3>
 <p>In this example we create a certain number of random samples with random intensities inside a certain <code>Interval</code>. Using nearest neighbor interpolation we wrap it into a <code>RealRandomAccessible</code>, wrap it again into a <code>RandomAccessible</code>, define an <code>Interval</code> on it and display it. On the same <em>virtual</em> data we perform a Gaussian convolution and show it, too.</p>
 <p><img src="sparseimage1.jpg" width="777"> <em>On the left hand side it shows nearest-neighbor rendered random sparse data as created in example 8a. The right hand side shows the result of a Gaussian convolution, run directly on the virtual RandomAccessibleInterval.</em></p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example8a.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample8a.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example8a.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample8a.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 </section>
 <section id="example-8b---randomly-sample-an-existing-image-and-display-it" class="level3">
 <h3 class="anchored" data-anchor-id="example-8b---randomly-sample-an-existing-image-and-display-it">Example 8b - Randomly sample an existing image and display it</h3>
 <p>In this example we sample an existing image at random locations and render the result using a nearest neighbor interpolation as well as a distance-weighted average of the k nearest neighbors.</p>
 <p><img src="sparseimage2.jpg" width="638"><br>
 <em>Shows the result of sparse sampling of an existing image using a varying number of random samples. The upper panel shows the rendering using nearest neighbor interpolation, the lower panel uses an interpolated, distance-weighted value of the k nearest neighbors relative to each sampled location (i.e.&nbsp;each pixel).</em></p>
-<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example8b.java#L34-"></a></b><br>
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample8b.java%23L34-&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script>
+<b><a href="https://github.com/imglib/imglib2-tutorials/blob/master/src/main/java/Example8b.java#L34-99999"></a></b><br>
+<div class="emgithub-embed" data-src-base="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fimglib%2Fimglib2-tutorials%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2FExample8b.java%23L34-99999&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></div>
 
 
 </section>
@@ -1094,6 +1094,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script>
 </div> <!-- /content -->
+<script>
+// Load emgithub embeds, matching the active light/dark theme.
+// The {{< imglib2/code >}} shortcode emits a <div class="emgithub-embed"
+// data-src-base="URL"> placeholder (URL without &style=). We inject the
+// <script> tag at runtime so the style matches the active theme, and
+// re-inject when the user toggles the theme.
+(function () {
+  function emgithubStyle() {
+    return document.documentElement.getAttribute('data-bs-theme') === 'dark'
+      ? 'github-dark' : 'github';
+  }
+  function loadEmbed(div) {
+    div.innerHTML = '';
+    var script = document.createElement('script');
+    script.src = div.dataset.srcBase + '&style=' + emgithubStyle();
+    div.appendChild(script);
+  }
+  function loadAllEmbeds() {
+    document.querySelectorAll('.emgithub-embed').forEach(loadEmbed);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadAllEmbeds);
+  } else {
+    loadAllEmbeds();
+  }
+  // Re-render when Quarto toggles light/dark (Bootstrap sets data-bs-theme on <html>).
+  new MutationObserver(function (mutations) {
+    for (var i = 0; i < mutations.length; i++) {
+      if (mutations[i].attributeName === 'data-bs-theme') { loadAllEmbeds(); return; }
+    }
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] });
+})();
+</script>
 
 
 
