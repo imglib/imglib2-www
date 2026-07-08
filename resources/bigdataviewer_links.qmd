@@ -10,7 +10,7 @@ listing:
 page-layout: full
 title-block-banner: true
 ---
-## General BigDataViwer Resources
+## General BigDataViewer Resources
   - GitHub Repository: [https://github.com/bigdataviewer](https://github.com/bigdataviewer)
   - BigDataViewer ImageJ Documentation: [https://imagej.net/plugins/bdv/](https://imagej.net/plugins/bdv/)
 
