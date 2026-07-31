@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="John Bogovic">
+<meta name="dcterms.date" content="2026-07-31">
+<meta name="description" content="Developer-focused summary of N5 development sharding and zarr v3.">
+
+<title>N5 development guide – ImgLib2 and BigDataViewer projects</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b5c1aaa02c73903407dc0116cdc68c04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="N5 development guide – ImgLib2 and BigDataViewer projects">
+<meta property="og:description" content="Developer-focused summary of N5 development sharding and zarr v3.">
+<meta property="og:site_name" content="ImgLib2 and BigDataViewer projects">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ImgLib2 and BigDataViewer projects</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../imglib2"> 
+<span class="menu-text">ImgLib2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bdv"> 
+<span class="menu-text">BDV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../resources/imglib2_links.html"><i class="bi bi-info-square" role="img">
+</i> 
+ <span class="dropdown-text">ImgLib2 links</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../resources/bigdataviewer_links.html"><i class="bi bi-info-square" role="img">
+</i> 
+ <span class="dropdown-text">BigDataViewer links</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/imglib"><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">ImgLib2 github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/bigdataviewer"><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">BigDataViewer github</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../ecosystem/index.html"> 
+<span class="menu-text">Ecosystem</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-contributing-guidelines" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Contributing Guidelines</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-contributing-guidelines">    
+        <li>
+    <a class="dropdown-item" href="../../contribute/guidelines_for_imglib2.html"><i class="bi bi-share" role="img">
+</i> 
+ <span class="dropdown-text">Guidelines for ImgLib2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contribute/guidelines_for_bigdataviewer.html"><i class="bi bi-share" role="img">
+</i> 
+ <span class="dropdown-text">Guidelines for BigDataViewer</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contribute/our_code_of_conduct.html"><i class="bi bi-peace" role="img">
+</i> 
+ <span class="dropdown-text">Our Code-of-conduct</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@imglib2"> <i class="bi bi-mastodon" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <div class="quarto-title-block"><div><h1 class="title">N5 development guide</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/blog/2026-07-31-n5-shard-dev/index.qmd"><i class="bi"></i> Code</button></div></div>
+                  <div>
+        <div class="description">
+          Developer-focused summary of N5 development sharding and zarr v3.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">n5</div>
+                <div class="quarto-category">zarr</div>
+                <div class="quarto-category">imglib2</div>
+                <div class="quarto-category">java</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>John Bogovic </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 31, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#nomenclature" id="toc-nomenclature" class="nav-link active" data-scroll-target="#nomenclature">Nomenclature</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#n5factory" id="toc-n5factory" class="nav-link" data-scroll-target="#n5factory">N5Factory</a>
+  <ul class="collapse">
+  <li><a href="#storage-format-specification" id="toc-storage-format-specification" class="nav-link" data-scroll-target="#storage-format-specification">Storage format specification</a></li>
+  <li><a href="#storage-format-extenstions" id="toc-storage-format-extenstions" class="nav-link" data-scroll-target="#storage-format-extenstions">Storage format extenstions</a></li>
+  </ul></li>
+  <li><a href="#creating-a-sharded-dataset" id="toc-creating-a-sharded-dataset" class="nav-link" data-scroll-target="#creating-a-sharded-dataset">Creating a sharded dataset</a></li>
+  <li><a href="#high-level-writing" id="toc-high-level-writing" class="nav-link" data-scroll-target="#high-level-writing">High-level writing</a></li>
+  <li><a href="#low-level-writing" id="toc-low-level-writing" class="nav-link" data-scroll-target="#low-level-writing">Low-level writing</a></li>
+  <li><a href="#codecs" id="toc-codecs" class="nav-link" data-scroll-target="#codecs">Codecs</a>
+  <ul class="collapse">
+  <li><a href="#datacodec-and-compression" id="toc-datacodec-and-compression" class="nav-link" data-scroll-target="#datacodec-and-compression">DataCodec and Compression</a></li>
+  <li><a href="#blockcodec" id="toc-blockcodec" class="nav-link" data-scroll-target="#blockcodec">BlockCodec</a></li>
+  <li><a href="#datasetcodec" id="toc-datasetcodec" class="nav-link" data-scroll-target="#datasetcodec">DatasetCodec</a></li>
+  <li><a href="#codecinfo" id="toc-codecinfo" class="nav-link" data-scroll-target="#codecinfo">CodecInfo</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>This post for Java developers covers the recent updates to the <a href="https://github.com/saalfeldlab/n5">N5 API</a>, adding support for sharding and Zarr v3 and, is intended as a migration guide to the new versions. Some specific noteworthy changes are called out in green boxes.</p>
+<p>Examples below require the latest releases at the time of this writing:</p>
+<ul>
+<li>n5-4.0.2</li>
+<li>n5-imglib2-8.0.0</li>
+<li>n5-universe:3.0.2</li>
+<li>n5-zarr-2.0.1</li>
+<li>n5-zstandard-2.0.0</li>
+</ul>
+<section id="nomenclature" class="level2">
+<h2 class="anchored" data-anchor-id="nomenclature">Nomenclature</h2>
+<ul>
+<li>“Chunk” refers to the smallest (innermost) subdivision of the array</li>
+<li>“Block” refers to the largest (outermost) subdivision of the array
+<ul>
+<li>refers to shards when the array is sharded</li>
+<li>identical to chunks when the array is unsharded</li>
+</ul></li>
+<li>“Storage format” refers to one of (HDF5, N5, Zarr v2, Zarr v3).</li>
+<li>“Backend” refers to the file or object store on which the format is written (e.g., filesystem, aws-s3, google-cloud).</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Some changes to:</p>
+<ul>
+<li>N5Factory</li>
+</ul>
+<p>New low-level methods:</p>
+<ul>
+<li>N5Reader
+<ul>
+<li>readChunk</li>
+<li>readChunks</li>
+</ul></li>
+<li>N5Writer
+<ul>
+<li>writeChunk</li>
+<li>writeChunks</li>
+</ul></li>
+</ul>
+</section>
+<section id="n5factory" class="level2">
+<h2 class="anchored" data-anchor-id="n5factory">N5Factory</h2>
+<p>The <code>openReader</code> and <code>openWriter</code> methods in <code>N5Factory</code> return an <code>N5Reader</code> or <code>N5Writer</code>, respectively. The storage format is determined by (in order):</p>
+<ol type="1">
+<li>The user-specified storage format.</li>
+<li>Existing data at the specified location.</li>
+<li>Extension of the given location.</li>
+</ol>
+<section id="storage-format-specification" class="level3">
+<h3 class="anchored" data-anchor-id="storage-format-specification">Storage format specification</h3>
+<p>The changes for the <a href="https://github.com/saalfeldlab/n5-universe/blob/d290226f5a38ac6c6d5f0e2f8f026b2768ad7d74/src/main/java/org/janelia/saalfeldlab/n5/universe/StorageFormat.java"><code>StorageFormat</code></a> enum have to do with Zarr.</p>
+<p><code>StorageFormat.ZARR2</code>: is new and always refers to Zarr v2. N5Factory will fail if this is specified, but the URI points to a Zarr v3 hierarchy</p>
+<p><code>StorageFormat.ZARR3</code>: is new and always refers to Zarr v3. N5Factory will fail if this is specified, but the URI points to a Zarr v2 hierarchy</p>
+<p><code>StorageFormat.ZARR</code>: in past versions this always referred to Zarr v2. Now, if this is specified and points to an existing Zarr v2 or v3 hierarchy, then N5Factory will return an appropriate reader or writer. If this is specified for a writer when no Zarr hierarchy exists, then a N5Factory will return a Zarr v3 writer.</p>
+</section>
+<section id="storage-format-extenstions" class="level3">
+<h3 class="anchored" data-anchor-id="storage-format-extenstions">Storage format extenstions</h3>
+<p>This table lists the extensions for each storage format.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Storage Format</th>
+<th>Extensions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Zarr v3</td>
+<td><code>.zarr</code></td>
+</tr>
+<tr class="even">
+<td>Zarr v2</td>
+<td><code>.zarr</code></td>
+</tr>
+<tr class="odd">
+<td>N5</td>
+<td><code>.n5</code></td>
+</tr>
+<tr class="even">
+<td>HDF5</td>
+<td><code>.h5</code>, <code>.hdf5</code></td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>N5Factory factory <span class="op">=</span> <span class="kw">new</span> <span class="fu">N5Factory</span><span class="op">();</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">// opens a Zarr V2 writer</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>factory<span class="op">.</span><span class="fu">openWriter</span><span class="op">(</span>StorageFormat<span class="op">.</span><span class="fu">ZARR2</span><span class="op">,</span> <span class="st">"demo.weird-extension"</span><span class="op">)</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">// opens a Zarr v3 writer if the specified folder is empty or does not exist</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>factory<span class="op">.</span><span class="fu">openWriter</span><span class="op">(</span><span class="st">"demo-empty.zarr"</span><span class="op">)</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">// opens a Zarr v2 writer if the specified folder has v2 data</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>factory<span class="op">.</span><span class="fu">openWriter</span><span class="op">(</span><span class="st">"demo-existing-v2.zarr"</span><span class="op">)</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">// opens an n5 writer</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>factory<span class="op">.</span><span class="fu">openWriter</span><span class="op">(</span><span class="st">"demo.n5"</span><span class="op">)</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="creating-a-sharded-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-sharded-dataset">Creating a sharded dataset</h2>
+<p>Zarr v3 is the only storage format that supports sharding, so to create a sharded dataset, we need a Zarr v3 writer. Use <code>new N5Factory().openWriter(StorageFormat.ZARR3, "demo.zarr"))</code> to create a Zarr v3 writer, or use a <code>ZarrV3KeyValueWriter</code> constructor to create one manually.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// try block auto-closes the writer</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(</span>N5Writer writer <span class="op">=</span> <span class="kw">new</span> <span class="fu">N5Factory</span><span class="op">().</span><span class="fu">openWriter</span><span class="op">(</span>StorageFormat<span class="op">.</span><span class="fu">ZARR3</span><span class="op">,</span> <span class="st">"demo.zarr"</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// create a dataset attributes instance to specify the</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// dataset parameters with a specified shard size</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    ZarrV3DatasetAttributes specAttributes <span class="op">=</span> ZarrV3DatasetAttributes</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">// image dimensions and data type are required</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">builder</span><span class="op">(</span><span class="kw">new</span> <span class="dt">long</span><span class="op">[]{</span><span class="dv">128</span><span class="op">,</span> <span class="dv">128</span><span class="op">,</span> <span class="dv">64</span><span class="op">},</span> DataType<span class="op">.</span><span class="fu">INT32</span><span class="op">)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">blockSize</span><span class="op">(</span><span class="kw">new</span> <span class="dt">int</span><span class="op">[]{</span><span class="dv">32</span><span class="op">,</span> <span class="dv">32</span><span class="op">,</span> <span class="dv">32</span><span class="op">})</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">shardSize</span><span class="op">(</span><span class="kw">new</span> <span class="dt">int</span><span class="op">[]{</span><span class="dv">128</span><span class="op">,</span> <span class="dv">128</span><span class="op">,</span> <span class="dv">128</span><span class="op">})</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">compression</span><span class="op">(</span><span class="kw">new</span> <span class="fu">ZstandardCompression</span><span class="op">())</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">build</span><span class="op">();</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// use this instance for subsequent calls to readChunk(s) writeChunk(s)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    DatasetAttributes actualAttributes <span class="op">=</span> writer<span class="op">.</span><span class="fu">createDataset</span><span class="op">(</span><span class="st">""</span><span class="op">,</span> specAttributes<span class="op">);</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span><code>createDataset</code> returns a <code>DatasetAttributes</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A noteworthy API change.</p>
+<p>Different storage formats (HDF5, N5, Zarr) have different feature sets and have different default sets of codecs. N5 may need to convert a generic <code>DatasetAttributes</code> to a more specific type, e.g.&nbsp;<code>ZarrV3DatasetAttributes</code>. This more specific type is returned by <code>createDataset</code>.</p>
+<p>The motivation for this change was to enable subsequent calls to <code>readChunk</code> / <code>writeChunks</code> to avoid repeating the overhead this conversion because these methods are often called repeatedly with the same <code>DatasetAttributes</code>.</p>
+</div>
+</div>
+</section>
+<section id="high-level-writing" class="level2">
+<h2 class="anchored" data-anchor-id="high-level-writing">High-level writing</h2>
+<p>There are no changes to the methods of N5Utils, and they support reading from and writing to shards.</p>
+<p>Note the use of the <code>saveBlock</code> method (instead of <code>save</code>) because it takes a <code>DatasetAttributes</code> instance, and current <code>save</code> methods do not enable specification of a sharded dataset (at this time).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>RandomAccessibleInterval<span class="op">&lt;</span>IntType<span class="op">&gt;</span> img<span class="op">;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>N5Utils<span class="op">.</span><span class="fu">saveBlock</span><span class="op">(</span>img<span class="op">,</span> writer<span class="op">,</span> datasetPath<span class="op">,</span> actualAttributes<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="low-level-writing" class="level2">
+<h2 class="anchored" data-anchor-id="low-level-writing">Low-level writing</h2>
+<p>There is a new method <code>writeChunks</code> that takes an array of <code>DataBlock</code>s and writes them all. Applications should generally call <code>writeChunks</code> once for all chunks belonging to a shard. At this time, developers are responsible for determining which blocks belong to what shard, though a helper method may be added.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>prefer <code>writeChunks</code> to <code>writeChunk</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Using <code>writeChunks</code> will allow N5 to optimize write operations by grouping chunks by the block they belong to (if relevant). Calls to <code>writeChunk</code> will still work (if called serially)</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Take care calling <code>writeChunk</code> in parallel
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Parallel calls to <code>writeChunk</code> that refer to the different chunks in the same block (shard) can cause data loss. It is the caller’s responsibility to avoid this.</p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>DataBlock<span class="op">&lt;</span><span class="dt">int</span><span class="op">[]&gt;[]</span> chunks<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>writer<span class="op">.</span><span class="fu">writeChunks</span><span class="op">(</span>datasetPath<span class="op">,</span> actualAttributes<span class="op">,</span> chunks<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>DataBlock<span class="op">&lt;</span><span class="dt">int</span><span class="op">[]&gt;</span> chunk<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>writer<span class="op">.</span><span class="fu">writeChunk</span><span class="op">(</span>datasetPath<span class="op">,</span> actualAttributes<span class="op">,</span> chunk<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The method <code>writeBlock</code> still exists ands works for sharded datasets.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>DataBlock<span class="op">&lt;</span><span class="dt">int</span><span class="op">[]&gt;</span> block<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>writer<span class="op">.</span><span class="fu">writeBlock</span><span class="op">(</span>datasetPath<span class="op">,</span> actualAttributes<span class="op">,</span> block<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="codecs" class="level2">
+<h2 class="anchored" data-anchor-id="codecs">Codecs</h2>
+<p>This release introduces <code>Codec</code>s, which implement the same functionality as <a href="https://zarr-specs.readthedocs.io/en/v3.1.0/v3/codecs/index.html">Codecs in the Zarr v3 specification</a>. Developers generally do not have to worry about the details of Codecs, the one exception being compression algorithms.</p>
+<section id="datacodec-and-compression" class="level3">
+<h3 class="anchored" data-anchor-id="datacodec-and-compression">DataCodec and Compression</h3>
+<p>The <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/DataCodec.java"><code>DataCodec</code></a> interface is the the analogue of Zarr v3’s <code>bytes -&gt; bytes</code> codec. The <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/Compression.java"><code>Compression</code></a> interface, a pre-existing N5 interface, is now a special case of a <code>DataCodec</code>. It is otherwise backward-compatible and may still be used.</p>
+</section>
+<section id="blockcodec" class="level3">
+<h3 class="anchored" data-anchor-id="blockcodec">BlockCodec</h3>
+<p>The <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/BlockCodec.java"><code>BlockCodec</code></a> interface the the analogue of Zarr v3’s <code>array -&gt; bytes</code> codec.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Avoid manually specifying a <code>BlockCodec</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Make sure you really know what you’re doing if you specify a <code>BlockCodec</code> manually. This is because the particular <code>BlockCodec</code> that is needed depends on the storage format being used, and the N5 library will provide the correct <code>BlockCodec</code> by default (without code needing to know the type of your <code>N5Reader</code> / <code>N5Writer</code> instance).</p>
+<p>Take advantage of this!</p>
+<p>If you manually specify a <code>BlockCodec</code>, N5 will not check that it is valid for the storage format. You might accidentally write invalid data as a result.</p>
+</div>
+</div>
+<p>N5 will automatically set an appropriate <code>BlockCodec</code> when creating a <code>DatasetAttributes</code> if one is not explicitly specified. It does this by calling the <code>defaultBlockCodec</code> method. The base <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/DatasetAttributes.java#L234-L236"><code>DatasetAttributes</code> returns an <code>N5BlockCodecInfo</code></a>, but <a href="https://github.com/saalfeldlab/n5-zarr/blob/ee718c938f5bc2e82e99188aafe101ba731395c1/src/main/java/org/janelia/saalfeldlab/n5/zarr/v3/ZarrV3DatasetAttributes.java#L219-L222"><code>ZarrV3DatasetAttributes</code> returns a <code>PaddedRawBlockCodecInfo</code></a></p>
+</section>
+<section id="datasetcodec" class="level3">
+<h3 class="anchored" data-anchor-id="datasetcodec">DatasetCodec</h3>
+<p>The <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/DatasetCodec.java"><code>DatasetCodec</code></a> interface the the analogue of Zarr v3’s <code>array -&gt; array</code> codec.</p>
+<p>At the time of this writing the <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/transpose/TransposeCodec.java">TransposeCodec</a> is the only <code>DatasetCodec</code> in the core zarr-spec, and so the only such codec we’ve implemented, but additional <code>DatasetCodec</code>s are coming soon.</p>
+</section>
+<section id="codecinfo" class="level3">
+<h3 class="anchored" data-anchor-id="codecinfo">CodecInfo</h3>
+<p><code>CodecInfo</code>s are untyped semantic layers for <code>Codec</code>s that are (de)serialized from json metadata.</p>
+<p>Generally, you’ll see that the objects that are passed around implement the <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/CodecInfo.java"><code>CodecInfo</code></a> interface, not the <code>Codec</code> interface. This is because <code>Codec</code> implementations are typed, but this type information is not present in the json that represents the codec, but needs to be inferred from surrounding array metadata.</p>
+<p>For example, the zarr <a href="https://zarr-specs.readthedocs.io/en/v3.1.0/v3/codecs/bytes/index.html"><code>bytes</code> codec</a> is serialized like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"bytes"</span><span class="fu">,</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"configuration"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"endian"</span><span class="fu">:</span> <span class="st">"little"</span> <span class="fu">}</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>but its job is to convert a generic byte stream into a zarr chunk of a particular type. That type is specified elsewhere in the metadata. The bytes codec is represented by the <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/RawBlockCodecInfo.java">RawBlockCodecInfo</a> which uses a <code>DatasetAttributes</code> (which has the type information) to <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/RawBlockCodecInfo.java#L46-L49">create</a> a typed <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/RawBlockCodecs.java#L81"><code>RawBlockCodec</code></a>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/imglib\.github\.io\/imglib2-www");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>
+// Load emgithub embeds, matching the active light/dark theme.
+// The {{< imglib2/code >}} shortcode emits a <div class="emgithub-embed"
+// data-src-base="URL"> placeholder (URL without &style=). We inject the
+// <script> tag at runtime so the style matches the active theme, and
+// re-inject when the user toggles the theme.
+(function () {
+  function emgithubStyle() {
+    return document.documentElement.getAttribute('data-bs-theme') === 'dark'
+      ? 'github-dark' : 'github';
+  }
+  function loadEmbed(div) {
+    div.innerHTML = '';
+    var script = document.createElement('script');
+    script.src = div.dataset.srcBase + '&style=' + emgithubStyle();
+    div.appendChild(script);
+  }
+  function loadAllEmbeds() {
+    document.querySelectorAll('.emgithub-embed').forEach(loadEmbed);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadAllEmbeds);
+  } else {
+    loadAllEmbeds();
+  }
+  // Re-render when Quarto toggles light/dark (Bootstrap sets data-bs-theme on <html>).
+  new MutationObserver(function (mutations) {
+    for (var i = 0; i < mutations.length; i++) {
+      if (mutations[i].attributeName === 'data-bs-theme') { loadAllEmbeds(); return; }
+    }
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] });
+})();
+</script>
+
+
+
+
+</body></html>

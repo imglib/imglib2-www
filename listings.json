@@ -13,6 +13,24 @@
     ]
   },
   {
+    "listing": "/blog.html",
+    "items": [
+      "/blog/2024-02-27-n5-tutorial-basic/N5-Basics-Tutorial.html",
+      "/blog/2026-07-31-n5-shard-dev/index.html",
+      "/blog/2024-10-25-i2k-2024-lazy-computation-workshop/index.html",
+      "/blog/2024-04-02-n5-attribute-paths/2024-04-02-n5-attribute-paths.html",
+      "/blog/2024-02-27-n5-tutorial-basic/index.html",
+      "/blog/2024-02-14-displacementFields/2024-02-14-displacementFields.html",
+      "/blog/2023-12-21-How-to-add-your-project-to-ecosystem-page/2023-12-21-How-to-add-your-project-to-ecosystem-page.html",
+      "/blog/2022-10-30-Adding-Stream-support-to-ImgLib2/2022-10-30-Adding-Stream-support-to-ImgLib2.html",
+      "/blog/2022-09-27-n5-imglib2/2022-09-27-n5-imglib2.html",
+      "/blog/2022-09-14-how-to-display-imglib2-data/2022-09-14-how-to-display-imglib2-data.html",
+      "/blog/2022-08-08-keymaps/2022-08-08-keymaps.html",
+      "/blog/2022-06-05-setup-ijava-jupyter-kernel/setup-ijava-jupyter-kernel.html",
+      "/blog/2022-05-02-juliaset-lambda/2022-05-02-juliaset-lambda.html"
+    ]
+  },
+  {
     "listing": "/ecosystem/index.html",
     "items": [
       "/ecosystem/BIOP_bigdataviewer-playground-display/index.html",
@@ -71,23 +89,6 @@
       "/ecosystem/fiji_MaMuT/index.html",
       "/ecosystem/srinituraga_cremi-deform/index.html",
       "/ecosystem/PreibischLab_RS-FISH/index.html"
-    ]
-  },
-  {
-    "listing": "/blog.html",
-    "items": [
-      "/blog/2024-02-27-n5-tutorial-basic/N5-Basics-Tutorial.html",
-      "/blog/2024-10-25-i2k-2024-lazy-computation-workshop/index.html",
-      "/blog/2024-04-02-n5-attribute-paths/2024-04-02-n5-attribute-paths.html",
-      "/blog/2024-02-27-n5-tutorial-basic/index.html",
-      "/blog/2024-02-14-displacementFields/2024-02-14-displacementFields.html",
-      "/blog/2023-12-21-How-to-add-your-project-to-ecosystem-page/2023-12-21-How-to-add-your-project-to-ecosystem-page.html",
-      "/blog/2022-10-30-Adding-Stream-support-to-ImgLib2/2022-10-30-Adding-Stream-support-to-ImgLib2.html",
-      "/blog/2022-09-27-n5-imglib2/2022-09-27-n5-imglib2.html",
-      "/blog/2022-09-14-how-to-display-imglib2-data/2022-09-14-how-to-display-imglib2-data.html",
-      "/blog/2022-08-08-keymaps/2022-08-08-keymaps.html",
-      "/blog/2022-06-05-setup-ijava-jupyter-kernel/setup-ijava-jupyter-kernel.html",
-      "/blog/2022-05-02-juliaset-lambda/2022-05-02-juliaset-lambda.html"
     ]
   },
   {
