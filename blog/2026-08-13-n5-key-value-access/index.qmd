@@ -126,9 +126,9 @@ from backend to backend and also (cloud) bucket to bucket.
 
 :::
 
-`list`
+`list` returns an array containing the files and directories that are direct children of the provided path.
 
-`listDirectories`
+`listDirectories` returns an array containing the directories that are direct children of the provided path.
 
 ## Read
 
@@ -153,37 +153,64 @@ without throwing an exception.
 
 ## ReadData
 
-`ReadData` is n5's abstraction for a block of bytes. All data interacting with a
-`KeyValueAccess` is a `ReadData`.  This document covers the interface, its implementations, and
-the supporting types in `org.janelia.saalfeldlab.n5.readdata`, in the context of how storage
-backends produce and consume them.
+`ReadData` is n5's abstraction for a byte data. All data interacting with a
+`KeyValueAccess` is a `ReadData`. Some `ReadData` implementations represent data that is already
+in memory, most notably the `ByteArrayReadData`.
+
+Other implementations, notably `VolatileReadData`, represent data that exists in a file or some
+other storage backend and can eventually be read. Implementations of this type are generally
+*lazy*, avoiding actually performing a read operation until necessary.
+
+### Creating a read data
+
+Use the `ReadData.from` static methods to create a `ReadData` instance. They can be created from
+
+* `byte[]`
+* `ByteBuffer`
+* `InputStream`
+
+`VolatileReadData` are returned by `KeyValueAccess.createReadData`. Developers should only
+instantiate a `VolatileReadData` if they are creating a new `KeyValueAccess`. This is out of the
+scope of this article.
 
 
-The core operations divide into inspection, access, and derivation.
+::: {.callout-tip}
+## Performance of InputStream ReadData
 
-**Length.** `length()` returns the size *if already known*, or `-1` — it never performs
-I/O. `requireLength()` returns the size unconditionally, doing whatever work is needed,
-possibly a full materialization. The split matters: `length()` is safe to call in a
-hot path or a log statement, `requireLength()` is not.
+calling `materialize` on an `InputStreamReadData` can be substantially more
+expensive if the length of the data is not known. If you call `ReadData.from(InputStream)`
+and know the data length, calling `limit` with the known length could improve performance. 
+:::
 
-**Access.** `inputStream()`, `allBytes()`, `toByteBuffer()`, and
-`writeTo(OutputStream)` all yield the actual bytes. `toByteBuffer()` always returns
-`BIG_ENDIAN` order.
+`length` (lazy) returns the size *if already known*, or `-1` if unknown.
 
-**Derivation.** `slice(offset, length)` and `slice(Range)` produce a `ReadData` over a
-subrange; `limit(length)` is `slice(0, length)`. `encode(OutputStreamOperator)` wraps
-this data in a transformation — compression, typically — producing a new lazy
-`ReadData`.
+`slice` (lazy) methods return a new ReadData holding the given sub-range of data.
 
-**Materialization.** `materialize()` forces the bytes into memory. By convention it
-returns `this`, having cached the result internally, rather than returning a different
-object. The javadoc is explicit about this — implementations materialize into an
-internal `ByteArrayReadData` and delegate to it.
+`limit` (lazy) methods return a new `ReadData` limited to the given length.
 
-**Prefetch.** `prefetch(Collection<Range>)` is an advisory hint that certain ranges will
-be read soon. The main use case is to enable combining multiple partial read requests to the
-same key, for example when reading multiple chunks from the same shard.
+`requireLength` always returns the size, and may fully read the data if necessary.
 
+`encode` (lazy) transforms the data with the given encoder, reeturning a new `ReadData` instance
+containing the transformed data.
+
+`writeTo` writes the data to the given `OutputStream`.
+
+`allBytes` returns a `byte[]` containing the data, forcing a read operation if needed.
+
+`materialize` returns a new `ReadData` containing the byte data in memory, forcing a read
+operation if needed.
+
+`inputStream` returns an `InputStream` over the data. This may or may not trigger a read
+operation, depending on the `ReadData` implementation. Notably, `InputStreamReadData`
+will not trigger a read, but other `VolatileReadData` will.
+
+`toByteBuffer` returns a `ByteBuffer` over the data. This may or may not trigger a read
+operation, depending on the `ReadData` implementation. Notably, `InputStreamReadData`
+will not trigger a read, but other `VolatileReadData` will.
+
+`prefetch` is an hint that certain ranges will be read soon. The main use case is to enable
+combining multiple partial read requests to the same key, for example when reading multiple
+chunks from the same shard.
 
 
 ## File Locking
