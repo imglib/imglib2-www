@@ -245,3 +245,33 @@ try(VolatileReadData data = kva.createReadData(absolutePath)) {
 }
 System.out.println(stringData);
 ```
+
+### Partially, lazily read data
+
+This example lazily reads 10-byte subset of a file and shows the behavior of the `length`
+method during lazy reading.
+
+```java
+KeyValueAccess kva;
+
+String absolutePath = kva.compose(uri, "tmp/stringData.txt");
+String stringData;
+try(
+    // createReadData does not perform a read operation
+    VolatileReadData data = kva.createReadData(absolutePath)) {
+
+    data.length(); // would return -1, meaning unknown length"
+
+    // this operation does not trigger a read
+    ReadData partialData = data.slice(23, 10);
+    partialData.length();   // returns 10 even though no read operation has happened
+                            // because the slice method returns the length.
+                            // An exception could be thrown below if this slice overflows
+                            // the actual data length.
+
+    // allBytes triggers a read
+    byte[] byteData = partialData.allBytes();
+
+    stringData = new String(byteData, StandardCharsets.UTF_8);
+}
+```
