@@ -292,9 +292,9 @@ try(
     // this operation does not trigger a read
     ReadData partialData = data.slice(23, 10);
     partialData.length();   // returns 10 even though no read operation has happened
-                            // because the slice method returns the length.
-                            // An exception could be thrown below if this slice overflows
-                            // the actual data length.
+                            // because the slice knows its length.
+                            // An exception could be thrown below if this slice
+                            // overflows the actual data length.
 
     // allBytes triggers a read
     byte[] byteData = partialData.allBytes();
