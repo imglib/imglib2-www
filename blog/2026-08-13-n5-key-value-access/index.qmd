@@ -1,0 +1,304 @@
+---
+title: "N5 Key / Value storage"
+description: "Basics of the N5 for Java developers. This tutorial shows how to use N5's KeyValueAccess interface for reading and writing arbitrary data to file or object stores."
+author:
+    - name: John Bogovic
+date: "8/13/2026"
+notebook-links: global
+categories:
+  - n5
+  - filesystem
+  - aws-s3
+  - google-cloud-storage
+  - tutorial
+format:
+  html:
+    toc: true
+---
+
+
+`KeyValueAccess` is the storage backend abstraction in N5. This interface to handles
+filesystems, cloud storage, and http requests. While everything N5 reads or writes passes
+through one of its implementations, it can be used for more than just the file formats supported
+by the N5 API.  This article explains how to read and write arbitrary data to various storage
+backends.
+
+The *key* of a `KeyValueAccess` is a path or URI, and the *value* is a file or object. In this
+article, "file" refers both to files on a file system and objects in cloud storage.
+
+`KeyValueAccess` has methods to read and write data from storage backends,
+to query properties of files, and to manipulate paths that address data.
+
+## Implementations
+
+* `FileSystemKeyValueAccess`
+- `HttpKeyValueAccess` (read-only)
+* `AmazonS3KeyValueAccess`
+* `GoogleCloudStorageKeyValueAccess`
+
+An appropriate `KeyValueAccess` implementation can be created from a URI using
+`KeyValueAccessBackend` or an `N5Factory`.
+
+```java
+   URI uri;
+   boolean readOnly;
+
+   // these two calls are identical
+   KeyValueAccess kva1 = KeyValueAccessBackend.getKeyValueAccess(uri, readOnly);
+   KeyValueAccess kva2 = new N5Factory().getKeyValueAccess(uri, readOnly);
+```
+
+## Paths and URIs
+
+`KeyValueAccess` methods for reading and writing that take `String` arguments
+expect them to be **normalized, absolute paths.** Strings that are valid `URI`s are always
+acceptable. N5 generally uses URIs to keep path representations as consistent as possible across
+different `KeyValueAccess` implementations. System-specfic file paths are also acceptable.
+
+::: {.callout-tip}
+## For example:
+
+* `"C:\\User\\NoName\\My File.txt"`
+* `"file://c:/user/noname/my%20file.txt"`
+
+refer to the same key on Windows file systems noting that backslashes are escaped for java
+Strings, that Windows file paths are usually case-insensitive, and URIs may not contain
+whitespace characters hence must be encoded.
+
+:::
+
+::: {.callout-warning}
+## Buckets for cloud storage
+
+Instances of cloud storage `KeyValueAccess` implementations, `AmazonS3KeyValueAccess` and
+`GoogleCloudStorageKeyValueAccess`, are specific to a particular *bucket.* As a result, paths
+passed to these classes must refer to the particular bucket handled by the cloud storage
+`KeyValueAccess` instance.
+
+:::
+
+The methods for manipulating paths are:
+
+`normalize` returns the argument transformed in a normal form by
+removing `.`, `..` components, and extra `/`'s for example.
+
+`compose` combines path components into a single `String`.
+
+`components` splits a path into its component parts.
+
+`parent` returns the parent directory for a given path pointing to a file or directory.
+
+`relativize`
+
+`uri` converts a `String` to a `URI` appropriate for use by this `KeyValueAccess.
+
+
+### Note
+
+**Trailing slashes** may carry meaning for some implementations, for example by indicating
+that the path refers to a directory, not a file.
+
+**Leading slashes** ...
+
+The `N5URI` class contains useful methods for parsing paths and converting to and from a `URI`
+representation. For example, `N5URI.encodeAsUri(String)` returns a `URI` for which
+any invalid characters in the input are properly encoded.
+
+
+## Query
+
+`isFile` returns true if a file or object exists at a given key. When a key is a file,
+then byte data can be read from that key.
+
+`isDirectory` returns true if the key is a *directory*. When a key is a directory,
+it contains other files and directories that can be listed (if supported, see below).
+
+`exists` returns true if `isDirectoy` or `isFile` is true for that key.
+
+`size` returns the size in bytes of the file at a given key.
+
+::: {.callout-tip}
+## list support
+
+Cloud backends are often configured without support for list operations. They are included
+in the `KeyValueAccess` API, but developers should be aware that their behavior may differ
+from backend to backend and also (cloud) bucket to bucket.
+
+:::
+
+`list` returns an array containing the files and directories that are direct children of the provided path.
+
+`listDirectories` returns an array containing the directories that are direct children of the provided path.
+
+## Read
+
+`createReadData` returns a `ReadData` instance for the given key that can be used to read data.
+Implementations may vary, but calling this method generally does not immediately fetch data from
+the backend. Rather, the data are read lazily, when needed.
+This implementations throws `N5NoSuchKeyException` if the key does not exist.  However, this may
+be thrown when a read to the backend is attempted, not immediately.
+
+
+## Write
+
+`write` writes data to the given key. Data are stored in a `ReadData` instance (see below).
+
+`createDirectories` creates a directory at the given key, and recursively creates
+parent directories if necessary.
+
+`delete` deletes a file or directory at the given key. If the key is a directory, it recursively
+deletes all contents therein. If no file or directory exists at the key, `delete` returns
+without throwing an exception.
+
+
+## ReadData
+
+`ReadData` is n5's abstraction for a byte data. All data interacting with a
+`KeyValueAccess` is a `ReadData`. Some `ReadData` implementations represent data that is already
+in memory, most notably the `ByteArrayReadData`.
+
+Other implementations, notably `VolatileReadData`, represent data that exists in a file or some
+other storage backend and can eventually be read. Implementations of this type are generally
+*lazy*, avoiding actually performing a read operation until necessary.
+
+### Creating a read data
+
+Use the `ReadData.from` static methods to create a `ReadData` instance. They can be created from
+
+* `byte[]`
+* `ByteBuffer`
+* `InputStream`
+
+`VolatileReadData` are returned by `KeyValueAccess.createReadData`. Developers should only
+instantiate a `VolatileReadData` if they are creating a new `KeyValueAccess`. This is out of the
+scope of this article.
+
+
+::: {.callout-tip}
+## Performance of InputStream ReadData
+
+calling `materialize` on an `InputStreamReadData` can be substantially more
+expensive if the length of the data is not known. If you call `ReadData.from(InputStream)`
+and know the data length, calling `limit` with the known length could improve performance. 
+:::
+
+`length` (lazy) returns the size *if already known*, or `-1` if unknown.
+
+`slice` (lazy) methods return a new ReadData holding the given sub-range of data.
+
+`limit` (lazy) methods return a new `ReadData` limited to the given length.
+
+`requireLength` always returns the size, and may fully read the data if necessary.
+
+`encode` (lazy) transforms the data with the given encoder, reeturning a new `ReadData` instance
+containing the transformed data.
+
+`writeTo` writes the data to the given `OutputStream`.
+
+`allBytes` returns a `byte[]` containing the data, forcing a read operation if needed.
+
+`materialize` returns a new `ReadData` containing the byte data in memory, forcing a read
+operation if needed.
+
+`inputStream` returns an `InputStream` over the data. This may or may not trigger a read
+operation, depending on the `ReadData` implementation. Notably, `InputStreamReadData`
+will not trigger a read, but other `VolatileReadData` will.
+
+`toByteBuffer` returns a `ByteBuffer` over the data. This may or may not trigger a read
+operation, depending on the `ReadData` implementation. Notably, `InputStreamReadData`
+will not trigger a read, but other `VolatileReadData` will.
+
+`prefetch` is an hint that certain ranges will be read soon. The main use case is to enable
+combining multiple partial read requests to the same key, for example when reading multiple
+chunks from the same shard.
+
+
+## File Locking
+
+TODO
+
+```java
+try (final VolatileReadData readData = kva.createReadData(path)) {
+    ...
+}
+```
+
+## Usage examples
+
+### Make a KeyValueAccess
+
+```java
+URI uri;
+boolean readOnly;
+KeyValueAccess kva = KeyValueAccessBackend.getKeyValueAccess(uri, readOnly);
+```
+
+### Write data
+
+```java
+KeyValueAccess kva;
+
+// write some string data
+String data = "This API is the bees knees.\nI say, it's the cat's pajamas!";
+ReadData rd = ReadData.from(data.getBytes(StandardCharsets.UTF_8));
+
+String absolutePath = kva.compose(uri, "tmp/stringData.txt");
+kva.write(absolutePath, rd);
+```
+
+### Query properties
+
+```java
+KeyValueAccess kva;
+
+String absolutePath = kva.compose(uri, "tmp/stringData.txt");
+boolean fileExists = kva.isFile(absolutePath);
+boolean dirExists = kva.isDirectory(absolutePath);
+long sizeBytes = kva.size(absolutePath);
+```
+
+### Read data
+
+```java
+KeyValueAccess kva;
+
+// write some string data
+String absolutePath = kva.compose(uri, "tmp", "stringData.txt");
+String stringData;
+
+// acquires a read lockll
+try(VolatileReadData data = kva.createReadData(absolutePath)) {
+    stringData = new String(data.allBytes(), StandardCharsets.UTF_8);
+}
+System.out.println(stringData);
+```
+
+### Partially, lazily read data
+
+This example lazily reads 10-byte subset of a file and shows the behavior of the `length`
+method during lazy reading.
+
+```java
+KeyValueAccess kva;
+
+String absolutePath = kva.compose(uri, "tmp/stringData.txt");
+String stringData;
+try(
+    // createReadData does not perform a read operation
+    VolatileReadData data = kva.createReadData(absolutePath)) {
+
+    data.length(); // would return -1, meaning unknown length"
+
+    // this operation does not trigger a read
+    ReadData partialData = data.slice(23, 10);
+    partialData.length();   // returns 10 even though no read operation has happened
+                            // because the slice knows its length.
+                            // An exception could be thrown below if this slice
+                            // overflows the actual data length.
+
+    // allBytes triggers a read
+    byte[] byteData = partialData.allBytes();
+
+    stringData = new String(byteData, StandardCharsets.UTF_8);
+}
+```

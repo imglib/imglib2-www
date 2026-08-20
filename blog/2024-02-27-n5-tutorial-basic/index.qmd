@@ -22,7 +22,7 @@ format:
 This tutorial for Java developers covers the most basic functionality of the [N5 API](https://github.com/saalfeldlab/n5)
 for storing large, chunked n-dimensional image data and structured metadata. The N5 API and documentation refer to n-dimensional images as
 "datasets", [terminology inherited from HDF5](https://support.hdfgroup.org/documentation/hdf5/latest/_h5_d_m__u_g.html#subsubsec_data_model_abstract_dataset).  We will use this terminology in this tutorial.
-If you are used to work with Python and Numpy, an n-dimensional image or dataset is what you know as an [`ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html).
+If you are used to working with Python and Numpy, an n-dimensional image or dataset is what you know as an [`ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html).
 We will learn about:
 
 * creating readers and writers
