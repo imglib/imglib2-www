@@ -3,6 +3,7 @@ title: "N5 Key / Value storage"
 description: "Basics of the N5 for Java developers. This tutorial shows how to use N5's KeyValueAccess interface for reading and writing arbitrary data to file or object stores."
 author:
     - name: John Bogovic
+    - name: Caleb Hulbert
 date: "8/13/2026"
 notebook-links: global
 image: n5-kva-thumbnail.png
