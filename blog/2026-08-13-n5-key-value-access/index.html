@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Bogovic">
+<meta name="author" content="Caleb Hulbert">
 <meta name="dcterms.date" content="2026-08-13">
 <meta name="description" content="Basics of the N5 for Java developers. This tutorial shows how to use N5’s KeyValueAccess interface for reading and writing arbitrary data to file or object stores.">
 
@@ -116,7 +117,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="N5 Key / Value storage – ImgLib2 and BigDataViewer projects">
 <meta property="og:description" content="Basics of the N5 for Java developers. This tutorial shows how to use N5’s KeyValueAccess interface for reading and writing arbitrary data to file or object stores.">
+<meta property="og:image" content="https://imglib.github.io/imglib2-www/blog/2026-08-13-n5-key-value-access/n5-kva-thumbnail.png">
 <meta property="og:site_name" content="ImgLib2 and BigDataViewer projects">
+<meta property="og:image:height" content="400">
+<meta property="og:image:width" content="400">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -237,9 +241,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="quarto-title-meta">
 
       <div>
-      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-heading">Authors</div>
       <div class="quarto-title-meta-contents">
                <p>John Bogovic </p>
+               <p>Caleb Hulbert </p>
             </div>
     </div>
       
@@ -273,6 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#readdata" id="toc-readdata" class="nav-link" data-scroll-target="#readdata">ReadData</a>
   <ul class="collapse">
   <li><a href="#creating-a-read-data" id="toc-creating-a-read-data" class="nav-link" data-scroll-target="#creating-a-read-data">Creating a read data</a></li>
+  <li><a href="#readdata-methods" id="toc-readdata-methods" class="nav-link" data-scroll-target="#readdata-methods">ReadData methods</a></li>
   </ul></li>
   <li><a href="#file-locking" id="toc-file-locking" class="nav-link" data-scroll-target="#file-locking">File Locking</a></li>
   <li><a href="#usage-examples" id="toc-usage-examples" class="nav-link" data-scroll-target="#usage-examples">Usage examples</a>
@@ -293,8 +299,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p><code>KeyValueAccess</code> is the storage backend abstraction in N5. This interface to handles filesystems, cloud storage, and http requests. While everything N5 reads or writes passes through one of its implementations, it can be used for more than just the file formats supported by the N5 API. This article explains how to read and write arbitrary data to various storage backends.</p>
-<p>The <em>key</em> of a <code>KeyValueAccess</code> is a path or URI, and the <em>value</em> is a file or object. In this article, “file” refers both to files on a file system and objects in cloud storage.</p>
+<p><code>KeyValueAccess</code> is the storage backend abstraction in N5. This interface handles filesystems, cloud storage, and http requests. While everything N5 reads or writes passes through one of its implementations, it can be used for more than just the file formats supported by the N5 API. This article explains how to read and write arbitrary data to various storage backends.</p>
+<p>The <em>key</em> of a <code>KeyValueAccess</code> is a path or URI, and the <em>value</em> is a file or object. In this article, “file” refers to both files on a file system and objects in cloud storage.</p>
 <p><code>KeyValueAccess</code> has methods to read and write data from storage backends, to query properties of files, and to manipulate paths that address data.</p>
 <section id="implementations" class="level2">
 <h2 class="anchored" data-anchor-id="implementations">Implementations</h2>
@@ -314,7 +320,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="paths-and-uris" class="level2">
 <h2 class="anchored" data-anchor-id="paths-and-uris">Paths and URIs</h2>
-<p><code>KeyValueAccess</code> methods for reading and writing that take <code>String</code> arguments expect them to be <strong>normalized, absolute paths.</strong> Strings that are valid <code>URI</code>s are always acceptable. N5 generally uses URIs to keep path representations as consistent as possible across different <code>KeyValueAccess</code> implementations. System-specfic file paths are also acceptable.</p>
+<p><code>KeyValueAccess</code> methods for reading and writing that take <code>String</code> arguments expect them to be <strong>normalized paths.</strong> <br> For <strong>FileSystems</strong>, normalized paths are absolute, and Strings that are valid <code>URI</code>s are always acceptable. <br> For <strong>Cloud Storage</strong>, paths are relative to the root of the “bucket”. <br> N5 generally uses URIs to keep path representations as consistent as possible across different <code>KeyValueAccess</code> implementations. System-specific file paths are also acceptable.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -346,12 +352,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The methods for manipulating paths are:</p>
-<p><code>normalize</code> returns the argument transformed in a normal form by removing <code>.</code>, <code>..</code> components, and extra <code>/</code>’s for example.</p>
-<p><code>compose</code> combines path components into a single <code>String</code>.</p>
-<p><code>components</code> splits a path into its component parts.</p>
-<p><code>parent</code> returns the parent directory for a given path pointing to a file or directory.</p>
-<p><code>relativize</code></p>
-<p><code>uri</code> converts a <code>String</code> to a <code>URI</code> appropriate for use by this `KeyValueAccess.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 77%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>normalize</code></td>
+<td>returns the argument transformed in a normal form by removing <code>.</code>, <code>..</code> components, and extra <code>/</code>’s for example.</td>
+</tr>
+<tr class="even">
+<td><code>compose</code></td>
+<td>combines path components into a single <code>String</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>components</code></td>
+<td>splits a path into its component parts.</td>
+</tr>
+<tr class="even">
+<td><code>parent</code></td>
+<td>returns the parent directory for a given path pointing to a file or directory.</td>
+</tr>
+<tr class="odd">
+<td><code>relativize</code></td>
+<td>given two paths, returns the second path, relative to the first</td>
+</tr>
+<tr class="even">
+<td><code>uri</code></td>
+<td>converts a <code>String</code> to a <code>URI</code> appropriate for use by this <code>KeyValueAccess</code>.</td>
+</tr>
+</tbody>
+</table>
 <section id="note" class="level3">
 <h3 class="anchored" data-anchor-id="note">Note</h3>
 <p><strong>Trailing slashes</strong> may carry meaning for some implementations, for example by indicating that the path refers to a directory, not a file.</p>
@@ -362,8 +394,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="query" class="level2">
 <h2 class="anchored" data-anchor-id="query">Query</h2>
 <p><code>isFile</code> returns true if a file or object exists at a given key. When a key is a file, then byte data can be read from that key.</p>
-<p><code>isDirectory</code> returns true if the key is a <em>directory</em>. When a key is a directory, it contains other files and directories that can be listed (if supported, see below).</p>
-<p><code>exists</code> returns true if <code>isDirectoy</code> or <code>isFile</code> is true for that key.</p>
+<p><code>isDirectory</code> returns true if the key is a <em>directory</em>. When a key is a directory, it may contain other files and directories that can be listed (if supported, see below).</p>
+<p><code>exists</code> returns true if <code>isDirectory</code> or <code>isFile</code> is true for that key.</p>
 <p><code>size</code> returns the size in bytes of the file at a given key.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -383,7 +415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="read" class="level2">
 <h2 class="anchored" data-anchor-id="read">Read</h2>
-<p><code>createReadData</code> returns a <code>ReadData</code> instance for the given key that can be used to read data. Implementations may vary, but calling this method generally does not immediately fetch data from the backend. Rather, the data are read lazily, when needed. This implementations throws <code>N5NoSuchKeyException</code> if the key does not exist. However, this may be thrown when a read to the backend is attempted, not immediately.</p>
+<p><code>createReadData</code> returns a <code>ReadData</code> instance for the given key that can be used to read data. Implementations may vary, but calling this method generally does not immediately fetch data from the backend. Rather, the data are read lazily, when needed. This implementation throws <code>N5NoSuchKeyException</code> if the key does not exist. However, this may be thrown when a read to the backend is attempted, not immediately.</p>
 </section>
 <section id="write" class="level2">
 <h2 class="anchored" data-anchor-id="write">Write</h2>
@@ -403,7 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>ByteBuffer</code></li>
 <li><code>InputStream</code></li>
 </ul>
-<p><code>VolatileReadData</code> are returned by <code>KeyValueAccess.createReadData</code>. Developers should only instantiate a <code>VolatileReadData</code> if they are creating a new <code>KeyValueAccess</code>. This is out of the scope of this article.</p>
+<p><code>VolatileReadData</code> are returned by <code>KeyValueAccess.createReadData</code>. Developers generally wont need to manually create a <code>VolatileReadData</code>, unless they are creating a new <code>KeyValueAccess</code>. This is out of the scope of this article.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -417,25 +449,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>calling <code>materialize</code> on an <code>InputStreamReadData</code> can be substantially more expensive if the length of the data is not known. If you call <code>ReadData.from(InputStream)</code> and know the data length, calling <code>limit</code> with the known length could improve performance.</p>
 </div>
 </div>
-<p><code>length</code> (lazy) returns the size <em>if already known</em>, or <code>-1</code> if unknown.</p>
-<p><code>slice</code> (lazy) methods return a new ReadData holding the given sub-range of data.</p>
-<p><code>limit</code> (lazy) methods return a new <code>ReadData</code> limited to the given length.</p>
-<p><code>requireLength</code> always returns the size, and may fully read the data if necessary.</p>
-<p><code>encode</code> (lazy) transforms the data with the given encoder, reeturning a new <code>ReadData</code> instance containing the transformed data.</p>
-<p><code>writeTo</code> writes the data to the given <code>OutputStream</code>.</p>
-<p><code>allBytes</code> returns a <code>byte[]</code> containing the data, forcing a read operation if needed.</p>
-<p><code>materialize</code> returns a new <code>ReadData</code> containing the byte data in memory, forcing a read operation if needed.</p>
-<p><code>inputStream</code> returns an <code>InputStream</code> over the data. This may or may not trigger a read operation, depending on the <code>ReadData</code> implementation. Notably, <code>InputStreamReadData</code> will not trigger a read, but other <code>VolatileReadData</code> will.</p>
-<p><code>toByteBuffer</code> returns a <code>ByteBuffer</code> over the data. This may or may not trigger a read operation, depending on the <code>ReadData</code> implementation. Notably, <code>InputStreamReadData</code> will not trigger a read, but other <code>VolatileReadData</code> will.</p>
-<p><code>prefetch</code> is an hint that certain ranges will be read soon. The main use case is to enable combining multiple partial read requests to the same key, for example when reading multiple chunks from the same shard.</p>
+</section>
+<section id="readdata-methods" class="level3">
+<h3 class="anchored" data-anchor-id="readdata-methods">ReadData methods</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 77%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>length</code></td>
+<td>(lazy) returns the size <em>if already known</em>, or <code>-1</code> if unknown.</td>
+</tr>
+<tr class="even">
+<td><code>slice</code></td>
+<td>(lazy) returns a new <code>ReadData</code> holding the given sub-range of data.</td>
+</tr>
+<tr class="odd">
+<td><code>limit</code></td>
+<td>(lazy) returns a new <code>ReadData</code> limited to the given length.</td>
+</tr>
+<tr class="even">
+<td><code>requireLength</code></td>
+<td>returns the size of the <code>ReadData</code>.<br><span style="color: red; font-weight: bold;">NOTE:</span> If necessary, this will fully read the data.</td>
+</tr>
+<tr class="odd">
+<td><code>encode</code></td>
+<td>(lazy) transforms the data with the given encoder, returning a new <code>ReadData</code> instance containing the transformed data.</td>
+</tr>
+<tr class="even">
+<td><code>writeTo</code></td>
+<td>writes the data to the given <code>OutputStream</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>allBytes</code></td>
+<td>returns a <code>byte[]</code> containing the data, forcing a read operation if needed.</td>
+</tr>
+<tr class="even">
+<td><code>materialize</code></td>
+<td>returns a new <code>ReadData</code> containing the byte data in memory, forcing a read operation if needed.</td>
+</tr>
+<tr class="odd">
+<td><code>inputStream</code></td>
+<td>returns an <code>InputStream</code> over the data. This may or may not trigger a read operation, depending on the <code>ReadData</code> implementation. Notably, <code>InputStreamReadData</code> will not trigger a read, but other <code>VolatileReadData</code> will.</td>
+</tr>
+<tr class="even">
+<td><code>toByteBuffer</code></td>
+<td>returns a <code>ByteBuffer</code> over the data. This may or may not trigger a read operation, depending on the <code>ReadData</code> implementation. Notably, <code>InputStreamReadData</code> will not trigger a read, but other <code>VolatileReadData</code> will.</td>
+</tr>
+<tr class="odd">
+<td><code>prefetch</code></td>
+<td>is an hint that certain ranges will be read soon. The main use case is to enable combining multiple partial read requests to the same key, for example when reading multiple chunks from the same shard.</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="file-locking" class="level2">
 <h2 class="anchored" data-anchor-id="file-locking">File Locking</h2>
-<p>TODO</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(</span><span class="dt">final</span> VolatileReadData readData <span class="op">=</span> kva<span class="op">.</span><span class="fu">createReadData</span><span class="op">(</span>path<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">...</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>KeyValueAccess</code> implementations lock files to prevent concurrent modification when allowed by the backend. Some, but not all, file systems support file locking. Existing implementations will obtain locks if possible, but the default behavior is to continue without a lock if not supported by the backend.</p>
+<p>Different storage backends have different guarantees when it comes to consistency of data written concurrently. Cloud backends are generally <a href="https://en.wikipedia.org/wiki/Eventual_consistency">eventually consistent</a>, but concurrent writes to local file systems could result in data corruption.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Avoid concurrent writes to the same file
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>It is ultimately the developers’ responsibility to avoid concurrent writes to the same file!</strong></p>
+<p>Even though <code>KeyValueAccess</code> implementations try to ensure safety, the library is limited by the capabilities of the storage backend.</p>
+</div>
+</div>
+<p>You can modify the locking behavior by setting the <code>"n5.ioPolicy"</code> environment variable to one of:</p>
+<ul>
+<li><code>PERMISSIVE</code> (default): attempt to lock files, proceed unsafely if the file system does not support locks.</li>
+<li><code>STRICT</code>: attempt to lock files, fail if the file system does not support locks.</li>
+<li><code>UNSAFE</code>: never attempt to lock.</li>
+</ul>
+<p>The code below indicates when read locks and write locks are held for the relevant method calls.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> absolutePath<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>KeyValueAccess kva<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(</span><span class="dt">final</span> VolatileReadData readData <span class="op">=</span> kva<span class="op">.</span><span class="fu">createReadData</span><span class="op">(</span>absolutePath<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// In this try block a read (permissive) lock is held</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ReadData data<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">// a write (exclusive) lock is held until kva.write returns</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>kva<span class="op">.</span><span class="fu">write</span><span class="op">(</span>absolutePath<span class="op">,</span> data<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="usage-examples" class="level2">
 <h2 class="anchored" data-anchor-id="usage-examples">Usage examples</h2>
@@ -473,7 +580,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> absolutePath <span class="op">=</span> kva<span class="op">.</span><span class="fu">compose</span><span class="op">(</span>uri<span class="op">,</span> <span class="st">"tmp"</span><span class="op">,</span> <span class="st">"stringData.txt"</span><span class="op">);</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> stringData<span class="op">;</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">// acquires a read lockll</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">// acquires a read lock</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span><span class="op">(</span>VolatileReadData data <span class="op">=</span> kva<span class="op">.</span><span class="fu">createReadData</span><span class="op">(</span>absolutePath<span class="op">))</span> <span class="op">{</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    stringData <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">(</span>data<span class="op">.</span><span class="fu">allBytes</span><span class="op">(),</span> StandardCharsets<span class="op">.</span><span class="fu">UTF_8</span><span class="op">);</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
@@ -481,7 +588,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="partially-lazily-read-data" class="level3">
 <h3 class="anchored" data-anchor-id="partially-lazily-read-data">Partially, lazily read data</h3>
-<p>This example lazily reads 10-byte subset of a file and shows the behavior of the <code>length</code> method during lazy reading.</p>
+<p>This example lazily reads a 10-byte subset of a file and shows the behavior of the <code>length</code> method during lazy reading.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>KeyValueAccess kva<span class="op">;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> absolutePath <span class="op">=</span> kva<span class="op">.</span><span class="fu">compose</span><span class="op">(</span>uri<span class="op">,</span> <span class="st">"tmp/stringData.txt"</span><span class="op">);</span></span>
