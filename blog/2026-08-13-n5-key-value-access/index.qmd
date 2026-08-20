@@ -5,6 +5,7 @@ author:
     - name: John Bogovic
 date: "8/13/2026"
 notebook-links: global
+image: n5-kva-thumbnail.png
 categories:
   - n5
   - filesystem
