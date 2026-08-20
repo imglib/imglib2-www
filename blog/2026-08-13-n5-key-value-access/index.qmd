@@ -24,7 +24,7 @@ by the N5 API.  This article explains how to read and write arbitrary data to va
 backends.
 
 The *key* of a `KeyValueAccess` is a path or URI, and the *value* is a file or object. In this
-article, "file" refers both to files on a file system and objects in cloud storage.
+article, "file" refers to both files on a file system and objects in cloud storage.
 
 `KeyValueAccess` has methods to read and write data from storage backends,
 to query properties of files, and to manipulate paths that address data.
@@ -133,9 +133,8 @@ from backend to backend and also (cloud) bucket to bucket.
 `createReadData` returns a `ReadData` instance for the given key that can be used to read data.
 Implementations may vary, but calling this method generally does not immediately fetch data from
 the backend. Rather, the data are read lazily, when needed.
-Read methods will throw `N5NoSuchKeyException` if the key does not exist. However, since most
- read operations are lazy this may be thrown when a read to the backend is attempted, not immediately.
-
+This implementation throws `N5NoSuchKeyException` if the key does not exist.  However, this may
+be thrown when a read to the backend is attempted, not immediately.
 
 ## Write
 
@@ -198,13 +197,47 @@ and know the data length, calling `limit` with the known length could improve pe
 
 ## File Locking
 
-TODO
+`KeyValueAccess` implementations lock files to prevent concurrent modification when allowed by the backend.
+Some, but not all, file systems support file locking. Existing implementations will obtain locks if
+possible, but the default behavior is to continue without a lock if not supported by the backend.
+
+Different storage backends have different guarantees when it comes to consistency of data
+written concurrently. Cloud backends are generally [eventually consistent](https://en.wikipedia.org/wiki/Eventual_consistency),
+but concurrent writes to local file systems could result in data corruption.
+
+::: {.callout-warning}
+## Avoid concurrent writes to the same file
+
+**It is ultimately the developers' responsibility to avoid concurrent writes to the same file!**
+
+Even though `KeyValueAccess` implementations try to ensure safety, the library is limited
+by the capabilities of the storage backend.
+
+:::
+
+You can modify the locking behavior by setting the `"n5.ioPolicy"` environment variable to one of:
+
+* `PERMISSIVE` (default): attempt to lock files, proceed unsafely if the file system does not support locks.
+* `STRICT`: attempt to lock files, fail if the file system does not support locks.
+* `UNSAFE`: never attempt to lock.
+
+The code below indicates when read locks and write locks are held for the relevant method calls.
 
 ```java
-try (final VolatileReadData readData = kva.createReadData(path)) {
-    ...
+
+String absolutePath;
+KeyValueAccess kva;
+
+try (final VolatileReadData readData = kva.createReadData(absolutePath)) {
+    // In this try block a read (permissive) lock is held
 }
+
+ReadData data;
+
+// a write (exclusive) lock is held until kva.write returns
+kva.write(absolutePath, data);
 ```
+
 
 ## Usage examples
 
