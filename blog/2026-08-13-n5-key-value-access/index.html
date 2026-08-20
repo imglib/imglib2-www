@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Bogovic">
-<meta name="dcterms.date" content="2026-07-31">
-<meta name="description" content="Developer-focused summary of N5 development sharding and zarr v3.">
+<meta name="dcterms.date" content="2026-08-13">
+<meta name="description" content="Basics of the N5 for Java developers. This tutorial shows how to use N5’s KeyValueAccess interface for reading and writing arbitrary data to file or object stores.">
 
-<title>N5 development guide – ImgLib2 and BigDataViewer projects</title>
+<title>N5 Key / Value storage – ImgLib2 and BigDataViewer projects</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -114,8 +114,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="N5 development guide – ImgLib2 and BigDataViewer projects">
-<meta property="og:description" content="Developer-focused summary of N5 development sharding and zarr v3.">
+<meta property="og:title" content="N5 Key / Value storage – ImgLib2 and BigDataViewer projects">
+<meta property="og:description" content="Basics of the N5 for Java developers. This tutorial shows how to use N5’s KeyValueAccess interface for reading and writing arbitrary data to file or object stores.">
 <meta property="og:site_name" content="ImgLib2 and BigDataViewer projects">
 </head>
 
@@ -217,17 +217,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">N5 development guide</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/blog/2026-07-31-n5-shard-dev/index.qmd"><i class="bi"></i> Code</button></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">N5 Key / Value storage</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/imglib/imglib2-www/blob/main/blog/2026-08-13-n5-key-value-access/index.qmd"><i class="bi"></i> Code</button></div></div>
                   <div>
         <div class="description">
-          Developer-focused summary of N5 development sharding and zarr v3.
+          Basics of the N5 for Java developers. This tutorial shows how to use N5’s KeyValueAccess interface for reading and writing arbitrary data to file or object stores.
         </div>
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">n5</div>
-                <div class="quarto-category">zarr</div>
-                <div class="quarto-category">imglib2</div>
-                <div class="quarto-category">java</div>
+                <div class="quarto-category">filesystem</div>
+                <div class="quarto-category">aws-s3</div>
+                <div class="quarto-category">google-cloud-storage</div>
+                <div class="quarto-category">tutorial</div>
               </div>
                   </div>
   </div>
@@ -245,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 31, 2026</p>
+        <p class="date">August 13, 2026</p>
       </div>
     </div>
     
@@ -261,22 +262,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#nomenclature" id="toc-nomenclature" class="nav-link active" data-scroll-target="#nomenclature">Nomenclature</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#n5factory" id="toc-n5factory" class="nav-link" data-scroll-target="#n5factory">N5Factory</a>
+  <li><a href="#implementations" id="toc-implementations" class="nav-link active" data-scroll-target="#implementations">Implementations</a></li>
+  <li><a href="#paths-and-uris" id="toc-paths-and-uris" class="nav-link" data-scroll-target="#paths-and-uris">Paths and URIs</a>
   <ul class="collapse">
-  <li><a href="#storage-format-specification" id="toc-storage-format-specification" class="nav-link" data-scroll-target="#storage-format-specification">Storage format specification</a></li>
-  <li><a href="#storage-format-extenstions" id="toc-storage-format-extenstions" class="nav-link" data-scroll-target="#storage-format-extenstions">Storage format extenstions</a></li>
+  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note">Note</a></li>
   </ul></li>
-  <li><a href="#creating-a-sharded-dataset" id="toc-creating-a-sharded-dataset" class="nav-link" data-scroll-target="#creating-a-sharded-dataset">Creating a sharded dataset</a></li>
-  <li><a href="#high-level-writing" id="toc-high-level-writing" class="nav-link" data-scroll-target="#high-level-writing">High-level writing</a></li>
-  <li><a href="#low-level-writing" id="toc-low-level-writing" class="nav-link" data-scroll-target="#low-level-writing">Low-level writing</a></li>
-  <li><a href="#codecs" id="toc-codecs" class="nav-link" data-scroll-target="#codecs">Codecs</a>
+  <li><a href="#query" id="toc-query" class="nav-link" data-scroll-target="#query">Query</a></li>
+  <li><a href="#read" id="toc-read" class="nav-link" data-scroll-target="#read">Read</a></li>
+  <li><a href="#write" id="toc-write" class="nav-link" data-scroll-target="#write">Write</a></li>
+  <li><a href="#readdata" id="toc-readdata" class="nav-link" data-scroll-target="#readdata">ReadData</a>
   <ul class="collapse">
-  <li><a href="#datacodec-and-compression" id="toc-datacodec-and-compression" class="nav-link" data-scroll-target="#datacodec-and-compression">DataCodec and Compression</a></li>
-  <li><a href="#blockcodec" id="toc-blockcodec" class="nav-link" data-scroll-target="#blockcodec">BlockCodec</a></li>
-  <li><a href="#datasetcodec" id="toc-datasetcodec" class="nav-link" data-scroll-target="#datasetcodec">DatasetCodec</a></li>
-  <li><a href="#codecinfo" id="toc-codecinfo" class="nav-link" data-scroll-target="#codecinfo">CodecInfo</a></li>
+  <li><a href="#creating-a-read-data" id="toc-creating-a-read-data" class="nav-link" data-scroll-target="#creating-a-read-data">Creating a read data</a></li>
+  </ul></li>
+  <li><a href="#file-locking" id="toc-file-locking" class="nav-link" data-scroll-target="#file-locking">File Locking</a></li>
+  <li><a href="#usage-examples" id="toc-usage-examples" class="nav-link" data-scroll-target="#usage-examples">Usage examples</a>
+  <ul class="collapse">
+  <li><a href="#make-a-keyvalueaccess" id="toc-make-a-keyvalueaccess" class="nav-link" data-scroll-target="#make-a-keyvalueaccess">Make a KeyValueAccess</a></li>
+  <li><a href="#write-data" id="toc-write-data" class="nav-link" data-scroll-target="#write-data">Write data</a></li>
+  <li><a href="#query-properties" id="toc-query-properties" class="nav-link" data-scroll-target="#query-properties">Query properties</a></li>
+  <li><a href="#read-data" id="toc-read-data" class="nav-link" data-scroll-target="#read-data">Read data</a></li>
+  <li><a href="#partially-lazily-read-data" id="toc-partially-lazily-read-data" class="nav-link" data-scroll-target="#partially-lazily-read-data">Partially, lazily read data</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -288,164 +293,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>This post for Java developers covers the recent updates to the <a href="https://github.com/saalfeldlab/n5">N5 API</a>, adding support for sharding and Zarr v3 and, is intended as a migration guide to the new versions. Some specific noteworthy changes are called out in green boxes.</p>
-<p>Examples below require the latest releases at the time of this writing:</p>
+<p><code>KeyValueAccess</code> is the storage backend abstraction in N5. This interface to handles filesystems, cloud storage, and http requests. While everything N5 reads or writes passes through one of its implementations, it can be used for more than just the file formats supported by the N5 API. This article explains how to read and write arbitrary data to various storage backends.</p>
+<p>The <em>key</em> of a <code>KeyValueAccess</code> is a path or URI, and the <em>value</em> is a file or object. In this article, “file” refers both to files on a file system and objects in cloud storage.</p>
+<p><code>KeyValueAccess</code> has methods to read and write data from storage backends, to query properties of files, and to manipulate paths that address data.</p>
+<section id="implementations" class="level2">
+<h2 class="anchored" data-anchor-id="implementations">Implementations</h2>
 <ul>
-<li>n5-4.0.2</li>
-<li>n5-imglib2-8.0.0</li>
-<li>n5-universe:3.0.2</li>
-<li>n5-zarr-2.0.1</li>
-<li>n5-zstandard-2.0.0</li>
+<li><code>FileSystemKeyValueAccess</code></li>
+<li><code>HttpKeyValueAccess</code> (read-only)</li>
+<li><code>AmazonS3KeyValueAccess</code></li>
+<li><code>GoogleCloudStorageKeyValueAccess</code></li>
 </ul>
-<section id="nomenclature" class="level2">
-<h2 class="anchored" data-anchor-id="nomenclature">Nomenclature</h2>
-<ul>
-<li>“Chunk” refers to the smallest (innermost) subdivision of the array</li>
-<li>“Block” refers to the largest (outermost) subdivision of the array
-<ul>
-<li>refers to shards when the array is sharded</li>
-<li>identical to chunks when the array is unsharded</li>
-</ul></li>
-<li>“Storage format” refers to one of (HDF5, N5, Zarr v2, Zarr v3).</li>
-<li>“Backend” refers to the file or object store on which the format is written (e.g., filesystem, aws-s3, google-cloud).</li>
-</ul>
+<p>An appropriate <code>KeyValueAccess</code> implementation can be created from a URI using <code>KeyValueAccessBackend</code> or an <code>N5Factory</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>   <span class="bu">URI</span> uri<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">boolean</span> readOnly<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>   <span class="co">// these two calls are identical</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   KeyValueAccess kva1 <span class="op">=</span> KeyValueAccessBackend<span class="op">.</span><span class="fu">getKeyValueAccess</span><span class="op">(</span>uri<span class="op">,</span> readOnly<span class="op">);</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   KeyValueAccess kva2 <span class="op">=</span> <span class="kw">new</span> <span class="fu">N5Factory</span><span class="op">().</span><span class="fu">getKeyValueAccess</span><span class="op">(</span>uri<span class="op">,</span> readOnly<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>Some changes to:</p>
-<ul>
-<li>N5Factory</li>
-</ul>
-<p>New low-level methods:</p>
-<ul>
-<li>N5Reader
-<ul>
-<li>readChunk</li>
-<li>readChunks</li>
-</ul></li>
-<li>N5Writer
-<ul>
-<li>writeChunk</li>
-<li>writeChunks</li>
-</ul></li>
-</ul>
-</section>
-<section id="n5factory" class="level2">
-<h2 class="anchored" data-anchor-id="n5factory">N5Factory</h2>
-<p>The <code>openReader</code> and <code>openWriter</code> methods in <code>N5Factory</code> return an <code>N5Reader</code> or <code>N5Writer</code>, respectively. The storage format is determined by (in order):</p>
-<ol type="1">
-<li>The user-specified storage format.</li>
-<li>Existing data at the specified location.</li>
-<li>Extension of the given location.</li>
-</ol>
-<section id="storage-format-specification" class="level3">
-<h3 class="anchored" data-anchor-id="storage-format-specification">Storage format specification</h3>
-<p>The changes for the <a href="https://github.com/saalfeldlab/n5-universe/blob/d290226f5a38ac6c6d5f0e2f8f026b2768ad7d74/src/main/java/org/janelia/saalfeldlab/n5/universe/StorageFormat.java"><code>StorageFormat</code></a> enum have to do with Zarr.</p>
-<p><code>StorageFormat.ZARR2</code>: is new and always refers to Zarr v2. N5Factory will fail if this is specified, but the URI points to a Zarr v3 hierarchy</p>
-<p><code>StorageFormat.ZARR3</code>: is new and always refers to Zarr v3. N5Factory will fail if this is specified, but the URI points to a Zarr v2 hierarchy</p>
-<p><code>StorageFormat.ZARR</code>: in past versions this always referred to Zarr v2. Now, if this is specified and points to an existing Zarr v2 or v3 hierarchy, then N5Factory will return an appropriate reader or writer. If this is specified for a writer when no Zarr hierarchy exists, then a N5Factory will return a Zarr v3 writer.</p>
-</section>
-<section id="storage-format-extenstions" class="level3">
-<h3 class="anchored" data-anchor-id="storage-format-extenstions">Storage format extenstions</h3>
-<p>This table lists the extensions for each storage format.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Storage Format</th>
-<th>Extensions</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Zarr v3</td>
-<td><code>.zarr</code></td>
-</tr>
-<tr class="even">
-<td>Zarr v2</td>
-<td><code>.zarr</code></td>
-</tr>
-<tr class="odd">
-<td>N5</td>
-<td><code>.n5</code></td>
-</tr>
-<tr class="even">
-<td>HDF5</td>
-<td><code>.h5</code>, <code>.hdf5</code></td>
-</tr>
-</tbody>
-</table>
-<p>For example:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>N5Factory factory <span class="op">=</span> <span class="kw">new</span> <span class="fu">N5Factory</span><span class="op">();</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">// opens a Zarr V2 writer</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>factory<span class="op">.</span><span class="fu">openWriter</span><span class="op">(</span>StorageFormat<span class="op">.</span><span class="fu">ZARR2</span><span class="op">,</span> <span class="st">"demo.weird-extension"</span><span class="op">)</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">// opens a Zarr v3 writer if the specified folder is empty or does not exist</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>factory<span class="op">.</span><span class="fu">openWriter</span><span class="op">(</span><span class="st">"demo-empty.zarr"</span><span class="op">)</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">// opens a Zarr v2 writer if the specified folder has v2 data</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>factory<span class="op">.</span><span class="fu">openWriter</span><span class="op">(</span><span class="st">"demo-existing-v2.zarr"</span><span class="op">)</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">// opens an n5 writer</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>factory<span class="op">.</span><span class="fu">openWriter</span><span class="op">(</span><span class="st">"demo.n5"</span><span class="op">)</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-<section id="creating-a-sharded-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="creating-a-sharded-dataset">Creating a sharded dataset</h2>
-<p>Zarr v3 is the only storage format that supports sharding, so to create a sharded dataset, we need a Zarr v3 writer. Use <code>new N5Factory().openWriter(StorageFormat.ZARR3, "demo.zarr"))</code> to create a Zarr v3 writer, or use a <code>ZarrV3KeyValueWriter</code> constructor to create one manually.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// try block auto-closes the writer</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(</span>N5Writer writer <span class="op">=</span> <span class="kw">new</span> <span class="fu">N5Factory</span><span class="op">().</span><span class="fu">openWriter</span><span class="op">(</span>StorageFormat<span class="op">.</span><span class="fu">ZARR3</span><span class="op">,</span> <span class="st">"demo.zarr"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// create a dataset attributes instance to specify the</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// dataset parameters with a specified shard size</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    ZarrV3DatasetAttributes specAttributes <span class="op">=</span> ZarrV3DatasetAttributes</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">// image dimensions and data type are required</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">builder</span><span class="op">(</span><span class="kw">new</span> <span class="dt">long</span><span class="op">[]{</span><span class="dv">128</span><span class="op">,</span> <span class="dv">128</span><span class="op">,</span> <span class="dv">64</span><span class="op">},</span> DataType<span class="op">.</span><span class="fu">INT32</span><span class="op">)</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">blockSize</span><span class="op">(</span><span class="kw">new</span> <span class="dt">int</span><span class="op">[]{</span><span class="dv">32</span><span class="op">,</span> <span class="dv">32</span><span class="op">,</span> <span class="dv">32</span><span class="op">})</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">shardSize</span><span class="op">(</span><span class="kw">new</span> <span class="dt">int</span><span class="op">[]{</span><span class="dv">128</span><span class="op">,</span> <span class="dv">128</span><span class="op">,</span> <span class="dv">128</span><span class="op">})</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">compression</span><span class="op">(</span><span class="kw">new</span> <span class="fu">ZstandardCompression</span><span class="op">())</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">build</span><span class="op">();</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// use this instance for subsequent calls to readChunk(s) writeChunk(s)</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    DatasetAttributes actualAttributes <span class="op">=</span> writer<span class="op">.</span><span class="fu">createDataset</span><span class="op">(</span><span class="st">""</span><span class="op">,</span> specAttributes<span class="op">);</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="paths-and-uris" class="level2">
+<h2 class="anchored" data-anchor-id="paths-and-uris">Paths and URIs</h2>
+<p><code>KeyValueAccess</code> methods for reading and writing that take <code>String</code> arguments expect them to be <strong>normalized, absolute paths.</strong> Strings that are valid <code>URI</code>s are always acceptable. N5 generally uses URIs to keep path representations as consistent as possible across different <code>KeyValueAccess</code> implementations. System-specfic file paths are also acceptable.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><code>createDataset</code> returns a <code>DatasetAttributes</code>
+<span class="screen-reader-only">Tip</span>For example:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A noteworthy API change.</p>
-<p>Different storage formats (HDF5, N5, Zarr) have different feature sets and have different default sets of codecs. N5 may need to convert a generic <code>DatasetAttributes</code> to a more specific type, e.g.&nbsp;<code>ZarrV3DatasetAttributes</code>. This more specific type is returned by <code>createDataset</code>.</p>
-<p>The motivation for this change was to enable subsequent calls to <code>readChunk</code> / <code>writeChunks</code> to avoid repeating the overhead this conversion because these methods are often called repeatedly with the same <code>DatasetAttributes</code>.</p>
-</div>
-</div>
-</section>
-<section id="high-level-writing" class="level2">
-<h2 class="anchored" data-anchor-id="high-level-writing">High-level writing</h2>
-<p>There are no changes to the methods of N5Utils, and they support reading from and writing to shards.</p>
-<p>Note the use of the <code>saveBlock</code> method (instead of <code>save</code>) because it takes a <code>DatasetAttributes</code> instance, and current <code>save</code> methods do not enable specification of a sharded dataset (at this time).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>RandomAccessibleInterval<span class="op">&lt;</span>IntType<span class="op">&gt;</span> img<span class="op">;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>N5Utils<span class="op">.</span><span class="fu">saveBlock</span><span class="op">(</span>img<span class="op">,</span> writer<span class="op">,</span> datasetPath<span class="op">,</span> actualAttributes<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="low-level-writing" class="level2">
-<h2 class="anchored" data-anchor-id="low-level-writing">Low-level writing</h2>
-<p>There is a new method <code>writeChunks</code> that takes an array of <code>DataBlock</code>s and writes them all. Applications should generally call <code>writeChunks</code> once for all chunks belonging to a shard. At this time, developers are responsible for determining which blocks belong to what shard, though a helper method may be added.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>prefer <code>writeChunks</code> to <code>writeChunk</code>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Using <code>writeChunks</code> will allow N5 to optimize write operations by grouping chunks by the block they belong to (if relevant). Calls to <code>writeChunk</code> will still work (if called serially)</p>
+<ul>
+<li><code>"C:\\User\\NoName\\My File.txt"</code></li>
+<li><code>"file://c:/user/noname/my%20file.txt"</code></li>
+</ul>
+<p>refer to the same key on Windows file systems noting that backslashes are escaped for java Strings, that Windows file paths are usually case-insensitive, and URIs may not contain whitespace characters hence must be encoded.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -454,63 +338,172 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Take care calling <code>writeChunk</code> in parallel
+<span class="screen-reader-only">Warning</span>Buckets for cloud storage
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Parallel calls to <code>writeChunk</code> that refer to the different chunks in the same block (shard) can cause data loss. It is the caller’s responsibility to avoid this.</p>
+<p>Instances of cloud storage <code>KeyValueAccess</code> implementations, <code>AmazonS3KeyValueAccess</code> and <code>GoogleCloudStorageKeyValueAccess</code>, are specific to a particular <em>bucket.</em> As a result, paths passed to these classes must refer to the particular bucket handled by the cloud storage <code>KeyValueAccess</code> instance.</p>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>DataBlock<span class="op">&lt;</span><span class="dt">int</span><span class="op">[]&gt;[]</span> chunks<span class="op">;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>writer<span class="op">.</span><span class="fu">writeChunks</span><span class="op">(</span>datasetPath<span class="op">,</span> actualAttributes<span class="op">,</span> chunks<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>DataBlock<span class="op">&lt;</span><span class="dt">int</span><span class="op">[]&gt;</span> chunk<span class="op">;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>writer<span class="op">.</span><span class="fu">writeChunk</span><span class="op">(</span>datasetPath<span class="op">,</span> actualAttributes<span class="op">,</span> chunk<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The method <code>writeBlock</code> still exists ands works for sharded datasets.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>DataBlock<span class="op">&lt;</span><span class="dt">int</span><span class="op">[]&gt;</span> block<span class="op">;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>writer<span class="op">.</span><span class="fu">writeBlock</span><span class="op">(</span>datasetPath<span class="op">,</span> actualAttributes<span class="op">,</span> block<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The methods for manipulating paths are:</p>
+<p><code>normalize</code> returns the argument transformed in a normal form by removing <code>.</code>, <code>..</code> components, and extra <code>/</code>’s for example.</p>
+<p><code>compose</code> combines path components into a single <code>String</code>.</p>
+<p><code>components</code> splits a path into its component parts.</p>
+<p><code>parent</code> returns the parent directory for a given path pointing to a file or directory.</p>
+<p><code>relativize</code></p>
+<p><code>uri</code> converts a <code>String</code> to a <code>URI</code> appropriate for use by this `KeyValueAccess.</p>
+<section id="note" class="level3">
+<h3 class="anchored" data-anchor-id="note">Note</h3>
+<p><strong>Trailing slashes</strong> may carry meaning for some implementations, for example by indicating that the path refers to a directory, not a file.</p>
+<p><strong>Leading slashes</strong> …</p>
+<p>The <code>N5URI</code> class contains useful methods for parsing paths and converting to and from a <code>URI</code> representation. For example, <code>N5URI.encodeAsUri(String)</code> returns a <code>URI</code> for which any invalid characters in the input are properly encoded.</p>
 </section>
-<section id="codecs" class="level2">
-<h2 class="anchored" data-anchor-id="codecs">Codecs</h2>
-<p>This release introduces <code>Codec</code>s, which implement the same functionality as <a href="https://zarr-specs.readthedocs.io/en/v3.1.0/v3/codecs/index.html">Codecs in the Zarr v3 specification</a>. Developers generally do not have to worry about the details of Codecs, the one exception being compression algorithms.</p>
-<section id="datacodec-and-compression" class="level3">
-<h3 class="anchored" data-anchor-id="datacodec-and-compression">DataCodec and Compression</h3>
-<p>The <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/DataCodec.java"><code>DataCodec</code></a> interface is the the analogue of Zarr v3’s <code>bytes -&gt; bytes</code> codec. The <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/Compression.java"><code>Compression</code></a> interface, a pre-existing N5 interface, is now a special case of a <code>DataCodec</code>. It is otherwise backward-compatible and may still be used.</p>
 </section>
-<section id="blockcodec" class="level3">
-<h3 class="anchored" data-anchor-id="blockcodec">BlockCodec</h3>
-<p>The <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/BlockCodec.java"><code>BlockCodec</code></a> interface the the analogue of Zarr v3’s <code>array -&gt; bytes</code> codec.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
+<section id="query" class="level2">
+<h2 class="anchored" data-anchor-id="query">Query</h2>
+<p><code>isFile</code> returns true if a file or object exists at a given key. When a key is a file, then byte data can be read from that key.</p>
+<p><code>isDirectory</code> returns true if the key is a <em>directory</em>. When a key is a directory, it contains other files and directories that can be listed (if supported, see below).</p>
+<p><code>exists</code> returns true if <code>isDirectoy</code> or <code>isFile</code> is true for that key.</p>
+<p><code>size</code> returns the size in bytes of the file at a given key.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Avoid manually specifying a <code>BlockCodec</code>
+<span class="screen-reader-only">Tip</span>list support
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Make sure you really know what you’re doing if you specify a <code>BlockCodec</code> manually. This is because the particular <code>BlockCodec</code> that is needed depends on the storage format being used, and the N5 library will provide the correct <code>BlockCodec</code> by default (without code needing to know the type of your <code>N5Reader</code> / <code>N5Writer</code> instance).</p>
-<p>Take advantage of this!</p>
-<p>If you manually specify a <code>BlockCodec</code>, N5 will not check that it is valid for the storage format. You might accidentally write invalid data as a result.</p>
+<p>Cloud backends are often configured without support for list operations. They are included in the <code>KeyValueAccess</code> API, but developers should be aware that their behavior may differ from backend to backend and also (cloud) bucket to bucket.</p>
 </div>
 </div>
-<p>N5 will automatically set an appropriate <code>BlockCodec</code> when creating a <code>DatasetAttributes</code> if one is not explicitly specified. It does this by calling the <code>defaultBlockCodec</code> method. The base <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/DatasetAttributes.java#L234-L236"><code>DatasetAttributes</code> returns an <code>N5BlockCodecInfo</code></a>, but <a href="https://github.com/saalfeldlab/n5-zarr/blob/ee718c938f5bc2e82e99188aafe101ba731395c1/src/main/java/org/janelia/saalfeldlab/n5/zarr/v3/ZarrV3DatasetAttributes.java#L219-L222"><code>ZarrV3DatasetAttributes</code> returns a <code>PaddedRawBlockCodecInfo</code></a></p>
+<p><code>list</code> returns an array containing the files and directories that are direct children of the provided path.</p>
+<p><code>listDirectories</code> returns an array containing the directories that are direct children of the provided path.</p>
 </section>
-<section id="datasetcodec" class="level3">
-<h3 class="anchored" data-anchor-id="datasetcodec">DatasetCodec</h3>
-<p>The <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/DatasetCodec.java"><code>DatasetCodec</code></a> interface the the analogue of Zarr v3’s <code>array -&gt; array</code> codec.</p>
-<p>At the time of this writing the <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/transpose/TransposeCodec.java">TransposeCodec</a> is the only <code>DatasetCodec</code> in the core zarr-spec, and so the only such codec we’ve implemented, but additional <code>DatasetCodec</code>s are coming soon.</p>
+<section id="read" class="level2">
+<h2 class="anchored" data-anchor-id="read">Read</h2>
+<p><code>createReadData</code> returns a <code>ReadData</code> instance for the given key that can be used to read data. Implementations may vary, but calling this method generally does not immediately fetch data from the backend. Rather, the data are read lazily, when needed. This implementations throws <code>N5NoSuchKeyException</code> if the key does not exist. However, this may be thrown when a read to the backend is attempted, not immediately.</p>
 </section>
-<section id="codecinfo" class="level3">
-<h3 class="anchored" data-anchor-id="codecinfo">CodecInfo</h3>
-<p><code>CodecInfo</code>s are untyped semantic layers for <code>Codec</code>s that are (de)serialized from json metadata.</p>
-<p>Generally, you’ll see that the objects that are passed around implement the <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/CodecInfo.java"><code>CodecInfo</code></a> interface, not the <code>Codec</code> interface. This is because <code>Codec</code> implementations are typed, but this type information is not present in the json that represents the codec, but needs to be inferred from surrounding array metadata.</p>
-<p>For example, the zarr <a href="https://zarr-specs.readthedocs.io/en/v3.1.0/v3/codecs/bytes/index.html"><code>bytes</code> codec</a> is serialized like this:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"bytes"</span><span class="fu">,</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"configuration"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"endian"</span><span class="fu">:</span> <span class="st">"little"</span> <span class="fu">}</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>but its job is to convert a generic byte stream into a zarr chunk of a particular type. That type is specified elsewhere in the metadata. The bytes codec is represented by the <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/RawBlockCodecInfo.java">RawBlockCodecInfo</a> which uses a <code>DatasetAttributes</code> (which has the type information) to <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/RawBlockCodecInfo.java#L46-L49">create</a> a typed <a href="https://github.com/saalfeldlab/n5/blob/7529e34badc805ce89508a66e38ee5aa62bf43aa/src/main/java/org/janelia/saalfeldlab/n5/codec/RawBlockCodecs.java#L81"><code>RawBlockCodec</code></a>.</p>
+<section id="write" class="level2">
+<h2 class="anchored" data-anchor-id="write">Write</h2>
+<p><code>write</code> writes data to the given key. Data are stored in a <code>ReadData</code> instance (see below).</p>
+<p><code>createDirectories</code> creates a directory at the given key, and recursively creates parent directories if necessary.</p>
+<p><code>delete</code> deletes a file or directory at the given key. If the key is a directory, it recursively deletes all contents therein. If no file or directory exists at the key, <code>delete</code> returns without throwing an exception.</p>
+</section>
+<section id="readdata" class="level2">
+<h2 class="anchored" data-anchor-id="readdata">ReadData</h2>
+<p><code>ReadData</code> is n5’s abstraction for a byte data. All data interacting with a <code>KeyValueAccess</code> is a <code>ReadData</code>. Some <code>ReadData</code> implementations represent data that is already in memory, most notably the <code>ByteArrayReadData</code>.</p>
+<p>Other implementations, notably <code>VolatileReadData</code>, represent data that exists in a file or some other storage backend and can eventually be read. Implementations of this type are generally <em>lazy</em>, avoiding actually performing a read operation until necessary.</p>
+<section id="creating-a-read-data" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-read-data">Creating a read data</h3>
+<p>Use the <code>ReadData.from</code> static methods to create a <code>ReadData</code> instance. They can be created from</p>
+<ul>
+<li><code>byte[]</code></li>
+<li><code>ByteBuffer</code></li>
+<li><code>InputStream</code></li>
+</ul>
+<p><code>VolatileReadData</code> are returned by <code>KeyValueAccess.createReadData</code>. Developers should only instantiate a <code>VolatileReadData</code> if they are creating a new <code>KeyValueAccess</code>. This is out of the scope of this article.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Performance of InputStream ReadData
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>calling <code>materialize</code> on an <code>InputStreamReadData</code> can be substantially more expensive if the length of the data is not known. If you call <code>ReadData.from(InputStream)</code> and know the data length, calling <code>limit</code> with the known length could improve performance.</p>
+</div>
+</div>
+<p><code>length</code> (lazy) returns the size <em>if already known</em>, or <code>-1</code> if unknown.</p>
+<p><code>slice</code> (lazy) methods return a new ReadData holding the given sub-range of data.</p>
+<p><code>limit</code> (lazy) methods return a new <code>ReadData</code> limited to the given length.</p>
+<p><code>requireLength</code> always returns the size, and may fully read the data if necessary.</p>
+<p><code>encode</code> (lazy) transforms the data with the given encoder, reeturning a new <code>ReadData</code> instance containing the transformed data.</p>
+<p><code>writeTo</code> writes the data to the given <code>OutputStream</code>.</p>
+<p><code>allBytes</code> returns a <code>byte[]</code> containing the data, forcing a read operation if needed.</p>
+<p><code>materialize</code> returns a new <code>ReadData</code> containing the byte data in memory, forcing a read operation if needed.</p>
+<p><code>inputStream</code> returns an <code>InputStream</code> over the data. This may or may not trigger a read operation, depending on the <code>ReadData</code> implementation. Notably, <code>InputStreamReadData</code> will not trigger a read, but other <code>VolatileReadData</code> will.</p>
+<p><code>toByteBuffer</code> returns a <code>ByteBuffer</code> over the data. This may or may not trigger a read operation, depending on the <code>ReadData</code> implementation. Notably, <code>InputStreamReadData</code> will not trigger a read, but other <code>VolatileReadData</code> will.</p>
+<p><code>prefetch</code> is an hint that certain ranges will be read soon. The main use case is to enable combining multiple partial read requests to the same key, for example when reading multiple chunks from the same shard.</p>
+</section>
+</section>
+<section id="file-locking" class="level2">
+<h2 class="anchored" data-anchor-id="file-locking">File Locking</h2>
+<p>TODO</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(</span><span class="dt">final</span> VolatileReadData readData <span class="op">=</span> kva<span class="op">.</span><span class="fu">createReadData</span><span class="op">(</span>path<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">...</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="usage-examples" class="level2">
+<h2 class="anchored" data-anchor-id="usage-examples">Usage examples</h2>
+<section id="make-a-keyvalueaccess" class="level3">
+<h3 class="anchored" data-anchor-id="make-a-keyvalueaccess">Make a KeyValueAccess</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">URI</span> uri<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">boolean</span> readOnly<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>KeyValueAccess kva <span class="op">=</span> KeyValueAccessBackend<span class="op">.</span><span class="fu">getKeyValueAccess</span><span class="op">(</span>uri<span class="op">,</span> readOnly<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="write-data" class="level3">
+<h3 class="anchored" data-anchor-id="write-data">Write data</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>KeyValueAccess kva<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">// write some string data</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> data <span class="op">=</span> <span class="st">"This API is the bees knees.</span><span class="sc">\n</span><span class="st">I say, it's the cat's pajamas!"</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ReadData rd <span class="op">=</span> ReadData<span class="op">.</span><span class="fu">from</span><span class="op">(</span>data<span class="op">.</span><span class="fu">getBytes</span><span class="op">(</span>StandardCharsets<span class="op">.</span><span class="fu">UTF_8</span><span class="op">));</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> absolutePath <span class="op">=</span> kva<span class="op">.</span><span class="fu">compose</span><span class="op">(</span>uri<span class="op">,</span> <span class="st">"tmp/stringData.txt"</span><span class="op">);</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>kva<span class="op">.</span><span class="fu">write</span><span class="op">(</span>absolutePath<span class="op">,</span> rd<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="query-properties" class="level3">
+<h3 class="anchored" data-anchor-id="query-properties">Query properties</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>KeyValueAccess kva<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> absolutePath <span class="op">=</span> kva<span class="op">.</span><span class="fu">compose</span><span class="op">(</span>uri<span class="op">,</span> <span class="st">"tmp/stringData.txt"</span><span class="op">);</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dt">boolean</span> fileExists <span class="op">=</span> kva<span class="op">.</span><span class="fu">isFile</span><span class="op">(</span>absolutePath<span class="op">);</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dt">boolean</span> dirExists <span class="op">=</span> kva<span class="op">.</span><span class="fu">isDirectory</span><span class="op">(</span>absolutePath<span class="op">);</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="dt">long</span> sizeBytes <span class="op">=</span> kva<span class="op">.</span><span class="fu">size</span><span class="op">(</span>absolutePath<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="read-data" class="level3">
+<h3 class="anchored" data-anchor-id="read-data">Read data</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>KeyValueAccess kva<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">// write some string data</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> absolutePath <span class="op">=</span> kva<span class="op">.</span><span class="fu">compose</span><span class="op">(</span>uri<span class="op">,</span> <span class="st">"tmp"</span><span class="op">,</span> <span class="st">"stringData.txt"</span><span class="op">);</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> stringData<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">// acquires a read lockll</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span><span class="op">(</span>VolatileReadData data <span class="op">=</span> kva<span class="op">.</span><span class="fu">createReadData</span><span class="op">(</span>absolutePath<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    stringData <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">(</span>data<span class="op">.</span><span class="fu">allBytes</span><span class="op">(),</span> StandardCharsets<span class="op">.</span><span class="fu">UTF_8</span><span class="op">);</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>stringData<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="partially-lazily-read-data" class="level3">
+<h3 class="anchored" data-anchor-id="partially-lazily-read-data">Partially, lazily read data</h3>
+<p>This example lazily reads 10-byte subset of a file and shows the behavior of the <code>length</code> method during lazy reading.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>KeyValueAccess kva<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> absolutePath <span class="op">=</span> kva<span class="op">.</span><span class="fu">compose</span><span class="op">(</span>uri<span class="op">,</span> <span class="st">"tmp/stringData.txt"</span><span class="op">);</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> stringData<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span><span class="op">(</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// createReadData does not perform a read operation</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    VolatileReadData data <span class="op">=</span> kva<span class="op">.</span><span class="fu">createReadData</span><span class="op">(</span>absolutePath<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    data<span class="op">.</span><span class="fu">length</span><span class="op">();</span> <span class="co">// would return -1, meaning unknown length"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">// this operation does not trigger a read</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    ReadData partialData <span class="op">=</span> data<span class="op">.</span><span class="fu">slice</span><span class="op">(</span><span class="dv">23</span><span class="op">,</span> <span class="dv">10</span><span class="op">);</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    partialData<span class="op">.</span><span class="fu">length</span><span class="op">();</span>   <span class="co">// returns 10 even though no read operation has happened</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                            <span class="co">// because the slice knows its length.</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                            <span class="co">// An exception could be thrown below if this slice</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>                            <span class="co">// overflows the actual data length.</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// allBytes triggers a read</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">byte</span><span class="op">[]</span> byteData <span class="op">=</span> partialData<span class="op">.</span><span class="fu">allBytes</span><span class="op">();</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    stringData <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">(</span>byteData<span class="op">,</span> StandardCharsets<span class="op">.</span><span class="fu">UTF_8</span><span class="op">);</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
