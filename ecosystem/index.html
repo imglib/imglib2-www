@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,13 +40,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e91e2e741ce7c7fcbf7a60dafcc7cbb4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ee00dc53937c7b045d689a91109b90bd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -97,12 +98,6 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
   </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -141,19 +136,18 @@ window.Quarto = {
 <meta property="og:site_name" content="ImgLib2 and BigDataViewer projects">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ImgLib2 and BigDataViewer projects</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -232,6 +226,7 @@ window.Quarto = {
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -251,7 +246,7 @@ window.Quarto = {
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(56)</span></div><div class="category" data-category="QmlnRGF0YVZpZXdlcg==">BigDataViewer <span class="quarto-category-count">(37)</span></div><div class="category" data-category="QmlnVm9sdW1lVmlld2Vy">BigVolumeViewer <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmlqaQ==">Fiji <span class="quarto-category-count">(43)</span></div><div class="category" data-category="RmlqaSUyRkltYWdlSg==">Fiji/ImageJ <span class="quarto-category-count">(2)</span></div><div class="category" data-category="SERGNQ==">HDF5 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW1hZ2VK">ImageJ <span class="quarto-category-count">(42)</span></div><div class="category" data-category="SW1nTGliMg==">ImgLib2 <span class="quarto-category-count">(43)</span></div><div class="category" data-category="aW1nbGliMg==">imglib2 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UGl4ZWwlMjBDbGFzc2lmaWNhdGlvbg==">Pixel Classification <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U2NpSmF2YQ==">SciJava <span class="quarto-category-count">(46)</span></div><div class="category" data-category="U2VnbWVudGF0aW9u">Segmentation <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <div class="quarto-about-jolla column-page-left">
- <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+ <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content" tabindex="-1">
 <p>Below follows an non-exhaustive list of Fiji plugins and other software that uses either ImgLib2 or BigDataViewer:</p>
 
 
@@ -263,13 +258,60 @@ window.Quarto = {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982369" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
-<div class="thumbnail"><a href="../ecosystem/srinituraga_cremi-deform/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="0" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="6">
+<div class="thumbnail"><a href="../ecosystem/PreibischLab_BigStitcher/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../ecosystem/srinituraga_cremi-deform/index.html" class="no-external">Deform</a>
+<a href="../ecosystem/PreibischLab_BigStitcher/index.html" class="no-external-icon">Big Stitcher</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/PreibischLab_BigStitcher/index.html" class="no-external-icon">
+Multiview stitching of large datasets.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
+<div class="thumbnail"><a href="../ecosystem/juglab_LabelEditor/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/juglab_LabelEditor/index.html" class="no-external-icon">Label Editor</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/juglab_LabelEditor/index.html" class="no-external-icon">
+UI component for image segmentation label comparison and selection
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
+<div class="thumbnail"><a href="../ecosystem/srinituraga_cremi-deform/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/srinituraga_cremi-deform/index.html" class="no-external-icon">Deform</a>
 </h3>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
@@ -277,64 +319,22 @@ window.Quarto = {
 <div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
 <div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
 </div>
-<div class="delink listing-description"><a href="../ecosystem/srinituraga_cremi-deform/index.html" class="no-external">
+<div class="listing-description">
+<a href="../ecosystem/srinituraga_cremi-deform/index.html" class="no-external-icon">
 Deform HDF5 sources
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/srinituraga_cremi-deform/index.html" class="no-external">
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="SW1nTGliMg==" data-listing-file-modified-sort="1787247982369" data-listing-reading-time-sort="1" data-listing-word-count-sort="6">
-<div class="thumbnail"><a href="../ecosystem/tinevez_imglib2-icy/index.html" class="no-external">
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032602" data-listing-reading-time-sort="1" data-listing-word-count-sort="5">
+<div class="thumbnail"><a href="../ecosystem/BIOP_bigdataviewer-selector/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../ecosystem/tinevez_imglib2-icy/index.html" class="no-external">ImgLib2 Icy</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/tinevez_imglib2-icy/index.html" class="no-external">
-ImgLib2 wrappers for Icy sequences.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/tinevez_imglib2-icy/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="SW1hZ2VKJTJDSW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
-<div class="thumbnail"><a href="../ecosystem/duderstadt-lab_mars-core/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/duderstadt-lab_mars-core/index.html" class="no-external">mars-core</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/duderstadt-lab_mars-core/index.html" class="no-external">
-Molecule Archive Suite (Mars) - core data storage and processing algorithms.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/duderstadt-lab_mars-core/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982363" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
-<div class="thumbnail"><a href="../ecosystem/BIOP_ijp-kheops/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/BIOP_ijp-kheops/index.html" class="no-external">BIOP Kheops Command</a>
+<a href="../ecosystem/BIOP_bigdataviewer-selector/index.html" class="no-external-icon">Selector For BigDataViewer</a>
 </h3>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
@@ -342,22 +342,1010 @@ Molecule Archive Suite (Mars) - core data storage and processing algorithms.
 <div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
 <div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
 </div>
-<div class="delink listing-description"><a href="../ecosystem/BIOP_ijp-kheops/index.html" class="no-external">
-IJ2 commands that use bio-formats to create pyramidal ome.tiff
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/BIOP_ijp-kheops/index.html" class="no-external">
+<div class="listing-description">
+<a href="../ecosystem/BIOP_bigdataviewer-selector/index.html" class="no-external-icon">
+Selector Behaviours for BigDataViewer
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDUGl4ZWwlMjBDbGFzc2lmaWNhdGlvbiUyQ1NlZ21lbnRhdGlvbg==" data-listing-file-modified-sort="1787247982365" data-listing-reading-time-sort="1" data-listing-word-count-sort="184">
-<div class="thumbnail"><a href="../ecosystem/Labkit/index.html" class="no-external">
-<p class="card-img-top"><img loading='lazy' src="Labkit/Labkit_UserView.jpg"  class="thumbnail-image card-img"/></p>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="RmlqaSUyRkltYWdlSiUyQ0JpZ0RhdGFWaWV3ZXIlMkNpbWdsaWIy" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
+<div class="thumbnail"><a href="../ecosystem/mobie_mobie/index.html" class="no-external-icon">
+<p class="card-img-top"><img loading='lazy' src="mobie_mobie/mobie_logo.jpg"  class="thumbnail-image card-img"/></p>
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../ecosystem/Labkit/index.html" class="no-external">Labkit</a>
+<a href="../ecosystem/mobie_mobie/index.html" class="no-external-icon">MoBIE</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaSUyRkltYWdlSg=='); return false;">Fiji/ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('aW1nbGliMg=='); return false;">imglib2</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/mobie_mobie/index.html" class="no-external-icon">
+MoBIE is a Fiji plugin for exploring large multi-modal image data sets.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
+<div class="thumbnail"><a href="../ecosystem/PreibischLab_RS-FISH/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/PreibischLab_RS-FISH/index.html" class="no-external-icon">Radial Symmetry</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/PreibischLab_RS-FISH/index.html" class="no-external-icon">
+A plugin for radial symmetry localization on smFISH (and other) images.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="105">
+<div class="thumbnail"><a href="../ecosystem/andmccall_Colocalization_by_Cross_Correlation/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/andmccall_Colocalization_by_Cross_Correlation/index.html" class="no-external-icon">Colocalization_by_Cross_Correlation</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/andmccall_Colocalization_by_Cross_Correlation/index.html" class="no-external-icon">
+An ImageJ plugin for spatial correlation/colocalization analysis that is more compatible with super-resolution images than traditional pixel-wise colocalization algorithms.…
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032602" data-listing-reading-time-sort="1" data-listing-word-count-sort="15">
+<div class="thumbnail"><a href="../ecosystem/BIOP_bigdataviewer-bioformats/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/BIOP_bigdataviewer-bioformats/index.html" class="no-external-icon">BigDataViewer Bioformats Bridge</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/BIOP_bigdataviewer-bioformats/index.html" class="no-external-icon">
+Commands and function for opening, conversion and easy use of bioformats format into BigDataViewer
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<div class="thumbnail"><a href="../ecosystem/kephale_point-manager/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/kephale_point-manager/index.html" class="no-external-icon">Point manager for imglib2 and imagej projects</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/kephale_point-manager/index.html" class="no-external-icon">
+A tool for managing imglib2 RealPoints.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIy" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="5">
+<div class="thumbnail"><a href="../ecosystem/TrNdy_indago/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/TrNdy_indago/index.html" class="no-external-icon">indago</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/TrNdy_indago/index.html" class="no-external-icon">
+indigare (ital.) - investigate.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="16">
+<div class="thumbnail"><a href="../ecosystem/nicjac_PHANTAST-FIJI/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/nicjac_PHANTAST-FIJI/index.html" class="no-external-icon">Phase Contrast Segmentation Toolbox (PHANTAST)</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/nicjac_PHANTAST-FIJI/index.html" class="no-external-icon">
+The phae contrast segmentation toolbox (PHANTAST) enables high performance segmentation of phase contrast microscopy images
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="11" data-categories="SW1hZ2VKJTJDSW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="15">
+<div class="thumbnail"><a href="../ecosystem/tinevez_CircleSkinner/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/tinevez_CircleSkinner/index.html" class="no-external-icon">plugins/CircleSkinner_.jar</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/tinevez_CircleSkinner/index.html" class="no-external-icon">
+A Fiji plugin for the automated detection and quantification of circular structure in images.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="12" data-categories="SW1hZ2VKJTJDSW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
+<div class="thumbnail"><a href="../ecosystem/duderstadt-lab_mars-core/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/duderstadt-lab_mars-core/index.html" class="no-external-icon">mars-core</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/duderstadt-lab_mars-core/index.html" class="no-external-icon">
+Molecule Archive Suite (Mars) - core data storage and processing algorithms.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="13" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<div class="thumbnail"><a href="../ecosystem/fmi-faim_fmi-trackmate-addons/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/fmi-faim_fmi-trackmate-addons/index.html" class="no-external-icon">FMI TrackMate Add-ons</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/fmi-faim_fmi-trackmate-addons/index.html" class="no-external-icon">
+FMI Add-ons for TrackMate in Fiji
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="14" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032602" data-listing-reading-time-sort="1" data-listing-word-count-sort="8">
+<div class="thumbnail"><a href="../ecosystem/BIOP_bigdataviewer-biop-tools/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/BIOP_bigdataviewer-biop-tools/index.html" class="no-external-icon">Biop Bigdataviewer Tools and Plugins</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/BIOP_bigdataviewer-biop-tools/index.html" class="no-external-icon">
+Big data viewer tools BIOP - EPFL
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="15" data-categories="RmlqaSUyQ0ltYWdlSiUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIy" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="50">
+<div class="thumbnail"><a href="../ecosystem/Mastodon/index.html" class="no-external-icon">
+<p class="card-img-top"><img loading='lazy' src="Mastodon/Mastodon-logo_jy-01.png"  class="thumbnail-image card-img"/></p>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/Mastodon/index.html" class="no-external-icon">Mastodon</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/Mastodon/index.html" class="no-external-icon">
+Mastodon is a large-scale tracking and track-editing framework for large, multi-view images.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="16" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="thumbnail"><a href="../ecosystem/sbesson_fiji-plugin-plateViewer/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/sbesson_fiji-plugin-plateViewer/index.html" class="no-external-icon">Fiji Plugin PlateViewer</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/sbesson_fiji-plugin-plateViewer/index.html" class="no-external-icon">
+TODO
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="17" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
+<div class="thumbnail"><a href="../ecosystem/mobie_mobie-io/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/mobie_mobie-io/index.html" class="no-external-icon">MoBIE IO</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/mobie_mobie-io/index.html" class="no-external-icon">
+Readers and writers for image data in MoBIE projects
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="18" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="thumbnail"><a href="../ecosystem/cmongis_imagejfx/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/cmongis_imagejfx/index.html" class="no-external-icon">Imagejfx</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/cmongis_imagejfx/index.html" class="no-external-icon">
+
+
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="19" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="20">
+<div class="thumbnail"><a href="../ecosystem/duderstadt-lab_mars-fx/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/duderstadt-lab_mars-fx/index.html" class="no-external-icon">mars-fx</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/duderstadt-lab_mars-fx/index.html" class="no-external-icon">
+JavaFX GUI for processing single-molecule TIRF and FMT data in the Structure and Dynamics of Molecular Machines research group.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="20" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="6">
+<div class="thumbnail"><a href="../ecosystem/mobie_mobie-viewer-fiji/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/mobie_mobie-viewer-fiji/index.html" class="no-external-icon">MoBIE Fiji Viewer</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/mobie_mobie-viewer-fiji/index.html" class="no-external-icon">
+Fiji viewer for MoBIE projects
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="21" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="95">
+<div class="thumbnail"><a href="../ecosystem/bhoeckendorf_klb-bdv/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/bhoeckendorf_klb-bdv/index.html" class="no-external-icon">Keller Lab Block file type (.klb) - BigDataViewer backend</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/bhoeckendorf_klb-bdv/index.html" class="no-external-icon">
+The KLB is a file format developed at the Keller Lab at Janelia Research Campus to efficiently store and retrieve large 5D images (&gt;4GB) using lossless compression. The…
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="22" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032602" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<div class="thumbnail"><a href="../ecosystem/BIOP_ijp-imagetoatlas/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/BIOP_ijp-imagetoatlas/index.html" class="no-external-icon">Plugin To Register Images to Atlases</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/BIOP_ijp-imagetoatlas/index.html" class="no-external-icon">
+Collection of tools to register images to atlases in Fiji.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="23" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<div class="thumbnail"><a href="../ecosystem/saalfeldlab_paintera/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/saalfeldlab_paintera/index.html" class="no-external-icon">Paintera</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/saalfeldlab_paintera/index.html" class="no-external-icon">
+New Era Painting and annotation tool
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="24" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032602" data-listing-reading-time-sort="1" data-listing-word-count-sort="8">
+<div class="thumbnail"><a href="../ecosystem/BIOP_bigdataviewer-playground-display/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/BIOP_bigdataviewer-playground-display/index.html" class="no-external-icon">BigDataViewer Playground Display</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/BIOP_bigdataviewer-playground-display/index.html" class="no-external-icon">
+Display (metadata and projectors) for BigDataViewer Playground.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="25" data-categories="RmlqaSUyRkltYWdlSiUyQ0JpZ0RhdGFWaWV3ZXIlMkNpbWdsaWIyJTJDQmlnVm9sdW1lVmlld2Vy" data-listing-file-modified-sort="1794878032602" data-listing-reading-time-sort="1" data-listing-word-count-sort="59">
+<div class="thumbnail"><a href="../ecosystem/BigTrace/BigTrace.html" class="no-external-icon">
+<p class="card-img-top"><img loading='lazy' data-src="BigTrace/BigTrace_logo.png"  class="thumbnail-image card-img"/></p>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/BigTrace/BigTrace.html" class="no-external-icon">BigTrace plugin</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaSUyRkltYWdlSg=='); return false;">Fiji/ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('aW1nbGliMg=='); return false;">imglib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnVm9sdW1lVmlld2Vy'); return false;">BigVolumeViewer</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/BigTrace/BigTrace.html" class="no-external-icon">
+FIJI plugin for tracing and analysis of curvilinear structures (filaments, vessels, neurites) in volumetric microscopy datasets.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="26" data-categories="SW1hZ2VKJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032602" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
+<div class="thumbnail"><a href="../ecosystem/BIOP_ijp-operetta-importer/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/BIOP_ijp-operetta-importer/index.html" class="no-external-icon">PerkinElmer Operetta Importer</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/BIOP_ijp-operetta-importer/index.html" class="no-external-icon">
+Hold your horses
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="27" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="thumbnail"><a href="../ecosystem/saalfeldlab_hot-knife/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/saalfeldlab_hot-knife/index.html" class="no-external-icon">Hot-knife</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/saalfeldlab_hot-knife/index.html" class="no-external-icon">
+
+
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="28" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="15">
+<div class="thumbnail"><a href="../ecosystem/PreibischLab_multiview-reconstruction/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/PreibischLab_multiview-reconstruction/index.html" class="no-external-icon">Multiview Reconstruction</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/PreibischLab_multiview-reconstruction/index.html" class="no-external-icon">
+Software for the reconstruction of multi-view microscopic acquisitions like Selective Plane Illumination Microscopy (SPIM) Data.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="29" data-categories="SW1hZ2VKJTJDSW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="9">
+<div class="thumbnail"><a href="../ecosystem/NicoKiaru_LimeSeg/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/NicoKiaru_LimeSeg/index.html" class="no-external-icon">limeseg</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/NicoKiaru_LimeSeg/index.html" class="no-external-icon">
+Lipid Membrane Segmentation method for FIJI/ImageJ. https://doi.org/10.1186/s12859-018-2471-0
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="30" data-categories="SW1hZ2VKJTJDSW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<div class="thumbnail"><a href="../ecosystem/ilastik_ilastik4ij/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/ilastik_ilastik4ij/index.html" class="no-external-icon">ilastik imageJ modules</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/ilastik_ilastik4ij/index.html" class="no-external-icon">
+These ImageJ plugins wrap ilastik workflows
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="31" data-categories="U2NpSmF2YQ==" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="14">
+<div class="thumbnail"><a href="../ecosystem/saalfeldlab_render/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/saalfeldlab_render/index.html" class="no-external-icon">Janelia Render Tools And Services</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/saalfeldlab_render/index.html" class="no-external-icon">
+A collection of tools and HTTP services (APIs) for rendering transformed image tiles.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="32" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIy" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
+<div class="thumbnail"><a href="../ecosystem/juglab_metaseg/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/juglab_metaseg/index.html" class="no-external-icon">metaseg</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/juglab_metaseg/index.html" class="no-external-icon">
+Meta-segmentation tool for joining many segmentation hypotheses created by various methods.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="33" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
+<div class="thumbnail"><a href="../ecosystem/duderstadt-lab_mars-swing/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/duderstadt-lab_mars-swing/index.html" class="no-external-icon">mars-swing</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/duderstadt-lab_mars-swing/index.html" class="no-external-icon">
+Swing GUI for analysis of single-molecule TIRF and FMT data in the Structure and Dynamics of Molecular Machines research group
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="34" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="8">
+<div class="thumbnail"><a href="../ecosystem/saalfeldlab_bigcat/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/saalfeldlab_bigcat/index.html" class="no-external-icon">BIGCAT</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/saalfeldlab_bigcat/index.html" class="no-external-icon">
+Collaborative volume annotation and segmentation with BigDataViewer
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="35" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032602" data-listing-reading-time-sort="1" data-listing-word-count-sort="13">
+<div class="thumbnail"><a href="../ecosystem/BIOP_bigdataviewer-spimdata-extras/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/BIOP_bigdataviewer-spimdata-extras/index.html" class="no-external-icon">Spimdata Extra Settings</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/BIOP_bigdataviewer-spimdata-extras/index.html" class="no-external-icon">
+Repo containing extra settings that can be stored in spimdata file format
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="36" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<div class="thumbnail"><a href="../ecosystem/bioimage-io_PredictorOp/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/bioimage-io_PredictorOp/index.html" class="no-external-icon">PredictorOp</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/bioimage-io_PredictorOp/index.html" class="no-external-icon">
+Model runner demo for ImgLib2 consumers.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="37" data-categories="RmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="14">
+<div class="thumbnail"><a href="../ecosystem/PreibischLab_multiview-simulation/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/PreibischLab_multiview-simulation/index.html" class="no-external-icon">Multiview Simulation</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/PreibischLab_multiview-simulation/index.html" class="no-external-icon">
+Library for simulating a multi-view acquisition including attenuation, convolution, reduced sampling and poission noise.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="38" data-categories="SW1nTGliMg==" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="6">
+<div class="thumbnail"><a href="../ecosystem/tinevez_imglib2-icy/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/tinevez_imglib2-icy/index.html" class="no-external-icon">ImgLib2 Icy</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/tinevez_imglib2-icy/index.html" class="no-external-icon">
+ImgLib2 wrappers for Icy sequences.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="39" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
+<div class="thumbnail"><a href="../ecosystem/andmccall_ScanCo100BoneJcalibration/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/andmccall_ScanCo100BoneJcalibration/index.html" class="no-external-icon">ScanCo100_BoneJ_Calibration</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/andmccall_ScanCo100BoneJcalibration/index.html" class="no-external-icon">
+Plugin to import ScanCo100 bone density calibration from DICOM metadata. May work with similar metadata from other scanners, but this is untested. Available at ImageJ update…
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="40" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<div class="thumbnail"><a href="../ecosystem/morphonets_SNT/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/morphonets_SNT/index.html" class="no-external-icon">SNT</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/morphonets_SNT/index.html" class="no-external-icon">
+The ImageJ framework for quantitative neuroanatomy
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="41" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
+<div class="thumbnail"><a href="../ecosystem/embl-cba_cats/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/embl-cba_cats/index.html" class="no-external-icon">Fiji plugin for context aware trainable segmentation</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/embl-cba_cats/index.html" class="no-external-icon">
+A plugin for context aware trainable segmentation of big image data.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="42" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="thumbnail"><a href="../ecosystem/davidackerman_cosem-segmentation-analysis/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/davidackerman_cosem-segmentation-analysis/index.html" class="no-external-icon">Cosem-segmentation-analysis</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/davidackerman_cosem-segmentation-analysis/index.html" class="no-external-icon">
+
+
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="43" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032602" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
+<div class="thumbnail"><a href="../ecosystem/BIOP_ijp-kheops/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/BIOP_ijp-kheops/index.html" class="no-external-icon">BIOP Kheops Command</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/BIOP_ijp-kheops/index.html" class="no-external-icon">
+IJ2 commands that use bio-formats to create pyramidal ome.tiff
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="44" data-categories="SW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="13">
+<div class="thumbnail"><a href="../ecosystem/segment-anything-models-java_SAMJ/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/segment-anything-models-java_SAMJ/index.html" class="no-external-icon">SamJ</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/segment-anything-models-java_SAMJ/index.html" class="no-external-icon">
+Segment Anything Model (SAM), and similar models, wrapper for Java based software.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="45" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<div class="thumbnail"><a href="../ecosystem/UU-cellbiology_bvv-playground/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/UU-cellbiology_bvv-playground/index.html" class="no-external-icon">BVV-playground</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/UU-cellbiology_bvv-playground/index.html" class="no-external-icon">
+Volume rendering of bdv datasets with gamma and transparency option
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="46" data-categories="RmlqaSUyQ0ltYWdlSiUyQ0JpZ0RhdGFWaWV3ZXIlMkNIREY1" data-listing-file-modified-sort="1794878032602" data-listing-reading-time-sort="1" data-listing-word-count-sort="50">
+<div class="thumbnail"><a href="../ecosystem/BigDataProcessor2/index.html" class="no-external-icon">
+<p class="card-img-top"><img loading='lazy' data-src="BigDataProcessor2/BDP2-icon.png"  class="thumbnail-image card-img"/></p>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/BigDataProcessor2/index.html" class="no-external-icon">BigDataProcessor2</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SERGNQ=='); return false;">HDF5</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/BigDataProcessor2/index.html" class="no-external-icon">
+BigDataProcessor2 (BDP2) is a Fiji plugin for interactive processing of TB-sized image data.
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="47" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDUGl4ZWwlMjBDbGFzc2lmaWNhdGlvbiUyQ1NlZ21lbnRhdGlvbg==" data-listing-file-modified-sort="1794878032603" data-listing-reading-time-sort="1" data-listing-word-count-sort="184">
+<div class="thumbnail"><a href="../ecosystem/Labkit/index.html" class="no-external-icon">
+<p class="card-img-top"><img loading='lazy' data-src="Labkit/Labkit_UserView.jpg"  class="thumbnail-image card-img"/></p>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/Labkit/index.html" class="no-external-icon">Labkit</a>
 </h3>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
@@ -366,280 +1354,22 @@ IJ2 commands that use bio-formats to create pyramidal ome.tiff
 <div class="listing-category" onclick="window.quartoListingCategory('UGl4ZWwlMjBDbGFzc2lmaWNhdGlvbg=='); return false;">Pixel Classification</div>
 <div class="listing-category" onclick="window.quartoListingCategory('U2VnbWVudGF0aW9u'); return false;">Segmentation</div>
 </div>
-<div class="delink listing-description"><a href="../ecosystem/Labkit/index.html" class="no-external">
+<div class="listing-description">
+<a href="../ecosystem/Labkit/index.html" class="no-external-icon">
 Labkit is a user-friendly Fiji plugin for the segmentation of microscopy image data.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/Labkit/index.html" class="no-external">
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982368" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
-<div class="thumbnail"><a href="../ecosystem/saalfeldlab_hot-knife/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/saalfeldlab_hot-knife/index.html" class="no-external">Hot-knife</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/saalfeldlab_hot-knife/index.html" class="no-external">
-
-
-</a></div>
-</div>
 <div class="metadata">
-<a href="../ecosystem/saalfeldlab_hot-knife/index.html" class="no-external">
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982368" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
-<div class="thumbnail"><a href="../ecosystem/saalfeldlab_bigwarp/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+<div class="quarto-post image-right" data-index="48" data-categories="RmlqaSUyQ0ltYWdlSiUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIy" data-listing-file-modified-sort="1794878032603" data-listing-reading-time-sort="1" data-listing-word-count-sort="50">
+<div class="thumbnail"><a href="../ecosystem/Fiji/index.html" class="no-external-icon">
+<p class="card-img-top"><img loading='lazy' data-src="../logos/fiji.svg"  class="thumbnail-image card-img"/></p>
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../ecosystem/saalfeldlab_bigwarp/index.html" class="no-external">BigWarp plugin for Fiji</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/saalfeldlab_bigwarp/index.html" class="no-external">
-A tool for manual pointwise deformable registration using bigdataviewer.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/saalfeldlab_bigwarp/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
-<div class="thumbnail"><a href="../ecosystem/embl-cba_cats/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/embl-cba_cats/index.html" class="no-external">Fiji plugin for context aware trainable segmentation</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/embl-cba_cats/index.html" class="no-external">
-A plugin for context aware trainable segmentation of big image data.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/embl-cba_cats/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-categories="RmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="14">
-<div class="thumbnail"><a href="../ecosystem/PreibischLab_multiview-simulation/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/PreibischLab_multiview-simulation/index.html" class="no-external">Multiview Simulation</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/PreibischLab_multiview-simulation/index.html" class="no-external">
-Library for simulating a multi-view acquisition including attenuation, convolution, reduced sampling and poission noise.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/PreibischLab_multiview-simulation/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
-<div class="thumbnail"><a href="../ecosystem/cmongis_imagejfx/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/cmongis_imagejfx/index.html" class="no-external">Imagejfx</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/cmongis_imagejfx/index.html" class="no-external">
-
-
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/cmongis_imagejfx/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-categories="SW1hZ2VKJTJDSW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1787247982367" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
-<div class="thumbnail"><a href="../ecosystem/ilastik_ilastik4ij/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/ilastik_ilastik4ij/index.html" class="no-external">ilastik imageJ modules</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/ilastik_ilastik4ij/index.html" class="no-external">
-These ImageJ plugins wrap ilastik workflows
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/ilastik_ilastik4ij/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982367" data-listing-reading-time-sort="1" data-listing-word-count-sort="6">
-<div class="thumbnail"><a href="../ecosystem/mobie_mobie-viewer-fiji/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/mobie_mobie-viewer-fiji/index.html" class="no-external">MoBIE Fiji Viewer</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/mobie_mobie-viewer-fiji/index.html" class="no-external">
-Fiji viewer for MoBIE projects
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/mobie_mobie-viewer-fiji/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="12" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982367" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
-<div class="thumbnail"><a href="../ecosystem/juglab_LabelEditor/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/juglab_LabelEditor/index.html" class="no-external">Label Editor</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/juglab_LabelEditor/index.html" class="no-external">
-UI component for image segmentation label comparison and selection
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/juglab_LabelEditor/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="13" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
-<div class="thumbnail"><a href="../ecosystem/UU-cellbiology_bvv-playground/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/UU-cellbiology_bvv-playground/index.html" class="no-external">BVV-playground</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/UU-cellbiology_bvv-playground/index.html" class="no-external">
-Volume rendering of bdv datasets with gamma and transparency option
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/UU-cellbiology_bvv-playground/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="14" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982368" data-listing-reading-time-sort="1" data-listing-word-count-sort="8">
-<div class="thumbnail"><a href="../ecosystem/saalfeldlab_bigcat/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/saalfeldlab_bigcat/index.html" class="no-external">BIGCAT</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/saalfeldlab_bigcat/index.html" class="no-external">
-Collaborative volume annotation and segmentation with BigDataViewer
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/saalfeldlab_bigcat/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="15" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982363" data-listing-reading-time-sort="1" data-listing-word-count-sort="5">
-<div class="thumbnail"><a href="../ecosystem/BIOP_bigdataviewer-selector/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/BIOP_bigdataviewer-selector/index.html" class="no-external">Selector For BigDataViewer</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/BIOP_bigdataviewer-selector/index.html" class="no-external">
-Selector Behaviours for BigDataViewer
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/BIOP_bigdataviewer-selector/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="16" data-categories="RmlqaSUyQ0ltYWdlSiUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIy" data-listing-file-modified-sort="1787247982364" data-listing-reading-time-sort="1" data-listing-word-count-sort="50">
-<div class="thumbnail"><a href="../ecosystem/Fiji/index.html" class="no-external">
-<p class="card-img-top"><img loading='lazy' src="../logos/fiji.svg"  class="thumbnail-image card-img"/></p>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/Fiji/index.html" class="no-external">Fiji</a>
+<a href="../ecosystem/Fiji/index.html" class="no-external-icon">Fiji</a>
 </h3>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
@@ -647,136 +1377,22 @@ Selector Behaviours for BigDataViewer
 <div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
 <div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
 </div>
-<div class="delink listing-description"><a href="../ecosystem/Fiji/index.html" class="no-external">
+<div class="listing-description">
+<a href="../ecosystem/Fiji/index.html" class="no-external-icon">
 Fiji is an image processing package—a “batteries-included” distribution of ImageJ and ImageJ2, bundling a lot of plugins which facilitate scientific image analysis.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/Fiji/index.html" class="no-external">
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="SW1nTGliMg==" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
-<div class="thumbnail"><a href="../ecosystem/axtimwalde_ImgLib2Access/index.html" class="no-external">
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="49" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<div class="thumbnail"><a href="../ecosystem/embl-cba_plateviewer/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../ecosystem/axtimwalde_ImgLib2Access/index.html" class="no-external">imglib2access</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/axtimwalde_ImgLib2Access/index.html" class="no-external">
-Simplified access to ImgLib2 pixel data for teaching purposes
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/axtimwalde_ImgLib2Access/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="18" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="6">
-<div class="thumbnail"><a href="../ecosystem/PreibischLab_BigStitcher/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/PreibischLab_BigStitcher/index.html" class="no-external">Big Stitcher</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/PreibischLab_BigStitcher/index.html" class="no-external">
-Multiview stitching of large datasets.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/PreibischLab_BigStitcher/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="19" data-categories="RmlqaSUyRkltYWdlSiUyQ0JpZ0RhdGFWaWV3ZXIlMkNpbWdsaWIyJTJDQmlnVm9sdW1lVmlld2Vy" data-listing-file-modified-sort="1787247982364" data-listing-reading-time-sort="1" data-listing-word-count-sort="59">
-<div class="thumbnail"><a href="../ecosystem/BigTrace/BigTrace.html" class="no-external">
-<p class="card-img-top"><img loading='lazy' src="BigTrace/BigTrace_logo.png"  class="thumbnail-image card-img"/></p>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/BigTrace/BigTrace.html" class="no-external">BigTrace plugin</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaSUyRkltYWdlSg=='); return false;">Fiji/ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('aW1nbGliMg=='); return false;">imglib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnVm9sdW1lVmlld2Vy'); return false;">BigVolumeViewer</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/BigTrace/BigTrace.html" class="no-external">
-FIJI plugin for tracing and analysis of curvilinear structures (filaments, vessels, neurites) in volumetric microscopy datasets.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/BigTrace/BigTrace.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="20" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
-<div class="thumbnail"><a href="../ecosystem/andmccall_ScanCo100BoneJcalibration/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/andmccall_ScanCo100BoneJcalibration/index.html" class="no-external">ScanCo100_BoneJ_Calibration</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/andmccall_ScanCo100BoneJcalibration/index.html" class="no-external">
-Plugin to import ScanCo100 bone density calibration from DICOM metadata. May work with similar metadata from other scanners, but this is untested. Available at ImageJ update…
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/andmccall_ScanCo100BoneJcalibration/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="21" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
-<div class="thumbnail"><a href="../ecosystem/PreibischLab_RS-FISH/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/PreibischLab_RS-FISH/index.html" class="no-external">Radial Symmetry</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/PreibischLab_RS-FISH/index.html" class="no-external">
-A plugin for radial symmetry localization on smFISH (and other) images.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/PreibischLab_RS-FISH/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="22" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
-<div class="thumbnail"><a href="../ecosystem/bioimage-io_PredictorOp/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/bioimage-io_PredictorOp/index.html" class="no-external">PredictorOp</a>
+<a href="../ecosystem/embl-cba_plateviewer/index.html" class="no-external-icon">Fiji Plugin PlateViewer</a>
 </h3>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
@@ -784,368 +1400,88 @@ A plugin for radial symmetry localization on smFISH (and other) images.
 <div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
 <div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
 </div>
-<div class="delink listing-description"><a href="../ecosystem/bioimage-io_PredictorOp/index.html" class="no-external">
-Model runner demo for ImgLib2 consumers.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/bioimage-io_PredictorOp/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="23" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="15">
-<div class="thumbnail"><a href="../ecosystem/PreibischLab_multiview-reconstruction/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/PreibischLab_multiview-reconstruction/index.html" class="no-external">Multiview Reconstruction</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/PreibischLab_multiview-reconstruction/index.html" class="no-external">
-Software for the reconstruction of multi-view microscopic acquisitions like Selective Plane Illumination Microscopy (SPIM) Data.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/PreibischLab_multiview-reconstruction/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="24" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
-<div class="thumbnail"><a href="../ecosystem/embl-cba_plateviewer/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/embl-cba_plateviewer/index.html" class="no-external">Fiji Plugin PlateViewer</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/embl-cba_plateviewer/index.html" class="no-external">
+<div class="listing-description">
+<a href="../ecosystem/embl-cba_plateviewer/index.html" class="no-external-icon">
 Fiji plugin for inspection of high-throughput microscopy multi-well image data
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/embl-cba_plateviewer/index.html" class="no-external">
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="25" data-categories="U2NpSmF2YQ==" data-listing-file-modified-sort="1787247982368" data-listing-reading-time-sort="1" data-listing-word-count-sort="14">
-<div class="thumbnail"><a href="../ecosystem/saalfeldlab_render/index.html" class="no-external">
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="50" data-categories="SW1hZ2VKJTJDSW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<div class="thumbnail"><a href="../ecosystem/segment-anything-models-java_SAMJ-IJ/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../ecosystem/saalfeldlab_render/index.html" class="no-external">Janelia Render Tools And Services</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/saalfeldlab_render/index.html" class="no-external">
-A collection of tools and HTTP services (APIs) for rendering transformed image tiles.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/saalfeldlab_render/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="26" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982363" data-listing-reading-time-sort="1" data-listing-word-count-sort="8">
-<div class="thumbnail"><a href="../ecosystem/BIOP_bigdataviewer-playground-display/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/BIOP_bigdataviewer-playground-display/index.html" class="no-external">BigDataViewer Playground Display</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/BIOP_bigdataviewer-playground-display/index.html" class="no-external">
-Display (metadata and projectors) for BigDataViewer Playground.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/BIOP_bigdataviewer-playground-display/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="27" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="20">
-<div class="thumbnail"><a href="../ecosystem/duderstadt-lab_mars-fx/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/duderstadt-lab_mars-fx/index.html" class="no-external">mars-fx</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/duderstadt-lab_mars-fx/index.html" class="no-external">
-JavaFX GUI for processing single-molecule TIRF and FMT data in the Structure and Dynamics of Molecular Machines research group.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/duderstadt-lab_mars-fx/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="28" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
-<div class="thumbnail"><a href="../ecosystem/fiji_MaMuT/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/fiji_MaMuT/index.html" class="no-external">MaMuT</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/fiji_MaMuT/index.html" class="no-external">
-Fiji plugin for the annotation of massive, multi-view data.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/fiji_MaMuT/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="29" data-categories="SW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1787247982369" data-listing-reading-time-sort="1" data-listing-word-count-sort="13">
-<div class="thumbnail"><a href="../ecosystem/segment-anything-models-java_SAMJ/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/segment-anything-models-java_SAMJ/index.html" class="no-external">SamJ</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/segment-anything-models-java_SAMJ/index.html" class="no-external">
-Segment Anything Model (SAM), and similar models, wrapper for Java based software.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/segment-anything-models-java_SAMJ/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="30" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982363" data-listing-reading-time-sort="1" data-listing-word-count-sort="8">
-<div class="thumbnail"><a href="../ecosystem/BIOP_bigdataviewer-biop-tools/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/BIOP_bigdataviewer-biop-tools/index.html" class="no-external">Biop Bigdataviewer Tools and Plugins</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/BIOP_bigdataviewer-biop-tools/index.html" class="no-external">
-Big data viewer tools BIOP - EPFL
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/BIOP_bigdataviewer-biop-tools/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="31" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
-<div class="thumbnail"><a href="../ecosystem/duderstadt-lab_mars-swing/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/duderstadt-lab_mars-swing/index.html" class="no-external">mars-swing</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/duderstadt-lab_mars-swing/index.html" class="no-external">
-Swing GUI for analysis of single-molecule TIRF and FMT data in the Structure and Dynamics of Molecular Machines research group
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/duderstadt-lab_mars-swing/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="32" data-categories="RmlqaSUyRkltYWdlSiUyQ0JpZ0RhdGFWaWV3ZXIlMkNpbWdsaWIy" data-listing-file-modified-sort="1787247982367" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
-<div class="thumbnail"><a href="../ecosystem/mobie_mobie/index.html" class="no-external">
-<p class="card-img-top"><img loading='lazy' data-src="mobie_mobie/mobie_logo.jpg"  class="thumbnail-image card-img"/></p>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/mobie_mobie/index.html" class="no-external">MoBIE</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaSUyRkltYWdlSg=='); return false;">Fiji/ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('aW1nbGliMg=='); return false;">imglib2</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/mobie_mobie/index.html" class="no-external">
-MoBIE is a Fiji plugin for exploring large multi-modal image data sets.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/mobie_mobie/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="33" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="105">
-<div class="thumbnail"><a href="../ecosystem/andmccall_Colocalization_by_Cross_Correlation/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/andmccall_Colocalization_by_Cross_Correlation/index.html" class="no-external">Colocalization_by_Cross_Correlation</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/andmccall_Colocalization_by_Cross_Correlation/index.html" class="no-external">
-An ImageJ plugin for spatial correlation/colocalization analysis that is more compatible with super-resolution images than traditional pixel-wise colocalization algorithms.…
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/andmccall_Colocalization_by_Cross_Correlation/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="34" data-categories="RmlqaSUyQ0ltYWdlSiUyQ0JpZ0RhdGFWaWV3ZXIlMkNIREY1" data-listing-file-modified-sort="1787247982364" data-listing-reading-time-sort="1" data-listing-word-count-sort="50">
-<div class="thumbnail"><a href="../ecosystem/BigDataProcessor2/index.html" class="no-external">
-<p class="card-img-top"><img loading='lazy' data-src="BigDataProcessor2/BDP2-icon.png"  class="thumbnail-image card-img"/></p>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/BigDataProcessor2/index.html" class="no-external">BigDataProcessor2</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SERGNQ=='); return false;">HDF5</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/BigDataProcessor2/index.html" class="no-external">
-BigDataProcessor2 (BDP2) is a Fiji plugin for interactive processing of TB-sized image data.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/BigDataProcessor2/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="35" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982368" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
-<div class="thumbnail"><a href="../ecosystem/saalfeldlab_paintera/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/saalfeldlab_paintera/index.html" class="no-external">Paintera</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/saalfeldlab_paintera/index.html" class="no-external">
-New Era Painting and annotation tool
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/saalfeldlab_paintera/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="36" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982368" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
-<div class="thumbnail"><a href="../ecosystem/sbesson_fiji-plugin-plateViewer/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/sbesson_fiji-plugin-plateViewer/index.html" class="no-external">Fiji Plugin PlateViewer</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/sbesson_fiji-plugin-plateViewer/index.html" class="no-external">
-TODO
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/sbesson_fiji-plugin-plateViewer/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="37" data-categories="SW1hZ2VKJTJDSW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1787247982368" data-listing-reading-time-sort="1" data-listing-word-count-sort="14">
-<div class="thumbnail"><a href="../ecosystem/mpicbg-scicomp_Interactive-H-Watershed/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/mpicbg-scicomp_Interactive-H-Watershed/index.html" class="no-external">InteractiveWatershed</a>
+<a href="../ecosystem/segment-anything-models-java_SAMJ-IJ/index.html" class="no-external-icon">SAM network inside Fiji</a>
 </h3>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
 <div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
 <div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
 </div>
-<div class="delink listing-description"><a href="../ecosystem/mpicbg-scicomp_Interactive-H-Watershed/index.html" class="no-external">
+<div class="listing-description">
+<a href="../ecosystem/segment-anything-models-java_SAMJ-IJ/index.html" class="no-external-icon">
+A Fiji plugin for interactive segmentation using the SAM network
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="51" data-categories="SW1hZ2VKJTJDSW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="14">
+<div class="thumbnail"><a href="../ecosystem/mpicbg-scicomp_Interactive-H-Watershed/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/mpicbg-scicomp_Interactive-H-Watershed/index.html" class="no-external-icon">InteractiveWatershed</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/mpicbg-scicomp_Interactive-H-Watershed/index.html" class="no-external-icon">
 
 <pre><code>    InteractiveWatershed</code></pre>
 
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/mpicbg-scicomp_Interactive-H-Watershed/index.html" class="no-external">
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="38" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982368" data-listing-reading-time-sort="1" data-listing-word-count-sort="16">
-<div class="thumbnail"><a href="../ecosystem/nicjac_PHANTAST-FIJI/index.html" class="no-external">
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="52" data-categories="SW1nTGliMg==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
+<div class="thumbnail"><a href="../ecosystem/axtimwalde_ImgLib2Access/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../ecosystem/nicjac_PHANTAST-FIJI/index.html" class="no-external">Phase Contrast Segmentation Toolbox (PHANTAST)</a>
+<a href="../ecosystem/axtimwalde_ImgLib2Access/index.html" class="no-external-icon">imglib2access</a>
+</h3>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
+</div>
+<div class="listing-description">
+<a href="../ecosystem/axtimwalde_ImgLib2Access/index.html" class="no-external-icon">
+Simplified access to ImgLib2 pixel data for teaching purposes
+</a>
+</div>
+</div>
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="53" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1794878032603" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="thumbnail"><a href="../ecosystem/Kapoorlabs-paris_MTrack/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../ecosystem/Kapoorlabs-paris_MTrack/index.html" class="no-external-icon">MTrack</a>
 </h3>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
@@ -1153,226 +1489,22 @@ TODO
 <div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
 <div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
 </div>
-<div class="delink listing-description"><a href="../ecosystem/nicjac_PHANTAST-FIJI/index.html" class="no-external">
-The phae contrast segmentation toolbox (PHANTAST) enables high performance segmentation of phase contrast microscopy images
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/nicjac_PHANTAST-FIJI/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="39" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982368" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
-<div class="thumbnail"><a href="../ecosystem/morphonets_SNT/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/morphonets_SNT/index.html" class="no-external">SNT</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/morphonets_SNT/index.html" class="no-external">
-The ImageJ framework for quantitative neuroanatomy
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/morphonets_SNT/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="40" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982364" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
-<div class="thumbnail"><a href="../ecosystem/Kapoorlabs-paris_MTrack/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/Kapoorlabs-paris_MTrack/index.html" class="no-external">MTrack</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/Kapoorlabs-paris_MTrack/index.html" class="no-external">
+<div class="listing-description">
+<a href="../ecosystem/Kapoorlabs-paris_MTrack/index.html" class="no-external-icon">
 MTrack
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/Kapoorlabs-paris_MTrack/index.html" class="no-external">
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="41" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIy" data-listing-file-modified-sort="1787247982367" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
-<div class="thumbnail"><a href="../ecosystem/juglab_metaseg/index.html" class="no-external">
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="54" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032607" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
+<div class="thumbnail"><a href="../ecosystem/saalfeldlab_bigwarp/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../ecosystem/juglab_metaseg/index.html" class="no-external">metaseg</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/juglab_metaseg/index.html" class="no-external">
-Meta-segmentation tool for joining many segmentation hypotheses created by various methods.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/juglab_metaseg/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="42" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982363" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
-<div class="thumbnail"><a href="../ecosystem/BIOP_ijp-imagetoatlas/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/BIOP_ijp-imagetoatlas/index.html" class="no-external">Plugin To Register Images to Atlases</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/BIOP_ijp-imagetoatlas/index.html" class="no-external">
-Collection of tools to register images to atlases in Fiji.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/BIOP_ijp-imagetoatlas/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="43" data-categories="SW1hZ2VKJTJDSW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="9">
-<div class="thumbnail"><a href="../ecosystem/NicoKiaru_LimeSeg/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/NicoKiaru_LimeSeg/index.html" class="no-external">limeseg</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/NicoKiaru_LimeSeg/index.html" class="no-external">
-Lipid Membrane Segmentation method for FIJI/ImageJ. https://doi.org/10.1186/s12859-018-2471-0
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/NicoKiaru_LimeSeg/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="44" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0ltZ0xpYjIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
-<div class="thumbnail"><a href="../ecosystem/fmi-faim_fmi-trackmate-addons/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/fmi-faim_fmi-trackmate-addons/index.html" class="no-external">FMI TrackMate Add-ons</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/fmi-faim_fmi-trackmate-addons/index.html" class="no-external">
-FMI Add-ons for TrackMate in Fiji
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/fmi-faim_fmi-trackmate-addons/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="45" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIy" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="5">
-<div class="thumbnail"><a href="../ecosystem/TrNdy_indago/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/TrNdy_indago/index.html" class="no-external">indago</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/TrNdy_indago/index.html" class="no-external">
-indigare (ital.) - investigate.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/TrNdy_indago/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="46" data-categories="SW1hZ2VKJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982363" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
-<div class="thumbnail"><a href="../ecosystem/BIOP_ijp-operetta-importer/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/BIOP_ijp-operetta-importer/index.html" class="no-external">PerkinElmer Operetta Importer</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/BIOP_ijp-operetta-importer/index.html" class="no-external">
-Hold your horses
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/BIOP_ijp-operetta-importer/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="47" data-categories="RmlqaSUyQ0ltYWdlSiUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIy" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="50">
-<div class="thumbnail"><a href="../ecosystem/Mastodon/index.html" class="no-external">
-<p class="card-img-top"><img loading='lazy' data-src="Mastodon/Mastodon-logo_jy-01.png"  class="thumbnail-image card-img"/></p>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/Mastodon/index.html" class="no-external">Mastodon</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/Mastodon/index.html" class="no-external">
-Mastodon is a large-scale tracking and track-editing framework for large, multi-view images.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/Mastodon/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="48" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982367" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
-<div class="thumbnail"><a href="../ecosystem/kephale_point-manager/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/kephale_point-manager/index.html" class="no-external">Point manager for imglib2 and imagej projects</a>
+<a href="../ecosystem/saalfeldlab_bigwarp/index.html" class="no-external-icon">BigWarp plugin for Fiji</a>
 </h3>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
@@ -1381,45 +1513,22 @@ Mastodon is a large-scale tracking and track-editing framework for large, multi-
 <div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
 <div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
 </div>
-<div class="delink listing-description"><a href="../ecosystem/kephale_point-manager/index.html" class="no-external">
-A tool for managing imglib2 RealPoints.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/kephale_point-manager/index.html" class="no-external">
+<div class="listing-description">
+<a href="../ecosystem/saalfeldlab_bigwarp/index.html" class="no-external-icon">
+A tool for manual pointwise deformable registration using bigdataviewer.
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="49" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982363" data-listing-reading-time-sort="1" data-listing-word-count-sort="13">
-<div class="thumbnail"><a href="../ecosystem/BIOP_bigdataviewer-spimdata-extras/index.html" class="no-external">
+<div class="metadata">
+</div>
+</div>
+<div class="quarto-post image-right" data-index="55" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1794878032605" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
+<div class="thumbnail"><a href="../ecosystem/fiji_MaMuT/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../ecosystem/BIOP_bigdataviewer-spimdata-extras/index.html" class="no-external">Spimdata Extra Settings</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/BIOP_bigdataviewer-spimdata-extras/index.html" class="no-external">
-Repo containing extra settings that can be stored in spimdata file format
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/BIOP_bigdataviewer-spimdata-extras/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="50" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982367" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
-<div class="thumbnail"><a href="../ecosystem/mobie_mobie-io/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/mobie_mobie-io/index.html" class="no-external">MoBIE IO</a>
+<a href="../ecosystem/fiji_MaMuT/index.html" class="no-external-icon">MaMuT</a>
 </h3>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
@@ -1428,127 +1537,13 @@ Repo containing extra settings that can be stored in spimdata file format
 <div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
 <div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
 </div>
-<div class="delink listing-description"><a href="../ecosystem/mobie_mobie-io/index.html" class="no-external">
-Readers and writers for image data in MoBIE projects
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/mobie_mobie-io/index.html" class="no-external">
+<div class="listing-description">
+<a href="../ecosystem/fiji_MaMuT/index.html" class="no-external-icon">
+Fiji plugin for the annotation of massive, multi-view data.
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="51" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982363" data-listing-reading-time-sort="1" data-listing-word-count-sort="15">
-<div class="thumbnail"><a href="../ecosystem/BIOP_bigdataviewer-bioformats/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/BIOP_bigdataviewer-bioformats/index.html" class="no-external">BigDataViewer Bioformats Bridge</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/BIOP_bigdataviewer-bioformats/index.html" class="no-external">
-Commands and function for opening, conversion and easy use of bioformats format into BigDataViewer
-</a></div>
-</div>
 <div class="metadata">
-<a href="../ecosystem/BIOP_bigdataviewer-bioformats/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="52" data-categories="RmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNTY2lKYXZh" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="95">
-<div class="thumbnail"><a href="../ecosystem/bhoeckendorf_klb-bdv/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/bhoeckendorf_klb-bdv/index.html" class="no-external">Keller Lab Block file type (.klb) - BigDataViewer backend</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/bhoeckendorf_klb-bdv/index.html" class="no-external">
-The KLB is a file format developed at the Keller Lab at Janelia Research Campus to efficiently store and retrieve large 5D images (&gt;4GB) using lossless compression. The…
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/bhoeckendorf_klb-bdv/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="53" data-categories="SW1hZ2VKJTJDSW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1787247982369" data-listing-reading-time-sort="1" data-listing-word-count-sort="15">
-<div class="thumbnail"><a href="../ecosystem/tinevez_CircleSkinner/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/tinevez_CircleSkinner/index.html" class="no-external">plugins/CircleSkinner_.jar</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/tinevez_CircleSkinner/index.html" class="no-external">
-A Fiji plugin for the automated detection and quantification of circular structure in images.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/tinevez_CircleSkinner/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="54" data-categories="SW1hZ2VKJTJDRmlqaSUyQ0JpZ0RhdGFWaWV3ZXIlMkNJbWdMaWIyJTJDU2NpSmF2YQ==" data-listing-file-modified-sort="1787247982366" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
-<div class="thumbnail"><a href="../ecosystem/davidackerman_cosem-segmentation-analysis/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/davidackerman_cosem-segmentation-analysis/index.html" class="no-external">Cosem-segmentation-analysis</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmlqaQ=='); return false;">Fiji</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmlnRGF0YVZpZXdlcg=='); return false;">BigDataViewer</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/davidackerman_cosem-segmentation-analysis/index.html" class="no-external">
-
-
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/davidackerman_cosem-segmentation-analysis/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="55" data-categories="SW1hZ2VKJTJDSW1nTGliMiUyQ1NjaUphdmE=" data-listing-file-modified-sort="1787247982369" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
-<div class="thumbnail"><a href="../ecosystem/segment-anything-models-java_SAMJ-IJ/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../ecosystem/segment-anything-models-java_SAMJ-IJ/index.html" class="no-external">SAM network inside Fiji</a>
-</h3>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SW1nTGliMg=='); return false;">ImgLib2</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2NpSmF2YQ=='); return false;">SciJava</div>
-</div>
-<div class="delink listing-description"><a href="../ecosystem/segment-anything-models-java_SAMJ-IJ/index.html" class="no-external">
-A Fiji plugin for interactive segmentation using the SAM network
-</a></div>
-</div>
-<div class="metadata">
-<a href="../ecosystem/segment-anything-models-java_SAMJ-IJ/index.html" class="no-external">
-</a>
 </div>
 </div>
 </div>
@@ -1637,7 +1632,8 @@ A Fiji plugin for interactive segmentation using the SAM network
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -1646,8 +1642,69 @@ A Fiji plugin for interactive segmentation using the SAM network
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -1661,6 +1718,7 @@ A Fiji plugin for interactive segmentation using the SAM network
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1823,44 +1881,54 @@ A Fiji plugin for interactive segmentation using the SAM network
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1958,6 +2026,9 @@ A Fiji plugin for interactive segmentation using the SAM network
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 <script>
