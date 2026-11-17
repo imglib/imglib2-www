@@ -285,5 +285,5 @@ though using `getDatasetAttributes().getDimensions()` are generally recommended.
 
 ## What to try next
 
-* [How to work with the N5 API and ImgLib2](https://imglib.github.io/imglib2-blog/posts/2022-09-27-n5-imglib2.html)
+* [How to work with the N5 API and ImgLib2](https://imglib2.net/blog/2022-09-27-n5-imglib2/2022-09-27-n5-imglib2.html)
 
